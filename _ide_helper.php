@@ -1104,7 +1104,7 @@ namespace {
          */
         public static function terminate($input, $status){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::terminate($input, $status);
+            \adsproject\Console\Kernel::terminate($input, $status);
         }
         
         /**
@@ -1117,7 +1117,7 @@ namespace {
          */
         public static function call($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::call($command, $parameters);
+            return \adsproject\Console\Kernel::call($command, $parameters);
         }
         
         /**
@@ -1130,7 +1130,7 @@ namespace {
          */
         public static function queue($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::queue($command, $parameters);
+            \adsproject\Console\Kernel::queue($command, $parameters);
         }
         
         /**
@@ -1141,7 +1141,7 @@ namespace {
          */
         public static function all(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::all();
+            return \adsproject\Console\Kernel::all();
         }
         
         /**
@@ -1152,7 +1152,7 @@ namespace {
          */
         public static function output(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::output();
+            return \adsproject\Console\Kernel::output();
         }
         
         /**
@@ -1163,7 +1163,7 @@ namespace {
          */
         public static function bootstrap(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::bootstrap();
+            \adsproject\Console\Kernel::bootstrap();
         }
         
     }
@@ -1271,7 +1271,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \adsproject\User|null
          * @static 
          */
         public static function user(){
@@ -1373,7 +1373,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User 
+         * @return \adsproject\User
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1478,7 +1478,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \adsproject\User|null
          * @static 
          */
         public static function getUser(){
@@ -1520,7 +1520,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \adsproject\User
          * @static 
          */
         public static function getLastAttempted(){
