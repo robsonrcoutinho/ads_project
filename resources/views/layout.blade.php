@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>ADS</title>
     {!! Html::style('css/normalize.css') !!}
@@ -10,9 +10,6 @@
     {!! Html::style('css/bootstrap-select.css') !!}
     {!! Html::style('css/style.css') !!}
 
-
-
-
             <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,11 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-
-
-
-
-
     <!-- //for-mobile-apps -->
     <!--fonts-->
     {!! Html::style('//fonts.googleapis.com/css?family=Ubuntu+Condensed') !!}
@@ -33,16 +25,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--//fonts-->
 
 
-
-
-
-
-
-
     <!-- js -->
     {!! Html::script('js/jquery.min.js') !!}
             <!-- js -->
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {!! Html::script('js/bootstrap.min.js') !!}
@@ -75,8 +60,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/jquery.uls.grid.css') !!}
     {!! Html::style('css/jquery.uls.lcd.css') !!}
 
-
-
             <!-- Source -->
     {!! Html::script('js/jquery.uls.data.js') !!}
     {!! Html::script('js/query.uls.data.utils.js') !!}
@@ -100,7 +83,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/easy-responsive-tabs.css') !!}
     {!! Html::script('js/easyResponsiveTabs.js') !!}
 
-
 </head>
 <body>
 
@@ -113,7 +95,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a class="account" href="login.html">Gerenciar Conta</a>
             <span class="active uls-trigger">Gerenciar Semestre</span>
             <!-- Large modal -->
-
         </div>
     </div>
 </div>
@@ -136,17 +117,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="category-list">
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
-                    <li>Avaliação</li>
-                    <li>Disciplinas</li>
-                    <li>Docentes</li>
-                    <li>Documentos</li>
+                    <li><a>Avaliação</a></li>
+                    <li><a href="disciplinas">Disciplinas</a></li>
+                    <li><a href="professores">Docentes</a></li>
+                    <li><a>Documentos</a></li>
                     <a href="post-ad.html">Consultar Avisos</a>
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <span class="active total" style="display:block;" ><strong>PAINEL DE CONTROLE</strong> </span>
 
-
                         @yield('conteudo')
+
                 </div>
             </div>
         </div>

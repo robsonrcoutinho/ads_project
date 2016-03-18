@@ -6,9 +6,6 @@
  * Time: 09:06
  */
 
-
-use adsproject\Http\Requests\Request;
-
 class DisciplinaRequest extends Request
 {
     /**
@@ -29,8 +26,8 @@ class DisciplinaRequest extends Request
     public function rules()
     {
         return [
-            'codigo'=>'required|min: 6',
-            'nome'=>'required|min: 5',
+            'codigo'=>'required|min:6',
+            'nome'=>'required|min:5',
             'carga_horaria'=>'required'
         ];
     }
