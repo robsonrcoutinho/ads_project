@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        adsproject\Providers\AppServiceProvider::class,
+        adsproject\Providers\AuthServiceProvider::class,
+        adsproject\Providers\EventServiceProvider::class,
+        adsproject\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
