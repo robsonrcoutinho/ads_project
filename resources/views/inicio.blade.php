@@ -154,7 +154,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tr><td class="semestre">2015.1</td><td class="semestre-inicio">24.03.2015</td><td class="semestre-fim">00.00.00</td><td class="acao-semestre">acao aqu</td></tr>
                                 <tr><td class="semestre">2014.1</td><td class="semestre-inicio">24.02.2014</td><td class="semestre-fim">00.00.00</td><td class="acao-semestre"> acao aqui</td></tr>
 
-
                                 </tbody>
                             </table>
 
