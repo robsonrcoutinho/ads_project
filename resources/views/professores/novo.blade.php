@@ -5,13 +5,7 @@
 
     <h1>Novo Professor</h1>
 
-    @if($errors->any())
-        <ul class="alert alert-warning">
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-        </ul>
-    @endif
+
     {!! Form::open(['route'=>'professores.salvar']) !!}
 
     <div class="form-group">

@@ -3,13 +3,7 @@
 <div class="container">
 
     <h1>Nova Disciplina</h1>
-    @if($errors->any())
-        <ul class="alert alert-warning">
-            @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    @endif
+
     {!! Form::open(['route'=>'disciplinas.salvar']) !!}
 
     <div class="form-group">

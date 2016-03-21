@@ -3,13 +3,7 @@
     <div class="container">
 
         <h1>Editar Professor</h1>
-        @if($errors->any())
-            <ul class="alert alert-warning">
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        @endif
+
         {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->codigo], 'method'=>'put']) !!}
 
         <div class="form-group">

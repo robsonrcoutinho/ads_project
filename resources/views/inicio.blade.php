@@ -5,7 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
+
 <head>
     <title>ADS</title>
     {!! Html::style('css/normalize.css') !!}
@@ -17,20 +18,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {!! Html::style('css/style.css') !!}
 
 
-
-
             <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
-
-
-
-
 
     <!-- //for-mobile-apps -->
     <!--fonts-->
@@ -38,17 +32,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
             <!--//fonts-->
 
-
-
-
-
-
-
-
     <!-- js -->
     {!! Html::script('js/jquery.min.js') !!}
             <!-- js -->
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {!! Html::script('js/bootstrap.min.js') !!}
@@ -81,8 +67,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/jquery.uls.grid.css') !!}
     {!! Html::style('css/jquery.uls.lcd.css') !!}
 
-
-
             <!-- Source -->
     {!! Html::script('js/jquery.uls.data.js') !!}
     {!! Html::script('js/query.uls.data.utils.js') !!}
@@ -106,7 +90,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/easy-responsive-tabs.css') !!}
     {!! Html::script('js/easyResponsiveTabs.js') !!}
 
-
 </head>
 <body>
 
@@ -128,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="banner text-center">
         <div class="container">
             <h1>Instituto Federal de Educação, Ciência e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus Eunápolis</h1>
-            <p>Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+            <p> Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
             <a href="post-ad.html">Publicar Aviso</a>
         </div>
     </div>
@@ -143,8 +126,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
                     <li>Avaliação</li>
-                    <li>Disciplinas</li>
-                    <li>Docentes</li>
+                    <li><a href="disciplinas">Disciplinas</a></li>
+                    <li><a href="professores">Docentes</a></li>
                     <li>Documentos</li>
                     <a href="post-ad.html">Consultar Avisos</a>
                 </ul>
