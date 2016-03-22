@@ -2,8 +2,7 @@
 @section('conteudo')
 <div class="container">
 
-    <h1>Nova Disciplina</h1>
-
+    <span class="semestre total" style="display:block;"><strong>Nova Disciplina</strong> </span>
     {!! Form::open(['route'=>'disciplinas.salvar']) !!}
 
     <div class="form-group">

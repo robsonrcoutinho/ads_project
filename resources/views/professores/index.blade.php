@@ -4,8 +4,6 @@
         <div class="category">
             <span class="semestre total" style="display:block;"><strong>Professores</strong> </span>
 
-
-
         <table class="table table-striped table-bordered table-hover">
 
             <thead>

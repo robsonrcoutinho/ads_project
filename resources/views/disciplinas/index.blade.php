@@ -1,15 +1,16 @@
 @extends('layout')
 @section('conteudo')
     <div class="container">
-        <h1>Disciplinas</h1>
+
+        <span class="semestre total" style="display:block;"><strong>Disciplinas</strong> </span>
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
-                <th>CÛdigo</th>
+                <th>C√≥digo</th>
                 <th>Nome</th>
-                <th>Carga hor·ria</th>
+                <th>Carga hor√°ria</th>
                 <th>Ementa</th>
-                <th>AÁ„o</th>
+                <th>A√ß√£o</th>
             </tr>
             </thead>
             <tbody>

@@ -130,7 +130,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <span class="active total" style="display:block;" ><strong>PAINEL DE CONTROLE</strong> </span>
-
                     @if($errors->any())
                         <ul class="alert alert-warning">
                             @foreach($errors->all() as $error)
@@ -138,9 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             @endforeach
                         </ul>
                     @endif
-
                         @yield('conteudo')
-
                 </div>
             </div>
         </div>
@@ -217,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="copyrights">
-                <p> � 2016 IFBA. Todos os direitos reservados </p>
+                <p> © 2016 IFBA. Todos os direitos reservados </p>
             </div>
             <div class="clearfix"></div>
         </div>

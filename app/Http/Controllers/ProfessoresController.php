@@ -20,12 +20,11 @@ class ProfessoresController extends Controller{
         return view('professores.novo');
     }
     public function salvar(ProfessorRequest $request){
-        //Incluir validação de matrícula
+        //Incluir validaÃ§Ã£o de matrÃ­cula
         $this->validate($request, ['matricula'=> 'unique:professors']);
         $professor = $request->all();
         Professor::create($professor);
         return redirect()->route('professores');
-
     }
 
     public function editar($matricula){

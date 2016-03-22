@@ -1,8 +1,7 @@
 @extends('layout')
 @section('conteudo')
     <div class="container">
-
-        <h1>Editar Professor</h1>
+        <span class="semestre total" style="display:block;"><strong>Editar Professor</strong> </span>
 
         {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->codigo], 'method'=>'put']) !!}
 

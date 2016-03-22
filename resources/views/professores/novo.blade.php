@@ -3,8 +3,7 @@
 
 <div class="container">
 
-    <h1>Novo Professor</h1>
-
+    <span class="semestre total" style="display:block;"><strong>Novo Professor</strong> </span>
 
     {!! Form::open(['route'=>'professores.salvar']) !!}
 
