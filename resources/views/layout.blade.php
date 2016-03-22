@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +10,6 @@
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/bootstrap-select.css') !!}
     {!! Html::style('css/style.css') !!}
-
-
-
-
             <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,28 +18,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-
-
-
-
-
     <!-- //for-mobile-apps -->
     <!--fonts-->
     {!! Html::style('//fonts.googleapis.com/css?family=Ubuntu+Condensed') !!}
     {!! Html::style('//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
             <!--//fonts-->
 
-
-
-
-
-
-
-
     <!-- js -->
     {!! Html::script('js/jquery.min.js') !!}
             <!-- js -->
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {!! Html::script('js/bootstrap.min.js') !!}
@@ -74,8 +58,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/jquery.uls.css') !!}
     {!! Html::style('css/jquery.uls.grid.css') !!}
     {!! Html::style('css/jquery.uls.lcd.css') !!}
-
-
 
             <!-- Source -->
     {!! Html::script('js/jquery.uls.data.js') !!}
