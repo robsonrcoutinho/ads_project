@@ -110,8 +110,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav id="menuHeader">
     <div class="banner text-center">
         <div class="container">
-            <h1>Instituto Federal de Educação, Ciência e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus Eunápolis</h1>
-            <p> Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+            <h1>Instituto Federal de EducaÃ§Ã£o, CiÃªncia e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus EunÃ¡polis</h1>
+            <p> Curso Tecnologia em AnÃ¡lise e Desenvolvimento de Sistemas</p>
             <a href="post-ad.html">Publicar Aviso</a>
         </div>
     </div>
@@ -125,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="category-list">
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
-                    <li>Avaliação</li>
+                    <li>AvaliaÃ§Ã£o</li>
                     <li><a href="disciplinas">Disciplinas</a></li>
                     <li><a href="professores">Docentes</a></li>
                     <li>Documentos</li>
@@ -135,14 +135,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="active total" style="display:block;" ><strong>PAINEL DE CONTROLE</strong> </span>
                     <div>
                         <div class="category">
-                            <span class="semestre total" style="display:block;"><strong>Avaliações Semestrais</strong> </span>
+                            <span class="semestre total" style="display:block;"><strong>AvaliaÃ§Ãµes Semestrais</strong> </span>
                             <table>
                                 <thead>
                                 <tr>
                                     <th>Semestre</th>
                                     <th>Inicio</th>
-                                    <th>Término</th>
-                                    <th>Ação</th>
+                                    <th>TÃ©rmino</th>
+                                    <th>AÃ§Ã£o</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -263,17 +263,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="foo-grids">
                 <div class="col-md-3 footer-grid">
-                    <h4 class="footer-head">Quem somos nós</h4>
+                    <h4 class="footer-head">Quem somos nÃ³s</h4>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                 </div>
                 <div class="col-md-3 footer-grid">
                     <h4 class="footer-head">Contato</h4>
-                    <span class="hq">Endereço</span>
+                    <span class="hq">EndereÃ§o</span>
                     <address>
                         <ul class="location">
                             <li><span class="glyphicon glyphicon-map-marker"></span></li>
-                            <li> Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, 45823-035</li>
+                            <li> Av. David Jonas Fadini, 300 - Stela Reis, EunÃ¡polis - BA, 45823-035</li>
                             <div class="clearfix"></div>
                         </ul>
                         <ul class="location">
@@ -305,7 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="copyrights">
-                <p> © 2016 IFBA. Todos os direitos reservados </p>
+                <p> ï¿½ 2016 IFBA. Todos os direitos reservados </p>
             </div>
             <div class="clearfix"></div>
         </div>
