@@ -1,14 +1,19 @@
 @extends('layout')
 @section('conteudo')
     <div class="container">
-        <h1>Professores</h1>
+        <div class="category">
+            <span class="semestre total" style="display:block;"><strong>Professores</strong> </span>
+
+
+
         <table class="table table-striped table-bordered table-hover">
+
             <thead>
             <tr>
-                <th>Matrícula</th>
+                <th>MatrÃ­cula</th>
                 <th>Nome</th>
                 <th>Curriculo</th>
-                <th>Ação</th>
+                <th>AÃ§Ã£o</th>
             </tr>
             </thead>
             <tbody>
@@ -30,10 +35,13 @@
 
             @endforeach
             </tbody>
+
         </table>
+
         <br/>
         <br/>
         <a href="{{ route('professores.novo')}}" class="btn btn-default"> Novo professor</a>
-
+        </div>
     </div>
+
     @endsection

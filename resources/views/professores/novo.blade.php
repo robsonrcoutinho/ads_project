@@ -5,6 +5,7 @@
 
     <h1>Novo Professor</h1>
 
+
     {!! Form::open(['route'=>'professores.salvar']) !!}
 
     <div class="form-group">

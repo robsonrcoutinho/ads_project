@@ -5,7 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
+
 <head>
     <title>ADS</title>
     {!! Html::style('css/normalize.css') !!}
@@ -17,20 +18,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {!! Html::style('css/style.css') !!}
 
 
-
-
             <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
-
-
-
-
 
     <!-- //for-mobile-apps -->
     <!--fonts-->
@@ -38,17 +32,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
             <!--//fonts-->
 
-
-
-
-
-
-
-
     <!-- js -->
     {!! Html::script('js/jquery.min.js') !!}
             <!-- js -->
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {!! Html::script('js/bootstrap.min.js') !!}
@@ -81,8 +67,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/jquery.uls.grid.css') !!}
     {!! Html::style('css/jquery.uls.lcd.css') !!}
 
-
-
             <!-- Source -->
     {!! Html::script('js/jquery.uls.data.js') !!}
     {!! Html::script('js/query.uls.data.utils.js') !!}
@@ -106,7 +90,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     {!! Html::style('css/easy-responsive-tabs.css') !!}
     {!! Html::script('js/easyResponsiveTabs.js') !!}
 
-
 </head>
 <body>
 
@@ -127,8 +110,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav id="menuHeader">
     <div class="banner text-center">
         <div class="container">
-            <h1>Instituto Federal de Educação, Ciência e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus Eunápolis</h1>
-            <p>Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+            <h1>Instituto Federal de EducaÃ§Ã£o, CiÃªncia e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus EunÃ¡polis</h1>
+            <p> Curso Tecnologia em AnÃ¡lise e Desenvolvimento de Sistemas</p>
             <a href="post-ad.html">Publicar Aviso</a>
         </div>
     </div>
@@ -142,9 +125,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="category-list">
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
-                    <li>Avaliação</li>
-                    <li>Disciplinas</li>
-                    <li>Docentes</li>
+                    <li>AvaliaÃ§Ã£o</li>
+                    <li><a href="disciplinas">Disciplinas</a></li>
+                    <li><a href="professores">Docentes</a></li>
                     <li>Documentos</li>
                     <a href="post-ad.html">Consultar Avisos</a>
                 </ul>
@@ -152,14 +135,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="active total" style="display:block;" ><strong>PAINEL DE CONTROLE</strong> </span>
                     <div>
                         <div class="category">
-                            <span class="semestre total" style="display:block;"><strong>Avaliações Semestrais</strong> </span>
+                            <span class="semestre total" style="display:block;"><strong>AvaliaÃ§Ãµes Semestrais</strong> </span>
                             <table>
                                 <thead>
                                 <tr>
                                     <th>Semestre</th>
                                     <th>Inicio</th>
-                                    <th>Término</th>
-                                    <th>Ação</th>
+                                    <th>TÃ©rmino</th>
+                                    <th>AÃ§Ã£o</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -170,7 +153,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tr><td class="semestre">2014.2</td><td class="semestre-inicio">25.06.2014</td><td class="semestre-fim">00.00.00</td><td class="acao-semestre">acao aqu</td></tr>
                                 <tr><td class="semestre">2015.1</td><td class="semestre-inicio">24.03.2015</td><td class="semestre-fim">00.00.00</td><td class="acao-semestre">acao aqu</td></tr>
                                 <tr><td class="semestre">2014.1</td><td class="semestre-inicio">24.02.2014</td><td class="semestre-fim">00.00.00</td><td class="acao-semestre"> acao aqui</td></tr>
-
 
                                 </tbody>
                             </table>
@@ -281,17 +263,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="foo-grids">
                 <div class="col-md-3 footer-grid">
-                    <h4 class="footer-head">Quem somos nós</h4>
+                    <h4 class="footer-head">Quem somos nÃ³s</h4>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                 </div>
                 <div class="col-md-3 footer-grid">
                     <h4 class="footer-head">Contato</h4>
-                    <span class="hq">Endereço</span>
+                    <span class="hq">EndereÃ§o</span>
                     <address>
                         <ul class="location">
                             <li><span class="glyphicon glyphicon-map-marker"></span></li>
-                            <li> Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, 45823-035</li>
+                            <li> Av. David Jonas Fadini, 300 - Stela Reis, EunÃ¡polis - BA, 45823-035</li>
                             <div class="clearfix"></div>
                         </ul>
                         <ul class="location">
@@ -323,7 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="copyrights">
-                <p> © 2016 IFBA. Todos os direitos reservados </p>
+                <p> ï¿½ 2016 IFBA. Todos os direitos reservados </p>
             </div>
             <div class="clearfix"></div>
         </div>

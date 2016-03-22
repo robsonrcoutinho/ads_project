@@ -5,9 +5,9 @@
  * Date: 15/03/2016
  * Time: 09:00
  */
-use adsproject\Http\Requests;
 use adsproject\Disciplina;
 use adsproject\Http\Requests\DisciplinaRequest;
+
 
 class DisciplinasController extends Controller{
 
@@ -20,6 +20,7 @@ class DisciplinasController extends Controller{
         return view('disciplinas.novo');
     }
     public function salvar(DisciplinaRequest $request){
+        $this->validate($request, ['codigo'=> 'unique:disciplinas']);
         $disciplina = $request->all();
         Disciplina::create($disciplina);
 
@@ -31,6 +32,7 @@ class DisciplinasController extends Controller{
         return view('disciplinas.editar', compact('disciplina'));
     }
     public function alterar(DisciplinaRequest $request, $codigo){
+
         Disciplina::where('codigo', $codigo)->update(['nome'=>$request['nome'], 'carga_horaria'=>$request['carga_horaria'], 'ementa'=>$request['ementa']]);
         return redirect()->route('disciplinas');
     }

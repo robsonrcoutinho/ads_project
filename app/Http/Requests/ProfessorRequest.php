@@ -7,7 +7,7 @@
  */
 
 
-use adsproject\Http\Requests\Request;
+//use adsproject\Http\Requests\Request;
 
 class ProfessorRequest extends Request
 {
@@ -29,8 +29,9 @@ class ProfessorRequest extends Request
     public function rules()
     {
         return [
-            'matricula'=>'required',
+            'matricula'=>'required|min:6|max:6',
             'nome'=>'required|min: 5'
         ];
+
     }
 }

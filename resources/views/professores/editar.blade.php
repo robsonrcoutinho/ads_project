@@ -1,7 +1,6 @@
 @extends('layout')
 @section('conteudo')
 <div class="container">
-
     <h1>Editar Professor</h1>
 
     {!! Form::open(['route'=>['professores.alterar', $professor->matricula], 'method'=>'put']) !!}

@@ -7,7 +7,7 @@
     {!! Form::open(['route'=>'disciplinas.salvar']) !!}
 
     <div class="form-group">
-        {!! Form::label ('codigo', 'Código: ') !!}
+        {!! Form::label ('codigo', 'Codigo: ') !!}
         {!! Form::text ('codigo', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
@@ -15,7 +15,7 @@
         {!! Form::text ('nome', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label ('carga_horaria', 'Carga horária: ') !!}
+        {!! Form::label ('carga_horaria', 'Carga horaria: ') !!}
         {!! Form::text ('carga_horaria', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">

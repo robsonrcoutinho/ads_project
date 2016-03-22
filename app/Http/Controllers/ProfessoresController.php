@@ -5,9 +5,9 @@
  * Date: 15/03/2016
  * Time: 09:00
  */
-use adsproject\Http\Requests;
 use adsproject\Professor;
 use adsproject\Http\Requests\ProfessorRequest;
+
 
 class ProfessoresController extends Controller{
 
@@ -20,9 +20,12 @@ class ProfessoresController extends Controller{
         return view('professores.novo');
     }
     public function salvar(ProfessorRequest $request){
+        //Incluir validação de matrícula
+        $this->validate($request, ['matricula'=> 'unique:professors']);
         $professor = $request->all();
         Professor::create($professor);
         return redirect()->route('professores');
+
     }
 
     public function editar($matricula){
