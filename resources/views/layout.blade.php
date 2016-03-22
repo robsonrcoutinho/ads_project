@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/html">
+
 <head>
+
+
     <title>ADS</title>
     {!! Html::style('css/normalize.css') !!}
     {!! Html::style('css/demo.css') !!}
@@ -11,8 +15,9 @@
     {!! Html::style('css/style.css') !!}
 
             <!-- for-mobile-apps -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 
@@ -102,8 +107,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav id="menuHeader">
     <div class="banner text-center">
         <div class="container">
-            <h1>Instituto Federal de Educação, Ciência e   <span class="segment-heading">    Tecnologia da Bahia </span> Campus Eunápolis</h1>
-            <p>Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+            <h1>Instituto Federal de EducaÃ§Ã£o, CiÃªncia e   <span class="segment-heading">    Tecnologia da Bahia </span>Campus EunÃ¡polis</h1>
+            <p>Curso Tecnologia em AnÃ¡lise e Desenvolvimento de Sistemas</p>
             <a href="post-ad.html">Publicar Aviso</a>
         </div>
     </div>
@@ -117,7 +122,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="category-list">
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
-                    <li><a>Avaliação</a></li>
+                    <li><a>AvaliaÃ§Ã£o</a></li>
                     <li><a href="disciplinas">Disciplinas</a></li>
                     <li><a href="professores">Docentes</a></li>
                     <li><a>Documentos</a></li>
@@ -133,6 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             @endforeach
                         </ul>
                     @endif
+
                         @yield('conteudo')
 
                 </div>
@@ -169,17 +175,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="foo-grids">
                 <div class="col-md-3 footer-grid">
-                    <h4 class="footer-head">Quem somos nós</h4>
+                    <h4 class="footer-head">Quem somos nÃ³s</h4>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                     <p>Estudantes do IFBA, bla bla bla bla.</p>
                 </div>
                 <div class="col-md-3 footer-grid">
                     <h4 class="footer-head">Contato</h4>
-                    <span class="hq">Endereço</span>
+                    <span class="hq">EndereÃ§o</span>
                     <address>
                         <ul class="location">
                             <li><span class="glyphicon glyphicon-map-marker"></span></li>
-                            <li> Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, 45823-035</li>
+                            <li> Av. David Jonas Fadini, 300 - Stela Reis, EunÃ¡polis - BA, 45823-035</li>
                             <div class="clearfix"></div>
                         </ul>
                         <ul class="location">
@@ -211,7 +217,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="copyrights">
-                <p> © 2016 IFBA. Todos os direitos reservados </p>
+                <p> ï¿½ 2016 IFBA. Todos os direitos reservados </p>
             </div>
             <div class="clearfix"></div>
         </div>
