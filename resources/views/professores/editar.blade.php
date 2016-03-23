@@ -6,7 +6,7 @@
     {!! Form::open(['route'=>['professores.alterar', $professor->matricula], 'method'=>'put']) !!}
 
     <div class="form-group">
-        {!! Form::label ('matricula', 'Matricula: ') !!}
+        {!! Form::label ('matricula', 'Matrícula: ') !!}
         {!! Form::text ('matricula', $professor->matricula, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
@@ -14,7 +14,7 @@
         {!! Form::text ('nome', $professor->nome, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label ('Curriculo', 'Curriculo (link): ') !!}
+        {!! Form::label ('Curriculo', 'Currículo (link): ') !!}
         {!! Form::text ('curriculo', $professor->curriculo, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
