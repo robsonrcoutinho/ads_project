@@ -62,3 +62,18 @@ Route::group(['prefix'=>'documentos', 'where'=>['id'=>'[0-9]+']], function(){
 //Rota para alterar documento
     Route::put('{id}/alterar',['as'=>'documentos.alterar', 'uses'=> 'DocumentosController@alterar']);
 });
+//Rotas de semestres
+Route::group(['prefix'=>'semestres'], function(){
+//Rota para IndexSemestre
+    Route::get('', ['as'=>'semestres', 'uses' =>'SemestresController@index']);
+//Rota para novo semestre
+    Route::get('novo',['as'=>'semestres.novo', 'uses'=> 'SemestresController@novo']);
+//Rota para salvar semestre
+    Route::post('salvar', ['as'=>'semestres.salvar', 'uses'=>'SemestresController@salvar']);
+//Rota para exluir semestre
+    //Route::get('{codigo}/excluir',['as'=>'Semestres.excluir', 'uses'=> 'SemestresController@excluir']);
+//Rota para editar semestre
+    Route::get('{codigo}/editar',['as'=>'semestres.editar', 'uses'=>'SemestresController@editar']);
+//Rota para alterar semestre
+    Route::put('{codigo}/alterar',['as'=>'semestres.alterar', 'uses'=> 'SemestresController@alterar']);
+});
