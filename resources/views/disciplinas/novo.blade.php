@@ -1,6 +1,6 @@
 @extends('layout')
 @section('conteudo')
-<div class="container">
+<div class="category">
 
     <span class="semestre total" style="display:block;"><strong>Nova Disciplina</strong> </span>
     {!! Form::open(['route'=>'disciplinas.salvar']) !!}

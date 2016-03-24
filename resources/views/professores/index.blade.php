@@ -1,6 +1,5 @@
 @extends('layout')
 @section('conteudo')
-    <div class="container">
         <div class="category">
             <span class="semestre total" style="display:block;"><strong>Professores</strong> </span>
 
@@ -40,6 +39,4 @@
         <br/>
         <a href="{{ route('professores.novo')}}" class="btn btn-default"> Novo professor</a>
         </div>
-    </div>
-
-    @endsection
+@endsection

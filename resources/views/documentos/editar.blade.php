@@ -1,6 +1,6 @@
 @extends('layout')
 @section('conteudo')
-    <div class="container">
+    <div class="category">
         <span class="semestre total" style="display:block;"><strong>Editar Documento</strong> </span>
 
         {!! Form::open(['route'=>['documentos.alterar', $documento->id], 'method'=>'put']) !!}

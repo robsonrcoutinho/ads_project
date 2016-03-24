@@ -1,7 +1,7 @@
 @extends('layout')
 @section('conteudo')
 
-<div class="container">
+<div class="contegory">
 
     <span class="semestre total" style="display:block;"><strong>Novo Professor</strong> </span>
 
