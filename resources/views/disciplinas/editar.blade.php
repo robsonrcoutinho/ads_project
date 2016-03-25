@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('main')
 @section('conteudo')
     <div class="contegory">
         <span class="semestre total" style="display:block;"><strong>Editar Professor</strong> </span>

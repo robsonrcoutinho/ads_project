@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('main')
 @section('conteudo')
 
     <div class="category">

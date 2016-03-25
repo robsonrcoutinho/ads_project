@@ -16,8 +16,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/bootstrap-select.css') !!}
     {!! Html::style('css/style.css') !!}
-
-
             <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -133,11 +131,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="category-list">
             <div id="parentVerticalTab">
                 <ul class="resp-tabs-list hor_1">
-                    <li>Avaliação</li>
-                    <li><a href="disciplinas">Disciplinas</a></li>
+                    <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+                    <li><a href="{{route('professores')}}">Professores</a></li>
+                    <!--   <li><a href="#">Avaliação</a></li>
                     <li><a href="professores">Docentes</a></li>
-                    <li>Documentos</li>
-                    <a href="post-ad.html">Consultar Avisos</a>
+                    <li><a href="#">Documentos</a></li>
+                    <a href="post-ad.html">Consultar Avisos</a> -->
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <span class="active total" style="display:block;"><strong>PAINEL DE CONTROLE</strong> </span>
@@ -145,49 +144,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @yield('conteudo')
                     </div>
 
-                    <div>
-                        <div class="category">
-                            <div class="category-img">
-                                <img src="images/cat2.png" title="image" alt=""/>
-                            </div>
-                            <div class="category-info">
-                                <h4>Electronics & Appliances</h4>
-                                <span>2,01,850 Ads</span>
-                                <a href="all-classifieds.html">View all Ads</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="sub-categories">
-                            <ul>
-                                <li><a href="electronics-appliances.html">Computers & accessories</a></li>
-                                <li><a href="electronics-appliances.html">Tv - video - audio</a></li>
-                                <li><a href="electronics-appliances.html">Cameras & accessories</a></li>
-                                <li><a href="electronics-appliances.html">Games & Entertainment</a></li>
-                                <li><a href="electronics-appliances.html">Fridge - AC - Washing Machine</a></li>
-                                <li><a href="electronics-appliances.html">Kitchen & Other Appliances</a></li>
-                                <div class="clearfix"></div>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="category">
-                            <div class="category-img">
-                                <img src="images/cat3.png" title="image" alt=""/>
-                            </div>
-                            <div class="category-info">
-                                <h4>Cars</h4>
-                                <span>1,98,080 Ads</span>
-                                <a href="all-classifieds.html">View all Ads</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="sub-categories">
-                            @yield('disciplinas.index')
-                        </div>
-                    </div>
-                    <div>
-                    @yield('documentos.index')
-                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -197,7 +153,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Plug-in Initialisation-->
 <script type="text/javascript">
     $(document).ready(function () {
-
         //Vertical Tab
         $('#parentVerticalTab').easyResponsiveTabs({
             type: 'vertical', //Types: default, vertical, accordion
@@ -219,59 +174,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //Categories -->
 <!--footer section start-->
 <footer>
-    <div class="footer-top">
-        <div class="container">
-            <div class="foo-grids">
-                <div class="col-md-3 footer-grid">
-                    <h4 class="footer-head">Quem somos nós</h4>
-
-                    <p>Estudantes do IFBA, bla bla bla bla.</p>
-
-                    <p>Estudantes do IFBA, bla bla bla bla.</p>
-                </div>
-                <div class="col-md-3 footer-grid">
-                    <h4 class="footer-head">Contato</h4>
-                    <span class="hq">Endereço</span>
-                    <address>
-                        <ul class="location">
-                            <li><span class="glyphicon glyphicon-map-marker"></span></li>
-                            <li> Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, 45823-035</li>
-                            <div class="clearfix"></div>
-                        </ul>
-                        <ul class="location">
-                            <li><span class="glyphicon glyphicon-earphone"></span></li>
-                            <li>(73) 3281-2266</li>
-                            <div class="clearfix"></div>
-                        </ul>
-                        <ul class="location">
-                            <li><span class="glyphicon glyphicon-envelope"></span></li>
-                            <li><a href="mailto:info@example.com">email@decontato.com</a></li>
-                            <div class="clearfix"></div>
-                        </ul>
-                    </address>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom text-center">
-        <div class="container">
-            <div class="footer-logo">
-                <a href="index.html"><span>IF</span>BA</a>
-            </div>
-            <div class="footer-social-icons">
-                <ul>
-                    <li><a class="facebook" href="#"><span>Facebook</span></a></li>
-                    <li><a class="twitter" href="#"><span>Twitter</span></a></li>
-                    <li><a class="googleplus" href="#"><span>Google+</span></a></li>
-                </ul>
-            </div>
-            <div class="copyrights">
-                <p> © 2016 IFBA. Todos os direitos reservados </p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
+   @include('share.footer')
 </footer>
 
 <!--footer section end-->
