@@ -141,17 +141,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <span class="active total" style="display:block;"><strong>PAINEL DE CONTROLE</strong> </span>
-                    <div>
-                        @if($errors->any())
-                            <ul class="alert alert-warning">
-                                @foreach($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    @yield('conteudo')
-                    </div>
 
+                    <div>
+                        <div class="category">
+                            <span class="semestre total" style="display:block;"><strong>Avaliações Semestrais</strong> </span>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Semestre</th>
+                                    <th>Inicio</th>
+                                    <th>Término</th>
+                                    <th>Ação</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="semestre">2014.1</td>
+                                    <td class="semestre-inicio">24.02.2014</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre"> acao aqui</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2014.2</td>
+                                    <td class="semestre-inicio">25.06.2014</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre">acao aqu</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2015.1</td>
+                                    <td class="semestre-inicio">24.03.2015</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre">acao aqu</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2014.1</td>
+                                    <td class="semestre-inicio">24.02.2014</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre"> acao aqui</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2014.2</td>
+                                    <td class="semestre-inicio">25.06.2014</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre">acao aqu</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2015.1</td>
+                                    <td class="semestre-inicio">24.03.2015</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre">acao aqu</td>
+                                </tr>
+                                <tr>
+                                    <td class="semestre">2014.1</td>
+                                    <td class="semestre-inicio">24.02.2014</td>
+                                    <td class="semestre-fim">00.00.00</td>
+                                    <td class="acao-semestre"> acao aqui</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
                     <div>
                         <div class="category">
                             <div class="category-img">
@@ -189,12 +242,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="clearfix"></div>
                         </div>
                         <div class="sub-categories">
-                            @yield('disciplinas.index')
+                            <ul>
+                                <li><a href="cars.html">Commercial Vehicles</a></li>
+                                <li><a href="cars.html">Other Vehicles</a></li>
+                                <li><a href="cars.html">Spare Parts</a></li>
+                                <div class="clearfix"></div>
+                            </ul>
                         </div>
                     </div>
                     <div>
-                    @yield('documentos.index')
+                        <div class="category">
+                            <div class="category-img">
+                                <img src="images/cat4.png" title="image" alt=""/>
+                            </div>
+                            <div class="category-info">
+                                <h4>Bikes</h4>
+                                <span>6,17,568 Ads</span>
+                                <a href="all-classifieds.html">View all Ads</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="sub-categories">
+                            <ul>
+                                <li><a href="bikes.html">Motorcycles</a></li>
+                                <li><a href="bikes.html">Scooters</a></li>
+                                <li><a href="bikes.html">Bicycles</a></li>
+                                <li><a href="bikes.html">Spare Parts</a></li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
                     </div>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -222,7 +300,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     });
 </script>
-
 <!-- //Categories -->
 <!--footer section start-->
 <footer>

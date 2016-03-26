@@ -71,9 +71,25 @@ Route::group(['prefix'=>'semestres'], function(){
 //Rota para salvar semestre
     Route::post('salvar', ['as'=>'semestres.salvar', 'uses'=>'SemestresController@salvar']);
 //Rota para exluir semestre
-    //Route::get('{codigo}/excluir',['as'=>'Semestres.excluir', 'uses'=> 'SemestresController@excluir']);
+    //Route::get('{codigo}/excluir',['as'=>'semestres.excluir', 'uses'=> 'SemestresController@excluir']);
 //Rota para editar semestre
     Route::get('{codigo}/editar',['as'=>'semestres.editar', 'uses'=>'SemestresController@editar']);
 //Rota para alterar semestre
     Route::put('{codigo}/alterar',['as'=>'semestres.alterar', 'uses'=> 'SemestresController@alterar']);
+});
+
+//Rotas de avisos
+Route::group(['prefix'=>'avisos','where'=>['id'=>'[0-9]+']], function(){
+//Rota para IndexAvisos
+    Route::get('', ['as'=>'avisos', 'uses' =>'AvisosController@index']);
+//Rota para novo aviso
+    Route::get('novo',['as'=>'avisos.novo', 'uses'=> 'AvisosController@novo']);
+//Rota para salvar aviso
+    Route::post('salvar', ['as'=>'avisos.salvar', 'uses'=>'AvisosController@salvar']);
+//Rota para exluir aviso
+    Route::get('{id}/excluir',['as'=>'avisos.excluir', 'uses'=> 'AvisosController@excluir']);
+//Rota para editar aviso
+    Route::get('{id}/editar',['as'=>'avisos.editar', 'uses'=>'AvisosController@editar']);
+//Rota para alterar aviso
+    Route::put('{id}/alterar',['as'=>'avisos.alterar', 'uses'=> 'AvisosController@alterar']);
 });

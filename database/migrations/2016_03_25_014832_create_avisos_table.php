@@ -12,11 +12,21 @@ class CreateAvisosTable extends Migration
      */
     public function up()
     {
-        Schema::create('avisos', function (Blueprint $table) {
-            $table->increments('idAviso',6)->primary();
+        /*Schema::create('avisos', function (Blueprint $table) {
+            $table->increments('id');
             $table->String('titulo',20);
+            $table->String('mensagem', 255);
             $table->timestamps();
+        $table->renameColumn('idAviso','id');
+        });*/
+        Schema::table('avisos', function (Blueprint $table) {
+            //$table->increments('id');
+            //$table->String('titulo',20);
+            //$table->String('mensagem', 255);
+            //$table->timestamps();
+            $table->renameColumn('idAviso','id');
         });
+
     }
 
     /**

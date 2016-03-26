@@ -1,15 +1,10 @@
-<?php namespace adsproject\Http\Requests;
-/**
- * Created by PhpStorm.
- * User: Wilder
- * Date: 15/03/2016
- * Time: 09:06
- */
+<?php
 
+namespace adsproject\Http\Requests;
 
 use adsproject\Http\Requests\Request;
 
-class ProfessorRequest extends Request
+class AvisoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +24,8 @@ class ProfessorRequest extends Request
     public function rules()
     {
         return [
-            'matricula'=>'required|min:6|max:6',
-            'nome'=>'required|min: 5'
+            'titulo' => 'required|max:20',
+            'mensagem' => 'required|max:255'
         ];
-
     }
 }

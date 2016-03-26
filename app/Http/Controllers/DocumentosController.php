@@ -12,14 +12,15 @@ class DocumentosController extends Controller{
 
     public function index(){
         $documentos = Documento::all();
+        //$documentos=array();
         return view('documentos.index', ['documentos'=>$documentos]);
+        //return Response::json('documentos.index', ['documentos'=>$documentos]);
     }
 
     public function novo(){
         return view('documentos.novo');
     }
     public function salvar(DocumentoRequest $request){
-        //Incluir validação de matrícula
         $this->validate($request, ['id'=> 'unique:documentos']);
         $documento = $request->all();
         Documento::create($documento);
