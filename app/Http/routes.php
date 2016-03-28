@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('main');
 });
 //Rotas de professores
 Route::group(['prefix'=>'professores', 'where'=>['matricula'=>'[0-9]+']], function(){
@@ -77,3 +77,7 @@ Route::group(['prefix'=>'semestres'], function(){
 //Rota para alterar semestre
     Route::put('{codigo}/alterar',['as'=>'semestres.alterar', 'uses'=> 'SemestresController@alterar']);
 });
+
+
+
+
