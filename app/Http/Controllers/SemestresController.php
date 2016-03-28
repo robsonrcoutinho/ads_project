@@ -33,7 +33,7 @@ class SemestresController extends Controller{
         return redirect()->route('semestres');
     }
     /*public function excluir($codigo){
-        Disciplina::where('codigo', $codigo)->update(['ativa'=>false]);
-        return redirect()->route('disciplinas');
+        Semestre::where('codigo', $codigo)->update(['ativa'=>false]);
+        return redirect()->route('semestres');
     }*/
 }

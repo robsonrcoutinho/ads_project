@@ -93,3 +93,19 @@ Route::group(['prefix'=>'avisos','where'=>['id'=>'[0-9]+']], function(){
 //Rota para alterar aviso
     Route::put('{id}/alterar',['as'=>'avisos.alterar', 'uses'=> 'AvisosController@alterar']);
 });
+
+//Rotas de avaliações
+Route::group(['prefix'=>'avaliacoes','where'=>['id'=>'[0-9]+']], function(){
+//Rota para IndexAvicoes
+    Route::get('', ['as'=>'avaliacoes', 'uses' =>'AvaliacoesController@index']);
+//Rota para novo avalicao
+    Route::get('novo',['as'=>'avaliacoes.novo', 'uses'=> 'AvaliacoesController@novo']);
+//Rota para salvar avaliacao
+    Route::post('salvar', ['as'=>'avaliacoes.salvar', 'uses'=>'AvaliacoesController@salvar']);
+//Rota para exluir avaliacao
+    Route::get('{id}/excluir',['as'=>'avaliacoes.excluir', 'uses'=> 'AvaliacoesController@excluir']);
+//Rota para editar avaliacao
+    Route::get('{id}/editar',['as'=>'avaliacoes.editar', 'uses'=>'AvaliacoesController@editar']);
+//Rota para alterar avaliacao
+    Route::put('{id}/alterar',['as'=>'avaliacoes.alterar', 'uses'=> 'AvaliacoesController@alterar']);
+});
