@@ -206,70 +206,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     </div>
                     <div>
-                        <div class="category">
-                            <div class="category-img">
-                                <img src="images/cat2.png" title="image" alt=""/>
-                            </div>
-                            <div class="category-info">
-                                <h4>Electronics & Appliances</h4>
-                                <span>2,01,850 Ads</span>
-                                <a href="all-classifieds.html">View all Ads</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+
+
+                    </div>
+                    <div>
+
                         <div class="sub-categories">
-                            <ul>
-                                <li><a href="electronics-appliances.html">Computers & accessories</a></li>
-                                <li><a href="electronics-appliances.html">Tv - video - audio</a></li>
-                                <li><a href="electronics-appliances.html">Cameras & accessories</a></li>
-                                <li><a href="electronics-appliances.html">Games & Entertainment</a></li>
-                                <li><a href="electronics-appliances.html">Fridge - AC - Washing Machine</a></li>
-                                <li><a href="electronics-appliances.html">Kitchen & Other Appliances</a></li>
-                                <div class="clearfix"></div>
-                            </ul>
+
                         </div>
                     </div>
                     <div>
                         <div class="category">
-                            <div class="category-img">
-                                <img src="images/cat3.png" title="image" alt=""/>
-                            </div>
-                            <div class="category-info">
-                                <h4>Cars</h4>
-                                <span>1,98,080 Ads</span>
-                                <a href="all-classifieds.html">View all Ads</a>
-                            </div>
+
                             <div class="clearfix"></div>
                         </div>
                         <div class="sub-categories">
-                            <ul>
-                                <li><a href="cars.html">Commercial Vehicles</a></li>
-                                <li><a href="cars.html">Other Vehicles</a></li>
-                                <li><a href="cars.html">Spare Parts</a></li>
-                                <div class="clearfix"></div>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="category">
-                            <div class="category-img">
-                                <img src="images/cat4.png" title="image" alt=""/>
-                            </div>
-                            <div class="category-info">
-                                <h4>Bikes</h4>
-                                <span>6,17,568 Ads</span>
-                                <a href="all-classifieds.html">View all Ads</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="sub-categories">
-                            <ul>
-                                <li><a href="bikes.html">Motorcycles</a></li>
-                                <li><a href="bikes.html">Scooters</a></li>
-                                <li><a href="bikes.html">Bicycles</a></li>
-                                <li><a href="bikes.html">Spare Parts</a></li>
-                                <div class="clearfix"></div>
-                            </ul>
+
                         </div>
                     </div>
 
