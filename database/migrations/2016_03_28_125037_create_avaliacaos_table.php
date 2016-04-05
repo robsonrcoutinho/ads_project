@@ -3,17 +3,18 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSemestresTable extends Migration
+class CreateAvaliacaosTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('semestres', function (Blueprint $table) {
+        Schema::create('avaliacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo', 6)->nullable();
+            $table->string('semestre', 6);
             $table->date('inicio');
             $table->date('termino');
-            $table->unsignedInteger('disciplina_id');
+
+            $table->unsignedInteger('semestre_id');
 
         });
     }
@@ -21,6 +22,6 @@ class CreateSemestresTable extends Migration
 
     public function down()
     {
-
+        Schema::drop('avaliacaos');
     }
 }

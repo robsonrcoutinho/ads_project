@@ -5,26 +5,18 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDocumentosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo', 50);
             $table->string('url', 100);
-            $table->timestamps();
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::drop('documentos');

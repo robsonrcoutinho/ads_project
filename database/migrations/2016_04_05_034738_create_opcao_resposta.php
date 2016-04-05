@@ -3,15 +3,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvisosTable extends Migration
+class CreateOpcaoResposta extends Migration
 {
 
     public function up()
     {
-        Schema::create('avisos', function (Blueprint $table) {
+        Schema::create('opcao_resposta', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('titulo',20);
-            $table->String('mensagem',255);
+            $table->string('resposta_opcao_id');
+
+            $table->unsignedInteger('pergunta_id');
 
         });
     }
@@ -19,6 +20,6 @@ class CreateAvisosTable extends Migration
 
     public function down()
     {
-        Schema::drop('avisos');
+
     }
 }

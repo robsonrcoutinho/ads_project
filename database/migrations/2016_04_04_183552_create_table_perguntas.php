@@ -3,22 +3,21 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvisosTable extends Migration
+class CreateTablePerguntas extends Migration
 {
 
     public function up()
     {
-        Schema::create('avisos', function (Blueprint $table) {
+        Schema::create('perguntas', function (Blueprint $table) {
             $table->increments('id');
-            $table->String('titulo',20);
-            $table->String('mensagem',255);
-
+            $table->string('enunciado');
+            $table->boolean('pergunta_fechada')->default(true);
         });
     }
 
 
     public function down()
     {
-        Schema::drop('avisos');
+
     }
 }
