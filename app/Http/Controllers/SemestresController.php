@@ -18,22 +18,22 @@ class SemestresController extends Controller{
         return view('semestres.novo');
     }
     public function salvar(SemestreRequest $request){
-        $this->validate($request, ['codigo'=> 'unique:semestres']);
+        //$this->validate($request, ['codigo'=> 'unique:semestres']);
         $semestre = $request->all();
         Semestre::create($semestre);
         return redirect('semestres');
     }
 
-    public function editar($codigo){
-        $semestre = Semestre::where('codigo', $codigo)->first();
+    public function editar($id){
+        $semestre = Semestre::find($id);
         return view('semestres.editar', compact('semestre'));
     }
-    public function alterar(SemestreRequest $request, $codigo){
-        Semestre::where('codigo', $codigo)->update(['inicio'=>$request['inicio'], 'termino'=>$request['termino']]);
+    public function alterar(SemestreRequest $request, $id){
+        Semestre::find($id)->update($request->all());
         return redirect()->route('semestres');
     }
-    /*public function excluir($codigo){
-        Disciplina::where('codigo', $codigo)->update(['ativa'=>false]);
-        return redirect()->route('disciplinas');
+    /*public function excluir($id){
+        Semestre::find($id)->delete();
+        return redirect()->route('semestres');
     }*/
 }
