@@ -10,17 +10,16 @@ class CreateSemestresTable extends Migration
     {
         Schema::create('semestres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo', 6)->nullable();
+            $table->string('codigo', 6)->unique();
             $table->date('inicio');
             $table->date('termino');
+            $table->softDeletes();
             $table->unsignedInteger('disciplina_id');
-
         });
     }
 
-
     public function down()
     {
-
+        //Schema::drop('semestres');
     }
 }

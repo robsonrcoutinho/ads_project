@@ -8,6 +8,7 @@ class Avaliacao extends Model
 {
     protected $table = "avaliacaos";
     protected $fillable = ['id', 'semestre', 'inicio', 'termino' ];
+    protected $softDelete = true;
     public $timestamps = false;
 
     public function semestre(){

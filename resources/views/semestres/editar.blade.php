@@ -3,12 +3,13 @@
     <div class="contegory">
         <span class="semestre total" style="display:block;"><strong>Editar Semestre</strong> </span>
 
-        {!! Form::open(['route'=>['semestres.alterar', $semestre->codigo], 'method'=>'put']) !!}
-
+        {!! Form::open(['route'=>['semestres.alterar', $semestre->id], 'method'=>'put']) !!}
+        <div class="form-group">
+            {!! Form::hidden ('id', $semestre->id, ['class'=>'form-control']) !!}
+        </div>
         <div class="form-group">
             {!! Form::label ('codigo', 'Código: ') !!}
-            {!! Form::label ('codigo', $semestre->codigo) !!}
-            {!! Form::hidden ('codigo', $semestre->codigo, ['class'=>'form-control']) !!}
+            {!! Form::text ('codigo', $semestre->codigo, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('inicio', 'Início: ') !!}

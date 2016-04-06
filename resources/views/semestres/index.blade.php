@@ -20,8 +20,7 @@
                     <td>{{ date('d/m/Y', strtotime($semestre->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($semestre->termino)) }}</td>
                     <td>
-                        <a href="{{ route('semestres.editar', ['codigo'=>$semestre->codigo]) }}" class="btn-sm btn-success"> Editar</a>
-
+                        <a href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}" class="btn-sm btn-success"> Editar</a>
                     </td>
                 </tr>
 
@@ -31,6 +30,5 @@
         <br/>
         <br/>
         <a href="{{ route('semestres.novo')}}" class="btn btn-default"> Novo Semestre</a>
-
     </div>
 @endsection

@@ -3,8 +3,10 @@
 <div class="container">
      <span class="semestre total" style="display:block;"><strong>Editar Professor</strong> </span>
 
-    {!! Form::open(['route'=>['professores.alterar', $professor->matricula], 'method'=>'put']) !!}
-
+    {!! Form::open(['route'=>['professores.alterar', $professor->id], 'method'=>'put']) !!}
+    <div class="form-group">
+        {!! Form::hidden ('id', $professor->id, ['class'=>'form-control']) !!}
+    </div>
     <div class="form-group">
         {!! Form::label ('matricula', 'Matricula: ') !!}
         {!! Form::text ('matricula', $professor->matricula, ['class'=>'form-control']) !!}
@@ -21,6 +23,5 @@
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
-
 </div>
 @endsection

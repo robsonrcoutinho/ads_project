@@ -10,12 +10,12 @@ class CreateAvaliacaosTable extends Migration
     {
         Schema::create('avaliacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('semestre', 6);
+            //$table->string('semestre', 6);
             $table->date('inicio');
             $table->date('termino');
+            $table->softDeletes();
 
             $table->unsignedInteger('semestre_id');
-
         });
     }
 
