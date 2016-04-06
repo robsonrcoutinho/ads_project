@@ -1,6 +1,5 @@
-@extends('layout')
+@extends('main')
 @section('conteudo')
-    <div class="container">
         <div class="category">
             <span class="semestre total" style="display:block;"><strong>Professores</strong> </span>
 
@@ -26,8 +25,8 @@
                             <a href="{{ $professor->curriculo }}" class="btn-sm btn-success">Curriculo</a>
                     @endif
                     <td>
-                        <a href="{{ route('professores.editar', ['matricula'=>$professor->matricula]) }}" class="btn-sm btn-success"> Editar</a>
-                        <a href="{{ route('professores.excluir', ['matricula'=>$professor->matricula]) }}" class="btn-sm btn-danger"> Excluir</a>
+                        <a href="{{ route('professores.editar', ['id'=>$professor->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('professores.excluir', ['id'=>$professor->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
 
@@ -40,6 +39,4 @@
         <br/>
         <a href="{{ route('professores.novo')}}" class="btn btn-default"> Novo professor</a>
         </div>
-    </div>
-
-    @endsection
+@endsection

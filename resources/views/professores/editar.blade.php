@@ -1,12 +1,15 @@
-@extends('layout')
+@extends('main')
 @section('conteudo')
-<div class="container">
+<div class="contegory">
      <span class="semestre total" style="display:block;"><strong>Editar Professor</strong> </span>
 
-    {!! Form::open(['route'=>['professores.alterar', $professor->matricula], 'method'=>'put']) !!}
+    {!! Form::open(['route'=>['professores.alterar', $professor->id], 'method'=>'put']) !!}
 
     <div class="form-group">
-        {!! Form::label ('matricula', 'Matricula: ') !!}
+        {!! Form::hidden ('id', $professor->id, ['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label ('matricula', 'Matrícula: ') !!}
         {!! Form::text ('matricula', $professor->matricula, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
@@ -14,7 +17,7 @@
         {!! Form::text ('nome', $professor->nome, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label ('Curriculo', 'Curriculo (link): ') !!}
+        {!! Form::label ('Curriculo', 'Currículo (link): ') !!}
         {!! Form::text ('curriculo', $professor->curriculo, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">

@@ -1,14 +1,14 @@
-@extends('layout')
+@extends('main')
 @section('conteudo')
 
-<div class="container">
+<div class="contegory">
 
     <span class="semestre total" style="display:block;"><strong>Novo Professor</strong> </span>
 
     {!! Form::open(['route'=>'professores.salvar']) !!}
 
     <div class="form-group">
-        {!! Form::label ('matricula', 'Matricula: ') !!}
+        {!! Form::label ('matricula', 'Matrícula: ') !!}
         {!! Form::text ('matricula', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
@@ -16,7 +16,7 @@
         {!! Form::text ('nome', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label ('Curriculo', 'Curriculo (link): ') !!}
+        {!! Form::label ('Curriculo', 'Currículo (link): ') !!}
         {!! Form::text ('curriculo', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
