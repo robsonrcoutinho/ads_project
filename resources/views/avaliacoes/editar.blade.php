@@ -10,7 +10,7 @@
         <div class="form-group">
             {!! Form::label ('semestre', 'Semestre: ') !!}
             {!! Form::text ('semestre', $avaliacao->semestre, ['class'=>'form-control']) !!}
-            {!! Form::select ('semestre', ['class'=>'form-control'], $avaliacao->semestre) !!}
+            {!! Form::select ('semestre', $semestres, $avaliacao->semestre ) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('inicio', 'Início: ') !!}

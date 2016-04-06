@@ -8,7 +8,6 @@
 use adsproject\Disciplina;
 use adsproject\Http\Requests\DisciplinaRequest;
 
-
 class DisciplinasController extends Controller{
 
     public function index(){

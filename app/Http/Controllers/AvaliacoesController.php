@@ -14,12 +14,12 @@ class AvaliacoesController extends Controller{
 
     public function index(){
         $avaliacoes = Avaliacao::all();
-        $semestres = Semestre::all()->get('id','codigo');
-        return view('avaliacoes.index', ['disciplinas'=>$avaliacoes, 'semestres'=>$semestres]);
+        return view('avaliacoes.index', ['disciplinas'=>$avaliacoes]);
     }
 
     public function novo(){
-        return view('avaliacoes.novo');
+        $semestres = Semestre::all()->get('id','codigo');
+        return view('avaliacoes.novo', compact('semestres'));
     }
     public function salvar(AvaliacaoRequest $request){
         $avaliacao = $request->all();
@@ -29,7 +29,8 @@ class AvaliacoesController extends Controller{
     }
     public function editar($id){
         $avaliacao = Avaliacao::find($id);
-        return view('avaliacoes.editar', compact('avaliacao'));
+        $semestres=Semestre::all();
+        return view('avaliacoes.editar', compact('avaliacao', 'semestres'));
     }
     public function alterar(AvaliacaoRequest $request, $id){
         Avaliacao::find($id)->update($request);
