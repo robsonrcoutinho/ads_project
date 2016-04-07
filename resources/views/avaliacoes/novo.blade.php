@@ -6,9 +6,8 @@
         {!! Form::open(['route'=>'avaliacoes.salvar']) !!}
 
         <div class="form-group">
-            {!! Form::label ('semestre', 'Semestre: ') !!}
-            {!! Form::text ('semestre', null, ['class'=>'form-control']) !!}
-            {!! Form::select ('semestre', $semestres, null) !!}
+            {!! Form::label ('semestre_id', 'Semestre: ') !!}
+            {!! Form::select ('semestre_id', $semestres, null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('inicio', 'Início: ') !!}

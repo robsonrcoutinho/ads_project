@@ -14,17 +14,16 @@ class AvaliacoesController extends Controller{
 
     public function index(){
         $avaliacoes = Avaliacao::all();
-        return view('avaliacoes.index', ['disciplinas'=>$avaliacoes]);
+        return view('avaliacoes.index', ['avaliacoes'=>$avaliacoes]);
     }
 
     public function novo(){
-        $semestres = Semestre::all()->get('id','codigo');
+        $semestres = Semestre::all()->lists('codigo','id');
         return view('avaliacoes.novo', compact('semestres'));
     }
     public function salvar(AvaliacaoRequest $request){
         $avaliacao = $request->all();
-        Disciplina::create($avaliacao);
-
+        Avaliacao::create($avaliacao);
         return redirect('avaliacoes');
     }
     public function editar($id){

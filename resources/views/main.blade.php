@@ -140,9 +140,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
                 <div class="resp-tabs-container hor_1">
                     <span class="active total" style="display:block;"><strong>PAINEL DE CONTROLE</strong> </span>
+
                     <div>
-                    @yield('conteudo')
+                        @if($errors->any())
+                            <ul class="alert alert-warning">
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                        @yield('conteudo')
                     </div>
+
 
                 </div>
                 <div class="clearfix"></div>

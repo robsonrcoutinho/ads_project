@@ -18,12 +18,12 @@
 
                 <tr>
                     <td>{{$avaliacao->id}}</td>
-                    <td>{{$avaliacao->semestre->codigo}}</td>
+                    <td>{{$avaliacao->semestre_id}}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->termino)) }}</td>
                     <td>
-                        <a href="{{ route('semestre.editar', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-success">Editar</a>
-                        <a href="{{ route('semestre.excluir', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        <a href="{{ route('avaliacoes.editar', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
 

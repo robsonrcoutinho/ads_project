@@ -14,7 +14,6 @@ class DisciplinasController extends Controller{
         $disciplinas = Disciplina::all();
         return view('disciplinas.index', ['disciplinas'=>$disciplinas]);
     }
-
     public function novo(){
         return view('disciplinas.novo');
     }
@@ -22,10 +21,8 @@ class DisciplinasController extends Controller{
         //$this->validate($request, ['codigo'=> 'unique:disciplinas']);
         $disciplina = $request->all();
         Disciplina::create($disciplina);
-
         return redirect('disciplinas');
     }
-
     public function editar($id){
         $disciplina = Disciplina::find($id);
         return view('disciplinas.editar', compact('disciplina'));
