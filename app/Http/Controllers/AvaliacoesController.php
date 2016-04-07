@@ -28,7 +28,7 @@ class AvaliacoesController extends Controller{
     }
     public function editar($id){
         $avaliacao = Avaliacao::find($id);
-        $semestres=Semestre::all();
+        $semestres=Semestre::all()->lists('codigo', 'id');
         return view('avaliacoes.editar', compact('avaliacao', 'semestres'));
     }
     public function alterar(AvaliacaoRequest $request, $id){

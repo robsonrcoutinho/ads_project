@@ -18,7 +18,7 @@
 
                 <tr>
                     <td>{{$avaliacao->id}}</td>
-                    <td>{{$avaliacao->semestre_id}}</td>
+                    <td>{{$avaliacao->semestre->codigo}}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->termino)) }}</td>
                     <td>

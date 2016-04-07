@@ -21,8 +21,8 @@ class Semestre extends Model
         return $this->hasOne(Avaliacao::class);
     }
 
-    public function getCodigo()
+    public function codigo()
     {
-        return $this->codigo();
+        return $this->getCodigo();
     }
 }

@@ -12,8 +12,7 @@ class Avaliacao extends Model
     public $timestamps = false;
 
     public function semestre(){
-            //$this->semestre()->getCodigo();
-           return $this->belongsTo(Avaliacao::class);
+           return $this->belongsTo(Semestre::class);
     }
 
     public function perguntas(){
