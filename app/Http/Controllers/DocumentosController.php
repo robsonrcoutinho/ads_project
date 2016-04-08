@@ -14,18 +14,16 @@ class DocumentosController extends Controller{
         $documentos = Documento::all();
         return view('documentos.index', ['documentos'=>$documentos]);
     }
-
     public function novo(){
         return view('documentos.novo');
     }
     public function salvar(DocumentoRequest $request){
         //Incluir validação de matrícula
-        $this->validate($request, ['id'=> 'unique:documentos']);
+        //$this->validate($request, ['id'=> 'unique:documentos']);
         $documento = $request->all();
         Documento::create($documento);
         return redirect()->route('documentos');
     }
-
     public function editar($id){
         $documento = Documento::find($id);
         return view('documentos.editar', compact('documento'));

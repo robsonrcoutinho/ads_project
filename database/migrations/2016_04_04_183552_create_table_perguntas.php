@@ -11,10 +11,9 @@ class CreateTablePerguntas extends Migration
         Schema::create('perguntas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('enunciado');
-            $table->boolean('pergunta_fechada')->default(true);
+            $table->boolean('pergunta_fechada')->default(false);
         });
     }
-
 
     public function down()
     {

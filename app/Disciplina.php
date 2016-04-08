@@ -9,7 +9,7 @@ class Disciplina extends Model
     protected $table = "disciplinas";
     public $timestamps = false;
     protected $fillable = ['codigo','nome', 'carga_horaria', 'ementa', 'ativa'];
-
+    protected $softDelete = true;
 
     public function professors()
     {

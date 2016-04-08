@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Avaliacao extends Model
 {
     protected $table = "avaliacaos";
-    protected $fillable = ['id', 'semestre', 'inicio', 'termino' ];
+    protected $fillable = ['id', 'semestre_id', 'inicio', 'termino', 'semestre' ];
+    protected $softDelete = true;
     public $timestamps = false;
 
     public function semestre(){
-        return $this->belongsTo(Avaliacao::class);
+           return $this->belongsTo(Semestre::class);
     }
 
     public function perguntas(){

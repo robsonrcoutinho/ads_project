@@ -25,8 +25,8 @@
                             <a href="{{ $professor->curriculo }}" class="btn-sm btn-success">Curriculo</a>
                     @endif
                     <td>
-                        <a href="{{ route('professores.editar', ['matricula'=>$professor->matricula]) }}" class="btn-sm btn-success"> Editar</a>
-                        <a href="{{ route('professores.excluir', ['matricula'=>$professor->matricula]) }}" class="btn-sm btn-danger"> Excluir</a>
+                        <a href="{{ route('professores.editar', ['id'=>$professor->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('professores.excluir', ['id'=>$professor->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
 

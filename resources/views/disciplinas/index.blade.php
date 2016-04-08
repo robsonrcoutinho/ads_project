@@ -25,8 +25,8 @@
                             <a href="{{ $disciplina->ementa }}" class="btn-sm btn-success">Ementa</a>
                     @endif
                     <td>
-                        <a href="{{ route('disciplinas.editar', ['codigo'=>$disciplina->codigo]) }}" class="btn-sm btn-success"> Editar</a>
-                        <a href="{{ route('disciplinas.excluir', ['codigo'=>$disciplina->codigo]) }}" class="btn-sm btn-danger"> Excluir</a>
+                        <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
 

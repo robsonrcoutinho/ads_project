@@ -12,7 +12,7 @@ use adsproject\Http\Requests\ProfessorRequest;
 class ProfessoresController extends Controller{
 
     public function index(){
-        $professores = Professor::where('ativo', true)->get();
+        $professores = Professor::all();
         return view('professores.index', ['professores'=>$professores]);
     }
 
@@ -21,22 +21,21 @@ class ProfessoresController extends Controller{
     }
     public function salvar(ProfessorRequest $request){
         //Incluir validação de matrícula
-        $this->validate($request, ['matricula'=> 'unique:professors']);
+        //$this->validate($request, ['matricula'=> 'unique:professors']);
         $professor = $request->all();
         Professor::create($professor);
         return redirect()->route('professores');
     }
-
-    public function editar($matricula){
-        $professor = Professor::where('matricula', $matricula)->first();
+    public function editar($id){
+        $professor = Professor::find($id);
         return view('professores.editar', compact('professor'));
     }
-    public function alterar(ProfessorRequest $request, $matricula){
-        Professor::where('matricula', $matricula)->update(['nome'=>$request['nome'], 'curriculo'=>$request['curriculo']]);
+    public function alterar(ProfessorRequest $request, $id){
+        Professor::find($id)->update($request->all());
         return redirect()->route('professores');
     }
-    public function excluir($matricula){
-        Professor::where('matricula', $matricula)->update(['ativo'=>false]);
+    public function excluir($id){
+        Professor::find($id)->delete();
         return redirect()->route('professores');
     }
 }
