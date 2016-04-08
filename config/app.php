@@ -196,6 +196,19 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Aviso' => adsproject\Aviso::class,
+        'Documento' => adsproject\Documento::class,
+        'Professor' => adsproject\Professor::class,
+        'Disciplina' => adsproject\Disciplina::class,
+        'Semestre' => adsproject\Semestre::class,
+        'Avaliacao' => adsproject\Avaliacao::class,
+        'Pergunta' => adsproject\Pergunta::class,
+        'Resposta' => adsproject\Resposta::class,
+        'OpcaoResposta' => adsproject\OpcaoResposta::class,
+
+
+
     ],
 
 ];
