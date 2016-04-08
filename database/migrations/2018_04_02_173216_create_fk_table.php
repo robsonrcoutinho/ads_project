@@ -40,7 +40,7 @@ class CreateFkTable extends Migration
 
         Schema::table('pre_requisito', function ($table) {
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
-            $table->foreign('possui_codigo_disciplina')->references('id')->on('disciplinas');
+            $table->foreign('pre_requisito_id')->references('id')->on('disciplinas');
         });
     }
 

@@ -14,7 +14,7 @@ class CreateSemestresTable extends Migration
             $table->date('inicio');
             $table->date('termino');
             $table->softDeletes();
-            $table->unsignedInteger('disciplina_id');
+
         });
     }
 
