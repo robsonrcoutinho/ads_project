@@ -8,7 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Título</th>
-                <th>URL</th>
+                <th>Link</th>
                 <th>Ação</th>
             </tr>
             </thead>
@@ -19,9 +19,12 @@
                     <td>{{$documento->id}}</td>
                     <td>{{$documento->titulo}}</td>
                     <td>
-                           <a href="{{ $documento->url }}" >{{ $documento->url }}</a>
+                        @if($documento->url !=null && $documento->url != '' )
+                            <a href="{{ $documento->url }}" class="btn-sm btn-success">LINK</a>
+                        @endif
                     <td>
-                        <a href="{{ route('documentos.editar', ['codigo'=>$documento->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
 

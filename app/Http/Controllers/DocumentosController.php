@@ -18,8 +18,6 @@ class DocumentosController extends Controller{
         return view('documentos.novo');
     }
     public function salvar(DocumentoRequest $request){
-        //Incluir validação de matrícula
-        //$this->validate($request, ['id'=> 'unique:documentos']);
         $documento = $request->all();
         Documento::create($documento);
         return redirect()->route('documentos');

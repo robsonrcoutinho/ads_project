@@ -18,10 +18,12 @@
         <div class="form-group">
             {!! Form::label ('termino', 'Término: ') !!}
             {!! Form::date ('termino', $avaliacao->termino, ['class'=>'form-control']) !!}
+            <p draggable="true" ondragstart="#" ondragend="#"></p>
         </div>
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
+
         {!! Form::close() !!}
     </div>
 @endsection

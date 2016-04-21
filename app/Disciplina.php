@@ -3,12 +3,14 @@
 namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use adsproject\Professor;
 
 class Disciplina extends Model
 {
+    use SoftDeletes;
+
     protected $table = "disciplinas";
     public $timestamps = false;
     protected $fillable = ['codigo','nome', 'carga_horaria', 'ementa'];

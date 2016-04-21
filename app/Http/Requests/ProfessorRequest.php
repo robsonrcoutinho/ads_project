@@ -29,8 +29,8 @@ class ProfessorRequest extends Request
     public function rules()
     {
         return [
-            'matricula'=>'required|min:6|max:6',
-            'nome'=>'required|min: 5'
+            'matricula'=>'required|min:6',
+            'nome'=>'required|min:5'
         ];
 
     }
