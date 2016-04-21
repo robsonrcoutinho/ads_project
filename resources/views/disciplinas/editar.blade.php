@@ -23,8 +23,23 @@
             {!! Form::label ('ementa', 'Ementa (link): ') !!}
             {!! Form::text ('ementa', $disciplina->ementa, ['class'=>'form-control']) !!}
         </div>
+
         <div class="form-group">
-            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+            <fieldset>
+                <ul id="pre_requisitos">
+                    <legend>Pré-requisitos</legend>
+                    @if($disciplina->pre_requisitos!=null || !$disciplina->pre_requisito->isEmpty)
+                    @foreach($disciplinas as $d)
+                        {!! Form::checkbox('pre_requisitos[]', $d->id, $disciplina->pre_requisitos->contains($d)) !!}
+                        {{ $d->nome }}
+                        <br/>
+                    @endforeach
+                    @endif
+                </ul>
+            </fieldset>
+            <div class="form-group">
+                {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+            </div>
         </div>
         {!! Form::close() !!}
 

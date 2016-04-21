@@ -4,17 +4,19 @@ namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+use adsproject\Professor;
+
 class Disciplina extends Model
 {
     protected $table = "disciplinas";
     public $timestamps = false;
-    protected $fillable = ['codigo','nome', 'carga_horaria', 'ementa', 'ativa'];
+    protected $fillable = ['codigo','nome', 'carga_horaria', 'ementa'];
     protected $softDelete = true;
 
     public function professors()
     {
         return $this->belongsToMany(Professor::class);
-
     }
 
     public function semestres()
@@ -24,8 +26,12 @@ class Disciplina extends Model
 
     public function disciplinas()
     {
-        return $this->hasMany(Disciplina::class);
-
-
+        return $this->hasMany(Disciplina::class, 'pre_requisito','pre_requisito_id','disciplina_id');
     }
+    public function pre_requisitos()
+    {
+        return $this->belongsToMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id')->withTimestamps();
+        //return $this->belongsToMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id');
+        //return $this->hasMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id')->withTimestamps();
+        }
 }

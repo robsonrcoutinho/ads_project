@@ -1,5 +1,6 @@
 @extends('main')
 @section('conteudo')
+    
 <div class="category">
 
     <span class="semestre total" style="display:block;"><strong>Nova Disciplina</strong> </span>
@@ -20,6 +21,19 @@
     <div class="form-group">
         {!! Form::label ('ementa', 'Ementa (link): ') !!}
         {!! Form::text ('ementa', null, ['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        <fieldset>
+            <ul id="pre_requisitos">
+            <legend>Pré-requisitos</legend>
+        @foreach($disciplinas as $disciplina)
+            {!! Form::checkbox('pre_requisitos[]', $disciplina->id) !!}
+            {{ $disciplina->nome }}
+            <br/>
+        @endforeach
+            </ul>
+        </fieldset>
+
     </div>
     <div class="form-group">
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
