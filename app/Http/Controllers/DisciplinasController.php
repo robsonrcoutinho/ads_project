@@ -25,7 +25,7 @@ class DisciplinasController extends Controller{
         if($pre_requisitos!=null):
            $disciplina->pre_requisitos()->sync($pre_requisitos);
             $disciplina->update();
-            endif;
+        endif;
         return redirect('disciplinas');
     }
     public function editar($id){

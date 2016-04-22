@@ -20,6 +20,20 @@
             {!! Form::date ('termino', $semestre->termino, ['class'=>'form-control']) !!}
              </div>
         <div class="form-group">
+            <fieldset>
+                <ul id="disciplinas">
+                    <legend>Disciplinas</legend>
+                    @if($semestre->disciplinas!=null || !$semestre->disciplinas->isEmpty)
+                        @foreach($disciplinas as $disciplina)
+                            {!! Form::checkbox('disciplinas[]', $disciplina->id, $semestre->disciplinas->contains($disciplina)) !!}
+                            {{ $disciplina->nome }}
+                            <br/>
+                        @endforeach
+                    @endif
+                </ul>
+            </fieldset>
+        </div>
+        <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}

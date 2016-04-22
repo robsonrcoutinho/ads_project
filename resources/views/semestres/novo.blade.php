@@ -17,7 +17,19 @@
             {!! Form::label ('termino', 'Término: ') !!}
             {!! Form::date ('termino', null, ['class'=>'form-control']) !!}
         </div>
+        <div class="form-group">
+            <fieldset>
+                <ul id="disciplinas">
+                    <legend>Disciplinas</legend>
+                    @foreach($disciplinas as $disciplina)
+                        {!! Form::checkbox('disciplinas[]', $disciplina->id) !!}
+                        {{ $disciplina->nome }}
+                        <br/>
+                    @endforeach
+                </ul>
+            </fieldset>
 
+        </div>
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>

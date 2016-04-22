@@ -7,6 +7,7 @@
  */
 use adsproject\Semestre;
 use adsproject\Http\Requests\SemestreRequest;
+use adsproject\Disciplina;
 
 class SemestresController extends Controller{
     public function index(){
@@ -15,21 +16,33 @@ class SemestresController extends Controller{
     }
 
     public function novo(){
-        return view('semestres.novo');
+        $disciplinas = Disciplina::all();
+        return view('semestres.novo', ['disciplinas'=>$disciplinas]);
     }
     public function salvar(SemestreRequest $request){
-        //$this->validate($request, ['codigo'=> 'unique:semestres']);
-        $semestre = $request->all();
-        Semestre::create($semestre);
+        $semestre=Semestre::create($request->all());
+        $disciplinas = $request->get('disciplinas');
+        if($disciplinas!=null):
+            $semestre->disciplinas()->sync($disciplinas);
+            $semestre->update();
+        endif;
         return redirect('semestres');
     }
 
     public function editar($id){
         $semestre = Semestre::find($id);
-        return view('semestres.editar', compact('semestre'));
+        $disciplinas = Disciplina::all();
+        return view('semestres.editar',['semestre'=>$semestre,'disciplinas'=>$disciplinas]);
     }
     public function alterar(SemestreRequest $request, $id){
-        Semestre::find($id)->update($request->all());
+        $semestre=Semestre::find($id);
+        $disciplinas = $request->get('disciplinas');
+        if($disciplinas!=null):
+            $semestre->disciplinas()->sync($disciplinas);
+        elseif($semestre->disciplinas != null):
+        $semestre->disciplinas()->detach($semestre->disciplinas);
+        endif;
+        $semestre->update($request->all());
         return redirect()->route('semestres');
     }
     /*public function excluir($id){
