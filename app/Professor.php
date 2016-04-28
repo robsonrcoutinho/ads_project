@@ -10,12 +10,11 @@ class Professor extends Model
  use SoftDeletes;
     protected $table = "professors";
     public $timestamps = false;
-    protected $fillable =['matricula','nome','ativo','curriculo'];
+    protected $fillable =['matricula','nome','curriculo'];
     protected $softDelete  = true;
 
     public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class);
-
     }
 }

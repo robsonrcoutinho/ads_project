@@ -34,4 +34,13 @@ class AvisosController extends Controller{
         Aviso::find($id)->delete();
         return redirect()->route('avisos');
     }
+    //Métodos do Web Service
+    //Método que busca todos os avisos para o Web Service
+    public function buscarTodos(){
+        return Aviso::all();
+    }
+    //Método que busca aviso por id para o Web Service
+    public function buscarPorId($id){
+        return Aviso::find($id);
+    }
 }

@@ -108,6 +108,80 @@ Route::group(['prefix'=>'avisos', 'where'=>['id'=>'[0-9]+']], function(){
     Route::put('{id}/alterar',['as'=>'avisos.alterar', 'uses'=> 'AvisosController@alterar']);
 });
 
+//Rotas de perguntas
+Route::group(['prefix'=>'perguntas', 'where'=>['id'=>'[0-9]+']], function(){
+//Rota para IndexPergunta
+    Route::get('', ['as'=>'perguntas', 'uses' =>'PerguntasController@index']);
+//Rota para nova pergunta
+    Route::get('novo',['as'=>'perguntas.novo', 'uses'=> 'PerguntasController@novo']);
+//Rota para salvar pergunta
+    Route::post('salvar', ['as'=>'perguntas.salvar', 'uses'=>'PerguntasController@salvar']);
+//Rota para exluir pergunta
+    Route::get('{id}/excluir',['as'=>'perguntas.excluir', 'uses'=> 'PerguntasController@excluir']);
+//Rota para editar pergunta
+    Route::get('{id}/editar',['as'=>'perguntas.editar', 'uses'=>'PerguntasController@editar']);
+//Rota para alterar pergunta
+    Route::put('{id}/alterar',['as'=>'perguntas.alterar', 'uses'=> 'PerguntasController@alterar']);
+});
 
+
+//Rotas para Web Service
+Route::group(['prefix'=>'ws'], function(){
+   //Rotas WS Professores
+    Route::group(['prefix'=>'professores'], function(){
+        //Lista todos os professores
+        Route::get('',['as'=>'professores', 'uses'=>'ProfessoresController@buscarTodos']);
+        //Busca professor por id
+        Route::get('{id}',['as'=>'professores', 'uses'=>'ProfessoresController@buscarPorId']);
+        //
+        /*Route::post('',['as'=>'professores', 'uses'=>'ProfessoresController@criar']);
+        //
+        Route::put('{id}',['as'=>'professores', 'uses'=>'ProfessoresController@modificar']);
+        //
+        Route::delete('{id}',['as'=>'professores', 'uses'=>'ProfessoresController@remover']);*/
+    });
+    //Rotas WS Disciplinas
+    Route::group(['prefix'=>'disciplinas'], function(){
+        //Lista todos as disciplinas
+        Route::get('',['as'=>'disciplinas', 'uses'=>'DisciplinasController@buscarTodos']);
+        //Busca disciplina por id
+        Route::get('{id}',['as'=>'disciplinas', 'uses'=>'DisciplinasController@buscarPorId']);
+    });
+    //Rotas WS Documentos
+    Route::group(['prefix'=>'documentos'], function(){
+        //Lista todos os documentos
+        Route::get('',['as'=>'documentos', 'uses'=>'DocumentosController@buscarTodos']);
+        //Busca documento por id
+        Route::get('{id}',['as'=>'documentos', 'uses'=>'DocumentosController@buscarPorId']);
+    });
+    //Rotas WS Semestres
+    Route::group(['prefix'=>'semestres'], function(){
+        //Lista todos os semestres
+        Route::get('',['as'=>'semestres', 'uses'=>'SemestresController@buscarTodos']);
+        //Busca semestre por id
+        Route::get('{id}',['as'=>'semestres', 'uses'=>'SemestresController@buscarPorId']);
+    });
+    //Rotas WS Avaliações
+    Route::group(['prefix'=>'avaliacoes'], function(){
+        //Lista todos os documentos
+        Route::get('',['as'=>'avaliacoes', 'uses'=>'AvaliacoesController@buscarTodos']);
+        //Busca disciplina por id
+        Route::get('{id}',['as'=>'avaliacoes', 'uses'=>'AvaliacoesController@buscarPorId']);
+    });
+    //Rotas WS Avisos
+    Route::group(['prefix'=>'avisos'], function(){
+        //Lista todos os avisos
+        Route::get('',['as'=>'avisos', 'uses'=>'AvisosController@buscarTodos']);
+        //Busca aviso por id
+        Route::get('{id}',['as'=>'avisos', 'uses'=>'AvisosController@buscarPorId']);
+    });
+    //Rotas WS Perguntas
+    Route::group(['prefix'=>'perguntas'], function(){
+        //Lista todos os avisos
+        Route::get('',['as'=>'perguntas', 'uses'=>'PerguntasController@buscarTodos']);
+        //Busca aviso por id
+        Route::get('{id}',['as'=>'perguntas', 'uses'=>'PerguntasController@buscarPorId']);
+    });
+});
 
 
