@@ -48,4 +48,13 @@ class DisciplinasController extends Controller{
         Disciplina::find($id)->delete();
         return redirect()->route('disciplinas');
     }
+    //Métodos do Web Service
+    //Método que busca todas as disciplinas para o Web Service
+    public function buscarTodos(){
+        return Disciplina::all();
+    }
+    //Método que busca disciplina por id para o Web Service
+    public function buscarPorId($id){
+        return Disciplina::find($id);
+    }
 }

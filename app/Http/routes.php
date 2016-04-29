@@ -153,6 +153,9 @@ Route::group(['prefix'=>'ws'], function(){
         Route::get('',['as'=>'documentos', 'uses'=>'DocumentosController@buscarTodos']);
         //Busca documento por id
         Route::get('{id}',['as'=>'documentos', 'uses'=>'DocumentosController@buscarPorId']);
+        //Busca por título do documento
+        Route::get('titulo/{titulo}',['as'=>'documentos', 'uses'=>'DocumentosController@buscarPorTitulo']);
+
     });
     //Rotas WS Semestres
     Route::group(['prefix'=>'semestres'], function(){
@@ -183,5 +186,6 @@ Route::group(['prefix'=>'ws'], function(){
         Route::get('{id}',['as'=>'perguntas', 'uses'=>'PerguntasController@buscarPorId']);
     });
 });
+
 
 

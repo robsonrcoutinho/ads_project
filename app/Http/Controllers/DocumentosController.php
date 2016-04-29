@@ -34,4 +34,17 @@ class DocumentosController extends Controller{
         Documento::find($id)->delete();
         return redirect()->route('documentos');
     }
+    //Métodos do Web Service
+    //Método que busca todos os documentos para o Web Service
+    public function buscarTodos(){
+        return Documento::all();
+    }
+    //Método que busca documento por id para o Web Service
+    public function buscarPorId($id){
+        return Documento::find($id);
+    }
+    public function buscarPorTitulo($titulo){
+        $documentos = Documento::where('titulo', $titulo)->get();
+        return $documentos;
+    }
 }

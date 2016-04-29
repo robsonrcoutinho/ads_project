@@ -39,4 +39,14 @@ class AvaliacoesController extends Controller{
         Avaliacao::find($id)->delete();
         return redirect()->route('avaliacoes');
     }
+
+    //Métodos do Web Service
+    //Método que busca todos as avaliações para o Web Service
+    public function buscarTodos(){
+        return Avaliacao::all();
+    }
+    //Método que busca avaliacao por id para o Web Service
+    public function buscarPorId($id){
+        return Avaliacao::find($id);
+    }
 }

@@ -52,16 +52,14 @@ class ProfessoresController extends Controller{
     public function criar(){
         $professor = new Professor();
         $professor->fill(Input::all());
-        $professor->save();
-        return $professor;
-
-   }
+        return $professor->save();
+     }
     //Método que modifica dados do professor por meio do Web Service
     public function modificar($id){
-        Professor::find($id)->update($request->all());
+        return Professor::find($id)->update(Input::all());
     }
     //Método que remove professor por meio do Web Service
     public function remover($id){
-
+        return Professor::find($id)->delete();
     }*/
 }
