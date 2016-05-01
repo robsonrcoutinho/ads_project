@@ -1,148 +1,77 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-
+<html lang="pt-br">
 <head>
-    <title>ADS</title>
-    {!! Html::style('css/normalize.css') !!}
-    {!! Html::style('css/demo.css') !!}
-    {!! Html::style('css/component.css') !!}
-    {!! Html::style('css/component.css') !!}
-    {!! Html::style('css/bootstrap.min.css') !!}
-    {!! Html::style('css/bootstrap-select.css') !!}
-    {!! Html::style('css/style.css') !!}
-            <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Site Gerencial ADS</title>
 
-    <script type="application/x-javascript"> addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        } </script>
+  
+    <!-- CSS  -->
+    {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
+    {!! Html::style('css/materialize.css') !!}
+    {!! Html::style('css/style2.css') !!}
 
-    <!-- //for-mobile-apps -->
-    <!--fonts-->
-    {!! Html::style('//fonts.googleapis.com/css?family=Ubuntu+Condensed') !!}
-    {!! Html::style('//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic') !!}
-            <!--//fonts-->
-
-    <!-- js -->
-    {!! Html::script('js/jquery.min.js') !!}
-            <!-- js -->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    {!! Html::script('js/bootstrap.min.js') !!}
-    {!! Html::script('js/bootstrap-select.js') !!}
-
-    <script>
-        $(document).ready(function () {
-            var mySelect = $('#first-disabled2');
-
-            $('#special').on('click', function () {
-                mySelect.find('option:selected').prop('disabled', true);
-                mySelect.selectpicker('refresh');
-            });
-
-            $('#special2').on('click', function () {
-                mySelect.find('option:disabled').prop('disabled', false);
-                mySelect.selectpicker('refresh');
-            });
-
-            $('#basic2').selectpicker({
-                liveSearch: true,
-                maxOptions: 1
-            });
-        });
-    </script>
-
-    {!! Html::script('js/jquery.leanModal.min.js') !!}
-
-    {!! Html::style('css/jquery.uls.css') !!}
-    {!! Html::style('css/jquery.uls.grid.css') !!}
-    {!! Html::style('css/jquery.uls.lcd.css') !!}
-
-            <!-- Source -->
-    {!! Html::script('js/jquery.uls.data.js') !!}
-    {!! Html::script('js/query.uls.data.utils.js') !!}
-    {!! Html::script('js/jquery.uls.lcd.js') !!}
-    {!! Html::script('js/jquery.uls.languagefilter.js') !!}
-    {!! Html::script('js/jquery.uls.regionfilter.js') !!}
-    {!! Html::script('js/jquery.uls.core.js') !!}
-
-    <script>
-        $(document).ready(function () {
-            $('.uls-trigger').uls({
-                onSelect: function (language) {
-                    var languageName = $.uls.data.getAutonym(language);
-                    $('.uls-trigger').text(languageName);
-                },
-                quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-            });
-        });
-    </script>
-
-    {!! Html::style('css/easy-responsive-tabs.css') !!}
-    {!! Html::script('js/easyResponsiveTabs.js') !!}
 
 </head>
 <body>
+  <nav class="#004d40 teal escurecer-4" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Gerenciar Conta</a></li>
+        <li><a href="#">Gerenciar Semestre</a></li>
+  
+      </ul>
 
-<div class="header">
-    <div class="container">
-        <div class="logo">
-            <a href="index.html"><span>IF</span>BA</a>
-        </div>
-        <div class="header-right">
-            <a class="account" href="login.html">Gerenciar Conta</a>
-            <span class="active uls-trigger">Gerenciar Semestre</span>
-            <!-- Large modal -->
-
-        </div>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="?p=avisoIndex">Avisos</a></li>
+        <li><a href="?p=professorIndex">Discentes</a></li>
+         <li><a href="?p=semestreIndex">Disciplinas</a></li>
+        <li><a href="?p=semestreIndex">Semestres</a></li>
+        <li><a href="?p=avaliacaoIndex">Avaliaçoes</a></li>
+        <li><a href="?p=documentacaoIndex">Documentos</a></li>
+        <li><a href="#">Gerenciar Conta</a></li>
+        <li><a href="#">Gerenciar Semestre</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
-</div>
-
-<nav id="menuHeader">
-    <div class="banner text-center">
-        <div class="container">
-            <h1>Instituto Federal de Educação, Ciência e <span class="segment-heading">    Tecnologia da Bahia </span>
-                Campus Eunápolis</h1>
-
-            <p> Curso Tecnologia em Análise e Desenvolvimento de Sistemas</p>
-            <a href="post-ad.html">Publicar Aviso</a>
-        </div>
-    </div>
-</nav>
-
-<!-- Categories -->
-<!--Vertical Tab-->
-<div class="categories-section main-grid-border">
+  </nav>
+  <div class="section no-pad-bot" id="index-banner" style="background-image: url(&quot;../images/banner.jpg&quot;);">
     <div class="container">
-        <h2 class="head">Menu Categorias</h2>
+      <br><br>
+      <h1 class="header center orange-text">ADS </h1>
+      <div class="row center">
+        <h5 class="header col s12 light ">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+      </div>
+      <div class="row center">
+        <a href="?p=avisoNovo" id="download-button" class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+      </div>
+      <br><br>
 
-        <div class="category-list">
-            <div id="parentVerticalTab">
-                <ul class="resp-tabs-list hor_1">
-                    <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
-                    <li><a href="{{route('professores')}}">Professores</a></li>
-                    <!--   <li><a href="#">Avaliação</a></li>
-                    <li><a href="professores">Docentes</a></li>
-                    <li><a href="#">Documentos</a></li>
-                    <a href="post-ad.html">Consultar Avisos</a> -->
-                </ul>
-                <div class="resp-tabs-container hor_1">
-                    <span class="active total" style="display:block;"><strong>PAINEL DE CONTROLE</strong> </span>
+    </div>
+  </div>
 
-                    <div>
-                        @if($errors->any())
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s5 m4">
+            <div class="collection">
+              <a href="{{route('avisos')}}" class="collection-item">Avisos</a>
+              <a href="{{route('professores')}}"  class="collection-item">Discentes</a>
+              <a href="{{route('disciplinas')}}"  class="collection-item">Disciplinas</a>
+              <a href="{{route('semestres')}}"    class="collection-item">Semestres</a>
+              <a href="{{route('avaliacoes')}}"   class="collection-item">Avaliaçoes</a>
+              <a href="{{route('documentos')}}"   class="collection-item">Documentos</a>
+            </div>
+          
+          
+        </div>
+
+        <div class="col s7 m8">
+           @if($errors->any())
                             <ul class="alert alert-warning">
                                 @foreach($errors->all() as $error)
                                     <li>{{$error}}</li>
@@ -150,42 +79,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         @endif
                         @yield('conteudo')
-                    </div>
-
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
+   
+           
         </div>
+
+    
+
+      </div> <!--- row -->
+
     </div>
-</div>
-<!--Plug-in Initialisation-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        //Vertical Tab
-        $('#parentVerticalTab').easyResponsiveTabs({
-            type: 'vertical', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true, // 100% fit in a container
-            closed: 'accordion', // Start closed if in accordion view
-            tabidentify: 'hor_1', // The tab groups identifier
-            activate: function (event) { // Callback function if tab is switched
-                var $tab = $(this);
-                var $info = $('#nested-tabInfo2');
-                var $name = $('span', $info);
-                $name.text($tab.text());
-                $info.show();
-            }
-        });
-    });
-</script>
+    <br><br>
 
-<!-- //Categories -->
-<!--footer section start-->
-<footer>
-   @include('share.footer')
-</footer>
+    <div class="section">
 
-<!--footer section end-->
-</body>
+    </div>
+  </div>  <!--- container -->
+
+  <footer class="page-footer #004d40 teal escurecer-4"><!--- Footer -->
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">IFBA - Campus Eunápolis</h5>
+          <p class="grey-text text-lighten-4">Tecnologia em Análise e Desenvolvimento de Sistemas.<br>
+          Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, CEP: 45823-035.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">CONTATO</h5>
+          <ul>
+            <li><a class="white-text" href="#!"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
+            <li><a class="white-text" href="#!"><i class="material-icons">email</i> email@decontato.com</a></li>
+            <li><a class="white-text" href="#!"></a></li>
+            <li><a class="white-text" href="#!"></a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">CONECTAR</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">Twitter</a></li>
+            <li><a class="white-text" href="#!"></a></li>
+            <li><a class="white-text" href="#!"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2016 IFBA. <a class="orange-text text-lighten-3" href="http://eunapolis.ifba.edu.br/"> Todos os direitos reservados</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+      {!! Html::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
+      {!! Html::script('js/materialize.js') !!}
+      {!! Html::script('js/init.js') !!}
+
+  </body>
 </html>
