@@ -11,7 +11,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($avisos as $aviso)
+            @forelse($avisos as $aviso)
                 <tr>
                     <td>{{$aviso->id}}</td>
                     <td>{{$aviso->titulo}}</td>
@@ -20,7 +20,11 @@
                         <a href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
-            @endforeach
+                @empty
+                <tr>
+                    <td colspan="3">Sem Postagem!</td>
+                </tr>
+            @endforelse
             </tbody>
         </table>
         <br/>
