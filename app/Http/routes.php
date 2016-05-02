@@ -130,11 +130,11 @@ Route::group(['prefix'=>'ws'], function(){
    //Rotas WS Professores
     Route::group(['prefix'=>'professores'], function(){
         //Lista todos os professores
-        Route::get('',['as'=>'professores', 'uses'=>'ProfessoresController@buscarTodos']);
+        Route::get('', ['uses'=>'ProfessoresController@buscarTodos']);
         //Busca professor por id
-        Route::get('{id}',['as'=>'professores', 'uses'=>'ProfessoresController@buscarPorId']);
+        Route::get('{id}',['uses'=>'ProfessoresController@buscarPorId']);
         //
-        /*Route::post('',['as'=>'professores', 'uses'=>'ProfessoresController@criar']);
+        /*Route::post('',[ 'uses'=>'ProfessoresController@criar']);
         //
         Route::put('{id}',['as'=>'professores', 'uses'=>'ProfessoresController@modificar']);
         //
@@ -143,40 +143,40 @@ Route::group(['prefix'=>'ws'], function(){
     //Rotas WS Disciplinas
     Route::group(['prefix'=>'disciplinas'], function(){
         //Lista todos as disciplinas
-        Route::get('',['as'=>'disciplinas', 'uses'=>'DisciplinasController@buscarTodos']);
+        Route::get('',['uses'=>'DisciplinasController@buscarTodos']);
         //Busca disciplina por id
-        Route::get('{id}',['as'=>'disciplinas', 'uses'=>'DisciplinasController@buscarPorId']);
+        Route::get('{id}',['uses'=>'DisciplinasController@buscarPorId']);
     });
     //Rotas WS Documentos
     Route::group(['prefix'=>'documentos'], function(){
         //Lista todos os documentos
-        Route::get('',['as'=>'documentos', 'uses'=>'DocumentosController@buscarTodos']);
+        Route::get('',['uses'=>'DocumentosController@buscarTodos']);
         //Busca documento por id
-        Route::get('{id}',['as'=>'documentos', 'uses'=>'DocumentosController@buscarPorId']);
+        Route::get('{id}',['uses'=>'DocumentosController@buscarPorId']);
         //Busca por título do documento
-        Route::get('titulo/{titulo}',['as'=>'documentos', 'uses'=>'DocumentosController@buscarPorTitulo']);
+        Route::get('titulo/{titulo}',['uses'=>'DocumentosController@buscarPorTitulo']);
 
     });
     //Rotas WS Semestres
     Route::group(['prefix'=>'semestres'], function(){
         //Lista todos os semestres
-        Route::get('',['as'=>'semestres', 'uses'=>'SemestresController@buscarTodos']);
+        Route::get('', ['uses'=>'SemestresController@buscarTodos']);
         //Busca semestre por id
-        Route::get('{id}',['as'=>'semestres', 'uses'=>'SemestresController@buscarPorId']);
+        Route::get('{id}',['uses'=>'SemestresController@buscarPorId']);
     });
     //Rotas WS Avaliações
     Route::group(['prefix'=>'avaliacoes'], function(){
         //Lista todos os documentos
-        Route::get('',['as'=>'avaliacoes', 'uses'=>'AvaliacoesController@buscarTodos']);
+        Route::get('',['uses'=>'AvaliacoesController@buscarTodos']);
         //Busca disciplina por id
-        Route::get('{id}',['as'=>'avaliacoes', 'uses'=>'AvaliacoesController@buscarPorId']);
+        Route::get('{id}',['uses'=>'AvaliacoesController@buscarPorId']);
     });
     //Rotas WS Avisos
     Route::group(['prefix'=>'avisos'], function(){
         //Lista todos os avisos
-        Route::get('',['as'=>'avisos', 'uses'=>'AvisosController@buscarTodos']);
+        Route::get('',['uses'=>'AvisosController@buscarTodos']);
         //Busca aviso por id
-        Route::get('{id}',['as'=>'avisos', 'uses'=>'AvisosController@buscarPorId']);
+        Route::get('{id}',['uses'=>'AvisosController@buscarPorId']);
     });
     //Rotas WS Perguntas
     Route::group(['prefix'=>'perguntas'], function(){
