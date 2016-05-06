@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="category">
-        <span class="semestre total" style="display:block;"><strong>Editar Aviso</strong> </span>
-
+        <div class="card-panel teal escurecer-4">
+        <span class=" grey-text text-lighten-5" >Editar Aviso</span>
+      </div>
         {!! Form::open(['route'=>['avisos.alterar', $aviso->id], 'method'=>'put']) !!}
 
         <div class="form-group">

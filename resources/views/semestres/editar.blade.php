@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-        <span class="semestre total" style="display:block;"><strong>Editar Semestre</strong> </span>
-
+         <div class="card-panel  teal escurecer-4">
+         <span class=" grey-text text-lighten-5" >Editar Semestre</span>
+          </div>
         {!! Form::open(['route'=>['semestres.alterar', $semestre->id], 'method'=>'put']) !!}
         <div class="form-group">
             {!! Form::hidden ('id', $semestre->id, ['class'=>'form-control']) !!}

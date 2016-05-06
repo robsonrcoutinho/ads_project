@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
-    <div class="contegory">
-        <span class="semestre total" style="display:block;"><strong>Editar Avaliação</strong> </span>
-
+      <div class="contegory">
+       <div class="card-panel  teal escurecer-4">
+        <span class=" grey-text text-lighten-5">Editar Avaliação</span>
+     </div>
         {!! Form::open(['route'=>['avaliacoes.alterar', $avaliacao->id], 'method'=>'put']) !!}
         <div class="form-group">
             {!! Form::hidden ('id', $avaliacao->id, ['class'=>'form-control']) !!}

@@ -9,8 +9,8 @@
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! Html::style('css/materialize.css') !!}
-    {!! Html::style('css/style2.css') !!}
-
+    {!! Html::style('css/style.css') !!}
+    
 
 </head>
 <body>
@@ -95,7 +95,7 @@
     </div>
   </div>  <!--- container -->
 
-  <footer class="page-footer #004d40 teal escurecer-4"><!--- Footer -->
+  <footer class="page-footer teal escurecer-4"><!--- Footer -->
     <div class="container">
       <div class="row">
         <div class="col l6 s12">

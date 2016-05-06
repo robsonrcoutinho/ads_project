@@ -1,7 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-        <span class="semestre total" style="display:block;"><strong>Nova Pergunta</strong> </span>
+         <div class="card-panel teal escurecer-4">
+         <span class=" grey-text text-lighten-5">Nova Pergunta</span>
+         </div>
 
         {!! Form::open(['route'=>'perguntas.salvar']) !!}
 

@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="category">
-        <span class="semestre total" style="display:block;"><strong>Editar Documento</strong> </span>
-
+         <div class="card-panel teal escurecer-4">
+         <span class=" grey-text text-lighten-5">Editar Documento </span>
+         </div>
         {!! Form::open(['route'=>['documentos.alterar', $documento->id], 'method'=>'put']) !!}
 
         <div class="form-group">

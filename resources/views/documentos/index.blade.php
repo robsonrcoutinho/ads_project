@@ -2,8 +2,10 @@
 @section('conteudo')
 
     <div class="category">
-        <span class="semestre total" style="display:block;"><strong>Documentos</strong> </span>
-        <table class="table table-striped table-bordered table-hover">
+     <div class="card-panel teal escurecer-4">
+        <span class=" grey-text text-lighten-5" >Documentos</span>
+        </div>
+        <table class="highlight  responsive-table">
             <thead>
             <tr>
                 <th>Id</th>

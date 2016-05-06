@@ -1,9 +1,11 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
+         <div class="card-panel  teal escurecer-4">
+         <span class=" grey-text text-lighten-5" >Semestres</span>
+         </div>
+         <table class="highlight  responsive-table">
 
-        <span class="semestre total" style="display:block;"><strong>Semestres</strong> </span>
-        <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
                 <th>Código</th>

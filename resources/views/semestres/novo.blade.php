@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-
-        <span class="semestre total" style="display:block;"><strong>Novo Semestre</strong> </span>
+         <div class="card-panel  teal escurecer-4">
+         <span class=" grey-text text-lighten-5" >Novo Semestre</span>
+         </div>
         {!! Form::open(['route'=>'semestres.salvar']) !!}
 
         <div class="form-group">

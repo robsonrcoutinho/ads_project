@@ -2,8 +2,10 @@
 @section('conteudo')
 
     <div class="category">
-        <span class="semestre total" style="display:block;"><strong>Avaliações</strong> </span>
-        <table class="table table-striped table-bordered table-hover">
+       <div class="card-panel  teal escurecer-4">
+        <span class=" grey-text text-lighten-5" >Avaliações</span>
+        </div> 
+        <table class="highlight  responsive-table">
             <thead>
             <tr>
                 <th>Id</th>
@@ -26,6 +28,12 @@
                         <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
+
+                @empty
+                    <tr>
+                        <td colspan="3">Sem Postagem!</td>
+                    </tr>
+                @endforelse
 
             @endforeach
             </tbody>

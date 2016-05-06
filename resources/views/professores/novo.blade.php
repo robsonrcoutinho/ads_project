@@ -2,9 +2,9 @@
 @section('conteudo')
 
 <div class="contegory">
-
-    <span class="semestre total" style="display:block;"><strong>Novo Professor</strong> </span>
-
+    <div class="card-panel teal escurecer-4">
+         <span class=" grey-text text-lighten-5">Novo Professor</span>
+    </div>
     {!! Form::open(['route'=>'professores.salvar']) !!}
 
     <div class="form-group">

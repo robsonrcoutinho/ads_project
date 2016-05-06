@@ -1,8 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="category">
-        <span class="semestre total" style="display:block;"><strong>Editar Pergunta</strong> </span>
-
+         <div class="card-panel teal escurecer-4">
+         <span class=" grey-text text-lighten-5">Editar Pergunta</span>
+        </div>
         {!! Form::open(['route'=>['perguntas.alterar', $pergunta->id], 'method'=>'put']) !!}
 
         <div class="form-group">
