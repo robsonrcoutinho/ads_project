@@ -14,6 +14,22 @@
 Route::get('/', function () {
     return view('main');
 });
+
+Route::get('home', [
+    'as' => 'home',
+    'uses' => 'HomeController@index'
+]);
+
+//Rotas de login
+Route::get('login', ['as' =>'login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+//Rotas de Registro..
+Route::get('register', ['as' =>'register', 'uses' => 'Auth\AuthController@getRegister']);
+Route::post('register', ['as' =>'register', 'uses' => 'Auth\AuthController@postRegister']);
+
+
 //Rotas de professores
 Route::group(['prefix'=>'professores', 'where'=>['id'=>'[0-9]+']], function(){
 //Rota para IndexProfessor
@@ -93,7 +109,7 @@ Route::group(['prefix'=>'avaliacoes', 'where'=>['id'=>'[0-9]+']], function(){
     Route::put('{id}/alterar',['as'=>'avaliacoes.alterar', 'uses'=> 'AvaliacoesController@alterar']);
 });
 //Rotas de avisos
-Route::group(['prefix'=>'avisos', 'where'=>['id'=>'[0-9]+']], function(){
+Route::group([ 'prefix'=>'avisos', 'where'=>['id'=>'[0-9]+']], function(){
 //Rota para IndexAviso
     Route::get('', ['as'=>'avisos', 'uses' =>'AvisosController@index']);
 //Rota para nova aviso
