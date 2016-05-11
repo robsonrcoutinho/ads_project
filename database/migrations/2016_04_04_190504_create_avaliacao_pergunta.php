@@ -16,6 +16,6 @@ class CreateAvaliacaoPergunta extends Migration
 
     public function down()
     {
-
+        //Schema::drop('avaliacao_pergunta');
     }
 }

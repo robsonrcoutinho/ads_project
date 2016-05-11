@@ -16,7 +16,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($avaliacoes as $avaliacao)
+            @forelse($avaliacoes as $avaliacao)
 
                 <tr>
                     <td>{{$avaliacao->id}}</td>
@@ -31,12 +31,10 @@
 
                 @empty
                     <tr>
-                        <td colspan="3">Sem Postagem!</td>
+                        <td colspan="3">Sem Avaliações!</td>
                     </tr>
                 @endforelse
-
-            @endforeach
-            </tbody>
+                 </tbody>
         </table>
         <br/>
         <br/>

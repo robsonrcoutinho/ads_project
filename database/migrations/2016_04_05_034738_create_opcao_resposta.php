@@ -20,6 +20,6 @@ class CreateOpcaoResposta extends Migration
 
     public function down()
     {
-
+        //Schema::drop('opcao_resposta');
     }
 }

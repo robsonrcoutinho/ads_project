@@ -22,6 +22,6 @@ class CreateAvaliacaosTable extends Migration
 
     public function down()
     {
-        Schema::drop('avaliacaos');
+        //Schema::drop('avaliacaos');
     }
 }

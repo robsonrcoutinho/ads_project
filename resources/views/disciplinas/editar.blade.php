@@ -2,7 +2,7 @@
 @section('conteudo')
     <div class="contegory">
      <div class="card-panel  teal escurecer-4">
-         <span class=" grey-text text-lighten-5">Editar Professor</span>
+         <span class="grey-text text-lighten-5">Editar Professor</span>
       </div>
         {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->id], 'method'=>'put']) !!}
         <div class="form-group">
@@ -28,10 +28,10 @@
         <div class="form-group">
             <fieldset>
                 <ul id="pre_requisitos">
-                    <legend>Pré-requisitos</legend>
+                    <legend class="grey-text">Pré-requisitos</legend>
                     @if($disciplina->pre_requisitos!=null || !$disciplina->pre_requisito->isEmpty)
                     @foreach($disciplinas as $d)
-                        {!! Form::checkbox('pre_requisitos[]', $d->id, $disciplina->pre_requisitos->contains($d)) !!}
+                        {!! Form::checkbox('pre_requisitos[]', $d->id, $disciplina->pre_requisitos->contains($d),['class'=>'form-group']) !!}
                         {{ $d->nome }}
                         <br/>
                     @endforeach

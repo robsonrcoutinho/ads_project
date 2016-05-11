@@ -18,6 +18,6 @@ class CreateTableRespostas extends Migration
 
     public function down()
     {
-
+        //Schema::drop('respostas');
     }
 }

@@ -18,6 +18,6 @@ class CreateAvisosTable extends Migration
 
     public function down()
     {
-        Schema::drop('avisos');
+        //Schema::drop('avisos');
     }
 }

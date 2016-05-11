@@ -1,5 +1,7 @@
 @extends('main')
 @section('conteudo')
+
+
     <div class="category">
          <div class="card-panel teal escurecer-4">
          <span class=" grey-text text-lighten-5">Editar Pergunta</span>
@@ -14,11 +16,17 @@
             {!! Form::textarea ('enunciado', $pergunta->enunciado, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-        {!! Form::checkbox('pergunta_fechada', true, $pergunta->pergunta_fechada) !!}{{ 'Fechada' }}
+        {!! Form::checkbox('pergunta_fechada', true, $pergunta->pergunta_fechada, ['id'=>'pergunta_fechada']) !!}
+            {{ 'Fechada' }}
         </div>
+        <div class="form-group" id="escondida">
+            {!! Form::button('Adicionar Opção', ['id'=>'btn-adicionar', 'class'=>'btn']) !!}
+        </div>
+        <br/>
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

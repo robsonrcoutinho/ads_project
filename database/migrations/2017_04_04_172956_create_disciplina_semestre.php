@@ -25,6 +25,6 @@ class CreateDisciplinaSemestre extends Migration
      */
     public function down()
     {
-        Schema::drop('disciplina_semestre');
+        //Schema::drop('disciplina_semestre');
     }
 }

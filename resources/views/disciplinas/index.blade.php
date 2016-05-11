@@ -18,7 +18,6 @@
             </thead>
             <tbody>
             @foreach($disciplinas as $disciplina)
-
                 <tr>
                     <td>{{$disciplina->codigo}}</td>
                     <td>{{$disciplina->nome}}</td>
@@ -40,7 +39,6 @@
                         <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}" class="btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>
