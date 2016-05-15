@@ -137,6 +137,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -206,6 +208,9 @@ return [
         'Pergunta' => adsproject\Pergunta::class,
         'Resposta' => adsproject\Resposta::class,
         'OpcaoResposta' => adsproject\OpcaoResposta::class,
+        'PushNotification' => adsproject\PushNotification::class,
+
+        'PushNotification'=> Davibennun\LaravelPushNotification\Facades\PushNotification::class,
 
 
 

@@ -203,5 +203,9 @@ Route::group(['prefix'=>'ws'], function(){
     });
 });
 
+//Testando push notification
+Route::get('push', 'PushNotificationController@sendNotificationToDevice');
+
+
 
 
