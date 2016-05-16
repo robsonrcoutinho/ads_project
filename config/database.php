@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'projetoads'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', ''),
+            'host'      => env('DB_HOST', 'mysql.mps.uni5.net'),
+            'database'  => env('DB_DATABASE', 'mps'),
+            'username'  => env('DB_USERNAME', 'mps'),
+            'password'  => env('DB_PASSWORD', 'ads2016'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
