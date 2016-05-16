@@ -1,7 +1,5 @@
 @extends('main')
 @section('conteudo')
-
-
     <div class="category">
          <div class="card-panel teal escurecer-4">
          <span class=" grey-text text-lighten-5">Editar Pergunta</span>
@@ -16,11 +14,20 @@
             {!! Form::textarea ('enunciado', $pergunta->enunciado, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-        {!! Form::checkbox('pergunta_fechada', true, $pergunta->pergunta_fechada, ['id'=>'pergunta_fechada']) !!}
+        {!! Form::checkbox('pergunta_fechada', $pergunta->pergunta_fechada, $pergunta->pergunta_fechada, ['id'=>'pergunta_fechada']) !!}
             {{ 'Fechada' }}
         </div>
         <div class="form-group" id="escondida">
             {!! Form::button('Adicionar Opção', ['id'=>'btn-adicionar', 'class'=>'btn']) !!}
+            @if($pergunta->pergunta_fechada)
+            @foreach($pergunta->opcoes_resposta as $opcao)
+                    <div id="{{$opcao->id}}">
+                        {!! Form::text('opcoes_resposta[]', $opcao->resposta_opcao, ['class'=>'form-control']) !!}
+                        {!! Form::button('Excluir', ['class'=>'btn']) !!}
+                    </div>
+                @endforeach
+            @endif
+
         </div>
         <br/>
         <div class="form-group">
