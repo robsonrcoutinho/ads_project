@@ -13,7 +13,7 @@ class Disciplina extends Model
 
     protected $table = "disciplinas";
     public $timestamps = false;
-    protected $fillable = ['codigo','nome', 'carga_horaria', 'ementa'];
+    protected $fillable = ['codigo', 'nome', 'carga_horaria', 'ementa'];
     protected $softDelete = true;
 
     public function professors()
@@ -23,17 +23,18 @@ class Disciplina extends Model
 
     public function semestres()
     {
-      return $this->belongsToMany(Semestre::class);
+        return $this->belongsToMany(Semestre::class);
     }
 
     public function disciplinas()
     {
-        return $this->hasMany(Disciplina::class, 'pre_requisito','pre_requisito_id','disciplina_id');
+        return $this->hasMany(Disciplina::class, 'pre_requisito', 'pre_requisito_id', 'disciplina_id');
     }
+
     public function pre_requisitos()
     {
-        return $this->belongsToMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id')->withTimestamps();
+        return $this->belongsToMany(Disciplina::class, 'pre_requisito', 'disciplina_id', 'pre_requisito_id')->withTimestamps();
         //return $this->belongsToMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id');
         //return $this->hasMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id')->withTimestamps();
-        }
+    }
 }

@@ -3,6 +3,8 @@
 namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
+use adsproject\Resposta;
+use adsproject\OpcaoResposta;
 
 class Pergunta extends Model
 {
@@ -19,7 +21,9 @@ class Pergunta extends Model
     return $this->belongsToMany(Avaliacao::class);
   }
 
-  public function opcaoResposta(){
-    return $this->hasOne(OpcaoResposta::class);
+  public function opcoes_resposta(){
+    //return $this->hasOne(OpcaoResposta::class);
+    //return $this->hasMany(OpcaoResposta::class, 'pergunta_id','id');
+    return $this->hasMany(OpcaoResposta::class);
   }
 }

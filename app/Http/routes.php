@@ -197,9 +197,9 @@ Route::group(['prefix'=>'ws'], function(){
     //Rotas WS Perguntas
     Route::group(['prefix'=>'perguntas'], function(){
         //Lista todos os avisos
-        Route::get('',['as'=>'perguntas', 'uses'=>'PerguntasController@buscarTodos']);
+        Route::get('',['uses'=>'PerguntasController@buscarTodos']);
         //Busca aviso por id
-        Route::get('{id}',['as'=>'perguntas', 'uses'=>'PerguntasController@buscarPorId']);
+        Route::get('{id}',['uses'=>'PerguntasController@buscarPorId']);
     });
 });
 

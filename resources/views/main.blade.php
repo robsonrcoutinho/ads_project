@@ -79,11 +79,8 @@
                             </ul>
                         @endif
                         @yield('conteudo')
-   
-           
         </div>
 
-    
 
       </div> <!--- row -->
 
