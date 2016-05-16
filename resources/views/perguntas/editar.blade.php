@@ -23,7 +23,7 @@
             @foreach($pergunta->opcoes_resposta as $opcao)
                     <div id="{{$opcao->id}}">
                         {!! Form::text('opcoes_resposta[]', $opcao->resposta_opcao, ['class'=>'form-control']) !!}
-                        {!! Form::button('Excluir', ['class'=>'btn']) !!}
+                        {!! Form::button('Excluir', ['class'=>'btn', 'onclick'=>"excluir_div($opcao->id)"]) !!}
                     </div>
                 @endforeach
             @endif

@@ -211,9 +211,6 @@ return [
         'PushNotification' => adsproject\PushNotification::class,
 
         'PushNotification'=> Davibennun\LaravelPushNotification\Facades\PushNotification::class,
-
-
-
     ],
 
 ];

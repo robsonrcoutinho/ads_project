@@ -12,7 +12,7 @@
             {!! Form::textarea ('enunciado', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::checkbox('pergunta_fechada' , true, null, ['id'=>'pergunta_fechada'])!!}{{ 'Fechada' }}
+            {!! Form::checkbox('pergunta_fechada' , true , false, ['id'=>'pergunta_fechada'])!!}{{ 'Fechada' }}
         </div>
         <div class="form-group" id="escondida">
             {!! Form::button('Adicionar Opção', ['id'=>'btn-adicionar', 'class'=>'btn']) !!}

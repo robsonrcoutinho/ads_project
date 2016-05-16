@@ -1,7 +1,7 @@
 /**
  * Created by Wilder on 11/05/2016.
  */
-window.onload = function() {
+window.onload = function () {
     var pergunta_fechada = document.getElementById("pergunta_fechada");
     var escondida = document.getElementById('escondida');
     if (!pergunta_fechada.checked) {
@@ -28,9 +28,15 @@ window.onload = function() {
         div_opcao.appendChild(texto);
         div_opcao.appendChild(btn_excluir);
         btn_excluir.onclick = function () {
-           escondida.removeChild(div_opcao);
+            escondida.removeChild(div_opcao);
         }
         escondida.appendChild(div_opcao);
     }
 }
-
+function excluir_div(id) {
+    var resposta = confirm("Tem certeza que deseja remover?");
+    if (resposta) {
+        var div = document.getElementById(id);
+        div.parentNode.removeChild(div);
+    }
+}
