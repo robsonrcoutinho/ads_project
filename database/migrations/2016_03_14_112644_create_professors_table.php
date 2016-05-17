@@ -12,7 +12,6 @@ class CreateProfessorsTable extends Migration
             $table->increments('id');
             $table->string('matricula', 6)->unique();
             $table->string('nome', 30);
-            //$table->boolean('ativo')->default(true);
             $table->string('curriculo', 100)->nullable();
             $table->softDeletes();
 

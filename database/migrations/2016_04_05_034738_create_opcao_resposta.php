@@ -11,9 +11,8 @@ class CreateOpcaoResposta extends Migration
         Schema::create('opcao_resposta', function (Blueprint $table) {
             $table->increments('id');
             $table->string('resposta_opcao');
-
             $table->unsignedInteger('pergunta_id');
-
+            $table->softDeletes();
         });
     }
 

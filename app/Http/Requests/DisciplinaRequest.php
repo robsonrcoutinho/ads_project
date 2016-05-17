@@ -26,7 +26,7 @@ class DisciplinaRequest extends Request
     public function rules()
     {
         return [
-            'codigo'=>'required|min:6',
+            'codigo'=>'required|size:6',
             'nome'=>'required|min:5',
             'carga_horaria'=>'required'
         ];

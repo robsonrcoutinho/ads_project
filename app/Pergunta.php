@@ -3,27 +3,31 @@
 namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
-use adsproject\Resposta;
-use adsproject\OpcaoResposta;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pergunta extends Model
 {
-  protected $table = "perguntas";
-  public $timestamps = false;
-  protected $fillable = ['enunciado','pergunta_fechada'];
+    use SoftDeletes;
+
+    protected $table = "perguntas";
+    protected $fillable = ['enunciado', 'pergunta_fechada'];
+    protected $softDelete = true;
+    public $timestamps = false;
 
 
-  public function resposta(){
-    return $this->hasOne(Resposta::class);
-  }
 
-  public function avaliacoes(){
-    return $this->belongsToMany(Avaliacao::class);
-  }
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class);
+    }
 
-  public function opcoes_resposta(){
-    //return $this->hasOne(OpcaoResposta::class);
-    //return $this->hasMany(OpcaoResposta::class, 'pergunta_id','id');
-    return $this->hasMany(OpcaoResposta::class);
-  }
+    public function avaliacoes()
+    {
+        return $this->belongsToMany(Avaliacao::class);
+    }
+
+    public function opcoes_resposta()
+    {
+        return $this->hasMany(OpcaoResposta::class);
+    }
 }

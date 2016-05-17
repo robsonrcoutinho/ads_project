@@ -34,7 +34,5 @@ class Disciplina extends Model
     public function pre_requisitos()
     {
         return $this->belongsToMany(Disciplina::class, 'pre_requisito', 'disciplina_id', 'pre_requisito_id')->withTimestamps();
-        //return $this->belongsToMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id');
-        //return $this->hasMany(Disciplina::class, 'pre_requisito','disciplina_id', 'pre_requisito_id')->withTimestamps();
     }
 }

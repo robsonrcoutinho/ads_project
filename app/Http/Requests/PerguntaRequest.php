@@ -24,7 +24,7 @@ class PerguntaRequest extends Request
     public function rules()
     {
         return [
-            'enunciado'=>'required'
+            'enunciado' => 'required'
         ];
     }
 }

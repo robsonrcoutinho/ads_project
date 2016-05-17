@@ -35,7 +35,8 @@ class CreateFkTable extends Migration
         });
 
         Schema::table('opcao_resposta', function ($table) {
-            $table->foreign('pergunta_id')->references('id')->on('perguntas');
+            //$table->foreign('pergunta_id')->references('id')->on('perguntas');
+            $table->foreign('pergunta_id')->references('id')->on('perguntas')->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::table('pre_requisito', function ($table) {

@@ -14,7 +14,7 @@
             {!! Form::textarea ('enunciado', $pergunta->enunciado, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-        {!! Form::checkbox('pergunta_fechada', $pergunta->pergunta_fechada, $pergunta->pergunta_fechada, ['id'=>'pergunta_fechada']) !!}
+        {!! Form::checkbox('pergunta_fechada', true, $pergunta->pergunta_fechada,['id'=>'pergunta_fechada']) !!}
             {{ 'Fechada' }}
         </div>
         <div class="form-group" id="escondida">
