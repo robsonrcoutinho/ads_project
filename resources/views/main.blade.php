@@ -8,7 +8,7 @@
   
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
-    {!! Html::style('css/materialize.css') !!}
+    {!! MaterializeCSS::include_all()!!}
     {!! Html::style('css/style.css') !!}
     
 
@@ -23,12 +23,12 @@
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="?p=avisoIndex">Avisos</a></li>
-        <li><a href="?p=professorIndex">Discentes</a></li>
-         <li><a href="?p=semestreIndex">Disciplinas</a></li>
-        <li><a href="?p=semestreIndex">Semestres</a></li>
-        <li><a href="?p=avaliacaoIndex">Avaliaçoes</a></li>
-        <li><a href="?p=documentacaoIndex">Documentos</a></li>
+        <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
+        <li><a href="{{route('professores')}}">Discentes</a></li>
+         <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+        <li><a href="{{route('semestres')}}">Semestres</a></li>
+        <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
+        <li><a href="{{route('documentos')}}">Documentos</a></li>
         <li><a href="#">Gerenciar Conta</a></li>
         <li><a href="#">Gerenciar Semestre</a></li>
       </ul>
@@ -40,10 +40,10 @@
       <br><br>
       <h1 class="header center orange-text">ADS </h1>
       <div class="row center">
-        <h5 class="header col s12 light ">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+        <h5 class="header col s12 light " style="color: blanchedalmond"; >ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
       </div>
       <div class="row center">
-        <a href="?p=avisoNovo" id="download-button" class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+        <a href="{{route('avisos.novo')}}" id="download-button" class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
       </div>
       <br><br>
 
@@ -53,24 +53,8 @@
 
 
   <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s5 m4">
-            <div class="collection">
-              <a href="{{route('avisos')}}" class="collection-item">Avisos</a>
-              <a href="{{route('professores')}}"  class="collection-item">Discentes</a>
-              <a href="{{route('disciplinas')}}"  class="collection-item">Disciplinas</a>
-              <a href="{{route('semestres')}}"    class="collection-item">Semestres</a>
-              <a href="{{route('avaliacoes')}}"   class="collection-item">Avaliaçoes</a>
-              <a href="{{route('documentos')}}"   class="collection-item">Documentos</a>
-            </div>
-          
-          
-        </div>
-
-        <div class="col s7 m8">
+  
+        <div class="col s12 m12">
            @if($errors->any())
                             <ul class="alert alert-warning">
                                 @foreach($errors->all() as $error)
@@ -82,7 +66,6 @@
         </div>
 
 
-      </div> <!--- row -->
 
     </div>
     <br><br>
@@ -116,8 +99,6 @@
           <ul>
             <li><a class="white-text" href="#!">Facebook</a></li>
             <li><a class="white-text" href="#!">Twitter</a></li>
-            <li><a class="white-text" href="#!"></a></li>
-            <li><a class="white-text" href="#!"></a></li>
           </ul>
         </div>
       </div>
@@ -131,9 +112,11 @@
 
 
   <!--  Scripts-->
+      {!! MaterializeCSS::include_js() !!}
       {!! Html::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-      {!! Html::script('js/materialize.js') !!}
       {!! Html::script('js/init.js') !!}
+
+      
 
   </body>
 </html>
