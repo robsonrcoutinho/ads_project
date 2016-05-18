@@ -204,9 +204,9 @@ Route::group(['prefix'=>'ws'], function(){
 });
 
 //Testando push notification
-Route::get('push', 'PushNotificationController@sendNotificationToDevice');
+Route::get('push', ['uses'=>'PushNotificationController@sendNotificationToDevice']);
 
 // TokenController / TokenController
 
-Route::post('/token' , ['as' => 'token' , 'uses'=>'TokenController@salvarToken']);
+Route::post('token' , ['as' => 'token' , 'uses'=>'TokenController@salvarToken']);
 

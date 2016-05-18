@@ -9,4 +9,6 @@ class Token extends Model
     protected $table = "tokens";
     protected $fillable = ['token_name'];
     public $timestamps = false;
+
+
 }
