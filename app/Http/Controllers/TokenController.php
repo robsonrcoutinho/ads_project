@@ -10,13 +10,16 @@ class TokenController extends Controller
 {
 
     public function salvarToken(TokenRequest $request){
-/*
+
+        dd($request);
         $input = $request->all();
         $token = new Token();
         $token->content =$input;
-        $token->save();*/
+        $token->save();
 
+
+/*
         $token = $request->all();
-        Token::create($token);
+        Token::create($token);*/
     }
 }
