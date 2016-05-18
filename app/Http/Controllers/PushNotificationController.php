@@ -13,7 +13,7 @@ class PushNotificationController extends Controller
 
 
     public function sendNotificationToDevice(){
-        $deviceToken = 'c8glrE5hu1A:APA91bFEkTMvWCDb5Nx61Mb0GzFnOJVR09CrjAA3ajy1M2eNwetkndkF5f0_kO3DJQR-FDFVpKNLB1y_IrC9ewQdvsB9bz3HSJzyuAdS2JTDShw4i1jthnaa7yprlFMObQT_0ZLU1S1j';
+        $deviceToken = 'e2JQLols-Zg:APA91bG6tQAX8_yqYBTEyDRII5wRQ5oVmNhNRv8Ee3zVbXvbFAGPJ6qAft8sLK_YTFUHB6FDp35LmdvKwFgBOl_PnwlFaGBHcboo6YAp2qJGBgtk8bhiJnqDS4nFQAvP3IJzDqcZOnL-';
 
         $message = 'Msg teste dispositivo';
 

@@ -209,6 +209,7 @@ return [
         'Resposta' => adsproject\Resposta::class,
         'OpcaoResposta' => adsproject\OpcaoResposta::class,
         'PushNotification' => adsproject\PushNotification::class,
+        'Token' => adsproject\Token::class,
 
         'PushNotification'=> Davibennun\LaravelPushNotification\Facades\PushNotification::class,
     ],
