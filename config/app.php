@@ -148,6 +148,7 @@ return [
         adsproject\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
 
     ],
 
@@ -162,7 +163,7 @@ return [
     |
     */
 
-    'aliases' => [
+   'aliases' => [
 
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
@@ -210,6 +211,7 @@ return [
         'OpcaoResposta' => adsproject\OpcaoResposta::class,
         'PushNotification' => adsproject\PushNotification::class,
         'Token' => adsproject\Token::class,
+        'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
 
         'PushNotification'=> Davibennun\LaravelPushNotification\Facades\PushNotification::class,
     ],
