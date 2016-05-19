@@ -1,9 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-     <div class="card-panel  teal escurecer-4">
-         <span class="grey-text text-lighten-5">Editar Professor</span>
-      </div>
+        <div class="card-panel  teal escurecer-4">
+            <span class="grey-text text-lighten-5">Editar Professor</span>
+        </div>
         {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->id], 'method'=>'put']) !!}
         <div class="form-group">
             {!! Form::hidden ('id', $disciplina->id, ['class'=>'form-control']) !!}
@@ -29,21 +29,17 @@
             <fieldset>
                 <ul id="pre_requisitos">
                     <legend class="grey-text">Pré-requisitos</legend>
-                    @if($disciplina->pre_requisitos!=null || !$disciplina->pre_requisito->isEmpty)
                     @foreach($disciplinas as $d)
                         {!! Form::checkbox('pre_requisitos[]', $d->id, $disciplina->pre_requisitos->contains($d),['class'=>'form-group']) !!}
                         {{ $d->nome }}
                         <br/>
                     @endforeach
-                    @endif
                 </ul>
             </fieldset>
-            </div>
-            <div class="form-group">
-                {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
-            </div>
-
+        </div>
+        <div class="form-group">
+            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+        </div>
         {!! Form::close() !!}
-
     </div>
-    @endsection
+@endsection

@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Input;
 
 class TokenController extends Controller
 {
-//TokenRequest $request
-    public function salvarToken(){
+
+    public function salvarToken()
+    {
         Token::create(Input::all());
     }
 }
