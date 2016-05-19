@@ -1,4 +1,5 @@
 <?php namespace adsproject\Http\Controllers;
+
 /**
  * Created by PhpStorm.
  * User: Wilder
@@ -8,45 +9,72 @@
 use adsproject\Avaliacao;
 use adsproject\Http\Requests\AvaliacaoRequest;
 use adsproject\Semestre;
+use adsproject\Pergunta;
 
 
-class AvaliacoesController extends Controller{
+class AvaliacoesController extends Controller
+{
 
-    public function index(){
+    public function index()
+    {
         $avaliacoes = Avaliacao::all();
-        return view('avaliacoes.index', ['avaliacoes'=>$avaliacoes]);
+        return view('avaliacoes.index', ['avaliacoes' => $avaliacoes]);
     }
 
-    public function novo(){
-        $semestres = Semestre::all()->lists('codigo','id');
-        return view('avaliacoes.novo', compact('semestres'));
+    public function novo()
+    {
+        $semestres = Semestre::all()->lists('codigo', 'id');
+        $perguntas = Pergunta::all();
+        return view('avaliacoes.novo', compact('semestres', 'perguntas'));
     }
-    public function salvar(AvaliacaoRequest $request){
-        $avaliacao = $request->all();
-        Avaliacao::create($avaliacao);
+
+    public function salvar(AvaliacaoRequest $request)
+    {
+        $avaliacao = Avaliacao::create($request->all());
+        $perguntas = $request->get('perguntas');
+        if ($perguntas != null):
+            $avaliacao->perguntas()->sync($perguntas);
+        endif;
         return redirect('avaliacoes');
     }
-    public function editar($id){
+
+    public function editar($id)
+    {
         $avaliacao = Avaliacao::find($id);
-        $semestres=Semestre::all()->lists('codigo', 'id');
-        return view('avaliacoes.editar', compact('avaliacao', 'semestres'));
+        $semestres = Semestre::all()->lists('codigo', 'id');
+        $perguntas = Pergunta::all();
+        return view('avaliacoes.editar', compact('avaliacao', 'semestres', 'perguntas'));
     }
-    public function alterar(AvaliacaoRequest $request, $id){
-        Avaliacao::find($id)->update($request);
+
+    public function alterar(AvaliacaoRequest $request, $id)
+    {
+        $avaliacao = Avaliacao::find($id);
+        $perguntas = $request->get('perguntas');
+        if ($perguntas != null):
+            $avaliacao->perguntas()->sync($perguntas);
+        elseif ($avaliacao->perguntas != null):
+            $avaliacao->perguntas()->detach();
+        endif;
+        $avaliacao->update($request->all());
         return redirect()->route('avaliacoes');
     }
-    public function excluir($id){
+
+    public function excluir($id)
+    {
         Avaliacao::find($id)->delete();
         return redirect()->route('avaliacoes');
     }
 
-    //Métodos do Web Service
-    //Método que busca todos as avaliações para o Web Service
-    public function buscarTodos(){
+    //Metodos do Web Service
+    //Metodo que busca todos as avaliacoes para o Web Service
+    public function buscarTodos()
+    {
         return Avaliacao::all();
     }
-    //Método que busca avaliacao por id para o Web Service
-    public function buscarPorId($id){
+
+    //Metodo que busca avaliacao por id para o Web Service
+    public function buscarPorId($id)
+    {
         return Avaliacao::find($id);
     }
 }
