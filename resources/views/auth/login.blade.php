@@ -32,11 +32,11 @@
             <div class="card-content">
                 <form>
                     <div class="input-field col s12">
-                        <input id="Usuario" type="text" class="validate">
+                        <input id="Usuario" type="text" class="validate" value="{{ old('email') }}">
                         <label class ="left-align" for="Usuario"></label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" type="password" class="validate" >
                         <label  class ="left-align" for="Senha"></label>
                     </div>
                     <button type="button" id="botao_login" name="botao_login" class="btn blue-grey right waves-effect waves-light white-text">Login</button>
