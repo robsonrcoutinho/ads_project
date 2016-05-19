@@ -8,8 +8,7 @@
   
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
-    {!! MaterializeCSS::include_all()!!}
-    {!! Html::style('css/style.css') !!}
+    {!! MaterializeCSS::include_all()!!} {!! Html::style('css/style.css') !!}
     
 
 </head>
@@ -115,8 +114,5 @@
       {!! MaterializeCSS::include_js() !!}
       {!! Html::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
       {!! Html::script('js/init.js') !!}
-
-      
-
   </body>
 </html>
