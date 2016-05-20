@@ -33,11 +33,11 @@
                 <form>
                     <div class="input-field col s12">
                         <input id="Usuario" type="text" class="validate" value="{{ old('email') }}">
-                        <label class ="left-align" for="Usuario"></label>
+                        <label class ="left-align" for="Usuario">USUARIO</label>
                     </div>
                     <div class="input-field col s12">
                         <input id="password" type="password" class="validate" >
-                        <label  class ="left-align" for="Senha"></label>
+                        <label  class ="left-align" for="Senha">SENHA</label>
                     </div>
                     <button type="button" id="botao_login" name="botao_login" class="btn blue-grey right waves-effect waves-light white-text">Login</button>
                 </form>
@@ -93,10 +93,11 @@
 </footer>
 
 
-<!--  Scripts-->
-{!! MaterializeCSS::include_js() !!}
-{!! Html::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-{!! Html::script('js/init.js') !!}
- 
+ <!--  Scripts-->
+
+ {!! Html::script('js/jquery-2.1.1.min.js') !!}
+ {!! Html::script('js/init.js') !!}
+ {!! Html::script(asset('materialize-css/js/materialize.min.js'))!!}
+
 </body>
 </html>

@@ -25,7 +25,8 @@
   
       </ul>
 
-      <ul id="nav-mobile" class="side-nav ">
+
+      <ul id="nav-mobile " class="side-nav ">
         <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
         <li><a href="{{route('professores')}}">Discentes</a></li>
          <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
@@ -35,7 +36,7 @@
         <li><a href="#">Gerenciar Conta</a></li>
         <li><a href="#">Gerenciar Semestre</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse  show-on-large" ><i class="material-icons">menu</i></a>
 
 
     </div>
