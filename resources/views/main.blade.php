@@ -14,14 +14,18 @@
 </head>
 <body>
   <nav class="#004d40 teal escurecer-4" role="navigation">
+    
+
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
+
       <ul class="right hide-on-med-and-down">
+
         <li><a href="#">Gerenciar Conta</a></li>
         <li><a href="#">Gerenciar Semestre</a></li>
   
       </ul>
 
-      <ul id="nav-mobile" class="side-nav">
+      <ul id="nav-mobile" class="side-nav ">
         <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
         <li><a href="{{route('professores')}}">Discentes</a></li>
          <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
@@ -32,6 +36,8 @@
         <li><a href="#">Gerenciar Semestre</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
     </div>
   </nav>
   <div class="section no-pad-bot" id="index-banner" style="background-image: url(&quot;../images/banner.jpg&quot;);">
@@ -61,6 +67,7 @@
                                 @endforeach
                             </ul>
                         @endif
+                        
                         @yield('conteudo')
         </div>
 
@@ -111,8 +118,12 @@
 
 
   <!--  Scripts-->
-      {!! MaterializeCSS::include_js() !!}
-      {!! Html::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-      {!! Html::script('js/init.js') !!}
+
+ {!! Html::script('js/jquery-2.1.1.min.js') !!}
+ {!! Html::script('js/init.js') !!}
+ {!! Html::script(asset('materialize-css/js/materialize.min.js'))!!}
+
+
+      
   </body>
 </html>
