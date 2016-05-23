@@ -24,4 +24,7 @@ class Avaliacao extends Model
     {
         return $this->belongsToMany(Pergunta::class);
     }
+    public function scopeAberta($query){
+        //return $query->where()
+    }
 }

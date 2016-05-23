@@ -5,10 +5,9 @@
             <span class=" grey-text text-lighten-5">Nova Avaliação</span>
         </div>
         {!! Form::open(['route'=>'avaliacoes.salvar']) !!}
-
         <div class="form-group">
             {!! Form::label ('semestre_id', 'Semestre: ') !!}
-            {!! Form::select ('semestre_id', $semestres, null, ['class'=>'form-control']) !!}
+            {!! Form::select ('semestre_id', $semestres, null, ['class'=>'browser-default']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('inicio', 'Início: ') !!}
@@ -23,15 +22,17 @@
                 <ul id="perguntas">
                     <legend>Perguntas</legend>
                     @foreach($perguntas as $pergunta)
-                        {!! Form::checkbox('perguntas[]', $pergunta->id) !!}
-                        {{ $pergunta->enunciado }}
+                        {!! Form::checkbox('perguntas[]', $pergunta->id,['id'=>$pergunta->id, 'class'=>'filled-in']) !!}
+                        {!! Form::label('pergunta[]', $pergunta->enunciado,['for'=>$pergunta->id]) !!}
                         <br/>
                     @endforeach
                 </ul>
                 <a href="{{ route('perguntas')}}" class="btn"> Perguntas </a>
+                <br/>
             </fieldset>
         </div>
         <div class="form-group">
+            <br/>
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}

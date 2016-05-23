@@ -28,8 +28,8 @@
                 <ul id="pre_requisitos">
                     <legend>Pré-requisitos</legend>
                     @foreach($disciplinas as $disciplina)
-                        {!! Form::checkbox('pre_requisitos[]', $disciplina->id) !!}
-                        {{ $disciplina->nome }}
+                        {!! Form::checkbox('pre_requisitos[]', $disciplina->id, null, ['id'=>$disciplina->codigo, 'class'=>'filled-in']) !!}
+                        {!! Form::label($disciplina->codigo, $disciplina->nome ) !!}
                         <br/>
                     @endforeach
                 </ul>
