@@ -5,7 +5,6 @@
             <span class=" grey-text text-lighten-5">Editar Pergunta</span>
         </div>
         {!! Form::open(['route'=>['perguntas.alterar', $pergunta->id], 'method'=>'put']) !!}
-
         <div class="form-group">
             {!! Form::hidden ('id', $pergunta->id, ['class'=>'form-control']) !!}
         </div>

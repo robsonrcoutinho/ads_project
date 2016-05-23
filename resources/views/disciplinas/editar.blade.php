@@ -24,7 +24,6 @@
             {!! Form::label ('ementa', 'Ementa (link): ') !!}
             {!! Form::text ('ementa', $disciplina->ementa, ['class'=>'form-control']) !!}
         </div>
-
         <div class="form-group">
             <fieldset>
                 <ul id="pre_requisitos">
