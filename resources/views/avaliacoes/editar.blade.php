@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('semestre', 'Semestre: ') !!}
-            {!! Form::select ('semestre', $semestres, $avaliacao->semestre, ['class'=>'form-control'] ) !!}
+            {!! Form::select ('semestre', $semestres, $avaliacao->semestre, ['class'=>'browser-default'] ) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('inicio', 'Início: ') !!}
@@ -27,7 +27,7 @@
                     <legend class="grey-text">Perguntas</legend>
                     @foreach($perguntas as $pergunta)
                         {!! Form::checkbox('perguntas[]', $pergunta->id, $avaliacao->perguntas->contains($pergunta),['id'=>$pergunta->id, 'class'=>'filled-in']) !!}
-                        {!! Form::label('pergunta[]', $pergunta->enunciado,['for'=>$pergunta->id]) !!}
+                        {!! Form::label($pergunta->id, $pergunta->enunciado) !!}
                         <br/>
                     @endforeach
                 </ul>
