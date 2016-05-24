@@ -210,3 +210,10 @@ Route::get('push', ['uses'=>'PushNotificationController@sendNotificationToDevice
 
 Route::post('token' , ['as' => 'token' , 'uses'=>'TokenController@salvarToken']);
 
+//Rotas do questionário de avaliação
+Route::group(['prefix'=>'questionarios'], function(){
+    //Rota para resposta de questionário (inicial)
+    Route::get('', ['as'=>'questionarios', 'uses' =>'QuestionariosController@novo']);
+    //Rota para salvar o questionário (depois de respondido)
+    Route::post('salvar', ['as'=>'questionarios.salvar', 'uses'=>'QuestionariosController@salvar']);
+});
