@@ -27,13 +27,12 @@ class QuestionariosController extends Controller
         else:
             return view('questionarios.novo', ['avaliacao' => $avaliacao]);
         endif;
-
     }
 
     public function salvar()
     {
         $respostas = Input::get('campo_resposta');
-        $avaliacao=Input::get('avaliacao_id');
+        $avaliacao = Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):
             $r = new Resposta();
             $r->pergunta_id = $pergunta;

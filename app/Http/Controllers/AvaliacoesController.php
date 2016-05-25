@@ -30,12 +30,13 @@ class AvaliacoesController extends Controller
 
     public function salvar(AvaliacaoRequest $request)
     {
+        dd($request->all());
         $avaliacao = Avaliacao::create($request->all());
         $perguntas = $request->get('perguntas');
         if ($perguntas != null):
             $avaliacao->perguntas()->sync($perguntas);
         endif;
-        return redirect('avaliacoes');
+        return redirect()->route('avaliacoes');
     }
 
     public function editar($id)

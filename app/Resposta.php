@@ -14,4 +14,8 @@ class Resposta extends Model
     {
         return $this->belongsTo(Pergunta::class);
     }
+    public function avaliacao()
+    {
+        return $this->belongsTo(Avaliacao::class);
+    }
 }
