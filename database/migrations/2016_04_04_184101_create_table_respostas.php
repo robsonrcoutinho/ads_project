@@ -11,7 +11,6 @@ class CreateTableRespostas extends Migration
         Schema::create('respostas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('campo_resposta');
-
             $table->unsignedInteger('pergunta_id');
         });
     }

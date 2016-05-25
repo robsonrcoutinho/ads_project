@@ -10,25 +10,26 @@
         </div>
         <div class="form-group">
             <fieldset>
-                <ul id="perguntas">
+                <ol id="perguntas">
                     <legend>Perguntas</legend>
+
                     @foreach($avaliacao->perguntas as $pergunta)
-                        {!! Form::label($pergunta->id, $pergunta->enunciado) !!}
-
-                        @if($pergunta->pergunta_fechada)
-                            <br/>
-                            @foreach($pergunta->opcoes_resposta as $opcao)
-                                {!! Form::radio("campo_resposta[$pergunta->id]", $opcao->resposta_opcao, null,['id'=>$opcao->id, 'class'=>'with-gap']) !!}
-                                {!! Form::label($opcao->id, $opcao->resposta_opcao) !!}
+                        <li class="collection-item">
+                            {!! Form::label($pergunta->id, $pergunta->enunciado) !!}
+                            @if($pergunta->pergunta_fechada)
                                 <br/>
-                            @endforeach
-                        @else
-                            {!! Form::text("campo_resposta[$pergunta->id]", null, ['class'=>'form-control']) !!}
-                        @endif
-                        <br/>
+                                @foreach($pergunta->opcoes_resposta as $opcao)
+                                    {!! Form::radio("campo_resposta[$pergunta->id]", $opcao->resposta_opcao, null,['id'=>$opcao->id, 'class'=>'with-gap']) !!}
+                                    {!! Form::label($opcao->id, $opcao->resposta_opcao) !!}
+                                    <br/>
+                                @endforeach
+                            @else
+                                {!! Form::text("campo_resposta[$pergunta->id]", null, ['class'=>'form-control']) !!}
+                            @endif
+                            <br/>
+                        </li>
                     @endforeach
-                </ul>
-
+                </ol>
                 <br/>
             </fieldset>
         </div>

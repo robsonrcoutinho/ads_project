@@ -9,7 +9,7 @@ namespace adsproject\Http\Controllers;
  * Time: 10:09
  */
 use adsproject\Avaliacao;
-
+use adsproject\Resposta;
 use Illuminate\Support\Facades\Input;
 
 class QuestionariosController extends Controller
@@ -29,7 +29,16 @@ class QuestionariosController extends Controller
         endif;
 
     }
-    public function salvar(){
-        dd(Input::get('campo_resposta'));
+
+    public function salvar()
+    {
+        $respostas = Input::get('campo_resposta');
+        foreach ($respostas as $pergunta => $resposta):
+            $r = new Resposta();
+            $r->pergunta_id = $pergunta;
+            $r->campo_resposta = $resposta;
+            $r->save();
+        endforeach;
+        return redirect()->route('avaliacoes');
     }
 }

@@ -139,8 +139,11 @@ Route::group(['prefix'=>'perguntas', 'where'=>['id'=>'[0-9]+']], function(){
 //Rota para alterar pergunta
     Route::put('{id}/alterar',['as'=>'perguntas.alterar', 'uses'=> 'PerguntasController@alterar']);
 });
-
-
+//Rotas de respostas
+Route::group(['prefix'=>'respostas', 'where'=>['id'=>'[0-9]+']], function(){
+//Rota para IndexResposta
+    Route::get('', ['as'=>'respostas', 'uses' =>'RespostasController@index']);
+});
 //Rotas para Web Service
 Route::group(['prefix'=>'ws'], function(){
    //Rotas WS Professores
