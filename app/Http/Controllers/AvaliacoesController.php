@@ -30,7 +30,8 @@ class AvaliacoesController extends Controller
 
     public function salvar(AvaliacaoRequest $request)
     {
-        dd($request->all());
+        echo 'teste';
+        
         $avaliacao = Avaliacao::create($request->all());
         $perguntas = $request->get('perguntas');
         if ($perguntas != null):
