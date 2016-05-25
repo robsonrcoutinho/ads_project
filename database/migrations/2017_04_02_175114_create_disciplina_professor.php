@@ -16,6 +16,6 @@ class CreateDisciplinaProfessor extends Migration
 
     public function down()
     {
-        //Schema::drop('disciplina_professor');
+        Schema::drop('disciplina_professor');
     }
 }

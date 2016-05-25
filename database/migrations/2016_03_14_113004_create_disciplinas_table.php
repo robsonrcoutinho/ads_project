@@ -14,14 +14,12 @@ class CreateDisciplinasTable extends Migration
             $table->string('nome', 60);
             $table->integer('carga_horaria');
             $table->string('ementa', 100)->nullable();
-            //$table->boolean('ativa')->default(true);
             $table->softDeletes();
-
         });
     }
 
     public function down()
     {
-
+        Schema::drop('disciplinas');
     }
 }

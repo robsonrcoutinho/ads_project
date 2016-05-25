@@ -12,11 +12,12 @@ class CreateTableRespostas extends Migration
             $table->increments('id');
             $table->string('campo_resposta');
             $table->unsignedInteger('pergunta_id');
+            $table->unsignedInteger('avaliacao_id');
         });
     }
 
     public function down()
     {
-        //Schema::drop('respostas');
+        Schema::drop('respostas');
     }
 }

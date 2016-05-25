@@ -27,6 +27,7 @@ class CreateFkTable extends Migration
 
         Schema::table('respostas', function ($table) {
             $table->foreign('pergunta_id')->references('id')->on('perguntas');
+            $table->foreign('avaliacao_id')->references('id')->on('avaliacaos');
         });
 
         Schema::table('avaliacao_pergunta', function ($table) {

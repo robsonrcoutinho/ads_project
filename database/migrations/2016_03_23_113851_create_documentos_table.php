@@ -18,6 +18,6 @@ class CreateDocumentosTable extends Migration
 
     public function down()
     {
-        //Schema::drop('documentos');
+        Schema::drop('documentos');
     }
 }

@@ -20,6 +20,6 @@ class CreateSemestresTable extends Migration
 
     public function down()
     {
-        //Schema::drop('semestres');
+        Schema::drop('semestres');
     }
 }
