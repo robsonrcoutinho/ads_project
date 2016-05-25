@@ -18,6 +18,6 @@ class CreateTablePerguntas extends Migration
 
     public function down()
     {
-        //Schema::drop('perguntas');
+        Schema::drop('perguntas');
     }
 }

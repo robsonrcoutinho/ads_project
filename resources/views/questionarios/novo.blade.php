@@ -6,6 +6,9 @@
         </div>
         {!! Form::open(['route'=>'questionarios.salvar']) !!}
         <div class="form-group">
+            {!! Form::hidden ('avaliacao_id', $avaliacao->id, ['class'=>'form-control']) !!}
+        </div>
+        <div class="form-group">
             {!! Form::label ('semestre_id', 'Semestre: '.$avaliacao->semestre->codigo) !!}
         </div>
         <div class="form-group">

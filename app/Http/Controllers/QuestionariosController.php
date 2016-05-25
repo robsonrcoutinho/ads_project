@@ -33,10 +33,12 @@ class QuestionariosController extends Controller
     public function salvar()
     {
         $respostas = Input::get('campo_resposta');
+        $avaliacao=Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):
             $r = new Resposta();
             $r->pergunta_id = $pergunta;
             $r->campo_resposta = $resposta;
+            $r->avaliacao_id = $avaliacao;
             $r->save();
         endforeach;
         return redirect()->route('avaliacoes');

@@ -22,7 +22,7 @@
                 <ul id="perguntas">
                     <legend>Perguntas</legend>
                     @foreach($perguntas as $pergunta)
-                        {!! Form::checkbox('perguntas[]', $pergunta->id,['id'=>$pergunta->id, 'class'=>'filled-in']) !!}
+                        {!! Form::checkbox('perguntas[]', $pergunta->id, null,['id'=>$pergunta->id, 'class'=>'filled-in']) !!}
                         {!! Form::label($pergunta->id, $pergunta->enunciado) !!}
                         <br/>
                     @endforeach
