@@ -42,8 +42,7 @@ class PerguntasController extends Controller
     public function editar($id)
     {
         $pergunta = Pergunta::find($id);
-        //return view('perguntas.editar', compact('pergunta'));
-        return view('perguntas.editar', ['pergunta' => $pergunta]);
+        return view('perguntas.editar', compact('pergunta'));
     }
 
     public function alterar(PerguntaRequest $request, $id)
@@ -74,13 +73,12 @@ class PerguntasController extends Controller
     }
 
 //Inclui todas as opçoes de resposta
-    private
-    function inserirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
+    private function inserirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
         if (count($opcoes) == 0):
             $request->merge(array('pergunta_fechada' => false));
-            return;// $this->diminuirOpcoes($pergunta, $request);
+            return;
         endif;
 
         foreach ($opcoes as $opcao):
@@ -92,8 +90,7 @@ class PerguntasController extends Controller
     }
 
 //Exclui todas as opçoes de resposta
-    private
-    function removerOpcoes(Pergunta $pergunta)
+    private function removerOpcoes(Pergunta $pergunta)
     {
         foreach ($pergunta->opcoes_resposta as $opcao):
             $opcao->delete();
@@ -113,8 +110,7 @@ class PerguntasController extends Controller
     }
 
 //Aumenta o número de opções de resposta
-    private
-    function aumentarOpcoes(Pergunta $pergunta, PerguntaRequest $request)
+    private function aumentarOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
         $contador = count($pergunta->opcoes_resposta);
@@ -136,8 +132,7 @@ class PerguntasController extends Controller
     }
 
 //Duminui o número de opções de resposta
-    private
-    function diminuirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
+    private function diminuirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
         $contador = count($opcoes);
@@ -154,10 +149,8 @@ class PerguntasController extends Controller
             $opcao_resposta->delete();
             $i++;
         endwhile;
-
         if (count($opcoes) == 0):
             $request->merge(array('pergunta_fechada' => false));
         endif;
-        //dd($request);
     }
 }
