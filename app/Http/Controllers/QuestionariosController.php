@@ -17,7 +17,7 @@ class QuestionariosController extends Controller
 
     public function novo()
     {
-        $avaliacao = Avaliacao::whereDate('inicio', '<=', date('Y-m-d'))->whereDate('termino', '>=', date('Y-m-d'))->get()->first();
+        $avaliacao = Avaliacao::aberta();
         $rota = route('avaliacoes');
         if ($avaliacao == null):
             echo "<script>

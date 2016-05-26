@@ -29,4 +29,7 @@ class Avaliacao extends Model
     {
         return $this->hasMany(Resposta::class);
     }
+    public function scopeAberta($query){
+        return $query->whereDate('inicio', '<=', date('Y-m-d'))->whereDate('termino', '>=', date('Y-m-d'))->get()->first();
+    }
 }
