@@ -37,7 +37,6 @@ class PerguntasController extends Controller
             endforeach;
         endif;
         return redirect()->route('perguntas');
-
     }
 
     public function editar($id)
@@ -62,15 +61,11 @@ class PerguntasController extends Controller
         elseif (count($request->get('opcoes_resposta')) < count($pergunta->opcoes_resposta)):
             $this->diminuirOpcoes($pergunta, $request);
         endif;
-        //dd($request->all());
         $pergunta->update($request->all());
-        /*$pergunta->update(['enunciado' => $request->get('enunciado'),
-            'pergunta_fechada' => count($pergunta->opcoes_resposta) > 0]);*/
         return redirect('perguntas');
     }
 
-    public
-    function excluir($id)
+    public function excluir($id)
     {
         $pergunta = Pergunta::find($id);
         $this->removerOpcoes($pergunta);
