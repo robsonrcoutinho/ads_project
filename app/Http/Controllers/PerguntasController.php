@@ -43,9 +43,7 @@ class PerguntasController extends Controller
     public function editar($id)
     {
         $pergunta = Pergunta::find($id);
-        dd($pergunta);
-        //return view('perguntas.editar', compact('pergunta'));
-        return view('perguntas.editar', ['pergunta' => $pergunta]);
+        return view('perguntas.editar', compact('pergunta'));
     }
 
     public function alterar(PerguntaRequest $request, $id)
@@ -85,8 +83,8 @@ class PerguntasController extends Controller
     {
         $opcoes = $request->get('opcoes_resposta');
         if (count($opcoes) == 0):
-            $request->merge(array('pergunta_fechada'=>false));
-        return;// $this->diminuirOpcoes($pergunta, $request);
+            $request->merge(array('pergunta_fechada' => false));
+            return;// $this->diminuirOpcoes($pergunta, $request);
         endif;
 
         foreach ($opcoes as $opcao):
@@ -162,7 +160,7 @@ class PerguntasController extends Controller
         endwhile;
 
         if (count($opcoes) == 0):
-            $request->merge(array('pergunta_fechada'=>false));
+            $request->merge(array('pergunta_fechada' => false));
         endif;
         //dd($request);
     }
