@@ -37,12 +37,14 @@ class PerguntasController extends Controller
             endforeach;
         endif;
         return redirect()->route('perguntas');
+
     }
 
     public function editar($id)
     {
         $pergunta = Pergunta::find($id);
-        return view('perguntas.editar', compact('pergunta'));
+        //return view('perguntas.editar', compact('pergunta'));
+        return view('perguntas.editar', ['pergunta' => $pergunta]);
     }
 
     public function alterar(PerguntaRequest $request, $id)
