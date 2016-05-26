@@ -19,7 +19,7 @@ class QuestionariosController extends Controller
     {
         $avaliacao = Avaliacao::aberta();
         //$rota = route('avaliacoes');
-        $rota = route('questionarios');
+        $rota = view('questionarios.novo');
         dd($rota);
         if ($avaliacao == null):
             echo "<script>
