@@ -43,7 +43,8 @@ class PerguntasController extends Controller
     public function editar($id)
     {
         $pergunta = Pergunta::find($id);
-        return view('perguntas.editar', compact('pergunta'));
+        //return view('perguntas.editar', compact('pergunta'));
+        return view('perguntas.editar', ['pergunta' => $pergunta]);
     }
 
     public function alterar(PerguntaRequest $request, $id)
