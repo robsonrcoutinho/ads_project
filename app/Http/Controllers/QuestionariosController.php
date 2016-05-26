@@ -19,6 +19,7 @@ class QuestionariosController extends Controller
     {
         $avaliacao = Avaliacao::aberta();
         $rota = route('avaliacoes');
+        dd($rota);
         if ($avaliacao == null):
             echo "<script>
                 alert('Nenhuma avaliação disponível no momento');
