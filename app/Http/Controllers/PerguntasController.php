@@ -68,7 +68,7 @@ class PerguntasController extends Controller
     public function excluir($id)
     {
         $pergunta = Pergunta::find($id);
-        $this->removerOpcoes($pergunta);
+        //$this->removerOpcoes($pergunta);
         $pergunta->delete();
         return redirect()->route('perguntas');
     }
