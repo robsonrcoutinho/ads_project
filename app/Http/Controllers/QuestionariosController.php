@@ -18,16 +18,16 @@ class QuestionariosController extends Controller
     public function novo()
     {
         $avaliacao = Avaliacao::aberta();
-        $rota = route('avaliacoes');
-        dd($rota);
-        if ($avaliacao == null):
+        //$rota = route('avaliacoes');
+        //dd($rota);
+        /*if ($avaliacao == null):
             echo "<script>
                 alert('Nenhuma avaliação disponível no momento');
                 window.location='$rota';
                 </script>";
-        else:
+        else:*/
             return view('questionarios.novo', ['avaliacao' => $avaliacao]);
-        endif;
+        //endif;
     }
 
     public function salvar()
