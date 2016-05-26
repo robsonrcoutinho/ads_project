@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>Site Gerencial ADS</title>
 
-    <!-- CSS  -->
+    
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! MaterializeCSS::include_all()!!}
@@ -97,7 +97,7 @@
 
  {!! Html::script('js/jquery-2.1.1.min.js') !!}
  {!! Html::script('js/init.js') !!}
- {!! Html::script(asset('materialize-css/js/materialize.min.js'))!!}
+ {!! Html::script('materialize-css/js/materialize.min.js')!!}
 
 </body>
 </html>

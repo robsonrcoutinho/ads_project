@@ -30,13 +30,14 @@
         <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
         <li><a href="{{route('professores')}}">Discentes</a></li>
          <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+         <li><a href="{{route('alunos')}}">Docentes</a></li>
          <li><a href="{{route('semestres')}}">Semestres</a></li>
         <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
         <li><a href="{{route('documentos')}}">Documentos</a></li>
         <li><a href="#">Gerenciar Conta</a></li>
         <li><a href="#">Gerenciar Semestre</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse" ><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse  show-on-large" ><i class="material-icons">menu</i></a>
 
 
     </div>
@@ -61,6 +62,7 @@
   <div class="container">
   
         <div class="col s12 m12">
+           
            @if($errors->any())
                             <ul class="alert alert-warning">
                                 @foreach($errors->all() as $error)
@@ -70,6 +72,13 @@
                         @endif
                         
                         @yield('conteudo')
+
+       
+
+
+
+
+
         </div>
 
 
@@ -118,13 +127,13 @@
   </footer>
 
 
-  <!--  Scripts-->
-
+   <!--  Scripts-->
  {!! Html::script('js/jquery-2.1.1.min.js') !!}
  {!! Html::script('js/init.js') !!}
- {!! Html::script(asset('materialize-css/js/materialize.min.js'))!!}
-
-
+ {!! Html::script('materialize-css/js/materialize.min.js')!!}
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
       
   </body>
 </html>
