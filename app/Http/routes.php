@@ -15,20 +15,23 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('home', [
-    'as' => 'home',
-    'uses' => 'HomeController@index'
-]);
 
-//Rotas de login
-Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::post('login', ['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+//Rotas de Alunos
+ Route::group(['prefix'=>'alunos', 'where'=>['id'=>'[0-9]+']], function(){
 
-//Rotas de Registro..
-Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
+ Route::get('',['as'=>'alunos', 'uses'=>'AlunosController@index']);
 
+ Route::get('novo',['as'=>'alunos.novo','uses'=>'AlunosController@novo']);
+
+ Route::post('salvar',['as'=>'alunos.salvar','uses'=>'AlunosController@salvar']);
+
+ Route::get('{id}/excluir',['as'=>'alunos.excluir','uses'=>'AlunosController@excluir']);
+
+ Route::get('{id}/editar',['as'=>'alunos.editar','uses'=>'AlunosController@editar']);
+
+ Route::put('{id}/alterar',['as'=>'alunos.alterar','uses'=>'AlunosController@alterar']);
+
+ });
 
 //Rotas de professores
 Route::group(['prefix' => 'professores', 'where' => ['id' => '[0-9]+']], function () {
