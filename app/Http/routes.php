@@ -210,7 +210,6 @@ Route::group(['prefix'=>'ws'], function(){
 Route::get('push', ['uses'=>'PushNotificationController@sendNotificationToDevice']);
 
 // TokenController / TokenController
-
 Route::post('token' , ['as' => 'token' , 'uses'=>'TokenController@salvarToken']);
 
 //Rotas do questionário de avaliação
