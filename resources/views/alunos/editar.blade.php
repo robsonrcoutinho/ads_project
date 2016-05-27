@@ -4,7 +4,7 @@
           <div class="card-panel  teal escurecer-4">
           <span class=" grey-text text-lighten-5" >Editar Aluno</span>
           </div>
-    {!! Form::open(['route'=>['alunos.alterar', $alunos->id], 'method'=>'put']) !!}
+    {!! Form::open(['route'=>['alunos.alterar', $aluno->id], 'method'=>'put']) !!}
     <div class="form-group">
         {!! Form::hidden ('id', $aluno->id, ['class'=>'form-control']) !!}
     </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         {!! Form::label ('email', 'E-mail: ') !!}
-        {!! Form::text ('email', $aluno->curriculo, ['class'=>'form-control']) !!}
+        {!! Form::text ('email', $aluno->email, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}

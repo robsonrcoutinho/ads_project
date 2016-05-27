@@ -17,7 +17,6 @@
 
 <div class="container">
 
-
 <div class="col s12  #004d40 teal escurecer-4 "> <span class="flow-text  white-text"> Instituto Federal de Educação, Ciência e Tecnologia - Eunápolis
 </span></div>
 

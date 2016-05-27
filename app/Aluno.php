@@ -3,6 +3,7 @@
 namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Aluno extends Model
 {

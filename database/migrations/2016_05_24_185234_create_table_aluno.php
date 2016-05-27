@@ -14,7 +14,7 @@ class CreateTableAluno extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('matricula', 6)->unique();
+            $table->string('matricula', 10)->unique();
             $table->string('nome', 30);
             $table->string('email', 100)->nullable();
             $table->softDeletes();
@@ -28,7 +28,7 @@ class CreateTableAluno extends Migration
      */
     public function down()
     {
-       // Schema::drop('alunos');
+        Schema::drop('alunos');
  
     }
 }

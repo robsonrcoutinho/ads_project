@@ -25,7 +25,8 @@ class AlunoRequest extends Request
     {
         return [
             'matricula'=>'required|min:6',
-            'nome'=>'required|min:5'
+            'nome'=>'required|min:5',
+            'email'=>'email'
         ];
     }
 }

@@ -15,8 +15,7 @@ class AlunosController extends Controller{
     }
 
     public function salvar(AlunoRequest $request){
-        $aluno = $request->all();
-        Aluno::create($aluno);
+        Aluno::create($request->all());
         return redirect()->route('alunos');
     }
     public function editar($id){

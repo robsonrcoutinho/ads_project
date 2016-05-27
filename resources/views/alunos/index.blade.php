@@ -23,7 +23,7 @@
 
                     <td>
                         @if($aluno->email !=null && $aluno->email != '' )
-                            <a href="{{ $aluno->email }}" class="btn-sm btn-success">Email</a>
+                            {{ $aluno->email }}
                     @endif
                     <td>
                         <a href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}" class="btn-sm btn-success">Editar</a>
