@@ -12,4 +12,5 @@ class Documento extends Model
     protected $fillable = ['titulo', 'url'];
     protected $softDelete = true;
     public $timestamps = false;
+    protected $hidden = ['deleted_at'];
 }

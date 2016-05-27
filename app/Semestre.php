@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Semestre extends Model
 {
     protected $table = "semestres";
-    protected $fillable = ['codigo','inicio', 'termino'];
+    protected $fillable = ['codigo', 'inicio', 'termino'];
     protected $softDelete = true;
     public $timestamps = false;
+    protected $hidden = ['deleted_at'];
 
 
     public function disciplinas()
@@ -17,7 +18,8 @@ class Semestre extends Model
         return $this->belongsToMany(Disciplina::class);
     }
 
-    public function avaliacao(){
+    public function avaliacao()
+    {
         return $this->hasOne(Avaliacao::class);
     }
 }

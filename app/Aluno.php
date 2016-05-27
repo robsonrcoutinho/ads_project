@@ -11,5 +11,5 @@ class Aluno extends Model
     public $timestamps = false;
     protected $fillable =['matricula','nome','email'];
     protected $softDelete  = true;
-    
+    protected $hidden = ['deleted_at'];
 }

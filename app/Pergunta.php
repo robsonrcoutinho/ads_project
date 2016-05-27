@@ -13,8 +13,7 @@ class Pergunta extends Model
     protected $fillable = ['enunciado', 'pergunta_fechada'];
     protected $softDelete = true;
     public $timestamps = false;
-
-
+    protected $hidden = ['deleted_at'];
 
     public function respostas()
     {

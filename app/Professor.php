@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Professor extends Model
 {
  use SoftDeletes;
+
     protected $table = "professors";
     public $timestamps = false;
     protected $fillable =['matricula','nome','curriculo'];
     protected $softDelete  = true;
+    protected $hidden = ['deleted_at'];
 
     public function disciplinas()
     {

@@ -15,6 +15,7 @@ class Disciplina extends Model
     public $timestamps = false;
     protected $fillable = ['codigo', 'nome', 'carga_horaria', 'ementa'];
     protected $softDelete = true;
+    protected $hidden = ['deleted_at'];
 
     public function professors()
     {
