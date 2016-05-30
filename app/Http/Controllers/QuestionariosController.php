@@ -17,7 +17,7 @@ class QuestionariosController extends Controller
 
     public function novo()
     {
-        $avaliacao = Avaliacao::aberta();
+        $avaliacao = Avaliacao::aberta()->first();
         $rota = route('avaliacoes');
         if ($avaliacao == null):
             echo "<script>

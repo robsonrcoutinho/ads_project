@@ -29,6 +29,5 @@ class CreateTableAluno extends Migration
     public function down()
     {
         Schema::drop('alunos');
- 
-    }
+     }
 }
