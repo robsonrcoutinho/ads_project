@@ -205,6 +205,13 @@ Route::group(['prefix' => 'ws'], function () {
         //Busca aviso por id
         Route::get('{id}', ['uses' => 'PerguntasController@buscarPorId']);
     });
+    //Rotas WS Questionários
+    Route::group(['prefix'=>'questionarios'], function(){
+        //Busca avaliação em aberto
+        Route::get('',['uses'=>'QuestionariosController@buscarAberto']);
+        //Salva respostas de avaliação
+        Route::post('',['uses'=>'QuestionariosController@salvarRespostas']);
+    });
 });
 
 //Testando push notification
@@ -220,3 +227,18 @@ Route::group(['prefix' => 'questionarios'], function () {
     //Rota para salvar o questionário (depois de respondido)
     Route::post('salvar', ['as' => 'questionarios.salvar', 'uses' => 'QuestionariosController@salvar']);
 });
+
+//Rotas de autenticação
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//Rotas de registro
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+//Rotas para troca de senha
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+//Rotas para trocar senha
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');

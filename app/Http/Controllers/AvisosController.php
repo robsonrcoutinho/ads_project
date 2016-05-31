@@ -26,8 +26,7 @@ class AvisosController extends Controller
 
     public function salvar(AvisoRequest $request)
     {
-        $aviso = $request->all();
-        Aviso::create($aviso);
+        Aviso::create($request->all());
         return redirect()->route('avisos');
     }
 

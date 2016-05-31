@@ -31,6 +31,25 @@ class QuestionariosController extends Controller
 
     public function salvar()
     {
+        $this->inserir();
+        return redirect()->route('avaliacoes');
+    }
+
+    //Métodos do Web Service
+    //Método que busca avaliação aberta para o Web Service
+    public function buscarAberto()
+    {
+        return Avaliacao::aberta()->first();
+    }
+    //Método que salva respostas de questionário via Web Service
+    public function salvarRespostas()
+    {
+        $this->inserir();
+    }
+
+    //Método que realiza inserção de respostas de questionário
+    private function inserir()
+    {
         $respostas = Input::get('campo_resposta');
         $avaliacao = Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):
@@ -40,6 +59,5 @@ class QuestionariosController extends Controller
             $r->avaliacao_id = $avaliacao;
             $r->save();
         endforeach;
-        return redirect()->route('avaliacoes');
     }
 }
