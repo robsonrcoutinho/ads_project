@@ -34,8 +34,7 @@ class Avaliacao extends Model
     public function scopeAberta($query)
     {
         return $query->whereDate('inicio', '<=', date('Y-m-d'))
-            ->whereDate('termino', '>=', date('Y-m-d'))
-            ->with('perguntas.opcoes_resposta')
-            ->firstOrFail();
+            ->whereDate('termino', '>=', date('Y-m-d'))->with('perguntas.opcoes_resposta');
+
     }
 }

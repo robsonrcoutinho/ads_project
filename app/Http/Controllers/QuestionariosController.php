@@ -40,7 +40,7 @@ class QuestionariosController extends Controller
     //Método que busca avaliação aberta para o Web Service
     public function buscarAberto()
     {
-        return Avaliacao::aberta();
+        return Avaliacao::aberta()->first();
     }
 
     //Método que salva respostas de questionário via Web Service
