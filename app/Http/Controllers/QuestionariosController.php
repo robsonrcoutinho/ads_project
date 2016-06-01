@@ -40,21 +40,18 @@ class QuestionariosController extends Controller
     //Método que busca avaliação aberta para o Web Service
     public function buscarAberto()
     {
-        $avaliacao = Avaliacao::aberta();
-        //$avaliacao = Avaliacao::recente();
-        return Response::json($avaliacao,200);
+        return Avaliacao::aberta();
     }
+
     //Método que salva respostas de questionário via Web Service
     public function salvarRespostas()
     {
-        return 'Aqui eu salvo';
         $this->inserir();
     }
 
     //Método que realiza inserção de respostas de questionário
     private function inserir()
     {
-        dd(Input::all());
         $respostas = Input::get('campo_resposta');
         $avaliacao = Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):

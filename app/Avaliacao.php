@@ -30,15 +30,12 @@ class Avaliacao extends Model
     {
         return $this->hasMany(Resposta::class);
     }
-    public function scopeAberta($query){
-        /*return Avaliacao::with(['perguntas'=> function($query){
-            $query->whereDate('inicio', '<=', date('Y-m-d'))->whereDate('termino', '>=', date('Y-m-d'));
-        }])->get();*/
-        return $query->whereDate('inicio', '<=', date('Y-m-d'))->whereDate('termino', '>=', date('Y-m-d'))->with('perguntas.opcoes_resposta')->firstOrFail();
-    }
-    public function scopeRecente(){
-        return Avaliacao::load(['pergunta'=>function($query){
-            $query->whereDate('inicio', '<=', date('Y-m-d'))->whereDate('termino', '>=', date('Y-m-d'));
-        }])->get();
+
+    public function scopeAberta($query)
+    {
+        return $query->whereDate('inicio', '<=', date('Y-m-d'))
+            ->whereDate('termino', '>=', date('Y-m-d'))
+            ->with('perguntas.opcoes_resposta')
+            ->firstOrFail();
     }
 }

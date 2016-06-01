@@ -210,10 +210,10 @@ Route::group(['prefix' => 'ws'], function () {
         //Busca avaliação em aberto
         Route::get('', ['uses' => 'QuestionariosController@buscarAberto']);
         //Salva respostas de avaliação
-        //Route::post('salvar', ['uses' => 'QuestionariosController@salvarRespostas']);
-        Route::post('salvar', function(){
+        Route::post('', ['uses' => 'QuestionariosController@salvarRespostas']);
+        /*Route::post('salvar',  function(){
             return 'salvar';
-        });
+        });*/
     });
 });
 
