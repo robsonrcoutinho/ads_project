@@ -11,6 +11,7 @@ namespace adsproject\Http\Controllers;
 use adsproject\Avaliacao;
 use adsproject\Resposta;
 use Illuminate\Support\Facades\Input;
+use Response;
 
 class QuestionariosController extends Controller
 {
@@ -39,17 +40,21 @@ class QuestionariosController extends Controller
     //Método que busca avaliação aberta para o Web Service
     public function buscarAberto()
     {
-        return Avaliacao::aberta()->first();
+        $avaliacao = Avaliacao::aberta();
+        //$avaliacao = Avaliacao::recente();
+        return Response::json($avaliacao,200);
     }
     //Método que salva respostas de questionário via Web Service
     public function salvarRespostas()
     {
+        return 'Aqui eu salvo';
         $this->inserir();
     }
 
     //Método que realiza inserção de respostas de questionário
     private function inserir()
     {
+        dd(Input::all());
         $respostas = Input::get('campo_resposta');
         $avaliacao = Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):

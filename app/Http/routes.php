@@ -17,21 +17,21 @@ Route::get('/', function () {
 
 
 //Rotas de Alunos
- Route::group(['prefix'=>'alunos', 'where'=>['id'=>'[0-9]+']], function(){
+Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
 
- Route::get('',['as'=>'alunos', 'uses'=>'AlunosController@index']);
+    Route::get('', ['as' => 'alunos', 'uses' => 'AlunosController@index']);
 
- Route::get('novo',['as'=>'alunos.novo','uses'=>'AlunosController@novo']);
+    Route::get('novo', ['as' => 'alunos.novo', 'uses' => 'AlunosController@novo']);
 
- Route::post('salvar',['as'=>'alunos.salvar','uses'=>'AlunosController@salvar']);
+    Route::post('salvar', ['as' => 'alunos.salvar', 'uses' => 'AlunosController@salvar']);
 
- Route::get('{id}/excluir',['as'=>'alunos.excluir','uses'=>'AlunosController@excluir']);
+    Route::get('{id}/excluir', ['as' => 'alunos.excluir', 'uses' => 'AlunosController@excluir']);
 
- Route::get('{id}/editar',['as'=>'alunos.editar','uses'=>'AlunosController@editar']);
+    Route::get('{id}/editar', ['as' => 'alunos.editar', 'uses' => 'AlunosController@editar']);
 
- Route::put('{id}/alterar',['as'=>'alunos.alterar','uses'=>'AlunosController@alterar']);
+    Route::put('{id}/alterar', ['as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
 
- });
+});
 
 //Rotas de professores
 Route::group(['prefix' => 'professores', 'where' => ['id' => '[0-9]+']], function () {
@@ -206,11 +206,14 @@ Route::group(['prefix' => 'ws'], function () {
         Route::get('{id}', ['uses' => 'PerguntasController@buscarPorId']);
     });
     //Rotas WS Questionários
-    Route::group(['prefix'=>'questionarios'], function(){
+    Route::group(['prefix' => 'questionarios'], function () {
         //Busca avaliação em aberto
-        Route::get('',['uses'=>'QuestionariosController@buscarAberto']);
+        Route::get('', ['uses' => 'QuestionariosController@buscarAberto']);
         //Salva respostas de avaliação
-        Route::post('',['uses'=>'QuestionariosController@salvarRespostas']);
+        //Route::post('salvar', ['uses' => 'QuestionariosController@salvarRespostas']);
+        Route::post('salvar', function(){
+            return 'salvar';
+        });
     });
 });
 
