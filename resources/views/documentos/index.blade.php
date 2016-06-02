@@ -38,6 +38,6 @@
         </table>
         <br/>
         <br/>
-        <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
+       <!-- <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a> -->
     </div>
 @endsection

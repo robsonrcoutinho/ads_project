@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('titulo', 'Título: ') !!}
-            {!! Form::text ('titulo', $documento->titulo, ['class'=>'form-control']) !!}
+            {!! Form::label ('titulo', $documento->titulo, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('url', 'URL: ') !!}
