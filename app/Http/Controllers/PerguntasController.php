@@ -27,14 +27,19 @@ class PerguntasController extends Controller
     public function salvar(PerguntaRequest $request)
     {
         $pergunta = Pergunta::create($request->all());
+        $opcoes = $request->get('opcoes_resposta');
         if ($pergunta->pergunta_fechada):
-            $opcoes = $request->get('opcoes_resposta');
-            foreach ($opcoes as $opcao):
-                $opcao_resposta = new OpcaoResposta();
-                $opcao_resposta->resposta_opcao = $opcao;
-                $opcao_resposta->pergunta()->associate($pergunta);
-                $opcao_resposta->save();
-            endforeach;
+            if ($opcoes == null):
+                $pergunta->pergunta_fechada = false;
+                $pergunta->save();
+            else:
+                foreach ($opcoes as $opcao):
+                    $opcao_resposta = new OpcaoResposta();
+                    $opcao_resposta->resposta_opcao = $opcao;
+                    $opcao_resposta->pergunta()->associate($pergunta);
+                    $opcao_resposta->save();
+                endforeach;
+            endif;
         endif;
         return redirect()->route('perguntas');
     }
@@ -72,7 +77,7 @@ class PerguntasController extends Controller
         return redirect()->route('perguntas');
     }
 
-//Inclui todas as opçoes de resposta
+    //Inclui todas as opçoes de resposta
     private function inserirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
@@ -89,7 +94,7 @@ class PerguntasController extends Controller
         endforeach;
     }
 
-//Exclui todas as opçoes de resposta
+    //Exclui todas as opçoes de resposta
     private function removerOpcoes(Pergunta $pergunta)
     {
         foreach ($pergunta->opcoes_resposta as $opcao):
@@ -97,11 +102,13 @@ class PerguntasController extends Controller
         endforeach;
     }
 
-//Altera opções de resposta mantendo a quantidade
-
+    //Altera opções de resposta mantendo a quantidade
     private function atualizarOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
+        if (count($opcoes) == 0):
+            $request->merge(array('pergunta_fechada' => false));
+        endif;
         for ($i = 0; $i < count($opcoes); $i++):
             $opcao_resposta = OpcaoResposta::find($pergunta->opcoes_resposta[$i]->id);
             $opcao_resposta->resposta_opcao = $opcoes[$i];
@@ -109,7 +116,7 @@ class PerguntasController extends Controller
         endfor;
     }
 
-//Aumenta o número de opções de resposta
+    //Aumenta o número de opções de resposta
     private function aumentarOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
@@ -131,7 +138,7 @@ class PerguntasController extends Controller
         endwhile;
     }
 
-//Duminui o número de opções de resposta
+    //Duminui o número de opções de resposta
     private function diminuirOpcoes(Pergunta $pergunta, PerguntaRequest $request)
     {
         $opcoes = $request->get('opcoes_resposta');
