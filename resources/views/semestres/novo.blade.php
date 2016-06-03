@@ -1,9 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-         <div class="card-panel  teal escurecer-4">
-         <span class=" grey-text text-lighten-5" >Novo Semestre</span>
-         </div>
+        <div class="card-panel  teal escurecer-4">
+            <span class=" grey-text text-lighten-5">Novo Semestre</span>
+        </div>
         {!! Form::open(['route'=>'semestres.salvar']) !!}
 
         <div class="form-group">
@@ -23,8 +23,8 @@
                 <ul id="disciplinas">
                     <legend>Disciplinas</legend>
                     @foreach($disciplinas as $disciplina)
-                        {!! Form::checkbox('disciplinas[]', $disciplina->id) !!}
-                        {{ $disciplina->nome }}
+                        {!! Form::checkbox('disciplinas[]', $disciplina->id, null,['id'=>$disciplina->id, 'class'=>'filled-in']) !!}
+                        {!! Form::label($disciplina->id, $disciplina->nome) !!}
                         <br/>
                     @endforeach
                 </ul>

@@ -26,8 +26,8 @@
                     <legend>Disciplinas</legend>
                     @if($semestre->disciplinas!=null || !$semestre->disciplinas->isEmpty)
                         @foreach($disciplinas as $disciplina)
-                            {!! Form::checkbox('disciplinas[]', $disciplina->id, $semestre->disciplinas->contains($disciplina)) !!}
-                            {{ $disciplina->nome }}
+                            {!! Form::checkbox('disciplinas[]', $disciplina->id, $semestre->disciplinas->contains($disciplina),['id'=>$disciplina->id, 'class'=>'filled-in']) !!}
+                            {!! Form::label($disciplina->id, $disciplina->nome) !!}
                             <br/>
                         @endforeach
                     @endif
