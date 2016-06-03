@@ -15,6 +15,8 @@ class AlunosController extends Controller{
     }
 
     public function salvar(AlunoRequest $request){
+        $this->validate($request, ['matricula' => 'unique:alunos,matricula',
+            'email'=>'unique:alunos,email']);
         Aluno::create($request->all());
         return redirect()->route('alunos');
     }
@@ -23,6 +25,8 @@ class AlunosController extends Controller{
         return view('alunos.editar', compact('aluno'));
     }
     public function alterar(AlunoRequest $request, $id){
+        $this->validate($request, ['matricula' => 'unique:alunos,matricula,'.$id,
+            'email'=>'unique:alunos,email,'.$id]);
         Aluno::find($id)->update($request->all());
         return redirect()->route('alunos');
     }

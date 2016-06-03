@@ -24,9 +24,9 @@ class SemestreRequest extends Request
     public function rules()
     {
         return [
-            'codigo'=>'required|min:6',
-            'inicio'=>'required',
-            'termino'=>'required'
+            'codigo' => 'required|size:6',
+            'inicio' => 'required|date',
+            'termino' => 'required|date|after:inicio'
         ];
     }
 }

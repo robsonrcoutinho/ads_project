@@ -17,7 +17,6 @@ class CreateProfessorsTable extends Migration
         });
     }
 
-
     public function down()
     {
         Schema::drop('professors');

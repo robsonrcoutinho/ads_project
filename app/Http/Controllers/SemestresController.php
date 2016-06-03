@@ -1,4 +1,5 @@
 <?php namespace adsproject\Http\Controllers;
+
 /**
  * Created by PhpStorm.
  * User: Wilder
@@ -9,38 +10,47 @@ use adsproject\Semestre;
 use adsproject\Http\Requests\SemestreRequest;
 use adsproject\Disciplina;
 
-class SemestresController extends Controller{
-    public function index(){
+class SemestresController extends Controller
+{
+    public function index()
+    {
         $semestres = Semestre::all();
-        return view('semestres.index', ['semestres'=>$semestres]);
+        return view('semestres.index', ['semestres' => $semestres]);
     }
 
-    public function novo(){
+    public function novo()
+    {
         $disciplinas = Disciplina::all();
-        return view('semestres.novo', ['disciplinas'=>$disciplinas]);
+        return view('semestres.novo', ['disciplinas' => $disciplinas]);
     }
-    public function salvar(SemestreRequest $request){
-        $semestre=Semestre::create($request->all());
+
+    public function salvar(SemestreRequest $request)
+    {
+        $this->validate($request,['codigo'=>'unique:semestres,codigo']);
+        $semestre = Semestre::create($request->all());
         $disciplinas = $request->get('disciplinas');
-        if($disciplinas!=null):
+        if ($disciplinas != null):
             $semestre->disciplinas()->sync($disciplinas);
-            $semestre->update();
         endif;
         return redirect('semestres');
     }
 
-    public function editar($id){
+    public function editar($id)
+    {
         $semestre = Semestre::find($id);
         $disciplinas = Disciplina::all();
-        return view('semestres.editar',['semestre'=>$semestre,'disciplinas'=>$disciplinas]);
+        return view('semestres.editar', ['semestre' => $semestre, 'disciplinas' => $disciplinas]);
     }
-    public function alterar(SemestreRequest $request, $id){
-        $semestre=Semestre::find($id);
+
+    public function alterar(SemestreRequest $request, $id)
+    {
+        $this->validate($request,['codigo'=>'unique:semestres,codigo,'.$id]);
+        $semestre = Semestre::find($id);
         $disciplinas = $request->get('disciplinas');
-        if($disciplinas!=null):
+        if ($disciplinas != null):
             $semestre->disciplinas()->sync($disciplinas);
-        elseif($semestre->disciplinas != null):
-        $semestre->disciplinas()->detach($semestre->disciplinas);
+        elseif ($semestre->disciplinas != null && !$semestre->disciplinas->isEmpty()):
+            $semestre->disciplinas()->detach($semestre->disciplinas);
         endif;
         $semestre->update($request->all());
         return redirect()->route('semestres');

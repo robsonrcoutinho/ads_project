@@ -28,7 +28,8 @@ class DisciplinaRequest extends Request
         return [
             'codigo'=>'required|size:6',
             'nome'=>'required|min:5',
-            'carga_horaria'=>'required'
+            'carga_horaria'=>'required|integer',
+            'ementa'=>'url'
         ];
     }
 }

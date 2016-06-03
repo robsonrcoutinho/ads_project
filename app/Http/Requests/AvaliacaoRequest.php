@@ -24,9 +24,8 @@ class AvaliacaoRequest extends Request
     public function rules()
     {
         return [
-            //'semestre_id'=>'required',
-            'inicio'=>'required',
-            'termino'=>'required'
+            'inicio' => 'required|date',
+            'termino' => 'required|date|after:inicio'
         ];
     }
 }

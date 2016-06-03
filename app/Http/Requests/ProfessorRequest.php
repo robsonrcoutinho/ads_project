@@ -1,10 +1,10 @@
 <?php namespace adsproject\Http\Requests;
-/**
- * Created by PhpStorm.
- * User: Wilder
- * Date: 15/03/2016
- * Time: 09:06
- */
+    /**
+     * Created by PhpStorm.
+     * User: Wilder
+     * Date: 15/03/2016
+     * Time: 09:06
+     */
 
 
 //use adsproject\Http\Requests\Request;
@@ -29,8 +29,9 @@ class ProfessorRequest extends Request
     public function rules()
     {
         return [
-            'matricula'=>'required|min:6',
-            'nome'=>'required|min:5'
+            'matricula' => 'required|min:6',
+            'nome' => 'required|min:5',
+            'curriculo' => 'url'
         ];
 
     }

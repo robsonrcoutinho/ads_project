@@ -12,6 +12,10 @@ use adsproject\Http\Requests\DisciplinaRequest;
 
 class DisciplinasController extends Controller
 {
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
 
     public function index()
     {
@@ -27,6 +31,7 @@ class DisciplinasController extends Controller
 
     public function salvar(DisciplinaRequest $request)
     {
+        $this->validate($request,['codigo'=>'unique:disciplinas,codigo']);
         $disciplina = Disciplina::create($request->all());
         $pre_requisitos = $request->get('pre_requisitos');
         if ($pre_requisitos != null):
@@ -44,6 +49,7 @@ class DisciplinasController extends Controller
 
     public function alterar(DisciplinaRequest $request, $id)
     {
+        $this->validate($request,['codigo'=>'unique:disciplinas,codigo,'.$id]);
         $disciplina = Disciplina::find($id);
         $pre_requisitos = $request->get('pre_requisitos');
         if ($pre_requisitos != null):

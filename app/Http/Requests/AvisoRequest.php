@@ -24,8 +24,8 @@ class AvisoRequest extends Request
     public function rules()
     {
         return [
-            'titulo'=>'required',
-            'mensagem'=>'required'
+            'titulo'=>'required|min:5|max:20',
+            'mensagem'=>'required|min:5|max:255'
         ];
     }
 }

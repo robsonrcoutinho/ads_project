@@ -24,8 +24,8 @@ class DocumentoRequest extends Request
     public function rules()
     {
         return [
-            'titulo' => 'required',
-            'url'=> 'required'
+            'titulo' => 'required|max:50',
+            'url'=> 'required|url'
         ];
     }
 }
