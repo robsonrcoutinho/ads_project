@@ -211,9 +211,6 @@ Route::group(['prefix' => 'ws'], function () {
         Route::get('', ['uses' => 'QuestionariosController@buscarAberto']);
         //Salva respostas de avaliação
         Route::post('', ['uses' => 'QuestionariosController@salvarRespostas']);
-        /*Route::post('salvar',  function(){
-            return 'salvar';
-        });*/
     });
 });
 
@@ -237,7 +234,7 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 //Rotas de registro
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', ['as'=>'registrar', 'Auth\AuthController@postRegister']);
 
 //Rotas para troca de senha
 Route::get('password/email', 'Auth\PasswordController@getEmail');

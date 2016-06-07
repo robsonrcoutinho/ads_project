@@ -7,6 +7,8 @@ use Validator;
 use adsproject\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -22,8 +24,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    /**
+    protected $redirectTo = '/avaliacoes';    /**
      * Create a new authentication controller instance.
      *
      * @return void
@@ -36,7 +37,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -51,7 +52,7 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -61,5 +62,27 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function postLogin(Request $request)
+    {
+        if (Auth::attempt(
+            [
+                'name' => $request->name,
+            //    'email' => $request->email,
+                'password' => $request->password,
+            ], $request->has
+        )
+        ) {
+            return redirect()->intended($this->redirectPath());
+        }else{
+            $rules = [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required'
+            ];
+            $validador = Validator::make($request->all(), $rules);
+            return redirect('auth/login')->withErrors($validador)->withInput( );
+        }
     }
 }

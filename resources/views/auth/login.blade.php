@@ -29,16 +29,18 @@
 
             </div>
             <div class="card-content">
-                <form>
+                <form method="POST" action="/auth/login">
+                    {!! csrf_field() !!}
                     <div class="input-field col s12">
-                        <input id="Usuario" type="text" class="validate" value="{{ old('email') }}">
+                        <input id="Usuario" type="text" class="validate" value="{{ old('email') }}" name="name">
                         <label class ="left-align" for="Usuario">USUARIO</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate" >
+                        <input id="password" type="password" class="validate" name="password">
                         <label  class ="left-align" for="Senha">SENHA</label>
                     </div>
-                    <button type="button" id="botao_login" name="botao_login" class="btn blue-grey right waves-effect waves-light white-text">Login</button>
+                    <!-- <button type="button" id="botao_login" name="botao_login" class="btn blue-grey right waves-effect waves-light white-text">Login</button> -->
+                    <button type="submit" id="botao_login" name="botao_login" class="btn blue-grey right waves-effect waves-light white-text">Login</button>
                 </form>
             </div>
             <div class="card-action clearfix">
@@ -47,7 +49,7 @@
                         <a href="#" class="green-text accent-3  tooltipped" data-position="top" data-delay="30" data-tooltip="Recuperar Senha?">Esqueceu a senha?</a>
                     </div>
                     <div class="col s6 right-align text-p">
-                        <a href="#" class="green-text accent-3  tooltipped" data-position="top" >Registra-se!</a>
+                        <a href="{{route('registrar')}}" class="green-text accent-3  tooltipped" data-position="top" >Registra-se!</a>
                     </div>
                 </div>
             </div>
@@ -69,16 +71,16 @@
         <div class="col l3 s12">
             <h5 class="white-text">CONTATO</h5>
             <ul>
-                <li><a class="white-text" href="#!"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
-                <li><a class="white-text" href="#!"><i class="material-icons">email</i> email@decontato.com</a></li>
+                <li><a class="white-text" ><i class="material-icons">phone</i> (73) 3281-2266</a></li>
+                <li><a class="white-text" ><i class="material-icons">email</i> email@decontato.com</a></li>
                 
             </ul>
         </div>
         <div class="col l3 s12">
             <h5 class="white-text">CONECTAR</h5>
             <ul>
-                <li><a class="white-text" href="#!">Facebook</a></li>
-                <li><a class="white-text" href="#!">Twitter</a></li>
+                <li><a class="white-text">Facebook</a></li>
+                <li><a class="white-text">Twitter</a></li>
                 
             </ul>
         </div>
