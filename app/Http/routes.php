@@ -234,9 +234,9 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 //Rotas de registro
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', ['as'=>'registrar', 'Auth\AuthController@postRegister']);
+Route::post('auth/register', ['as'=>'registrar','uses'=> 'Auth\AuthController@postRegister']);
 
-//Rotas para troca de senha
+//Rotas para solicitar troca de senha
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Rotas para trocar senha

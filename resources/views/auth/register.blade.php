@@ -4,7 +4,7 @@
         <div class="card-panel  teal escurecer-4">
             <span class=" grey-text text-lighten-5">Registrar Usuário</span>
         </div>
-        {!! Form::open(["route"=>"registrar", "method"=>"post"]) !!}
+        {!! Form::open(["route"=>"registrar"]) !!}
         {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::label ('name', 'Nome: ') !!}
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('email', 'E-mail: ') !!}
-            {!! Form::text ('email', null, ['class'=>'form-control']) !!}
+            {!! Form::email ('email', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
@@ -23,7 +23,7 @@
             {!! Form::password ('password_confirmation', ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

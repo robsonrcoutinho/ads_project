@@ -13,10 +13,10 @@ use adsproject\Http\Requests\ProfessorRequest;
 class ProfessoresController extends Controller
 {
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
     public function index()
     {
         $professores = Professor::all();
