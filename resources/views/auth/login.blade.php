@@ -4,8 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>Site Gerencial ADS</title>
-
-
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! MaterializeCSS::include_all()!!}
@@ -30,13 +28,17 @@
                 <div class="card-content">
                     <form method="POST" action="/auth/login">
                         {!! csrf_field() !!}
+                        <ul class="alert alert-warning">
                         @if($errors->any())
-                            <ul class="alert alert-warning">
+
                                 @foreach($errors->all() as $error)
                                     <li>{{$error}}</li>
                                 @endforeach
-                            </ul>
+
+                        @elseif(Session::has('erro_autenticacao'))
+                            <li>Usuário e/ou senha inválidos</li>
                         @endif
+                        </ul>
                         <div class="input-field col s12">
                             <input id="Usuario" type="text" class="validate" value="{{ old('email') }}" name="name">
                             <label class="left-align" for="Usuario">USUARIO</label>

@@ -15,6 +15,10 @@
             {!! Form::email ('email', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
+            {!! Form::label ('role', 'Papel: ') !!}
+            {!! Form::select ('role', ['aluno'=>'aluno', 'professor'=>'professor'], null, ['class'=>'browser-default']) !!}
+        </div>
+        <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
             {!! Form::password ('password', ['class'=>'form-control']) !!}
         </div>

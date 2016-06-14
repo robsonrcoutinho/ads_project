@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Auth;
 
+
 class AuthController extends Controller
 {
     /*
@@ -22,9 +23,10 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-    protected $redirectTo = '/avaliacoes';    /**
+    protected $redirectTo = '/';
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
@@ -42,10 +44,17 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        $papel = $data['role'];
+        if ($papel == 'professor'):
+            $role = 'required|max:255|exists:professors,nome';
+        elseif ($papel == 'aluno'):
+            $role = 'required|max:255|exists:alunos,nome';
+        endif;
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => $role,
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'role' => 'required',
         ]);
     }
 
@@ -61,6 +70,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role' => $data['role'],
         ]);
     }
 
@@ -69,20 +79,18 @@ class AuthController extends Controller
         if (Auth::attempt(
             [
                 'name' => $request->name,
-            //    'email' => $request->email,
                 'password' => $request->password,
             ], $request->has
         )
         ) {
             return redirect()->intended($this->redirectPath());
-        }else{
+        } else {
             $rules = [
                 'name' => 'required',
-                //'email' => 'required|email',
                 'password' => 'required'
             ];
-            $validador = Validator::make($request->all(), $rules);
-            return redirect('auth/login')->withErrors($validador)->withInput( );
+            $validador = Validator::make($request->all(), $rules)->setAttributeNames(['name' => 'Usuário']);
+            return redirect('auth/login')->withErrors($validador)->withInput()->with('erro_autenticacao',1);
         }
     }
 }

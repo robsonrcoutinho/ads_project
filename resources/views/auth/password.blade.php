@@ -8,10 +8,10 @@
         {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::label ('email', 'E-mail:',['class'=>'form-control']) !!}
-            {!! Form::email ('email', old('email'), ['class'=>'form-control']) !!}
+            {!! Form::email ('email', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>
