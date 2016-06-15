@@ -146,6 +146,23 @@ Route::group(['prefix' => 'respostas', 'where' => ['id' => '[0-9]+']], function 
 //Rota para IndexResposta
     Route::get('', ['as' => 'respostas', 'uses' => 'RespostasController@index']);
 });
+//Rotas de users
+Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
+//Rota para IndexUser
+    Route::get('', ['as' => 'users', 'uses' => 'UsersController@index']);
+//Rota para novo user
+    Route::get('novo', ['as' => 'users.novo', 'uses' => 'UsersController@novo']);
+//Rota para salvar user
+    Route::post('salvar', ['as' => 'users.salvar', 'uses' => 'UsersController@salvar']);
+//Rota para exluir user
+    Route::get('{id}/excluir', ['as' => 'users.excluir', 'uses' => 'UsersController@excluir']);
+//Rota para editar user
+    Route::get('{id}/editar', ['as' => 'users.editar', 'uses' => 'UsersController@editar']);
+//Rota para alterar user
+    Route::put('{id}/alterar', ['as' => 'users.alterar', 'uses' => 'UsersController@alterar']);
+});
+
+
 //Rotas para Web Service
 Route::group(['prefix' => 'ws'], function () {
     //Rotas WS Professores
@@ -233,12 +250,27 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 //Rotas de registro
-Route::get('auth/register', ['as'=>'registro', 'uses'=>'Auth\AuthController@getRegister']);
-Route::post('auth/register', ['as'=>'registrar','uses'=> 'Auth\AuthController@postRegister']);
+Route::get('auth/register', ['as' => 'registro', 'uses' => 'Auth\AuthController@getRegister']);
+Route::post('auth/register', ['as' => 'registrar', 'uses' => 'Auth\AuthController@postRegister']);
 
 //Rotas para solicitar troca de senha
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Rotas para trocar senha
-Route::get('password/reset/{token}',['as'=>'password.reset', 'uses'=>'Auth\PasswordController@getReset']);
+Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+
+/*
+// Verifica se o usuário está logado
+Route::group(array('before' => 'auth'), function()
+{
+    // Rota de artigos
+    Route::controller('artigos', 'ArtigosController');
+
+    // Rotas do administrador
+    Route::group(array('before' => 'auth.admin'), function()
+    {
+        Route::controller('usuarios', 'UsuariosController');
+    });
+});*/

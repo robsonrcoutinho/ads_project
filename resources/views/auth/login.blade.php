@@ -30,11 +30,9 @@
                         {!! csrf_field() !!}
                         <ul class="alert alert-warning">
                         @if($errors->any())
-
                                 @foreach($errors->all() as $error)
                                     <li>{{$error}}</li>
                                 @endforeach
-
                         @elseif(Session::has('erro_autenticacao'))
                             <li>Usuário e/ou senha inválidos</li>
                         @endif
