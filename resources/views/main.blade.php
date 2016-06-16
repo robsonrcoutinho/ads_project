@@ -20,11 +20,10 @@
 
         <ul class="right hide-on-med-and-down">
 
-            <li><a href="#">Gerenciar Conta</a></li>
+            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
             <li><a href="#">Gerenciar Semestre</a></li>
 
         </ul>
-
 
         <ul id="nav-mobile " class="side-nav ">
             <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
@@ -34,7 +33,7 @@
             <li><a href="{{route('semestres')}}">Semestres</a></li>
             <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
             <li><a href="{{route('documentos')}}">Documentos</a></li>
-            <li><a href="#">Gerenciar Conta</a></li>
+            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
             <li><a href="#">Gerenciar Semestre</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse  show-on-large"><i

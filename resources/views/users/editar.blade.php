@@ -17,10 +17,12 @@
             {!! Form::label ('email', 'E-mail: ') !!}
             {!! Form::email ('email', $user->email, ['class'=>'form-control']) !!}
         </div>
+        @can()
         <div class="form-group">
             {!! Form::label ('role', 'Papel: ') !!}
             {!! Form::select ('role', $roles, $user->role, ['class'=>'browser-default']) !!}
         </div>
+        @endcan
         <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
             {!! Form::password ('password', ['class'=>'form-control']) !!}

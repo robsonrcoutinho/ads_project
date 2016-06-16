@@ -10,6 +10,7 @@ namespace adsproject\Http\Controllers;
 
 use adsproject\User;
 use adsproject\Http\Requests\UserRequest;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -19,10 +20,15 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
-        $users = User::all();
-        return view('users.index', ['users' => $users]);
+        $user = Auth::user();
+        if ($user->role == 'admin'):
+            $users = User::all();
+            return view('users.index', ['users' => $users]);
+        endif;
+        return $this->editar($user->id);
     }
 
     public function novo()
@@ -42,6 +48,7 @@ class UsersController extends Controller
     public function editar($id)
     {
         $user = User::find($id);
+        //$this->authorize('update', $user);
         return view('users.editar', compact('user'), ['roles' => $this->roles]);
     }
 
