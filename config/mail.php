@@ -16,7 +16,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
-
+    //'driver' => env('MAIL_DRIVER', 'mailgun'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -27,7 +27,7 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-
+    //'host' => env('MAIL_HOST', 'smtp.gmail.com'),
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
