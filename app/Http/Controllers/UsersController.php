@@ -48,7 +48,6 @@ class UsersController extends Controller
     public function editar($id)
     {
         $user = User::find($id);
-        //$this->authorize('update', $user);
         return view('users.editar', compact('user'), ['roles' => $this->roles]);
     }
 
