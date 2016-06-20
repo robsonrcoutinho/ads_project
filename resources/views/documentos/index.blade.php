@@ -25,11 +25,15 @@
                             <a href="{{ $documento->url }}" class="btn-sm btn-success">LINK</a>
                     @endif
                     <td>
+                        @can('alterar', $documento)
                         <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}" class="btn-sm btn-success">Editar</a>
+                        @endcan
+                        @can('excluir', $documento)
                         @if($documento->id>5)
                             <a href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"
                                class="btn-sm btn-danger">Excluir</a>
                         @endif
+                        @endcan
                     </td>
                 </tr>
 
@@ -38,6 +42,8 @@
         </table>
         <br/>
         <br/>
-       <!-- <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a> -->
+        <!--@can('salvar', $documento)
+                <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
+        @endcan -->
     </div>
 @endsection

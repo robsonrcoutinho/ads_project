@@ -22,7 +22,9 @@
                     <td>{{ date('d/m/Y', strtotime($semestre->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($semestre->termino)) }}</td>
                     <td>
+                        @can('alterar', $semestre)
                         <a href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}" class="btn-sm btn-success"> Editar</a>
+                        @endcan
                     </td>
                 </tr>
 
@@ -31,6 +33,8 @@
         </table>
         <br/>
         <br/>
+        @can('salvar', $semestre)
         <a href="{{ route('semestres.novo')}}" class="btn btn-default"> Novo Semestre</a>
+        @endcan
     </div>
 @endsection

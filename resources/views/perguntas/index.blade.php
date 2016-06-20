@@ -19,8 +19,12 @@
                     <td>{{$pergunta->id}}</td>
                     <td>{{$pergunta->enunciado}}</td>
                     <td>
+                        @can('alterar', $pergunta)
                         <a href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}" class="btn-sm btn-success">Editar</a>
+                        @endcan
+                        @can('excluir', $pergunta)
                         <a href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
@@ -28,6 +32,8 @@
         </table>
         <br/>
         <br/>
+        @can('salvar', new Pergunta())
         <a href="{{ route('perguntas.novo')}}" class="btn btn-default">Nova pergunta</a>
+        @endcan
     </div>
 @endsection

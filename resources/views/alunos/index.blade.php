@@ -1,9 +1,9 @@
 @extends('main')
 @section('conteudo')
-        <div class="category">
-             <div class="card-panel  teal escurecer-4">
-              <span class=" grey-text text-lighten-5" >Alunos</span>
-              </div>
+    <div class="category">
+        <div class="card-panel  teal escurecer-4">
+            <span class=" grey-text text-lighten-5">Alunos</span>
+        </div>
         <table class="highlight  responsive-table">
 
             <thead>
@@ -22,22 +22,27 @@
                     <td>{{$aluno->nome}}</td>
 
                     <td>
-                        @if($aluno->email !=null && $aluno->email != '' )
-                            {{ $aluno->email }}
+                    @if($aluno->email !=null && $aluno->email != '' )
+                        {{ $aluno->email }}
                     @endif
                     <td>
+                        @can('alterar', $aluno)
                         <a href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}" class="btn-sm btn-success">Editar</a>
-                        <a href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        @endcan
+                        @can('excluir', $aluno)
+                        <a href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}"
+                           class="btn-sm btn-danger">Excluir</a>
+                        @endcan
                     </td>
                 </tr>
 
             @endforeach
             </tbody>
-
         </table>
-
         <br/>
         <br/>
+        @can('salvar', $aluno)
         <a href="{{ route('alunos.novo')}}" class="btn btn-default">Novo Aluno</a>
-        </div>
+        @endcan
+    </div>
 @endsection

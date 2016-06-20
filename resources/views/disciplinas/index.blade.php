@@ -2,7 +2,7 @@
 @section('conteudo')
     <div class="category">
         <div class="card-panel  teal escurecer-4">
-        <span class=" grey-text text-lighten-5" >Disciplinas </span>
+            <span class=" grey-text text-lighten-5">Disciplinas </span>
 
         </div>
         <table class="highlight  responsive-table">
@@ -25,7 +25,7 @@
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
                             <a href="{{ $disciplina->ementa }}" class="btn-sm btn-success">Ementa</a>
-                    @endif
+                        @endif
                     </td>
                     <td>
                         @if($disciplina->pre_requisitos !=null || !$disciplina->pre_requisto->isEmpty )
@@ -35,8 +35,12 @@
                         @endif
                     </td>
                     <td>
+                        @can('alterar', $disciplina)
                         <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" class="btn-sm btn-success">Editar</a>
+                        @endcan
+                        @can('excluir', $disciplina)
                         <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
@@ -44,7 +48,8 @@
         </table>
         <br/>
         <br/>
+        @can('salvar', $disciplina)
         <a href="{{ route('disciplinas.novo')}}" class="btn btn-default"> Nova disciplina</a>
-
+        @endcan
     </div>
-    @endsection
+@endsection

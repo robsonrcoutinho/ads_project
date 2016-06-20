@@ -1,11 +1,12 @@
 <?php
+
 namespace adsproject\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use adsproject\Professor;
+use adsproject\Semestre;
 use adsproject\User;
 
-class ProfessorPolicy
+class SemestrePolicy
 {
     use HandlesAuthorization;
 
@@ -18,17 +19,17 @@ class ProfessorPolicy
     {
         //
     }
-    public function salvar(User $user, Professor $professor)
+    public function salvar(User $user, Semestre $semestre)
     {
         return $user->role == 'admin';
     }
 
-    public function alterar(User $user, Professor $professor)
+    public function alterar(User $user, Semestre $semestre)
     {
         return $user->role == 'admin';
     }
 
-    public function excluir(User $user, Professor $professor)
+    public function excluir(User $user, Semestre $semestre)
     {
         return $user->role == 'admin';
     }

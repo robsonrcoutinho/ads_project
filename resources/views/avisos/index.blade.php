@@ -2,9 +2,9 @@
 @section('conteudo')
     <div class="category">
         <div class="card-panel  teal escurecer-4">
-        <span class=" grey-text text-lighten-5" >Avisos</span>
+            <span class=" grey-text text-lighten-5">Avisos</span>
         </div>
-        <table class="highlight  responsive-table" >
+        <table class="highlight  responsive-table">
             <thead>
             <tr>
                 <th>Id</th>
@@ -18,19 +18,25 @@
                     <td>{{$aviso->id}}</td>
                     <td>{{$aviso->titulo}}</td>
                     <td>
-                        <a href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}" class="btn disabled" >Editar</a>
+                        @can('alterar', $aviso)
+                        <a href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}" class="btn disabled">Editar</a>
+                        @endcan
+                        @can('exclur', $aviso)
                         <a href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn disabled">Excluir</a>
+                        @endcan
                     </td>
                 </tr>
-                @empty
+            @empty
                 <tr>
-                    <td colspan="3">Sem Postagem!</td>
+                    <td colspan="3">Sem Avisos!</td>
                 </tr>
             @endforelse
             </tbody>
         </table>
         <br/>
         <br/>
+        @can('salvar', new Aviso()))
         <a href="{{ route('avisos.novo')}}" class="btn btn-default">Novo aviso</a>
+        @endcan
     </div>
 @endsection
