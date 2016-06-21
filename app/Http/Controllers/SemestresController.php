@@ -12,6 +12,11 @@ use adsproject\Disciplina;
 
 class SemestresController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $semestres = Semestre::all();
@@ -26,7 +31,7 @@ class SemestresController extends Controller
 
     public function salvar(SemestreRequest $request)
     {
-        $this->validate($request,['codigo'=>'unique:semestres,codigo']);
+        $this->validate($request, ['codigo' => 'unique:semestres,codigo']);
         $semestre = Semestre::create($request->all());
         $disciplinas = $request->get('disciplinas');
         if ($disciplinas != null):
@@ -44,7 +49,7 @@ class SemestresController extends Controller
 
     public function alterar(SemestreRequest $request, $id)
     {
-        $this->validate($request,['codigo'=>'unique:semestres,codigo,'.$id]);
+        $this->validate($request, ['codigo' => 'unique:semestres,codigo,' . $id]);
         $semestre = Semestre::find($id);
         $disciplinas = $request->get('disciplinas');
         if ($disciplinas != null):

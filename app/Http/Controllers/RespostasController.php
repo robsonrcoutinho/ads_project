@@ -10,6 +10,11 @@ use adsproject\Resposta;
 
 class RespostasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $respostas = Resposta::all();

@@ -6,6 +6,10 @@ use adsproject\Http\Requests\AlunoRequest;
 
 class AlunosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -56,5 +60,4 @@ class AlunosController extends Controller
     {
         return Aluno::find($id);
     }
-
 }

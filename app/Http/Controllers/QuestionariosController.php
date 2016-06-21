@@ -11,10 +11,13 @@ namespace adsproject\Http\Controllers;
 use adsproject\Avaliacao;
 use adsproject\Resposta;
 use Illuminate\Support\Facades\Input;
-use Response;
 
 class QuestionariosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function novo()
     {
