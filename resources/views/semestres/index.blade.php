@@ -33,7 +33,7 @@
         </table>
         <br/>
         <br/>
-        @can('salvar', $semestre)
+        @can('salvar', new Semestre())
         <a href="{{ route('semestres.novo')}}" class="btn btn-default"> Novo Semestre</a>
         @endcan
     </div>

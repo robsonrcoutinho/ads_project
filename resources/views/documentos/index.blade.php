@@ -42,7 +42,7 @@
         </table>
         <br/>
         <br/>
-        <!--@can('salvar', $documento)
+        <!--@can('salvar', new Documento())
                 <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
         @endcan -->
     </div>

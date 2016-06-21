@@ -41,7 +41,7 @@
         </table>
         <br/>
         <br/>
-        @can('salvar', $avaliacao)
+        @can('salvar', new Avaliacao())
         <a href="{{ route('avaliacoes.novo')}}" class="btn btn-default"> Nova avaliação</a>
         @endcan
     </div>

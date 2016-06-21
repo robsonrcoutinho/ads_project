@@ -48,7 +48,7 @@
         </table>
         <br/>
         <br/>
-        @can('salvar', $disciplina)
+        @can('salvar', new Disciplina())
         <a href="{{ route('disciplinas.novo')}}" class="btn btn-default"> Nova disciplina</a>
         @endcan
     </div>

@@ -64,7 +64,7 @@ class AvisosController extends Controller
     //Método que remove avisos antigos (mais de sete dias)
     private function removerAntigos()
     {
-        $avisos = Aviso::antigos();
-        Aviso::destroy($avisos->lists('id'));
+        $avisos = Aviso::antigos()->lists('id');
+        Aviso::destroy($avisos);
     }
 }

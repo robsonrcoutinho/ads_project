@@ -41,7 +41,7 @@
         </table>
         <br/>
         <br/>
-        @can('salvar', $aluno)
+        @can('salvar', new \adsproject\Aluno)
         <a href="{{ route('alunos.novo')}}" class="btn btn-default">Novo Aluno</a>
         @endcan
     </div>
