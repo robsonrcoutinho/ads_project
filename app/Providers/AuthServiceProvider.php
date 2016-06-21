@@ -14,6 +14,15 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'adsproject\Model' => 'adsproject\Policies\ModelPolicy',
+        'adsproject\User' => 'adsproject\Policies\UserPolicy',
+        'adsproject\Professor' => 'adsproject\Policies\ProfessorPolicy',
+        'adsproject\Aluno' => 'adsproject\Policies\AlunoPolicy',
+        'adsproject\Avaliacao' => 'adsproject\Policies\AvaliacaoPolicy',
+        'adsproject\Aviso' => 'adsproject\Policies\AvisoPolicy',
+        'adsproject\Disciplina' => 'adsproject\Policies\DisciplinaPolicy',
+        'adsproject\Documento' => 'adsproject\Policies\DocumentoPolicy',
+        'adsproject\Pergunta' => 'adsproject\Policies\PerguntaPolicy',
+        'adsproject\Semestre' => 'adsproject\Policies\SemestrePolicy',
     ];
 
     /**
