@@ -35,7 +35,7 @@
         </table>
         <br/>
         <br/>
-        @can('salvar', new Aviso()))
+        @can('salvar', new Aviso())
         <a href="{{ route('avisos.novo')}}" class="btn btn-default">Novo aviso</a>
         @endcan
     </div>

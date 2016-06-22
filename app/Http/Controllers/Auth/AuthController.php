@@ -66,12 +66,14 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = new User([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
             'role' => $data['role'],
         ]);
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        return $user;
     }
 
     public function postLogin(Request $request)
@@ -90,7 +92,7 @@ class AuthController extends Controller
                 'password' => 'required'
             ];
             $validador = Validator::make($request->all(), $rules)->setAttributeNames(['name' => 'Usuário']);
-            return redirect('auth/login')->withErrors($validador)->withInput()->with('erro_autenticacao',1);
+            return redirect('auth/login')->withErrors($validador)->withInput()->with('erro_autenticacao', 1);
         }
     }
 }
