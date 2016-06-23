@@ -58,7 +58,11 @@ class UsersController extends Controller
         $user->fillable($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
-        return redirect()->route('users');
+        if (Auth::user()->can('alterar', $user)):
+            return redirect()->route('users');
+        endif;
+        return redirect('/');
+
     }
 
     public function excluir($id)
