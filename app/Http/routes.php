@@ -30,6 +30,10 @@ Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () 
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.editar', 'uses' => 'AlunosController@editar']);
 //Rota para alterar aluno
     Route::put('{id}/alterar', ['as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
+//Rota para arquivo
+    Route::get('arquivo', ['as'=>'alunos.arquivo', 'uses'=>'AlunosController@arquivo']);
+
+    Route::post('carregar', ['as'=>'alunos.carregar', 'uses'=>'AlunosController@carregar']);
 });
 
 //Rotas de professores
