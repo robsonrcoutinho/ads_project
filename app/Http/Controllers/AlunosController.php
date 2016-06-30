@@ -86,26 +86,12 @@ class AlunosController extends Controller
         $linhas = explode("\n", $texto);
         foreach ($linhas as $linha):
             $dados = explode("|", $linha);
-
             if (count($dados) >= 3):
                 if ($this->validar($dados[0], $dados[1], $dados[2])):
                     $this->gravar($dados);
                 endif;
             endif;
         endforeach;
-    }
-
-    private function gravar($dados)
-    {
-        $aluno = Aluno::query()->where('matricula', $dados[0])->first();
-        //dd(utf8_encode($dados[1]));
-        if ($aluno == null):
-            $aluno = new Aluno();
-        endif;
-        $aluno->matricula = trim($dados[0]);
-        $aluno->nome = trim($dados[1]);
-        $aluno->email = trim($dados[2]);
-        $aluno->save();
     }
 
     private function validar($matricula, $nome, $email)
@@ -119,4 +105,18 @@ class AlunosController extends Controller
         $validador = Validator::make($valores, $regras);
         return !$validador->fails();
     }
+
+    private function gravar($dados)
+    {
+        $aluno = Aluno::query()->where('matricula', $dados[0])->first();
+        if ($aluno == null):
+            $aluno = new Aluno();
+        endif;
+        $aluno->matricula = trim($dados[0]);
+        $aluno->nome = trim($dados[1]);
+        $aluno->email = trim($dados[2]);
+        $aluno->save();
+    }
+
+
 }
