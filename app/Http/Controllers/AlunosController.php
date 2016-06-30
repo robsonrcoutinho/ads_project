@@ -74,7 +74,7 @@ class AlunosController extends Controller
         $diretorio = storage_path() . '/app';
         $arquivo->move($diretorio, $nomeArquivo);
         if ($filesystem->exists($nomeArquivo)):
-            $texto = $filesystem->get($nomeArquivo);
+            $texto = utf8_encode($filesystem->get($nomeArquivo));
             unlink($diretorio . '/' . $nomeArquivo);
             $this->montarLista($texto);
         endif;
@@ -84,7 +84,6 @@ class AlunosController extends Controller
     private function montarLista($texto)
     {
         $linhas = explode("\n", $texto);
-
         foreach ($linhas as $linha):
             $dados = explode("|", $linha);
 
@@ -99,14 +98,15 @@ class AlunosController extends Controller
     private function gravar($dados)
     {
         $aluno = Aluno::query()->where('matricula', $dados[0])->first();
+        //dd(utf8_encode($dados[1]));
         if ($aluno == null):
             $aluno = new Aluno();
         endif;
-        $aluno->matricula = $dados[0];
-        $aluno->nome = $dados[1];
-        $aluno->email = $dados[2];
+        $aluno->matricula = trim($dados[0]);
+        $aluno->nome = trim($dados[1]);
+        $aluno->email = trim($dados[2]);
         $aluno->save();
-  }
+    }
 
     private function validar($matricula, $nome, $email)
     {
