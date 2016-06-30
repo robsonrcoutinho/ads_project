@@ -149,6 +149,9 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+
 
     ],
 
@@ -215,6 +218,8 @@ return [
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
 
         'PushNotification' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
+
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
     ],
 
 ];

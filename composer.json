@@ -11,7 +11,9 @@
         "caouecs/laravel4-lang": "2.0.16",
         "laravelcollective/html": "v5.1.5",
         "davibennun/laravel-push-notification": "dev-laravel5",
-        "skydiver/laravel-materialize-css": "^0.97.5"
+        "skydiver/laravel-materialize-css": "^0.97.5",
+        "tymon/jwt-auth": "0.5.*",
+        "barryvdh/laravel-cors": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

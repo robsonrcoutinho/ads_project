@@ -277,3 +277,14 @@ Route::group(array('before' => 'auth'), function()
         Route::controller('usuarios', 'UsuariosController');
     });
 });*/
+
+
+Route::post('/signin', function () {
+    $credentials = Input::only('email', 'password');
+
+    if ( ! $token = JWTAuth::attempt($credentials)) {
+        return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
+    }
+
+    return Response::json(compact('token'));
+});
