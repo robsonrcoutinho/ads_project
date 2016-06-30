@@ -4,6 +4,7 @@ use adsproject\Aluno;
 use adsproject\Http\Requests\AlunoRequest;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Validator;
 
 class AlunosController extends Controller
 {
@@ -77,35 +78,45 @@ class AlunosController extends Controller
             unlink($diretorio . '/' . $nomeArquivo);
             $this->montarLista($texto);
         endif;
-
         return redirect()->route('alunos');
     }
 
     private function montarLista($texto)
     {
         $linhas = explode("\n", $texto);
+
         foreach ($linhas as $linha):
             $dados = explode("|", $linha);
-            $this->gravar($dados);
+
+            if (count($dados) >= 3):
+                if ($this->validar($dados[0], $dados[1], $dados[2])):
+                    $this->gravar($dados);
+                endif;
+            endif;
         endforeach;
     }
 
     private function gravar($dados)
     {
-
-        $alunos = Aluno::query()->where('matricula', $dados[0])->first();
-        if ($alunos == null):
+        $aluno = Aluno::query()->where('matricula', $dados[0])->first();
+        if ($aluno == null):
             $aluno = new Aluno();
-            $aluno->matricula = $dados[0];
-            $aluno->nome = $dados[1];
-            $aluno->email = $dados[2];
-            $aluno->save();
-        else:
-            $aluno = $alunos;
-            $aluno->matricula = $dados[0];
-            $aluno->nome = $dados[1];
-            $aluno->email = $dados[2];
-            $aluno->save();
         endif;
+        $aluno->matricula = $dados[0];
+        $aluno->nome = $dados[1];
+        $aluno->email = $dados[2];
+        $aluno->save();
+  }
+
+    private function validar($matricula, $nome, $email)
+    {
+        $valores = ['matricula' => trim($matricula),
+            'nome' => trim($nome),
+            'email' => trim($email)];
+        $regras = ['matricula' => 'required|min:6',
+            'nome' => 'required|min:5',
+            'email' => 'email'];
+        $validador = Validator::make($valores, $regras);
+        return !$validador->fails();
     }
 }

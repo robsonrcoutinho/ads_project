@@ -33,4 +33,8 @@ class AlunoPolicy
     {
         return $user->role == 'admin';
     }
+    public function carregar(User $user, Aluno $aluno)
+    {
+        return $user->role == 'admin';
+    }
 }

@@ -30,9 +30,9 @@ Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () 
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.editar', 'uses' => 'AlunosController@editar']);
 //Rota para alterar aluno
     Route::put('{id}/alterar', ['as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
-//Rota para arquivo
-    Route::get('arquivo', ['as'=>'alunos.arquivo', 'uses'=>'AlunosController@arquivo']);
-
+//Rota para view de arquivo de alunos
+    Route::get('arquivo', ['middleware' => 'check.user.role:admin','as'=>'alunos.arquivo', 'uses'=>'AlunosController@arquivo']);
+//Rota para carregar dados de alunos no banco de dados via arquivo
     Route::post('carregar', ['as'=>'alunos.carregar', 'uses'=>'AlunosController@carregar']);
 });
 
