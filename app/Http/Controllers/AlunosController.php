@@ -117,6 +117,4 @@ class AlunosController extends Controller
         $aluno->email = trim($dados[2]);
         $aluno->save();
     }
-
-
 }
