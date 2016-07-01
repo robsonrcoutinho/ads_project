@@ -74,7 +74,9 @@ class AlunosController extends Controller
         $diretorio = storage_path() . '/app';
         $arquivo->move($diretorio, $nomeArquivo);
         if ($filesystem->exists($nomeArquivo)):
-            $texto = utf8_encode($filesystem->get($nomeArquivo));
+            //$texto = utf8_encode($filesystem->get($nomeArquivo));
+            $texto = json_decode(utf8_encode($filesystem->get($nomeArquivo)), true);
+            //dd($texto);
             unlink($diretorio . '/' . $nomeArquivo);
             $this->montarLista($texto);
         endif;
@@ -83,11 +85,18 @@ class AlunosController extends Controller
 
     private function montarLista($texto)
     {
-        $linhas = explode("\n", $texto);
+        /*$linhas = explode("\n", $texto);
         foreach ($linhas as $linha):
-            $dados = explode("|", $linha);
+            $dados = explode("|", $linha);*/
+        if ($texto == null):
+            return;
+        endif;
+        foreach ($texto as $dados):
+            //dd($dados['matricula']);
+            //dd($dados['nome']);
             if (count($dados) >= 3):
-                if ($this->validar($dados[0], $dados[1], $dados[2])):
+                //if ($this->validar($dados[0], $dados[1], $dados[2])):
+                if ($this->validar($dados['matricula'], $dados['nome'], $dados['email'])):
                     $this->gravar($dados);
                 endif;
             endif;
@@ -108,13 +117,18 @@ class AlunosController extends Controller
 
     private function gravar($dados)
     {
-        $aluno = Aluno::query()->where('matricula', $dados[0])->first();
+        //$aluno = Aluno::query()->where('matricula', $dados[0])->first();
+        $aluno = Aluno::query()->where('matricula', $dados['matricula'])->first();
+
         if ($aluno == null):
             $aluno = new Aluno();
-        endif;
+        endif;/*
         $aluno->matricula = trim($dados[0]);
         $aluno->nome = trim($dados[1]);
-        $aluno->email = trim($dados[2]);
+        $aluno->email = trim($dados[2]);*/
+        $aluno->matricula = trim($dados['matricula']);
+        $aluno->nome = trim($dados['nome']);
+        $aluno->email = trim($dados['email']);
         $aluno->save();
     }
 }
