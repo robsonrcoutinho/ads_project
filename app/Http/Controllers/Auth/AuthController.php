@@ -1,5 +1,6 @@
 <?php
 
+
 namespace adsproject\Http\Controllers\Auth;
 
 use adsproject\User;
@@ -9,7 +10,6 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Auth;
-
 
 class AuthController extends Controller
 {

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Validator;
 
+
 class AlunosController extends Controller
 {
     public function __construct()
@@ -70,15 +71,26 @@ class AlunosController extends Controller
     public function carregar(Filesystem $filesystem, Request $request)
     {
         $arquivo = $request->file('arquivo');
-        $nomeArquivo = $arquivo->getClientOriginalName();
-        $diretorio = storage_path() . '/app';
-        $arquivo->move($diretorio, $nomeArquivo);
-        if ($filesystem->exists($nomeArquivo)):
-            //$texto = utf8_encode($filesystem->get($nomeArquivo));
-            $texto = json_decode(utf8_encode($filesystem->get($nomeArquivo)), true);
-            //dd($texto);
-            unlink($diretorio . '/' . $nomeArquivo);
-            $this->montarLista($texto);
+        if ($arquivo != null):
+            //dd($caminho);
+            $nomeArquivo = $arquivo->getClientOriginalName();
+            $diretorio = storage_path() . '/app';
+            $arquivo->move($diretorio, $nomeArquivo);
+            if ($filesystem->exists($nomeArquivo)):
+                $texto = utf8_encode($filesystem->get($nomeArquivo));
+                //$texto = json_decode(utf8_encode($filesystem->get($nomeArquivo)), true);
+                //            dd(xml_error_string($texto));
+                try {
+                    $xml = simplexml_load_string($texto);
+                    $this->montarLista($xml);
+                    //dd($xml);
+                } catch (\Exception $e) {
+
+                }
+                unlink($diretorio . '/' . $nomeArquivo);
+//$this->montarLista($texto);
+//$this->montarLista($xml);
+            endif;
         endif;
         return redirect()->route('alunos');
     }
@@ -88,15 +100,18 @@ class AlunosController extends Controller
         /*$linhas = explode("\n", $texto);
         foreach ($linhas as $linha):
             $dados = explode("|", $linha);*/
+        //dd($texto);
         if ($texto == null):
             return;
         endif;
+        //foreach ($texto as $dados):
+        //dd($dados['matricula']);
         foreach ($texto as $dados):
-            //dd($dados['matricula']);
-            //dd($dados['nome']);
+            //$dado=get_object_vars($dados);
             if (count($dados) >= 3):
                 //if ($this->validar($dados[0], $dados[1], $dados[2])):
-                if ($this->validar($dados['matricula'], $dados['nome'], $dados['email'])):
+                //if ($this->validar($dados['matricula'], $dados['nome'], $dados['email'])):
+                if ($this->validar($dados->matricula, $dados->nome, $dados->email)):
                     $this->gravar($dados);
                 endif;
             endif;
@@ -118,17 +133,21 @@ class AlunosController extends Controller
     private function gravar($dados)
     {
         //$aluno = Aluno::query()->where('matricula', $dados[0])->first();
-        $aluno = Aluno::query()->where('matricula', $dados['matricula'])->first();
-
+        //$aluno = Aluno::query()->where('matricula', $dados['matricula'])->first();
+        $aluno = Aluno::withTrashed()->where('matricula', $dados->matricula)->first();
         if ($aluno == null):
             $aluno = new Aluno();
-        endif;/*
-        $aluno->matricula = trim($dados[0]);
+        endif;
+        /*$aluno->matricula = trim($dados[0]);
         $aluno->nome = trim($dados[1]);
         $aluno->email = trim($dados[2]);*/
-        $aluno->matricula = trim($dados['matricula']);
+        /*$aluno->matricula = trim($dados['matricula']);
         $aluno->nome = trim($dados['nome']);
-        $aluno->email = trim($dados['email']);
+        $aluno->email = trim($dados['email']);*/
+        $aluno->matricula = trim($dados->matricula);
+        $aluno->nome = trim($dados->nome);
+        $aluno->email = trim($dados->email);
+        $aluno->deleted_at = null;
         $aluno->save();
     }
 }
