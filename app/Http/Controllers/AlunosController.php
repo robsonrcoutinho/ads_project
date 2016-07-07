@@ -70,22 +70,24 @@ class AlunosController extends Controller
 
     public function carregar(Filesystem $filesystem, Request $request)
     {
+        $this->validate($request,['arquivo'=>'required'],['required'=>'O :attribute precisa ser passado.']);
         $arquivo = $request->file('arquivo');
         if ($arquivo != null):
-            //dd($caminho);
             $nomeArquivo = $arquivo->getClientOriginalName();
             $diretorio = storage_path() . '/app';
             $arquivo->move($diretorio, $nomeArquivo);
             if ($filesystem->exists($nomeArquivo)):
                 $texto = utf8_encode($filesystem->get($nomeArquivo));
                 //$texto = json_decode(utf8_encode($filesystem->get($nomeArquivo)), true);
-                //            dd(xml_error_string($texto));
+
                 try {
                     $xml = simplexml_load_string($texto);
                     $this->montarLista($xml);
                     //dd($xml);
                 } catch (\Exception $e) {
-
+                   $errors='Formato de arquivo incorreto.';
+                    unlink($diretorio . '/' . $nomeArquivo);
+                    return redirect()->route('alunos.arquivo')->withErrors($errors);
                 }
                 unlink($diretorio . '/' . $nomeArquivo);
 //$this->montarLista($texto);
