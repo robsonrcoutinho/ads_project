@@ -150,6 +150,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
 
 
@@ -219,7 +220,8 @@ return [
 
         'PushNotification' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
 
-        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

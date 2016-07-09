@@ -11,8 +11,17 @@
 |
 */
 
+
+$api = app('Dingo\Api\Routing\Router');
+
 Route::get('/', function () {
     return view('main');
+});
+
+$api->version('v1',function($api){
+    $api->get('hello', function(){
+        return "HELLO TESTE";
+    });
 });
 
 
@@ -282,7 +291,6 @@ Route::group(array('before' => 'auth'), function()
 
 
 Route::group(['prefix' => 'api'], function(){
-
     Route::post('login', 'Api\AuthController@login');
 
     Route::group(['middleware' => ['jwt.auth', 'jwt.refresh']], function() {
@@ -293,3 +301,5 @@ Route::group(['prefix' => 'api'], function(){
         });
     });
 });
+
+

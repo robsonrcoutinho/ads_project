@@ -13,7 +13,8 @@
         "davibennun/laravel-push-notification": "dev-laravel5",
         "skydiver/laravel-materialize-css": "^0.97.5",
         "tymon/jwt-auth": "0.5.*",
-        "barryvdh/laravel-cors": "^0.8.0"
+        "barryvdh/laravel-cors": "^0.8.0",
+        "dingo/api": "1.0.x@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

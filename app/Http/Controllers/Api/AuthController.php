@@ -17,20 +17,20 @@ class AuthController extends Controller {
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request) {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
 
         try {
             // Verificar as credenciais e criar um token para o usuário
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->error(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
             // algo deu errado enquanto tenta codificar o token
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->error(['error' => 'could_not_create_token'], 500);
         }
 
         // Tudo ok. Retornar o token
-        return response()->json(compact('token'));
+        return $this->response()->array(compact('token'))->setStatusCode(200);
     }
 
 
