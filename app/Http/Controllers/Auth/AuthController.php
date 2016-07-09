@@ -1,5 +1,6 @@
 <?php
 
+
 namespace adsproject\Http\Controllers\Auth;
 
 use adsproject\User;
@@ -9,7 +10,6 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Auth;
-
 
 class AuthController extends Controller
 {
@@ -78,13 +78,10 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        if (Auth::attempt(
-            [
-                'name' => $request->name,
-                'password' => $request->password,
-            ], $request->has
-        )
-        ) {
+        $usuario = filter_var($request->input('name'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+        $request->merge([$usuario => $request->input('name')]);
+        if (Auth::attempt($request->only($usuario,'password')))
+        {
             return redirect()->intended($this->redirectPath());
         } else {
             $rules = [

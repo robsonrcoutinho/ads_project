@@ -12,6 +12,7 @@ use adsproject\Avaliacao;
 use adsproject\Resposta;
 use Illuminate\Support\Facades\Input;
 
+
 class QuestionariosController extends Controller
 {
     public function __construct()

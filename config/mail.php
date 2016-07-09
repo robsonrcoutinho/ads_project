@@ -15,8 +15,9 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    //'driver' => env('MAIL_DRIVER', 'smtp'),
     //'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'driver' =>'mailgun',
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -28,7 +29,7 @@ return [
     |
     */
     //'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host'=> 'smtp.gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +42,8 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    //'port' => env('MAIL_PORT', 587),
+    'port' => 587,
 
     /*
     |--------------------------------------------------------------------------
@@ -54,8 +56,8 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
-
+    //'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'wildermachadodacruz@gmail.com', 'name' => 'wilder'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -67,7 +69,8 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' =>'ssl',
 
     /*
     |--------------------------------------------------------------------------
