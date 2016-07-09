@@ -20,24 +20,24 @@ class AuthController extends Controller {
         $credentials = $request->only('email', 'password');
 
         try {
-            // attempt to verify the credentials and create a token for the user
+            // Verificar as credenciais e criar um token para o usuário
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
+            // algo deu errado enquanto tenta codificar o token
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        // all good so return the token
+        // Tudo ok. Retornar o token
         return response()->json(compact('token'));
     }
 
 
     /**
      * Log out
-     * Invalidate the token, so user cannot use it anymore
-     * They have to relogin to get a new token
+     * Invalida o token , assim o usuário não pode usá-lo mais
+     * Eles têm que fazer login para obter um novo token
      *
      * @param Request $request
      */
