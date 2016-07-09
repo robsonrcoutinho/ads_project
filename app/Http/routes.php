@@ -279,12 +279,17 @@ Route::group(array('before' => 'auth'), function()
 });*/
 
 
-Route::post('/signin', function () {
-    $credentials = Input::only('email', 'password');
 
-    if ( ! $token = JWTAuth::attempt($credentials)) {
-        return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
-    }
 
-    return Response::json(compact('token'));
+Route::group(['prefix' => 'api'], function(){
+
+    Route::post('login', 'Api\AuthController@login');
+
+    Route::group(['middleware' => ['jwt.auth', 'jwt.refresh']], function() {
+        Route::post('logout', 'Api\AuthController@logout');
+
+        Route::get('test', function(){
+            return response()->json(['teste'=>'testestes']);
+        });
+    });
 });

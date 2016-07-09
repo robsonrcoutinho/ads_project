@@ -31,5 +31,8 @@ class Kernel extends HttpKernel
         'guest' => \adsproject\Http\Middleware\RedirectIfAuthenticated::class,
         'check.user.role' =>\adsproject\Http\Middleware\CheckUserRole::class,
         //'Barryvdh\Cors\Middleware\HandleCors',
+
+        'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
     ];
 }
