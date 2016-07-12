@@ -20,6 +20,18 @@
         {!! Form::text ('email', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
+        <fieldset>
+            <ul id="disciplinas">
+                <legend>Disciplinas</legend>
+                @foreach($disciplinas as $disciplina)
+                    {!! Form::checkbox('disciplinas[]', $disciplina->id, null,['id'=>$disciplina->id, 'class'=>'filled-in']) !!}
+                    {!! Form::label($disciplina->id, $disciplina->nome) !!}
+                    <br/>
+                @endforeach
+            </ul>
+        </fieldset>
+        </div>
+    <div class="form-group">
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}

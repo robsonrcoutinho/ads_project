@@ -9,7 +9,7 @@ class Aviso extends Model
 {
     protected $table = "avisos";
     protected $fillable = ['titulo', 'mensagem'];
-    //public $timestamps = false;
+
 
     public function scopeAntigos($query)
     {

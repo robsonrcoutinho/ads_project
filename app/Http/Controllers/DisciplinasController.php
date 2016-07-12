@@ -19,19 +19,19 @@ class DisciplinasController extends Controller
 
     public function index()
     {
-        $disciplinas = Disciplina::all();
+        $disciplinas = Disciplina::orderBy('nome')->get();
         return view('disciplinas.index', ['disciplinas' => $disciplinas]);
     }
 
     public function novo()
     {
-        $disciplinas = Disciplina::all();
+        $disciplinas = Disciplina::orderBy('nome')->get();
         return view('disciplinas.novo', ['disciplinas' => $disciplinas]);
     }
 
     public function salvar(DisciplinaRequest $request)
     {
-        $this->validate($request,['codigo'=>'unique:disciplinas,codigo']);
+        $this->validate($request, ['codigo' => 'unique:disciplinas,codigo']);
         $disciplina = Disciplina::create($request->all());
         $pre_requisitos = $request->get('pre_requisitos');
         if ($pre_requisitos != null):
@@ -43,13 +43,13 @@ class DisciplinasController extends Controller
     public function editar($id)
     {
         $disciplina = Disciplina::find($id);
-        $disciplinas = Disciplina::all()->except($disciplina->id);
+        $disciplinas = Disciplina::orderBy('nome')->get()->except($disciplina->id);
         return view('disciplinas.editar', ['disciplina' => $disciplina, 'disciplinas' => $disciplinas]);
     }
 
     public function alterar(DisciplinaRequest $request, $id)
     {
-        $this->validate($request,['codigo'=>'unique:disciplinas,codigo,'.$id]);
+        $this->validate($request, ['codigo' => 'unique:disciplinas,codigo,' . $id]);
         $disciplina = Disciplina::find($id);
         $pre_requisitos = $request->get('pre_requisitos');
         if ($pre_requisitos != null):
