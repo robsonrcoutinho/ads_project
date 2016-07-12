@@ -271,7 +271,7 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Verifica se o usuário está logado
 Route::group(array('before' => 'auth'), function()
 {
-    // Rota de artigos
+        // Rota de artigos
     Route::controller('artigos', 'ArtigosController');
 
     // Rotas do administrador
@@ -289,8 +289,8 @@ Route::group(array('before' => 'auth'), function()
  * */
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
-    $api->post('login', 'adsproject\http\Controllers\Api\AuthController@authenticate');
-    $api->post('logout', 'adsproject\http\Controllers\Api\AuthController@logout');
+    $api->post('login', 'adsproject\http\Controllers\Auth\AuthController@authenticate');
+    $api->post('logout', 'adsproject\http\Controllers\Auth\AuthController@logout');
 
     $api->post('avisos','adsproject\http\Controllers\Api\ApiController@avisosAll');
     $api->post('documentos','adsproject\http\Controllers\Api\ApiController@documentosAll');
