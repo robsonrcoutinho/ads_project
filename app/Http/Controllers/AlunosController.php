@@ -17,13 +17,13 @@ class AlunosController extends Controller
 
     public function index()
     {
-        $alunos = Aluno::all()->sortBy('nome');
+        $alunos = Aluno::orderBy('nome')->get();
         return view('alunos.index', ['alunos' => $alunos]);
     }
 
     public function novo()
     {
-        $disciplinas = Disciplina::all()->sortBy('nome');
+        $disciplinas = Disciplina::orderBy('nome')->get();
         return view('alunos.novo', ['disciplinas' => $disciplinas]);
     }
 
@@ -41,7 +41,7 @@ class AlunosController extends Controller
 
     public function editar($id)
     {
-        $disciplinas = Disciplina::all()->sortBy('nome');
+        $disciplinas = Disciplina::ordertBy('nome')->get();
         $aluno = Aluno::find($id);
         return view('alunos.editar', compact('aluno', 'disciplinas'));
     }

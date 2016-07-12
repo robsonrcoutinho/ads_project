@@ -18,7 +18,7 @@ class ProfessoresController extends Controller
 
     public function index()
     {
-        $professores = Professor::all();
+        $professores = Professor::orderBy('nome')->get();
         return view('professores.index', ['professores' => $professores]);
     }
 
