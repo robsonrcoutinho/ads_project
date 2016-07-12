@@ -12,16 +12,10 @@
 */
 
 
-$api = app('Dingo\Api\Routing\Router');
+
 
 Route::get('/', function () {
     return view('main');
-});
-
-$api->version('v1',function($api){
-    $api->get('hello', function(){
-        return "HELLO TESTE";
-    });
 });
 
 
@@ -288,18 +282,26 @@ Route::group(array('before' => 'auth'), function()
 });*/
 
 
+/*
+ * Rotas para API desenvolvida com a Library Dingo, usando o JWT-Auth para autenticação
+ * através da troca de tokens entre usuário e recursos do sistema
+ *
+ * */
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1',function($api){
+    $api->get('hello', 'adsproject\http\Controllers\Api\ApiController@hello');
+    $api->post('login', 'adsproject\http\Controllers\Api\AuthController@authenticate');
+    $api->post('logout', 'adsproject\http\Controllers\Api\AuthController@logout');
 
+    $api->post('avisos','adsproject\http\Controllers\Api\ApiController@avisosAll');
+    $api->post('documentos','adsproject\http\Controllers\Api\ApiController@documentosAll');
+    $api->post('professores','adsproject\http\Controllers\Api\ApiController@professoresAll');
+    $api->post('disciplinas','adsproject\http\Controllers\Api\ApiController@disciplinasAll');
+    $api->post('avaliacoes','adsproject\http\Controllers\Api\ApiController@avaliacoesAll');
+    $api->post('questionarios','adsproject\http\Controllers\Api\ApiController@questionariosAll');
+    $api->post('questionariosSalvar','adsproject\http\Controllers\Api\ApiController@questionariosSalvar');
 
-Route::group(['prefix' => 'api'], function(){
-    Route::post('login', 'Api\AuthController@login');
-
-    Route::group(['middleware' => ['jwt.auth', 'jwt.refresh']], function() {
-        Route::post('logout', 'Api\AuthController@logout');
-
-        Route::get('test', function(){
-            return response()->json(['teste'=>'testestes']);
-        });
-    });
 });
+
 
 

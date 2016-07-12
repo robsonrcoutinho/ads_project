@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'subtype' => env('API_SUBTYPE', 'trackye'),
+    'subtype' => env('API_SUBTYPE', 'adsproject'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'prefix' => env('API_PREFIX', null),
+    'prefix' => env('API_PREFIX', 'api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'domain' => env('API_DOMAIN', 'adsprojectifba.herokuapp.com'),
+    'domain' => env('API_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'name' => env('API_NAME', 'trackye api'),
+    'name' => env('API_NAME', 'adsproject api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ return [
     */
 
     'auth' => [
-
+        'jwt' => 'Dingo\Api\Auth\Provider\JWT'
     ],
 
     /*
