@@ -19,13 +19,13 @@ class DisciplinasController extends Controller
 
     public function index()
     {
-        $disciplinas = Disciplina::all();
+        $disciplinas = Disciplina::all()->sortBy('nome');
         return view('disciplinas.index', ['disciplinas' => $disciplinas]);
     }
 
     public function novo()
     {
-        $disciplinas = Disciplina::all();
+        $disciplinas = Disciplina::all()->sortBy('nome');
         return view('disciplinas.novo', ['disciplinas' => $disciplinas]);
     }
 
@@ -43,7 +43,7 @@ class DisciplinasController extends Controller
     public function editar($id)
     {
         $disciplina = Disciplina::find($id);
-        $disciplinas = Disciplina::all()->except($disciplina->id);
+        $disciplinas = Disciplina::all()->except($disciplina->id)->sortBy('nome');
         return view('disciplinas.editar', ['disciplina' => $disciplina, 'disciplinas' => $disciplinas]);
     }
 

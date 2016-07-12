@@ -22,6 +22,11 @@ class Disciplina extends Model
         return $this->belongsToMany(Professor::class);
     }
 
+    public function alunos()
+    {
+        return $this->belongsToMany(Aluno::class);
+    }
+
     public function semestres()
     {
         return $this->belongsToMany(Semestre::class);
@@ -29,11 +34,12 @@ class Disciplina extends Model
 
     public function disciplinas()
     {
-        return $this->hasMany(Disciplina::class, 'pre_requisito', 'pre_requisito_id', 'disciplina_id');
+        return $this->belongsToMany(Disciplina::class, 'pre_requisito', 'pre_requisito_id', 'disciplina_id');
     }
 
     public function pre_requisitos()
     {
         return $this->belongsToMany(Disciplina::class, 'pre_requisito', 'disciplina_id', 'pre_requisito_id')->withTimestamps();
     }
+
 }

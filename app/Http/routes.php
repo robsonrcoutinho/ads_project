@@ -10,20 +10,20 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-
-$api = app('Dingo\Api\Routing\Router');
-
 Route::get('/', function () {
     return view('main');
 });
+
+/*$api = app('Dingo\Api\Routing\Router');
+
+
 
 $api->version('v1',function($api){
     $api->get('hello', function(){
         return "HELLO TESTE";
     });
 });
-
+*/
 
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
@@ -272,7 +272,6 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-
 /*
 // Verifica se o usuário está logado
 Route::group(array('before' => 'auth'), function()
@@ -286,10 +285,7 @@ Route::group(array('before' => 'auth'), function()
         Route::controller('usuarios', 'UsuariosController');
     });
 });*/
-
-
-
-
+/*
 Route::group(['prefix' => 'api'], function(){
     Route::post('login', 'Api\AuthController@login');
 
@@ -301,5 +297,5 @@ Route::group(['prefix' => 'api'], function(){
         });
     });
 });
-
+*/
 

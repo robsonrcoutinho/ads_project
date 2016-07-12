@@ -21,6 +21,20 @@
         {!! Form::text ('email', $aluno->email, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
+        <fieldset>
+            <ul id="disciplinas">
+                <legend>Disciplinas</legend>
+                @if($disciplinas!=null || !$disciplinas->isEmpty)
+                    @foreach($disciplinas as $disciplina)
+                        {!! Form::checkbox('disciplinas[]', $disciplina->id, $aluno->disciplinas->contains($disciplina),['id'=>$disciplina->id, 'class'=>'filled-in']) !!}
+                        {!! Form::label($disciplina->id, $disciplina->nome) !!}
+                        <br/>
+                    @endforeach
+                @endif
+            </ul>
+        </fieldset>
+    </div>
+    <div class="form-group">
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
