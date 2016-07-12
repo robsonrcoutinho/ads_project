@@ -41,7 +41,7 @@ class AlunosController extends Controller
 
     public function editar($id)
     {
-        $disciplinas = Disciplina::ordertBy('nome')->get();
+        $disciplinas = Disciplina::orderBy('nome')->get();
         $aluno = Aluno::find($id);
         return view('alunos.editar', compact('aluno', 'disciplinas'));
     }
