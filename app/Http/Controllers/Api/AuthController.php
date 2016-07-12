@@ -10,6 +10,13 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller {
 
+    protected $auth;
+
+    public function __construct(JWTAuth $auth)
+    {
+        $this->auth = $auth;
+    }
+
 
     public function authenticate(Request $request)
     {
