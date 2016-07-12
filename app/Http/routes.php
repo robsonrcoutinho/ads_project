@@ -10,12 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+
+$api = app('Dingo\Api\Routing\Router');
+
 Route::get('/', function () {
     return view('main');
 });
-
-/*$api = app('Dingo\Api\Routing\Router');
-
 
 
 $api->version('v1',function($api){
@@ -23,7 +24,7 @@ $api->version('v1',function($api){
         return "HELLO TESTE";
     });
 });
-*/
+
 
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
