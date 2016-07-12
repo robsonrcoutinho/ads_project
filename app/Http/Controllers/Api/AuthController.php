@@ -5,7 +5,7 @@ namespace adsproject\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use adsproject\Http\Requests;
 use adsproject\Http\Controllers\Controller;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller {
