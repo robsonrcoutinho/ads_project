@@ -1,13 +1,13 @@
 <?php
 
-//namespace adsproject\Http\Controllers\Api;
+namespace adsproject\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use adsproject\Http\Controllers\Controller;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class AuthController {/*extends Controller {
+class AuthController extends Controller {
 
     protected $auth;
 
@@ -41,5 +41,5 @@ class AuthController {/*extends Controller {
             'token' => 'required'
         ]);
         JWTAuth::invalidate($request->input('token'));
-    }*/
+    }
 }
