@@ -31,11 +31,18 @@ class Avaliacao extends Model
         return $this->hasMany(Resposta::class);
     }
 
+    public function disciplinas()
+    {
+        return $this->belongsToMany(Disciplina::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
     public function scopeAberta($query)
     {
         return $query->whereDate('inicio', '<=', date('Y-m-d'))
             ->whereDate('termino', '>=', date('Y-m-d'))
             ->with('perguntas.opcoes_resposta');
-
     }
 }

@@ -5,7 +5,7 @@ namespace adsproject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use adsproject\Professor;
+//use adsproject\Professor;
 
 class Disciplina extends Model
 {
@@ -27,6 +27,11 @@ class Disciplina extends Model
         return $this->belongsToMany(Aluno::class);
     }
 
+    public function avaliacoes()
+    {
+        return $this->belongsToMany(Avaliacao::class);
+    }
+
     public function semestres()
     {
         return $this->belongsToMany(Semestre::class);
@@ -35,6 +40,11 @@ class Disciplina extends Model
     public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class, 'pre_requisito', 'pre_requisito_id', 'disciplina_id');
+    }
+
+    public function respostas()
+    {
+        return $this->hasMany(Resposta::class);
     }
 
     public function pre_requisitos()

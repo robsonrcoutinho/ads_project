@@ -14,7 +14,8 @@
         "skydiver/laravel-materialize-css": "^0.97.5",
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-cors": "^0.8.0",
-        "dingo/api": "1.0.x@dev"
+        "dingo/api": "1.0.x@dev",
+        "doctrine/dbal": "~2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
