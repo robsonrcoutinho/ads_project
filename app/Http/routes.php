@@ -289,16 +289,16 @@ Route::group(array('before' => 'auth'), function()
  * */
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
-    $api->post('login', 'adsproject\http\Controllers\Api\AuthController@authenticate');
-    $api->post('logout', 'adsproject\http\Controllers\Auth\AuthController@logout');
+    $api->post('login', 'adsproject\Http\Controllers\Api\AuthController@authenticate');
+    $api->post('logout', 'adsproject\Http\Controllers\Auth\AuthController@logout');
 
-    $api->post('avisos','adsproject\http\Controllers\Api\ApiController@avisosAll');
-    $api->post('documentos','adsproject\http\Controllers\Api\ApiController@documentosAll');
-    $api->post('professores','adsproject\http\Controllers\Api\ApiController@professoresAll');
-    $api->post('disciplinas','adsproject\http\Controllers\Api\ApiController@disciplinasAll');
-    $api->post('avaliacoes','adsproject\http\Controllers\Api\ApiController@avaliacoesAll');
-    $api->post('questionarios','adsproject\http\Controllers\Api\ApiController@questionariosAll');
-    $api->post('questionariosSalvar','adsproject\http\Controllers\Api\ApiController@questionariosSalvar');
+    $api->post('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
+    $api->post('documentos','adsproject\Http\Controllers\Api\ApiController@documentosAll');
+    $api->post('professores','adsproject\Http\Controllers\Api\ApiController@professoresAll');
+    $api->post('disciplinas','adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
+    $api->post('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
+    $api->post('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
+    $api->post('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
 
 });
 
