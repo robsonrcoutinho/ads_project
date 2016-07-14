@@ -11,6 +11,7 @@ namespace adsproject\Http\Controllers;
 use adsproject\Avaliacao;
 use adsproject\Resposta;
 use Illuminate\Support\Facades\Input;
+use \Auth;
 
 
 class QuestionariosController extends Controller
@@ -22,13 +23,13 @@ class QuestionariosController extends Controller
 
     public function novo()
     {
+        $user = Auth::getUser();
+        if ($user->role != 'aluno'):
+            $this->mensagem('Para acessa essa página usuário precisa ser aluno', route('avaliacoes'));
+        endif;
         $avaliacao = Avaliacao::aberta()->first();
-        $rota = route('avaliacoes');
         if ($avaliacao == null):
-            echo "<script>
-                alert('Nenhuma avaliação disponível no momento');
-                window.location='$rota';
-                </script>";
+            $this->mensagem('Nenhuma avaliação disponível no momento', '/');
         else:
             return view('questionarios.novo', ['avaliacao' => $avaliacao]);
         endif;
@@ -40,6 +41,13 @@ class QuestionariosController extends Controller
         return redirect()->route('avaliacoes');
     }
 
+    private function mensagem($texto, $rota)
+    {
+        echo "<script>
+                alert('$texto');
+                window.location='$rota';
+                </script>";
+    }
     //Métodos do Web Service
     //Método que busca avaliação aberta para o Web Service
     public function buscarAberto()

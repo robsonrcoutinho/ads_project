@@ -11,7 +11,7 @@ class Professor extends Model
 
     protected $table = "professors";
     public $timestamps = false;
-    protected $fillable =['matricula','nome','curriculo'];
+    protected $fillable =['matricula','nome','email','curriculo'];
     protected $softDelete  = true;
     protected $hidden = ['deleted_at'];
 

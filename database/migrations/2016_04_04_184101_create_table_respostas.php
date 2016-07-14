@@ -13,6 +13,8 @@ class CreateTableRespostas extends Migration
             $table->string('campo_resposta');
             $table->unsignedInteger('pergunta_id');
             $table->unsignedInteger('avaliacao_id');
+            $table->unsignedInteger('disciplina_id');
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas');
         });
     }
 

@@ -15,8 +15,8 @@ class CreateTableAluno extends Migration
         Schema::create('alunos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('matricula', 10)->unique();
-            $table->string('nome', 30);
-            $table->string('email', 100)->nullable();
+            $table->string('nome', 60);
+            $table->string('email', 100);
             $table->softDeletes();
          });
     }
