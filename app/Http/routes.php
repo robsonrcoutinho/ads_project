@@ -292,7 +292,7 @@ Route::group(array('before' => 'auth'), function()
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
     $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
-    $api->post('logout', 'adsproject\Http\Controllers\Auth\AuthController@logout');
+    $api->post('logout', 'adsproject\Http\Controllers\Api\ApiController@logout');
 
     $api->post('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
     $api->post('documentos','adsproject\Http\Controllers\Api\ApiController@documentosAll');
