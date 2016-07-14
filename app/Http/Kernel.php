@@ -32,7 +32,7 @@ class Kernel extends HttpKernel
         'check.user.role' =>\adsproject\Http\Middleware\CheckUserRole::class,
         //'Barryvdh\Cors\Middleware\HandleCors',
 
-        'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
-        'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
+        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
     ];
 }

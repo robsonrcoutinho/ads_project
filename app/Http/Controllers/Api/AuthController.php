@@ -9,11 +9,11 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller {
 
-    protected $auth;
+   /* protected $auth;
 
-    public function __construct(JWTAuth $auth)
+   public function __construct(JWTAuth $auth)
     {
-        $this->auth = $auth;
+        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
     }
 
 
@@ -41,5 +41,5 @@ class AuthController extends Controller {
             'token' => 'required'
         ]);
         JWTAuth::invalidate($request->input('token'));
-    }
+    }*/
 }

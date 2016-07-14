@@ -287,9 +287,11 @@ Route::group(array('before' => 'auth'), function()
  * através da troca de tokens entre usuário e recursos do sistema
  *
  * */
+
+
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
-    $api->post('login', 'adsproject\Http\Controllers\Api\AuthController@authenticate');
+    $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
     $api->post('logout', 'adsproject\Http\Controllers\Auth\AuthController@logout');
 
     $api->post('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
