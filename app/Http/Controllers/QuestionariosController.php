@@ -10,6 +10,7 @@ namespace adsproject\Http\Controllers;
  */
 use adsproject\Avaliacao;
 use adsproject\Resposta;
+use adsproject\Aluno;
 use Illuminate\Support\Facades\Input;
 use \Auth;
 
@@ -25,14 +26,21 @@ class QuestionariosController extends Controller
     {
         $user = Auth::getUser();
         if ($user->role != 'aluno'):
-            $this->mensagem('Para acessa essa página usuário precisa ser aluno', route('avaliacoes'));
+            $rota = $user->role == 'admin' ? route('avaliacoes') : '/';
+            $this->mensagem('Para acessa essa página usuário precisa ser aluno.', $rota);
         endif;
         $avaliacao = Avaliacao::aberta()->first();
         if ($avaliacao == null):
             $this->mensagem('Nenhuma avaliação disponível no momento', '/');
-        else:
-            return view('questionarios.novo', ['avaliacao' => $avaliacao]);
         endif;
+        if ($user->avaliacoes()->get()->contains($avaliacao)):
+            $this->mensagem('Usuário já realizou última avaliação.', '/');
+        endif;
+        $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
+        if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):
+            $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');
+        endif;
+        return view('questionarios.novo', compact('avaliacao', 'aluno'));
     }
 
     public function salvar()
