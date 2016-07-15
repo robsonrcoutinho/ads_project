@@ -11,29 +11,35 @@
         <div class="form-group">
             {!! Form::label ('semestre_id', 'Semestre: '.$avaliacao->semestre->codigo) !!}
         </div>
-        <div class="form-group">
-            <fieldset>
-                <ol id="perguntas">
-                    <legend>Perguntas</legend>
-                    @foreach($avaliacao->perguntas as $pergunta)
-                        <li class="collection-item">
-                            {!! Form::label($pergunta->id, $pergunta->enunciado) !!}
-                            @if($pergunta->pergunta_fechada)
-                                @foreach($pergunta->opcoes_resposta as $opcao)
-                                    <br/>
-                                    {!! Form::radio("campo_resposta[$pergunta->id]", $opcao->resposta_opcao, null,['id'=>$opcao->id, 'class'=>'with-gap']) !!}
-                                    {!! Form::label($opcao->id, $opcao->resposta_opcao) !!}
-                                @endforeach
-                            @else
-                                {!! Form::text("campo_resposta[$pergunta->id]", null, ['class'=>'form-control']) !!}
-                            @endif
-                            <br/>
-                        </li>
-                    @endforeach
-                </ol>
-                <br/>
-            </fieldset>
-        </div>
+        @foreach($aluno->disciplinas as $disciplina)
+            <div class="form-group">
+                <fieldset>
+                    <legend>{{ $disciplina->nome }}</legend>
+                    <ol>
+
+                        @foreach($avaliacao->perguntas as $pergunta)
+                            <li class="collection-item">
+                                {!! Form::label('enunciado', $pergunta->enunciado) !!}
+                                {!! Form::hidden("pergunta_id[$pergunta->id $disciplina->nome]", $pergunta->id) !!}
+                                {!! Form::hidden("disciplina_id[$pergunta->id $disciplina->nome]", $disciplina->id) !!}
+                                @if($pergunta->pergunta_fechada)
+
+                                    @foreach($pergunta->opcoes_resposta as $opcao)
+                                        <br/>
+                                        {!! Form::radio("campo_resposta[$pergunta->id $disciplina->nome]", $opcao->resposta_opcao, null,['id'=>$opcao->id.$disciplina->nome, 'class'=>'with-gap']) !!}
+                                        {!! Form::label($opcao->id.$disciplina->nome, $opcao->resposta_opcao) !!}
+                                    @endforeach
+                                @else
+                                    {!! Form::text("campo_resposta[$pergunta->id $disciplina->nome]", null, ['class'=>'form-control']) !!}
+                                @endif
+                                <br/>
+                            </li>
+                        @endforeach
+                    </ol>
+                    <br/>
+                </fieldset>
+            </div>
+        @endforeach
         <div class="form-group">
             <br/>
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}

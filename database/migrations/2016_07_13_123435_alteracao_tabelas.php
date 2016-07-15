@@ -15,7 +15,7 @@ class AlteracaoTabelas extends Migration
 
         Schema::table('professors', function (Blueprint $table) {
             //Adicionando campo email a tabela professors
-            $table->string('email', 100)->nullable();
+            $table->string('email', 100)->after('nome');
             //Alterando tamanho do campo nome da tabela professors
             $table->string('nome', 60)->change();
         });

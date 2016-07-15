@@ -164,17 +164,17 @@ class AlunosController extends Controller
         $aluno->nome = trim($dados->nome);
         $aluno->email = trim($dados->email);*/
         $aluno->deleted_at = null;
-        $disciplinas=array();
-        if(count($dados)>3):
-            for($i=3; $i<count($dados);$i++):
+        $disciplinas = array();
+        if (count($dados) > 3):
+            for ($i = 3; $i < count($dados); $i++):
                 //dd($dados);
-                $disciplina =Disciplina::query()->where('codigo', trim($dados[$i]))->lists('id')->first();
-                $disciplinas[]=$disciplina;
+                $disciplina = Disciplina::query()->where('codigo', trim($dados[$i]))->lists('id')->first();
+                $disciplinas[] = $disciplina;
+                //dd($disciplinas);
+            endfor;
             //dd($disciplinas);
-                endfor;
-            //dd($disciplinas);
-            endif;
-             $aluno->save();
+        endif;
+        $aluno->save();
         $aluno->disciplinas()->sync($disciplinas);
     }
 }
