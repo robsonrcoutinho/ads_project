@@ -2,7 +2,7 @@
 @section('conteudo')
 
 <div class="contegory">
-    <div class="card-panel teal escurecer-4">
+    <div class="card-panel  #388e3c green darken-2 center">
          <span class=" grey-text text-lighten-5">Novo Professor</span>
     </div>
     {!! Form::open(['route'=>'professores.salvar']) !!}

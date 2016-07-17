@@ -2,7 +2,7 @@
 @section('conteudo')
 
     <div class="category">
-        <div class="card-panel teal escurecer-4">
+        <div class="card-panel  #388e3c green darken-2 center">
             <span class=" grey-text text-lighten-5">Usuários</span>
         </div>
         <table class="highlight  responsive-table">

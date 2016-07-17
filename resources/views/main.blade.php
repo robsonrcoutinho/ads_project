@@ -3,87 +3,81 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Site Gerencial ADS</title>
-
+    <title>IFBA - ADS</title>
 
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! MaterializeCSS::include_all()!!} {!! Html::style('css/style.css') !!}
 
-
 </head>
 <body>
-<nav class="#004d40 teal escurecer-4" role="navigation">
 
+ <!--- Topo  -->
+   <nav class="#388e3c green darken-2" role="navigation">
 
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
+       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
 
-        <ul class="right hide-on-med-and-down">
+       <ul class="right hide-on-med-and-down">
+           <li><a href="#">Gerenciar Semestre</a></li>
+           <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
+           <li><a href="#">Sair</a></li>
+       </ul>
+       <ul id="slide-out" class="side-nav ">
+           <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
+           <li><a href="{{route('professores')}}">Discentes</a></li>
+           <li><a href="{{route('alunos')}}">Docentes</a></li>
+           <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+           <li><a href="{{route('semestres')}}">Semestres</a></li>
+           <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
+           <li><a href="{{route('documentos')}}">Documentos</a></li>
+           <li><a href="#">Gerenciar Semestre</a></li>
+           <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
+           <li><a href="{{route('users')}}">Sair</a></li>
+       </ul>
+       <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
 
-            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-            <li><a href="#">Gerenciar Semestre</a></li>
+       </div>
+     </nav>
+<!-- Fim do topo --->
 
-        </ul>
-
-        <ul id="nav-mobile " class="side-nav ">
-            <li><a href="{{route('avisos')}}"> Consultar Avisos</a></li>
-            <li><a href="{{route('professores')}}">Discentes</a></li>
-            <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
-            <li><a href="{{route('alunos')}}">Docentes</a></li>
-            <li><a href="{{route('semestres')}}">Semestres</a></li>
-            <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
-            <li><a href="{{route('documentos')}}">Documentos</a></li>
-            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-            <li><a href="#">Gerenciar Semestre</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse  show-on-large"><i
-                    class="material-icons">menu</i></a>
-
-
-    </div>
-</nav>
-<div class="section no-pad-bot" id="index-banner" style="background-image: url(&quot;../images/banner.jpg&quot;);">
-    <div class="container">
-        <br><br>
-
+    <!-- BI-->
+    <div class="col 12" >
+        <div class="row center">
         <h1 class="header center orange-text">ADS </h1>
-
-        <div class="row center">
-            <h5 class="header col s12 light " style="color: blanchedalmond" ;>ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+        <h5 class="header col s12 light " style="color: blanchedalmond" ;>ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
         </div>
-        <div class="row center">
-            <a href="{{route('avisos.novo')}}" id="download-button" class="btn-large waves-effect waves-light orange">Publicar
-                Aviso</a>
-        </div>
-        <br><br>
+                 <div class="row center">
+                     <a href="{{route('avisos.novo')}}" id="download-button"
+                     class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+                  </div>
 
-    </div>
-</div>
+    </div> <!--BF -->
+
+    <!-- Conteudo-->
+         <div class="col 10 m10">
+                       <div class="col m10 ">
+
+                           @if($errors->any())
+                               <ul class="alert alert-warning">
+                                   @foreach($errors->all() as $error)
+                                       <li>{{$error}}</li>
+                                   @endforeach
+                               </ul>
+                           @endif
+
+                           @yield('conteudo')
+                       </div>
+
+                   <br>
+          </div>
+   </div>
+ <!--Fim Conteudo-->
 
 
-<div class="container">
 
-    <div class="col s12 m12">
+</body>
 
-        @if($errors->any())
-            <ul class="alert alert-warning">
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        @endif
-
-        @yield('conteudo')
-    </div>
-</div>
-<br><br>
-
-<div class="section">
-
-</div>
-</div>  <!--- container -->
-
-<footer class="page-footer teal escurecer-4"><!--- Footer -->
+<footer class="page-footer #388e3c green darken-2"><!--- Footer -->
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -118,16 +112,9 @@
                 reservados</a>
         </div>
     </div>
+    <!--  Scripts-->
+    {!! Html::script('js/jquery-2.1.1.min.js') !!}
+    {!! Html::script('js/init.js') !!}
+    {!! Html::script('materialize-css/js/materialize.min.js')!!}
 </footer>
-
-
-<!--  Scripts-->
-{!! Html::script('js/jquery-2.1.1.min.js') !!}
-{!! Html::script('js/init.js') !!}
-{!! Html::script('materialize-css/js/materialize.min.js')!!}
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
-
-</body>
 </html>

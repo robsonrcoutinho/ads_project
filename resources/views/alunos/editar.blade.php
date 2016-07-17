@@ -1,7 +1,7 @@
 @extends('main')
 @section('conteudo')
 <div class="contegory">
-          <div class="card-panel  teal escurecer-4">
+          <div class="ccard-panel  #388e3c green darken-2 center">
           <span class=" grey-text text-lighten-5" >Editar Aluno</span>
           </div>
     {!! Form::open(['route'=>['alunos.alterar', $aluno->id], 'method'=>'put']) !!}
