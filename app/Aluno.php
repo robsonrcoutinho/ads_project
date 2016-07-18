@@ -4,7 +4,6 @@ namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-//use adsproject\Disciplina;
 
 class Aluno extends Model
 {
