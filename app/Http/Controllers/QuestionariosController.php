@@ -13,6 +13,7 @@ use adsproject\Resposta;
 use adsproject\Aluno;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class QuestionariosController extends Controller
@@ -36,6 +37,7 @@ class QuestionariosController extends Controller
         if ($user->avaliacoes()->get()->contains($avaliacao)):
             $this->mensagem('Usuário já realizou última avaliação.', '/');
         endif;
+
         $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
         if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):
             $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');
@@ -45,8 +47,20 @@ class QuestionariosController extends Controller
 
     public function salvar()
     {
+        $input = Input::all();
+        //dd($input);
+        $tamanho = count($input['pergunta_id']);
+
+        $rules = array(
+            'campo_resposta.*' => 'required',
+            'campo_resposta' => 'array|size:' . $tamanho,
+        );
+        $validador = Validator::make($input, $rules);
+        if ($validador->fails()):
+            return redirect()->back()->withInput()->withErrors($validador);
+        endif;
         $this->inserir();
-        return redirect()->route('/');
+        return redirect('/');
     }
 
     private function mensagem($texto, $rota)
@@ -65,6 +79,7 @@ class QuestionariosController extends Controller
         $avaliacao = Input::get('avaliacao_id');
         $disciplinas = Input::get('disciplina_id');
         $perguntas = Input::get('pergunta_id');
+
         foreach ($respostas as $indice => $resposta):
             $r = new Resposta();
             $r->pergunta_id = $perguntas[$indice];
