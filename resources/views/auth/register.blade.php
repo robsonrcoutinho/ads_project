@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('role', 'Papel: ') !!}
-            {!! Form::select ('role', ['aluno'=>'aluno', 'professor'=>'professor'], null, ['class'=>'browser-default']) !!}
+            {!! Form::select ('role', ['aluno'=>'Aluno', 'professor'=>'Professor'], null, ['class'=>'browser-default']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
@@ -27,7 +27,7 @@
             {!! Form::password ('password_confirmation', ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary  light-blue darken-3']) !!}
         </div>
         {!! Form::close() !!}
     </div>

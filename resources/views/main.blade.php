@@ -7,7 +7,7 @@
 
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
-    {!! MaterializeCSS::include_all()!!} {!! Html::style('css/style.css') !!}
+    {!! Html::style('materialize-css/css/materialize.min.css')!!} {!! Html::style('css/style.css') !!}
 
 </head>
 <body>
@@ -17,7 +17,15 @@
 
        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
 
+
        <ul class="right hide-on-med-and-down">
+
+           @if(Auth::guest())
+               <li><a href="{{route('users')}}">Login</a></li>
+               <li><a href="{{route('registrar')}}">Registrar</a></li>
+
+           @else
+
            <li><a href="#">Gerenciar Semestre</a></li>
            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
            <li><a href="#">Sair</a></li>
@@ -32,10 +40,10 @@
            <li><a href="{{route('documentos')}}">Documentos</a></li>
            <li><a href="#">Gerenciar Semestre</a></li>
            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-           <li><a href="{{route('users')}}">Sair</a></li>
+           <li><a href="{{route('login')}}">Sair</a></li>
        </ul>
        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
-
+    @endif
        </div>
      </nav>
 <!-- Fim do topo --->
@@ -54,7 +62,9 @@
     </div> <!--BF -->
 
     <!-- Conteudo-->
+  <div class="container">
          <div class="col 10 m10">
+
                        <div class="col m10 ">
 
                            @if($errors->any())
@@ -71,6 +81,7 @@
                    <br>
           </div>
    </div>
+ </div>
  <!--Fim Conteudo-->
 
 
