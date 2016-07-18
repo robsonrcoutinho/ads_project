@@ -294,13 +294,13 @@ $api->version('v1',function($api){
     $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
     $api->post('logout', 'adsproject\Http\Controllers\Api\ApiController@logout');
 
-    $api->post('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
-    $api->post('documentos','adsproject\Http\Controllers\Api\ApiController@documentosAll');
-    $api->post('professores','adsproject\Http\Controllers\Api\ApiController@professoresAll');
-    $api->post('disciplinas','adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
-    $api->post('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
-    $api->post('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
-    $api->post('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
+    $api->get('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
+    $api->get('documentos','adsproject\Http\Controllers\Api\ApiController@documentosAll');
+    $api->get('professores','adsproject\Http\Controllers\Api\ApiController@professoresAll');
+    $api->get('disciplinas','adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
+    $api->get('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
+    $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
+    $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
 
 });
 

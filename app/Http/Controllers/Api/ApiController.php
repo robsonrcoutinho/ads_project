@@ -19,10 +19,11 @@ class ApiController extends Controller
 
     protected $auth;
 
+    /*
     public function __construct(JWTAuth $auth)
     {
         $this->middleware('jwt.auth', ['except' => ['authenticate']]);
-    }
+    }*/
 
     public function authenticate(Request $request)
     {
