@@ -10,6 +10,7 @@
                 <th>Id</th>
                 <th>Pergunta</th>
                 <th>Resposta</th>
+                <th>Disciplina</th>
             </tr>
             </thead>
             <tbody>
@@ -18,6 +19,7 @@
                     <td>{{$resposta->id}}</td>
                     <td>{{$resposta->pergunta->enunciado}}</td>
                     <td>{{$resposta->campo_resposta}}</td>
+                    <td>{{$resposta->disciplina->nome}}</td>
                 </tr>
             @endforeach
             </tbody>

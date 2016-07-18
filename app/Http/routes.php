@@ -254,7 +254,7 @@ Route::group(['prefix' => 'questionarios'], function () {
 //Rotas de autenticação
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/logout', ['as'=>'sair', 'uses'=>'Auth\AuthController@getLogout']);
 //Rotas de registro
 Route::get('auth/register', ['as' => 'registro', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('auth/register', ['as' => 'registrar', 'uses' => 'Auth\AuthController@postRegister']);
