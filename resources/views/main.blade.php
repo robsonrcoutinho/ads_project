@@ -40,7 +40,7 @@
            <li><a href="{{route('documentos')}}">Documentos</a></li>
            <li><a href="#">Gerenciar Semestre</a></li>
            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-           <li><a href="{{route('login')}}">Sair</a></li>
+           <li><a href="#">Sair</a></li>
        </ul>
        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
     @endif
