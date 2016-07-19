@@ -48,14 +48,16 @@ class QuestionariosController extends Controller
     public function salvar()
     {
         $input = Input::all();
-        //dd($input);
         $tamanho = count($input['pergunta_id']);
-
         $rules = array(
-            'campo_resposta.*' => 'required',
-            'campo_resposta' => 'array|size:' . $tamanho,
+            'campo_resposta' => 'required|array|size:' . $tamanho,
         );
-        $validador = Validator::make($input, $rules);
+        $mensagens = array(
+            'required' => 'Existem respostas não informadas.',
+            'size' => 'Todas as perguntas devem ser respondidas.',
+        );
+
+        $validador = Validator::make($input, $rules, $mensagens);
         if ($validador->fails()):
             return redirect()->back()->withInput()->withErrors($validador);
         endif;

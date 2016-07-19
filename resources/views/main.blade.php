@@ -62,11 +62,12 @@
             </div>
 
         @else
-
+            @can('salvar', new Aviso())
             <div class="row center">
                 <a href="{{route('avisos.novo')}}" id="download-button"
                    class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
             </div>
+            @endcan
         @endif
     </div> <!--BF -->
 
