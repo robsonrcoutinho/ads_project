@@ -289,7 +289,7 @@ Route::group(array('before' => 'auth'), function()
  * */
 
 
-$api = app('Dingo\Api\Routing\Router');
+/*$api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
     $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
     $api->post('logout', 'adsproject\Http\Controllers\Api\ApiController@logout');
@@ -302,7 +302,7 @@ $api->version('v1',function($api){
     $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
     $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
 
-});
+});*/
 
 
 

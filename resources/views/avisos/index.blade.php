@@ -21,7 +21,7 @@
                         @can('alterar', $aviso)
                         <a href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}" class="btn disabled">Editar</a>
                         @endcan
-                        @can('exclur', $aviso)
+                        @can('excluir', $aviso)
                         <a href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn disabled">Excluir</a>
                         @endcan
                     </td>

@@ -69,6 +69,6 @@ class AvisosController extends Controller
     private function removerAntigos()
     {
         $avisos = Aviso::antigos()->lists('id');
-        Aviso::destroy($avisos);
+        Aviso::destroy($avisos->all());
     }
 }
