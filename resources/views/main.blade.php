@@ -20,8 +20,8 @@
 
        <ul class="right hide-on-med-and-down">
 
+
            @if(Auth::guest())
-               <li><a href="{{route('users')}}">Login</a></li>
                <li><a href="{{route('registrar')}}">Registrar</a></li>
 
            @else
@@ -32,11 +32,11 @@
        </ul>
        <ul id="slide-out" class="side-nav ">
            <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
-           <li><a href="{{route('professores')}}">Discentes</a></li>
-           <li><a href="{{route('alunos')}}">Docentes</a></li>
+           <li><a href="{{route('alunos')}}">Discentes</a></li>
+           <li><a href="{{route('professores')}}">Docentes</a></li>
            <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
            <li><a href="{{route('semestres')}}">Semestres</a></li>
-           <li><a href="{{route('avaliacoes')}}">Avaliaçoes</a></li>
+           <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
            <li><a href="{{route('documentos')}}">Documentos</a></li>
            <li><a href="#">Gerenciar Semestre</a></li>
            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
@@ -52,13 +52,22 @@
     <div class="col 12" >
         <div class="row center">
         <h1 class="header center orange-text">ADS </h1>
-        <h5 class="header col s12 light " style="color: blanchedalmond" ;>ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+        <h5 class="header col s12 light orange-text  ">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
         </div>
-                 <div class="row center">
-                     <a href="{{route('avisos.novo')}}" id="download-button"
-                     class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
-                  </div>
 
+        @if(Auth::guest())
+            <div class="row center">
+                <a href="{{route('users')}}" id="download-button"
+                   class="btn-large waves-effect waves-light orange darken-1"> Login </a>
+            </div>
+
+        @else
+
+            <div class="row center">
+                <a href="{{route('avisos.novo')}}" id="download-button"
+                   class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+            </div>
+        @endif
     </div> <!--BF -->
 
     <!-- Conteudo-->
