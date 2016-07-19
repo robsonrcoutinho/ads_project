@@ -10,7 +10,7 @@ use adsproject\Avaliacao;
 use adsproject\Http\Requests\AvaliacaoRequest;
 use adsproject\Semestre;
 use adsproject\Pergunta;
-
+use Auth;
 
 class AvaliacoesController extends Controller
 {
@@ -21,6 +21,9 @@ class AvaliacoesController extends Controller
 
     public function index()
     {
+        if (Auth::getUser()->role == 'aluno'):
+            return redirect()->route('questionarios');
+        endif;
         $avaliacoes = Avaliacao::all();
         return view('avaliacoes.index', ['avaliacoes' => $avaliacoes]);
     }
