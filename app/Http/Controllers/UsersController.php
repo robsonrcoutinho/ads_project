@@ -40,6 +40,7 @@ class UsersController extends Controller
     {
         $this->validate($request, ['email' => 'unique:users,email']);
         $user = new User($request->all());
+
         $user->password = bcrypt($request->password);
         $user->save();
         return redirect()->route('users');
@@ -55,8 +56,10 @@ class UsersController extends Controller
     {
         $this->validate($request, ['email' => 'unique:users,email,' . $id]);
         $user = User::find($id);
-        $user->fillable($request->all());
+        $user->name=$request->name;
+        $user->email=$request->email;
         $user->password = bcrypt($request->password);
+        $user->role=$request->role;
         $user->save();
         if (Auth::user()->can('alterar', $user)):
             return redirect()->route('users');
