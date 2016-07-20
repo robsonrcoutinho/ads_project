@@ -37,7 +37,6 @@ class QuestionariosController extends Controller
         if ($user->avaliacoes()->get()->contains($avaliacao)):
             $this->mensagem('Usuário já realizou última avaliação.', '/');
         endif;
-
         $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
         if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):
             $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');
@@ -48,16 +47,14 @@ class QuestionariosController extends Controller
     public function salvar()
     {
         $input = Input::all();
-        $tamanho = count($input['pergunta_id']);
-        $rules = array(
-            'campo_resposta' => 'required|array|size:' . $tamanho,
-        );
-        $mensagens = array(
-            'required' => 'Existem respostas não informadas.',
-            'size' => 'Todas as perguntas devem ser respondidas.',
-        );
-
-        $validador = Validator::make($input, $rules, $mensagens);
+        $indices = collect($input['pergunta_id'])->keys();
+        $rules = array();
+        $respostas = $input["campo_resposta"];
+        foreach ($indices as $indice):
+            $rules[$indice] = 'required';
+        endforeach;
+        $mensagens = ['required' => 'Existem respostas não informadas.'];
+        $validador = Validator::make($respostas, $rules, $mensagens);
         if ($validador->fails()):
             return redirect()->back()->withInput()->withErrors($validador);
         endif;

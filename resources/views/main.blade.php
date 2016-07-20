@@ -12,88 +12,87 @@
 </head>
 <body>
 
- <!--- Topo  -->
-   <nav class="#388e3c green darken-2" role="navigation">
+<!--- Topo  -->
+<nav class="#388e3c green darken-2" role="navigation">
 
-       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
-
-
-       <ul class="right hide-on-med-and-down">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
 
 
-           @if(Auth::guest())
-               <li><a href="{{route('registrar')}}">Registrar</a></li>
+        <ul class="right hide-on-med-and-down">
 
-           @else
 
-           <li><a href="#">Gerenciar Semestre</a></li>
-           <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-           <li><a href="{{route('sair')}}">Sair</a></li>
-       </ul>
-       <ul id="slide-out" class="side-nav ">
-           <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
-           <li><a href="{{route('alunos')}}">Discentes</a></li>
-           <li><a href="{{route('professores')}}">Docentes</a></li>
-           <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
-           <li><a href="{{route('semestres')}}">Semestres</a></li>
-           <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
-           <li><a href="{{route('documentos')}}">Documentos</a></li>
-           <li><a href="#">Gerenciar Semestre</a></li>
-           <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-           <li><a href="{{route('sair')}}">Sair</a></li>
-       </ul>
-       <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
-    @endif
-       </div>
-     </nav>
+            @if(Auth::guest())
+                <li><a href="{{route('registrar')}}">Registrar</a></li>
+
+            @else
+
+                <li><a href="#">Gerenciar Semestre</a></li>
+                <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
+                <li><a href="{{route('sair')}}">Sair</a></li>
+        </ul>
+        <ul id="slide-out" class="side-nav ">
+            <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
+            <li><a href="{{route('alunos')}}">Discentes</a></li>
+            <li><a href="{{route('professores')}}">Docentes</a></li>
+            <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+            <li><a href="{{route('semestres')}}">Semestres</a></li>
+            <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
+            <li><a href="{{route('documentos')}}">Documentos</a></li>
+            <li><a href="#">Gerenciar Semestre</a></li>
+            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
+            <li><a href="{{route('sair')}}">Sair</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+        @endif
+    </div>
+</nav>
 <!-- Fim do topo --->
 
-    <!-- BI-->
-    <div class="col 12" >
-        <div class="row center">
+<!-- BI-->
+<div class="col 12">
+    <div class="row center">
         <h1 class="header center orange-text">ADS </h1>
         <h5 class="header col s12 light orange-text  ">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+    </div>
+
+    @if(Auth::guest())
+        <div class="row center">
+            <a href="{{route('users')}}" id="download-button"
+               class="btn-large waves-effect waves-light orange darken-1"> Login </a>
         </div>
 
-        @if(Auth::guest())
-            <div class="row center">
-                <a href="{{route('users')}}" id="download-button"
-                   class="btn-large waves-effect waves-light orange darken-1"> Login </a>
-            </div>
+    @else
+        @can('salvar', new Aviso())
+        <div class="row center">
+            <a href="{{route('avisos.novo')}}" id="download-button"
+               class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+        </div>
+        @endcan
+    @endif
+</div>
+<!--BF -->
 
-        @else
-            @can('salvar', new Aviso())
-            <div class="row center">
-                <a href="{{route('avisos.novo')}}" id="download-button"
-                   class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
-            </div>
-            @endcan
-        @endif
-    </div> <!--BF -->
+<!-- Conteudo-->
+<div class="container">
+    <div class="col 10 m10">
 
-    <!-- Conteudo-->
-  <div class="container">
-         <div class="col 10 m10">
+        <div class="col m10 ">
 
-                       <div class="col m10 ">
+            @if($errors->any())
+                <ul class="alert alert-warning">
+                    @foreach(collect($errors->all())->unique() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            @endif
+            @yield('conteudo')
+        </div>
 
-                           @if($errors->any())
-                               <ul class="alert alert-warning">
-                                   @foreach($errors->all() as $error)
-                                       <li>{{$error}}</li>
-                                   @endforeach
-                               </ul>
-                           @endif
-
-                           @yield('conteudo')
-                       </div>
-
-                   <br>
-          </div>
-   </div>
- </div>
- <!--Fim Conteudo-->
-
+        <br>
+    </div>
+</div>
+</div>
+<!--Fim Conteudo-->
 
 
 </body>
