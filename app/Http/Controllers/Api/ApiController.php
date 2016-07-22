@@ -55,7 +55,8 @@ class ApiController extends Controller
      * */
     public function avisosAll()
     {
-     return Aviso::all();
+     return response()
+         ->json(Aviso::all());
     }
 
     /*
@@ -72,7 +73,8 @@ class ApiController extends Controller
     * */
     public function professoresAll()
     {
-        return Professor::all();
+        return response()
+            ->json(Professor::all());
     }
 
 
@@ -81,7 +83,8 @@ class ApiController extends Controller
     * */
     public function disciplinasAll()
     {
-        return Disciplina::all();
+        return response()
+            ->json(Disciplina::all());
     }
 
     /*
@@ -89,13 +92,15 @@ class ApiController extends Controller
     * */
     public function avaliacoesAll()
     {
-        return Avaliacao::all();
+        return response()
+            ->json(Avaliacao::all());
     }
 
     //Método que busca avaliação aberta para o Web Service
     public function questionariosAll()
     {
-         return Avaliacao::aberta()->first();
+         return response()
+             ->json(Avaliacao::aberta()->first());
 
     }
 
