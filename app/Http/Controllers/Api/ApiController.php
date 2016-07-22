@@ -63,7 +63,8 @@ class ApiController extends Controller
      * */
     public function documentosAll()
     {
-        return Documento::all();
+        return response()
+            ->json(Documento::all());
     }
 
     /*
