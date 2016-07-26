@@ -80,8 +80,7 @@ class AuthController extends Controller
     {
         $usuario = filter_var($request->input('name'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
         $request->merge([$usuario => $request->input('name')]);
-        if (Auth::attempt($request->only($usuario,'password')))
-        {
+        if (Auth::attempt($request->only($usuario, 'password'))) {
             return redirect()->intended($this->redirectPath());
         } else {
             $rules = [

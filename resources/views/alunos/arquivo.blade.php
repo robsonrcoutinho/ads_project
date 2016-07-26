@@ -5,7 +5,7 @@
             <span class=" grey-text text-lighten-5">Carregar Alunos</span>
         </div>
         {!! Form::open(['route'=>'alunos.carregar', 'enctype'=>'multipart/form-data']) !!}
-
+        {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::file('arquivo',['class'=>'form-control'] ) !!}
             <br /><br />

@@ -2,7 +2,7 @@
 
 use adsproject\Aluno;
 use adsproject\Http\Requests\AlunoRequest;
-use Illuminate\Contracts\Filesystem\Filesystem;
+use PHPExcel_Reader_Excel2007;
 use Illuminate\Http\Request;
 use adsproject\Disciplina;
 use Validator;
@@ -10,6 +10,7 @@ use Validator;
 
 class AlunosController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -82,36 +83,120 @@ class AlunosController extends Controller
         return view('alunos.arquivo');
     }
 
-    public function carregar(Filesystem $filesystem, Request $request)
+    public function carregar(Request $request)
     {
         $this->validate($request, ['arquivo' => 'required'], ['required' => 'O :attribute precisa ser passado.']);
-        $arquivo = $request->file('arquivo');
-        if ($arquivo != null):
-            $nomeArquivo = $arquivo->getClientOriginalName();
-            $diretorio = storage_path() . '/app';
-            $arquivo->move($diretorio, $nomeArquivo);
-            if ($filesystem->exists($nomeArquivo)):
-                $texto = utf8_encode($filesystem->get($nomeArquivo));
-                //$texto = json_decode(utf8_encode($filesystem->get($nomeArquivo)), true);
-
-                /* try {
-                     $xml = simplexml_load_string($texto);
-                     $this->montarLista($xml);
-                     //dd($xml);
-                 } catch (\Exception $e) {
-                     $errors = 'Formato de arquivo incorreto.';
-                     unlink($diretorio . '/' . $nomeArquivo);
-                     return redirect()->route('alunos.arquivo')->withErrors($errors);
-                 }*/
-                unlink($diretorio . '/' . $nomeArquivo);
-                $this->montarLista($texto);
-//$this->montarLista($xml);
-            endif;
+        $arquivo = $this->gravarArquivo($request->file('arquivo'));
+        if ($arquivo == null):
+            return redirect()->back()->withErrors(['Ocorreu um erro no arquivo']);
         endif;
-        return redirect()->route('alunos');
+        /*list($usec, $sec) = explode(' ', microtime());
+        $script_start = (float)$sec + (float)$usec;*/
+        $salvo = $this->salvarLista($arquivo);
+        /*list($usec, $sec) = explode(' ', microtime());
+        $script_end = (float)$sec + (float)$usec;
+        $elapsed_time = round($script_end - $script_start, 5);*/
+        $this->apagarArquivo($arquivo);
+        //$texto='Elapsed time: '. $elapsed_time. ' secs. Memory usage: '. round(((memory_get_peak_usage(true) / 1024) / 1024), 2). 'Mb';
+        //dd($texto);
+        return $salvo ? redirect()->route('alunos') :
+            redirect()->back()->withErrors(['Ocorreu um erro. Por favor, verifique o arquivo.']);
+
     }
 
-    private function montarLista($texto)
+    private function gravarArquivo($arquivo)
+    {
+        if ($arquivo != null):
+            $nome = $arquivo->getClientOriginalName();
+            $diretorio = storage_path() . '/app';
+            $arquivo->move($diretorio, $nome);
+            return $diretorio . '/' . $nome;
+        endif;
+    }
+
+    private function apagarArquivo($arquivo)
+    {
+        unlink($arquivo);
+    }
+
+    private function salvarLista($arquivo)
+    {
+        try {
+            $leitor = new PHPExcel_Reader_Excel2007();
+            $planilha = $leitor->load($arquivo);
+            $tabela = $planilha->setActiveSheetIndex(0);
+            $cont = 2;
+            $alunos = array();
+            while ($tabela->cellExists('A' . $cont)):
+                $matricula = $tabela->getCell('A' . $cont)->getValue();
+                $aluno = $this->buscarOuCriar($matricula);
+                $aluno->nome = $tabela->getCell('B' . $cont)->getValue();
+                $aluno->email = $tabela->getCell('C' . $cont)->getValue();
+                $aluno->deleted_at = null;
+                $aluno->save();
+                $alunos[] = $aluno->id;
+                $disciplinas = array();
+                do {
+                    $disciplinas[] = $this->buscarDisciplina($tabela->getCell('D' . $cont)->getValue())->id;
+                    $cont++;
+                } while ($tabela->cellExists('A' . $cont) && $tabela->getCell('A' . $cont)->getValue() == null);
+                $aluno->disciplinas()->sync($disciplinas);
+            endwhile;
+            Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+        /*
+                try {
+                    $leitor = new PHPExcel_Reader_Excel2007();
+                    $planilha = $leitor->load($arquivo);
+                    $tabela = $planilha->setActiveSheetIndex(0);
+                    $lista = $tabela->toArray();
+                    $tamanho = count($lista);
+                    $cont = 1;
+                    $alunos = array();
+                    //dd($lista[2][0]);
+                    while ($cont < $tamanho):
+                        $matricula = $lista[$cont][0];
+                        $aluno = $this->buscarOuCriar($matricula);
+                        $aluno->nome = $lista[$cont][1];
+                        $aluno->email = $lista[$cont][2];
+                        $aluno->deleted_at = null;
+                        $aluno->save();
+                        $alunos[] = $aluno->id;
+                        $disciplinas = array();
+                        do {
+                            $disciplinas[] = $this->buscarDisciplina($lista[$cont][3])->id;
+                            $cont++;
+                        } while ($cont < $tamanho && $lista[$cont][0] == null);
+                        $aluno->disciplinas()->sync($disciplinas);
+                    endwhile;
+                    Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
+                } catch (\Exception $e) {
+                    return false;
+                }
+                return true;*/
+
+    }
+
+    private function buscarOuCriar($matricula)
+    {
+        $aluno = Aluno::withTrashed()->where('matricula', $matricula)->first();
+        if ($aluno == null):
+            $aluno = new Aluno(['matricula' => $matricula]);
+        endif;
+        return $aluno;
+    }
+
+    private
+    function buscarDisciplina($codigo)
+    {
+        return Disciplina::query()->where('codigo', $codigo)->first();
+    }
+
+    private
+    function montarLista($texto)
     {
         if ($texto == null):
             return;
@@ -134,7 +219,8 @@ class AlunosController extends Controller
         endforeach;
     }
 
-    private function validar($matricula, $nome, $email)
+    private
+    function validar($matricula, $nome, $email)
     {
         $valores = ['matricula' => trim($matricula),
             'nome' => trim($nome),
@@ -146,7 +232,8 @@ class AlunosController extends Controller
         return !$validador->fails();
     }
 
-    private function gravar($dados)
+    private
+    function gravar($dados)
     {
         //$aluno = Aluno::query()->where('matricula', $dados[0])->first();
         //$aluno = Aluno::query()->where('matricula', $dados['matricula'])->first();
