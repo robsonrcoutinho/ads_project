@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Resposta extends Model
 {
     protected $table = "respostas";
-    public $timestamps = false;
+    //public $timestamps = false;
     protected $fillable = ['campo_resposta'];
 
     public function pergunta()

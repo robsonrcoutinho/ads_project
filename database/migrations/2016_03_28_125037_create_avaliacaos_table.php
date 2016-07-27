@@ -13,6 +13,7 @@ class CreateAvaliacaosTable extends Migration
             $table->date('inicio');
             $table->date('termino');
             $table->unsignedInteger('semestre_id');
+            $table->timestamps();
             $table->softDeletes();
         });
     }

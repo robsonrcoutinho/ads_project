@@ -12,7 +12,7 @@ class CreateAvisosTable extends Migration
             $table->increments('id');
             $table->String('titulo',20);
             $table->text('mensagem');
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 

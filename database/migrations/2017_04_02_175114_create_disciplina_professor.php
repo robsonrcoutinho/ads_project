@@ -9,8 +9,8 @@ class CreateDisciplinaProfessor extends Migration
     public function up()
     {
         Schema::create('disciplina_professor', function (Blueprint $table) {
-            $table->unsignedInteger('professor_id');
             $table->unsignedInteger('disciplina_id');
+            $table->unsignedInteger('professor_id');
         });
     }
 

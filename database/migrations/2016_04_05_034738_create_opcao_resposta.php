@@ -12,6 +12,7 @@ class CreateOpcaoResposta extends Migration
             $table->increments('id');
             $table->string('resposta_opcao');
             $table->unsignedInteger('pergunta_id');
+            $table->timestamps();
             $table->softDeletes();
         });
     }

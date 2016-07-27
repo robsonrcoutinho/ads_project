@@ -17,6 +17,7 @@ class CreateTableAluno extends Migration
             $table->string('matricula', 10)->unique();
             $table->string('nome', 60);
             $table->string('email', 100);
+            $table->timestamps();
             $table->softDeletes();
          });
     }

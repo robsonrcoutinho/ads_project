@@ -14,6 +14,7 @@ class CreateDisciplinasTable extends Migration
             $table->string('nome', 60);
             $table->integer('carga_horaria');
             $table->string('ementa', 100)->nullable();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

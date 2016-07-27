@@ -10,7 +10,6 @@ class Aviso extends Model
     protected $table = "avisos";
     protected $fillable = ['titulo', 'mensagem'];
 
-
     public function scopeAntigos($query)
     {
         return $query->whereDate('created_at', '<=', Carbon::now()->subDay(7));

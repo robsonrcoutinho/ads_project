@@ -13,8 +13,8 @@ class CreateDisciplinaSemestre extends Migration
     public function up()
     {
         Schema::create('disciplina_semestre', function (Blueprint $table) {
-            $table->unsignedInteger('semestre_id');
             $table->unsignedInteger('disciplina_id');
+            $table->unsignedInteger('semestre_id');
         });
     }
 

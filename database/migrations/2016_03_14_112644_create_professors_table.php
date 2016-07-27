@@ -14,6 +14,7 @@ class CreateProfessorsTable extends Migration
             $table->string('nome', 60);
             $table->string('email', 100);
             $table->string('curriculo', 100)->nullable();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

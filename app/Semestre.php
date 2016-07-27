@@ -9,7 +9,7 @@ class Semestre extends Model
     protected $table = "semestres";
     protected $fillable = ['codigo', 'inicio', 'termino'];
     protected $softDelete = true;
-    public $timestamps = false;
+    //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
 

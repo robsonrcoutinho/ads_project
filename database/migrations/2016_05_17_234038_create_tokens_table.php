@@ -11,10 +11,8 @@ class CreateTokensTable extends Migration
         Schema::create('tokens', function (Blueprint $table) {
             $table->increments('id');
             $table->String('token_name',255);
-
         });
     }
-
 
     public function down()
     {

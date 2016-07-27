@@ -12,6 +12,7 @@ class CreateTablePerguntas extends Migration
             $table->increments('id');
             $table->string('enunciado');
             $table->boolean('pergunta_fechada')->default(false);
+            $table->timestamps();
             $table->softDeletes();
         });
     }

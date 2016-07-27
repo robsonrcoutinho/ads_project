@@ -10,7 +10,7 @@ class Professor extends Model
  use SoftDeletes;
 
     protected $table = "professors";
-    public $timestamps = false;
+    //public $timestamps = false;
     protected $fillable =['matricula','nome','email','curriculo'];
     protected $softDelete  = true;
     protected $hidden = ['deleted_at'];

@@ -12,7 +12,7 @@ class OpcaoResposta extends Model
 
     protected $table = "opcao_resposta";
     protected $softDelete = true;
-    public $timestamps = false;
+    //public $timestamps = false;
     protected $fillable = ['resposta_opcao'];
     protected $hidden = ['deleted_at'];
 

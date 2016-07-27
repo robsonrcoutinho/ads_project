@@ -9,7 +9,7 @@ class Aluno extends Model
 {
 	use SoftDeletes;
     protected $table = "alunos";
-    public $timestamps = false;
+    //public $timestamps = false;
     protected $fillable =['matricula','nome','email'];
     protected $softDelete  = true;
     protected $hidden = ['deleted_at'];
