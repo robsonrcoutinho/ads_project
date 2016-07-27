@@ -10,7 +10,6 @@ use adsproject\Disciplina;
 use adsproject\Http\Requests\DisciplinaRequest;
 use adsproject\Professor;
 
-
 class DisciplinasController extends Controller
 {
     public function __construct()
