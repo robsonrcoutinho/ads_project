@@ -8,6 +8,7 @@
  */
 use adsproject\Disciplina;
 use adsproject\Http\Requests\DisciplinaRequest;
+use adsproject\Professor;
 
 
 class DisciplinasController extends Controller
@@ -26,7 +27,11 @@ class DisciplinasController extends Controller
     public function novo()
     {
         $disciplinas = Disciplina::orderBy('nome')->get();
-        return view('disciplinas.novo', ['disciplinas' => $disciplinas]);
+        $professores = Professor::orderBy('nome')->get();
+        return view('disciplinas.novo',[
+            'disciplinas' => $disciplinas,
+            'professores' => $professores
+        ]);
     }
 
     public function salvar(DisciplinaRequest $request)
@@ -37,6 +42,10 @@ class DisciplinasController extends Controller
         if ($pre_requisitos != null):
             $disciplina->pre_requisitos()->sync($pre_requisitos);
         endif;
+        $professores = $request->get('professores');
+        if ($professores != null):
+            $disciplina->professors()->sync($professores);
+        endif;
         return redirect('disciplinas');
     }
 
@@ -44,7 +53,11 @@ class DisciplinasController extends Controller
     {
         $disciplina = Disciplina::find($id);
         $disciplinas = Disciplina::orderBy('nome')->get()->except($disciplina->id);
-        return view('disciplinas.editar', ['disciplina' => $disciplina, 'disciplinas' => $disciplinas]);
+        $professores = Professor::orderBy('nome')->get();
+        return view('disciplinas.editar', [
+            'disciplina' => $disciplina,
+            'disciplinas' => $disciplinas,
+            'professores' => $professores]);
     }
 
     public function alterar(DisciplinaRequest $request, $id)
@@ -56,6 +69,12 @@ class DisciplinasController extends Controller
             $disciplina->pre_requisitos()->sync($pre_requisitos);
         elseif ($disciplina->pre_requisitos != null):
             $disciplina->pre_requisitos()->detach();
+        endif;
+        $professores = $request->get('professores');
+        if ($professores != null):
+            $disciplina->professors()->sync($professores);
+        elseif ($disciplina->professors != null):
+            $disciplina->professors()->detach();
         endif;
         $disciplina->update($request->all());
         return redirect()->route('disciplinas');

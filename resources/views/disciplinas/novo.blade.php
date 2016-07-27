@@ -34,6 +34,18 @@
             </fieldset>
         </div>
         <div class="form-group">
+            <fieldset>
+                <ul id="professores">
+                    <legend>Professores</legend>
+                    @foreach($professores as $professor)
+                        {!! Form::checkbox('professores[]', $professor->id, false, ['id'=>$professor->matricula, 'class'=>'filled-in']) !!}
+                        {!! Form::label($professor->matricula, $professor->nome) !!}
+                        <br/>
+                    @endforeach
+                </ul>
+            </fieldset>
+        </div>
+        <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}

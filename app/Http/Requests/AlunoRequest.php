@@ -2,8 +2,6 @@
 
 namespace adsproject\Http\Requests;
 
-use adsproject\Http\Requests\Request;
-
 class AlunoRequest extends Request
 {
     /**
@@ -24,7 +22,7 @@ class AlunoRequest extends Request
     public function rules()
     {
         return [
-            'matricula'=>'required|min:6',
+            'matricula'=>'required|min:6|numeric',
             'nome'=>'required|min:5',
             'email'=>'email'
         ];
