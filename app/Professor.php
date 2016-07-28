@@ -15,6 +15,10 @@ class Professor extends Model
     protected $softDelete  = true;
     protected $hidden = ['deleted_at'];
 
+    /**
+     * Busca disciplinas que o professor leciona
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class);

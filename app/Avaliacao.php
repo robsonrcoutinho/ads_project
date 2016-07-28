@@ -16,29 +16,56 @@ class Avaliacao extends Model
     //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
+    /**
+     * Busca o semestre relacionado a avaliação
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function semestre()
     {
         return $this->belongsTo(Semestre::class);
     }
 
+    /**
+     * Busca perguntas da avaliação
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function perguntas()
     {
         return $this->belongsToMany(Pergunta::class);
     }
 
+    /**
+     * Busca respostas da avaliação
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function respostas()
     {
         return $this->hasMany(Resposta::class);
     }
 
+    /**
+     * Busca disciplinas da avaliadas
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class);
     }
+
+    /**
+     * Busca usuários que responderam à avaliação
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Busca avaliação aberta
+     * @param $query
+     * @return mixed
+     */
     public function scopeAberta($query)
     {
         return $query->whereDate('inicio', '<=', date('Y-m-d'))

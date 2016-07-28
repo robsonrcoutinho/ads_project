@@ -14,6 +14,10 @@ class Aluno extends Model
     protected $softDelete  = true;
     protected $hidden = ['deleted_at'];
 
+    /**
+     * Método que busca as disciplinas em que o aluno está matrículado
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function disciplinas()
     {
         return $this->belongsToMany(Disciplina::class);

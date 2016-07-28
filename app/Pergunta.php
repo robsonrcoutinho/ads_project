@@ -15,16 +15,28 @@ class Pergunta extends Model
     //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
+    /**
+     * Busca respostas à pergunta
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function respostas()
     {
         return $this->hasMany(Resposta::class);
     }
 
+    /**
+     * Busca avaliações que têm a pergunta
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function avaliacoes()
     {
         return $this->belongsToMany(Avaliacao::class);
     }
 
+    /**
+     * Busca as opções de resposta à pergunta, quando fechada
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function opcoes_resposta()
     {
         return $this->hasMany(OpcaoResposta::class);

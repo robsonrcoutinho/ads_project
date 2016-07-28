@@ -8,6 +8,10 @@
  */
 use adsproject\Resposta;
 
+/**Classe controller de respostas
+ * Class RespostasController
+ * @package adsproject\Http\Controllers
+ */
 class RespostasController extends Controller
 {
     public function __construct()
@@ -15,9 +19,12 @@ class RespostasController extends Controller
         $this->middleware('auth');
     }
 
+    /**Método que redireciona para página inicial de respostas
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $respostas = Resposta::all();
-        return view('respostas.index', ['respostas' => $respostas]);
+        $respostas = Resposta::all();                                   //Busca todas as respostas
+        return view('respostas.index', ['respostas' => $respostas]);    //Redireciona à página inicial de respostas
     }
 }

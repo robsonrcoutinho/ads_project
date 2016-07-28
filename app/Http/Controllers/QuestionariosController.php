@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
-
+/**Classe controller de questionários
+ * Class QuestionariosController
+ * @package adsproject\Http\Controllers
+ */
 class QuestionariosController extends Controller
 {
     public function __construct()
@@ -23,71 +26,85 @@ class QuestionariosController extends Controller
         $this->middleware('auth');
     }
 
+    /**Método que redireciona usuário para página do questionário de avaliação
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function novo()
     {
-        $user = Auth::getUser();
-        if ($user->role != 'aluno'):
-            $rota = $user->role == 'admin' ? route('avaliacoes') : '/';
-            $this->mensagem('Para acessa essa página usuário precisa ser aluno.', $rota);
+        $user = Auth::getUser();                                                            //Pega usuário logado
+        if ($user->role != 'aluno'):                                                        //Verifica se usuário não é aluno
+            $rota = $user->role == 'admin' ? route('avaliacoes') : '/';                     //Atribui valor de rota
+            $this->mensagem('Para acessa essa página usuário precisa ser aluno.', $rota);   //Executa método de mensagem
         endif;
-        $avaliacao = Avaliacao::aberta()->first();
-        if ($avaliacao == null):
-            $this->mensagem('Nenhuma avaliação disponível no momento', '/');
+        $avaliacao = Avaliacao::aberta()->first();                                          //Busca avaliação em aberto
+        if ($avaliacao == null):                                                            //Se avaliação for nulo (nenhuma avaliação em abaerto)
+            $this->mensagem('Nenhuma avaliação disponível no momento', '/');                //Executa método de mensagem
         endif;
-        if ($user->avaliacoes()->get()->contains($avaliacao)):
-            $this->mensagem('Usuário já realizou última avaliação.', '/');
+        if ($user->avaliacoes()->get()->contains($avaliacao)):                              //Se usuário já fez avaliação
+            $this->mensagem('Usuário já realizou última avaliação.', '/');                  //Executa método de mensagem
         endif;
+        //Busca aluno pelo nome e e-mail do usuário
         $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
-        if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):
-            $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');
+        if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):                     //Verifica se aluno não tem disciplinas associadas
+            $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');           //Executa método de mensagem
         endif;
-        return view('questionarios.novo', compact('avaliacao', 'aluno'));
+        return view('questionarios.novo', compact('avaliacao', 'aluno'));                   //Redireciona para página de questionário
     }
 
+    /** Método que salva questionário respondido pelo usuário
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function salvar()
     {
-        $input = Input::all();
-        $indices = collect($input['pergunta_id'])->keys();
-        $rules = array();
-        $respostas = $input["campo_resposta"];
-        foreach ($indices as $indice):
-            $rules[$indice] = 'required';
+        $input = Input::all();                                                              //Pega todos os dados do questionário
+        $indices = collect($input['pergunta_id'])->keys();                                  //Pega indices com todas os ids de perguntas
+        $regras = array();                                                                  //Cria arrai de regras
+        $respostas = $input["campo_resposta"];                                              //Pega todos os campos resposta
+        foreach ($indices as $indice):                                                      //Percorre todos os índices
+            $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
         endforeach;
-        $mensagens = ['required' => 'Existem respostas não informadas.'];
-        $validador = Validator::make($respostas, $rules, $mensagens);
-        if ($validador->fails()):
-            return redirect()->back()->withInput()->withErrors($validador);
+        $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
+        $validador = Validator::make($respostas, $regras, $mensagens);                      //Cria validador passando respostas, regras e mensagens
+        if ($validador->fails()):                                                           //Verifica se houve falha na validação
+            return redirect()->back()->withInput()->withErrors($validador);                 //Retorna a página com erros
         endif;
-        $this->inserir();
-        return redirect('/');
+        $this->inserir();                                                                   //Executa método para inserir respostas de questionário
+        return redirect('/');                                                               //Redireciona à página inicial
     }
 
+    /**Método que exibe mensagem ao usuário
+     * @param $texto texto da mensagem
+     * @param $rota página à qual o usuário deve ser redirecionado
+     */
     private function mensagem($texto, $rota)
     {
+        //Apresenta mensagem passada e redireciona para rota fornecida
         echo "<script>
                 alert('$texto');
                 window.location='$rota';
                 </script>";
     }
 
-    //Método que realiza inserção de respostas de questionário
+    /**
+     *Método que realiza inserção de respostas de questionário
+     */
     private function inserir()
     {
-        $user = Auth::getUser();
-        $respostas = Input::get('campo_resposta');
-        $avaliacao = Input::get('avaliacao_id');
-        $disciplinas = Input::get('disciplina_id');
-        $perguntas = Input::get('pergunta_id');
+        $user = Auth::getUser();                                                        //Pega usuário autenticado
+        $respostas = Input::get('campo_resposta');                                      //Pega lista de campo_resposta
+        $avaliacao = Input::get('avaliacao_id');                                        //Paga id da avaliação
+        $disciplinas = Input::get('disciplina_id');                                     //Pega lista de disciplina_id (ids das disciplinas)
+        $perguntas = Input::get('pergunta_id');                                         //Pega lista de pergunta_id (ids das perguntas)
 
-        foreach ($respostas as $indice => $resposta):
-            $r = new Resposta();
-            $r->pergunta_id = $perguntas[$indice];
-            $r->campo_resposta = $resposta;
-            $r->avaliacao_id = $avaliacao;
-            $r->disciplina_id = $disciplinas[$indice];
-            $r->save();
+        foreach ($respostas as $indice => $resposta):                                   //Percorre lista de respostas
+            $r = new Resposta();                                                        //Cria nova resposta
+            $r->pergunta_id = $perguntas[$indice];                                      //Passa id da pergunta
+            $r->campo_resposta = $resposta;                                             //Passa resposta dada (campo_resposta)
+            $r->avaliacao_id = $avaliacao;                                              //Passa id da avaliação
+            $r->disciplina_id = $disciplinas[$indice];                                  //Passa id da disciplina (disciplina_id)
+            $r->save();                                                                 //Salva a resposta
         endforeach;
-        $user->avaliacoes()->attach($avaliacao);
+        $user->avaliacoes()->attach($avaliacao);                                        //Relaciona usuário à avaliação
     }
     //Métodos do Web Service
     //Método que busca avaliação aberta para o Web Service

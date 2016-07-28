@@ -9,6 +9,10 @@
 use adsproject\Aviso;
 use adsproject\Http\Requests\AvisoRequest;
 
+/**Classe controller de avisos
+ * Class AvisosController
+ * @package adsproject\Http\Controllers
+ */
 class AvisosController extends Controller
 {
     public function __construct()
@@ -16,40 +20,63 @@ class AvisosController extends Controller
         $this->middleware('auth');
     }
 
+    /**Método que redireciona para página inicial de avisos
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $this->removerAntigos();
-        $avisos = Aviso::all();
-        return view('avisos.index', ['avisos' => $avisos]);
+        $this->removerAntigos();                                //Evoca método para remover avisos antigos
+        $avisos = Aviso::all();                                 //Busca todos os avisos
+        return view('avisos.index', ['avisos' => $avisos]);     //Redireciona para página inicial de avisos
     }
 
+    /**Método que redireciona para página de inclusão de novo aviso
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function novo()
     {
-        return view('avisos.novo');
+        return view('avisos.novo');                             //Redireciona para página de criação de novo aviso
     }
 
+    /**Método que inclui novo aviso no sistema
+     * @param AvisoRequest $request relação de dados do aviso a ser inserido
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function salvar(AvisoRequest $request)
     {
-        Aviso::create($request->all());
-        return redirect()->route('avisos');
+        Aviso::create($request->all());                         //Cria novo aviso com dados passados
+        return redirect()->route('avisos');                     //Redireciona para página inicial de avisos
     }
 
+    /**Método que redireciona para página de edição de aviso
+     * @param $id identificador do aviso a ser editado
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function editar($id)
     {
-        $aviso = Aviso::find($id);
-        return view('avisos.editar', compact('aviso'));
+        $aviso = Aviso::find($id);                              //Busca aviso pelo id
+        return view('avisos.editar', compact('aviso'));         //Redireciona para página de edição de aviso
     }
 
+    /**Método que realiza alteração de dados de aviso
+     * @param AvisoRequest $request relação de dados do aviso a ser alterado
+     * @param $id identificador do aviso a ser alterado
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function alterar(AvisoRequest $request, $id)
     {
-        Aviso::find($id)->update($request->all());
-        return redirect('avisos');
+        Aviso::find($id)->update($request->all());              //Busca aviso pelo id e atualiza
+        return redirect('avisos');                              //Redireciona para página inicial de avisos
     }
 
+    /**Método que exclui aviso
+     * @param $id identificador do aviso a ser excluído
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function excluir($id)
     {
-        Aviso::find($id)->delete();
-        return redirect()->route('avisos');
+        Aviso::find($id)->delete();                             //Busca aviso pelo id e exclui
+        return redirect()->route('avisos');                     //Redireciona para página inicial de avisos
     }
     //Métodos do Web Service
     //Método que busca todos os avisos para o Web Service
@@ -65,10 +92,12 @@ class AvisosController extends Controller
         return Aviso::find($id);
     }
 
-    //Método que remove avisos antigos (mais de sete dias)
+    /**
+     *Método que remove avisos antigos (mais de sete dias)
+     */
     private function removerAntigos()
     {
-        $avisos = Aviso::antigos()->lists('id');
-        Aviso::destroy($avisos->all());
+        $avisos = Aviso::antigos()->lists('id');                //Busca avisos antigos e pega id
+        Aviso::destroy($avisos->all());                         //Apaga avisos antigos
     }
 }
