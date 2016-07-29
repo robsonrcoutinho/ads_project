@@ -15,9 +15,9 @@ return [
     |
     */
 
-    //'driver' => env('MAIL_DRIVER', 'smtp'),
-    //'driver' => env('MAIL_DRIVER', 'mailgun'),
-    'driver' =>'mailgun',
+
+
+    'driver' => env('MAIL_DRIVER', 'smtp'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -28,8 +28,8 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-    //'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-    'host'=> 'smtp.gmail.com',
+
+    'host'=> env('MAIL_HOST','smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,22 +42,9 @@ return [
     |
     */
 
-    //'port' => env('MAIL_PORT', 587),
-    'port' => 587,
+    'port' =>env('MAIL_PORT', 587),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Global "From" Address
-    |--------------------------------------------------------------------------
-    |
-    | You may wish for all e-mails sent by your application to be sent from
-    | the same address. Here, you may specify a name and address that is
-    | used globally for all e-mails that are sent by your application.
-    |
-    */
-
-    //'from' => ['address' => null, 'name' => null],
-    'from' => ['address' => 'wildermachadodacruz@gmail.com', 'name' => 'wilder'],
+    'from' => ['address' => 'projectadsapi@gmail.com', 'name' => 'Recuperação de Senha, Curso de Ads'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -69,8 +56,8 @@ return [
     |
     */
 
-    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-    'encryption' =>'ssl',
+
+    'encryption' =>env('MAIL_ENCRYPTION','ssl'),
 
     /*
     |--------------------------------------------------------------------------
