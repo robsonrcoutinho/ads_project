@@ -1,1 +1,1 @@
-Clique para definir nova senha: {{ url('password/reset/'.$token) }}
+Clique para definir nova senha para acesso ao site: {{ url('password/reset/'.$token) }}
