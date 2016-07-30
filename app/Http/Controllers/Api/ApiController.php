@@ -4,6 +4,7 @@ namespace adsproject\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use adsproject\Aviso;
+use adsproject\Aluno;
 use adsproject\Documento;
 use adsproject\Professor;
 use adsproject\Disciplina;
