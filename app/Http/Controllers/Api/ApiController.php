@@ -131,7 +131,7 @@ class ApiController extends Controller
     {
         $aluno = Aluno::query()->where('email', $email)->first();
         return response()
-            ->json($aluno);
+            ->json($aluno->disciplinas);
         //$disciplinas=$aluno->disciplinas()->get();
     }
     // public function
