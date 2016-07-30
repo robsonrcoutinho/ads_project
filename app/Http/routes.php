@@ -301,7 +301,7 @@ $api->version('v1',function($api){
     $api->get('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
     $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
     $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
-
+    $api->get('questionariosD','adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
 });
 
 

@@ -101,7 +101,6 @@ class ApiController extends Controller
     {
          return response()
              ->json(Avaliacao::aberta()->first());
-
     }
 
     /*
@@ -125,5 +124,11 @@ class ApiController extends Controller
             $r->avaliacao_id = $avaliacao;
             $r->save();
         endforeach;
+    }
+    public function buscaDisciplinasCursadas($email){
+        $aluno=Aluno::query()->where('email',$email)->first();
+        return response()
+            ->json($aluno);
+        //$disciplinas=$aluno->disciplinas()->get();
     }
 }
