@@ -48,7 +48,7 @@ class ApiController extends Controller
         $this->validate($request, ['token' => 'required']);
         JWTAuth::invalidate($request->input('token'));
 
-        return response()->json(['token_invalidated' => 'token_delete_success'],500);
+        return response()->json(['token_invalidated' => 'token_delete_success'], 500);
     }
 
     /*
@@ -56,8 +56,8 @@ class ApiController extends Controller
      * */
     public function avisosAll()
     {
-     return response()
-         ->json(Aviso::all());
+        return response()
+            ->json(Aviso::all());
     }
 
     /*
@@ -100,8 +100,8 @@ class ApiController extends Controller
     //Método que busca avaliação aberta para o Web Service
     public function questionariosAll()
     {
-         return response()
-             ->json(Avaliacao::aberta()->first());
+        return response()
+            ->json(Avaliacao::aberta()->first());
     }
 
     /*
@@ -110,11 +110,11 @@ class ApiController extends Controller
     * */
     public function questionariosSalvar()
     {
-       $this->inserir();
-        }
+        $this->inserir();
+    }
 
-        //Método que realiza inserção de respostas de questionário no banco de dados.
-        private function inserir()
+    //Método que realiza inserção de respostas de questionário no banco de dados.
+    private function inserir()
     {
         $respostas = Input::get('campo_resposta');
         $avaliacao = Input::get('avaliacao_id');
@@ -126,12 +126,13 @@ class ApiController extends Controller
             $r->save();
         endforeach;
     }
-    public function buscaDisciplinasCursadas($email){
-        $aluno=Aluno::query()->where('email',$email)->first();
-        dd($aluno);
-         return response()
+
+    public function buscaDisciplinasCursadas($email)
+    {
+        $aluno = Aluno::query()->where('email', $email)->first();
+        return response()
             ->json($aluno);
         //$disciplinas=$aluno->disciplinas()->get();
     }
-   // public function
+    // public function
 }
