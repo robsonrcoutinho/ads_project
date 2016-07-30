@@ -127,8 +127,7 @@ class ApiController extends Controller
     }
     public function buscaDisciplinasCursadas($email){
         $aluno=Aluno::query()->where('email',$email)->first();
-        dd($aluno);
-        return response()
+         return response()
             ->json($aluno);
         //$disciplinas=$aluno->disciplinas()->get();
     }
