@@ -22,7 +22,7 @@ Route::get('/', function () {
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para IndexAluno
-    Route::get('', ['as' => 'alunos', 'uses' => 'AlunosController@index']);
+    Route::get('', ['middleware' => 'check.user.role:admin,professor','as' => 'alunos', 'uses' => 'AlunosController@index']);
 //Rota para novo aluno
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.novo', 'uses' => 'AlunosController@novo']);
 //Rota para salvar aluno
@@ -135,7 +135,7 @@ Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () 
 //Rotas de perguntas
 Route::group(['prefix' => 'perguntas', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para IndexPergunta
-    Route::get('', ['as' => 'perguntas', 'uses' => 'PerguntasController@index']);
+    Route::get('', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas', 'uses' => 'PerguntasController@index']);
 //Rota para nova pergunta
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.novo', 'uses' => 'PerguntasController@novo']);
 //Rota para salvar pergunta
