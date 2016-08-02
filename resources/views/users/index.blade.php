@@ -8,7 +8,6 @@
         <table class="highlight  responsive-table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Papel</th>
@@ -18,16 +17,15 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
                     <td>
                         @can('alterar', $user)
-                        <a href="{{ route('users.editar', ['id'=>$user->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('users.editar', ['id'=>$user->id]) }}" class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $user)
-                        <a href="{{ route('users.excluir', ['id'=>$user->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        <a href="{{ route('users.excluir', ['id'=>$user->id]) }}" class="btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>
@@ -38,7 +36,7 @@
         <br/>
         <br/>
         @can('salvar', $user)
-         <a href="{{ route('users.novo')}}" class="btn btn-default"> Novo usuário</a>
+        <a href="{{ route('users.novo')}}" class="btn btn-default"> Novo usuário</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

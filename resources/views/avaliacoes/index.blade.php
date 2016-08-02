@@ -8,7 +8,6 @@
         <table class="highlight  responsive-table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Semestre</th>
                 <th>Início</th>
                 <th>Término</th>
@@ -19,16 +18,17 @@
             @forelse($avaliacoes as $avaliacao)
 
                 <tr>
-                    <td>{{$avaliacao->id}}</td>
                     <td>{{$avaliacao->semestre->codigo}}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->termino)) }}</td>
                     <td>
                         @can('alterar', $avaliacao)
-                        <a href="{{ route('avaliacoes.editar', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('avaliacoes.editar', ['id'=>$avaliacao->id]) }}"
+                           class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $avaliacao)
-                        <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}"
+                           class="btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>

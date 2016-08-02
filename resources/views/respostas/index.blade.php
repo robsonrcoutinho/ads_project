@@ -7,7 +7,6 @@
         <table class="highlight  responsive-table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Pergunta</th>
                 <th>Resposta</th>
                 <th>Disciplina</th>
@@ -16,7 +15,6 @@
             <tbody>
             @foreach($respostas as $resposta)
                 <tr>
-                    <td>{{$resposta->id}}</td>
                     <td>{{$resposta->pergunta->enunciado}}</td>
                     <td>{{$resposta->campo_resposta}}</td>
                     <td>{{$resposta->disciplina->nome}}</td>

@@ -7,22 +7,22 @@
         <table class="highlight  responsive-table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Título</th>
+                <th>Mensagem</th>
                 <th>Ação</th>
             </tr>
             </thead>
             <tbody>
             @forelse($avisos as $aviso)
                 <tr>
-                    <td>{{$aviso->id}}</td>
                     <td>{{$aviso->titulo}}</td>
+                    <td>{{$aviso->mensagem}}</td>
                     <td>
                         @can('alterar', $aviso)
-                        <a href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}" class="btn disabled">Editar</a>
+                        <a href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}" class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $aviso)
-                        <a href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn disabled">Excluir</a>
+                        <a href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>

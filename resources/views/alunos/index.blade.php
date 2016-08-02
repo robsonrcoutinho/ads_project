@@ -27,11 +27,12 @@
                     @endif
                     <td>
                         @can('alterar', $aluno)
-                        <a href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}"
+                           class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $aluno)
                         <a href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}"
-                           class="btn-sm btn-danger">Excluir</a>
+                           class="btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>

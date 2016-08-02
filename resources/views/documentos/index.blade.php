@@ -8,7 +8,6 @@
         <table class="highlight  responsive-table">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Título</th>
                 <th>Link</th>
                 <th>Ação</th>
@@ -18,20 +17,20 @@
             @foreach($documentos as $documento)
 
                 <tr>
-                    <td>{{$documento->id}}</td>
                     <td>{{$documento->titulo}}</td>
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
-                            <a href="{{ $documento->url }}" class="btn-sm btn-success">LINK</a>
+                            <a href="{{ $documento->url }}" class="btn blue">LINK</a>
                     @endif
                     <td>
                         @can('alterar', $documento)
-                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"
+                           class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
                             <a href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"
-                               class="btn-sm btn-danger">Excluir</a>
+                               class="btn-danger btn red">Excluir</a>
                         @endif
                         @endcan
                     </td>

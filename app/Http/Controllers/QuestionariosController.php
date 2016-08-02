@@ -37,16 +37,16 @@ class QuestionariosController extends Controller
             $this->mensagem('Para acessa essa página usuário precisa ser aluno.', $rota);   //Executa método de mensagem
         endif;
         $avaliacao = Avaliacao::aberta()->first();                                          //Busca avaliação em aberto
-        if ($avaliacao == null):                                                            //Se avaliação for nulo (nenhuma avaliação em abaerto)
+        if ($avaliacao == null):                                                            //Se avaliação for nula (nenhuma avaliação em abaerto)
             $this->mensagem('Nenhuma avaliação disponível no momento', '/');                //Executa método de mensagem
-        endif;
-        if ($user->avaliacoes()->get()->contains($avaliacao)):                              //Se usuário já fez avaliação
-            $this->mensagem('Usuário já realizou última avaliação.', '/');                  //Executa método de mensagem
         endif;
         //Busca aluno pelo nome e e-mail do usuário
         $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
         if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):                     //Verifica se aluno não tem disciplinas associadas
             $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');           //Executa método de mensagem
+        endif;
+        if ($aluno->avaliacoes()->get()->contains($avaliacao)):                             //Se aluno já fez avaliação
+            $this->mensagem('Aluno já realizou última avaliação.', '/');                    //Executa método de mensagem
         endif;
         return view('questionarios.novo', compact('avaliacao', 'aluno'));                   //Redireciona para página de questionário
     }
@@ -90,7 +90,6 @@ class QuestionariosController extends Controller
      */
     private function inserir()
     {
-        $user = Auth::getUser();                                                        //Pega usuário autenticado
         $respostas = Input::get('campo_resposta');                                      //Pega lista de campo_resposta
         $avaliacao = Input::get('avaliacao_id');                                        //Paga id da avaliação
         $disciplinas = Input::get('disciplina_id');                                     //Pega lista de disciplina_id (ids das disciplinas)
@@ -104,7 +103,8 @@ class QuestionariosController extends Controller
             $r->disciplina_id = $disciplinas[$indice];                                  //Passa id da disciplina (disciplina_id)
             $r->save();                                                                 //Salva a resposta
         endforeach;
-        $user->avaliacoes()->attach($avaliacao);                                        //Relaciona usuário à avaliação
+        $aluno = Aluno::find(Input::get('aluno_id'));                                   //Busca aluno pelo id
+        $aluno->avaliacoes()->attach($avaliacao);                                       //Relaciona aluno à avaliação
     }
     //Métodos do Web Service
     //Método que busca avaliação aberta para o Web Service
