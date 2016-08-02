@@ -41,4 +41,5 @@
          <a href="{{ route('users.novo')}}" class="btn btn-default"> Novo usuário</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

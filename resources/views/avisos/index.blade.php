@@ -39,4 +39,5 @@
         <a href="{{ route('avisos.novo')}}" class="btn btn-default">Novo aviso</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

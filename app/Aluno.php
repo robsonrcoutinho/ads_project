@@ -22,4 +22,11 @@ class Aluno extends Model
     {
         return $this->belongsToMany(Disciplina::class);
     }
+    /**Busca as avaliações que o aluno fez
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function avaliacoes()
+    {
+        return $this->belongsToMany(Avaliacao::class);
+    }
 }

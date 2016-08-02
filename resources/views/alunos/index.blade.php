@@ -47,4 +47,5 @@
         <a href="{{ route('alunos.arquivo')}}" class="btn btn-default">Arquivo de Alunos</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

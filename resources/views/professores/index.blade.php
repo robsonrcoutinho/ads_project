@@ -22,14 +22,14 @@
                     <td>{{$professor->nome}}</td>
                     <td>
                         @if($professor->curriculo !=null && $professor->curriculo != '' )
-                            <a href="{{ $professor->curriculo }}" class="btn-sm btn-success">Curriculo</a>
+                            <a href="{{ $professor->curriculo }}" class="btn-sm btn-success btn blue">Curriculo</a>
                     @endif
                     <td>
                         @can('alterar', $professor)
-                        <a href="{{ route('professores.editar', ['id'=>$professor->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('professores.editar', ['id'=>$professor->id]) }}" class="btn-sm btn-success btn green">Editar</a>
                         @endcan
                         @can('excluir', $professor)
-                        <a href="{{ route('professores.excluir', ['id'=>$professor->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        <a href="{{ route('professores.excluir', ['id'=>$professor->id]) }}" class="btn-sm btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>
@@ -44,4 +44,5 @@
         <a href="{{ route('professores.novo')}}" class="btn btn-default"> Novo professor</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

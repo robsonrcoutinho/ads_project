@@ -46,4 +46,5 @@
                 <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
         @endcan -->
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

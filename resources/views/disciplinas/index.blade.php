@@ -52,4 +52,5 @@
         <a href="{{ route('disciplinas.novo')}}" class="btn btn-default"> Nova disciplina</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

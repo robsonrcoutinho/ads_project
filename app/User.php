@@ -37,11 +37,5 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    /**Busca as avaliações que o usuário fez
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function avaliacoes()
-    {
-        return $this->belongsToMany(Avaliacao::class);
-    }
+
 }

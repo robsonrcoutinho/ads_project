@@ -53,12 +53,12 @@ class Avaliacao extends Model
     }
 
     /**
-     * Busca usuários que responderam à avaliação
+     * Busca alunos que responderam à avaliação
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function users()
+    public function alunos()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Aluno::class);
     }
 
     /**
