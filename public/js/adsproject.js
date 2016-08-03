@@ -15,15 +15,15 @@ window.onload = function () {
     } else {
         escondida.style.display = 'block';
     }
-    pergunta_fechada.onclick = function () {
+    pergunta_fechada.addEventListener("click", function () {
         if (pergunta_fechada.checked) {
             escondida.style.display = 'block';
         } else {
             escondida.style.display = 'none';
         }
-    };
+    });
     var btn_adicionar = document.getElementById('btn-adicionar');
-    btn_adicionar.onclick = function () {
+    btn_adicionar.addEventListener("click",function () {
         var texto = document.createElement("input");
         texto.setAttribute('class', 'form-control');
         texto.setAttribute('name', 'opcoes_resposta[]');
@@ -33,15 +33,14 @@ window.onload = function () {
         var div_opcao = document.createElement("div");
         div_opcao.appendChild(texto);
         div_opcao.appendChild(btn_excluir);
-        btn_excluir.onclick = function () {
+        btn_excluir.addEventListener("click",function () {
             escondida.removeChild(div_opcao);
-        };
+        });
         escondida.appendChild(div_opcao);
-    };
+    });
 };
 function excluir_div(id) {
-    var resposta = confirm("Tem certeza que deseja remover?");
-    if (resposta) {
+    if (confirm("Tem certeza que deseja remover?")) {
         var div = document.getElementById(id);
         div.parentNode.removeChild(div);
     }

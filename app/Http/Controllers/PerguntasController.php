@@ -44,19 +44,25 @@ class PerguntasController extends Controller
      */
     public function salvar(PerguntaRequest $request)
     {
-        $pergunta = Pergunta::create($request->all());                  //Cria nova pergunta com dados passados
-        $opcoes = $request->get('opcoes_resposta');                     //Pega relação de opções de resposta
-        if ($pergunta->pergunta_fechada):                               //Verifica se a pergunta é fechada
-            if ($opcoes == null):                                       //Se opções for nulo
-                $pergunta->pergunta_fechada = false;                    //Altera atributo pergunta_fechada para falso
-                $pergunta->save();                                      //Salva alteração
-            else:                                                       //Se opção não for nula
-                foreach ($opcoes as $opcao):                            //Percorre lista de opções
-                    $opcao_resposta = new OpcaoResposta();              //Cria nova opção de resposta
-                    $opcao_resposta->resposta_opcao = $opcao;           //Passa resposta
-                    $opcao_resposta->pergunta()->associate($pergunta);  //Associa opção de resposta à pergunta
-                    $opcao_resposta->save();                            //Salva opção de resposta
+        $pergunta = Pergunta::create($request->all());                      //Cria nova pergunta com dados passados
+        $opcoes = $request->get('opcoes_resposta');                         //Pega relação de opções de resposta
+        if ($pergunta->pergunta_fechada):                                   //Verifica se a pergunta é fechada
+            if ($opcoes == null):                                           //Se opções for nulo
+                $pergunta->pergunta_fechada = false;                        //Altera atributo pergunta_fechada para falso
+                $pergunta->save();                                          //Salva alteração
+            else:                                                           //Se opção não for nula
+                foreach ($opcoes as $opcao):                                //Percorre lista de opções
+                    if ($opcao != null && trim($opcao) != ""):              //Verifica se opção foi preenchida
+                        $opcao_resposta = new OpcaoResposta();              //Cria nova opção de resposta
+                        $opcao_resposta->resposta_opcao = trim($opcao);     //Passa resposta
+                        $opcao_resposta->pergunta()->associate($pergunta);  //Associa opção de resposta à pergunta
+                        $opcao_resposta->save();                            //Salva opção de resposta
+                    endif;
                 endforeach;
+                if (count($pergunta->opcoes_resposta) == 0):                   //Verifica se quantidade de opções de resposta é zero
+                    $pergunta->pergunta_fechada = false;                    //Altera atributo pergunta_fechada para falso
+                    $pergunta->save();                                      //Salva alteração
+                endif;
             endif;
         endif;
         return redirect()->route('perguntas');                          //Redireciona à página inicial de perguntas
@@ -124,13 +130,17 @@ class PerguntasController extends Controller
             $request->merge(array('pergunta_fechada' => false));        //Atualiza o atributo pergunta_fechada para falso
             return;                                                     //Retorna a quem evocou
         endif;
-
         foreach ($opcoes as $opcao):                                    //Percorre todas as opções
-            $opcao_resposta = new OpcaoResposta();                      //Cria nova opção de resposta
-            $opcao_resposta->resposta_opcao = $opcao;                   //Passa opção de resposta
-            $opcao_resposta->pergunta()->associate($pergunta);          //Relaciona opção à pergunta
-            $opcao_resposta->save();                                    //Salva opção de resposta
+            if ($opcao != null && trim($opcao) != ""):                  //Verifica se opção foi preenchida
+                $opcao_resposta = new OpcaoResposta();                  //Cria nova opção de resposta
+                $opcao_resposta->resposta_opcao = trim($opcao);         //Passa opção de resposta
+                $opcao_resposta->pergunta()->associate($pergunta);      //Relaciona opção à pergunta
+                $opcao_resposta->save();                                //Salva opção de resposta
+            endif;
         endforeach;
+        if (count($pergunta->opcoes_resposta) == 0):                    //Verifica se quantidade de opções de resposta é zero
+            $request->merge(array('pergunta_fechada' => false));        //Atualiza o atributo pergunta_fechada para falso
+        endif;
     }
 
     /**Exclui todas as opçoes de resposta
@@ -156,9 +166,14 @@ class PerguntasController extends Controller
         for ($i = 0; $i < count($opcoes); $i++):                        //Percorre lista de opções de resposta
             //Busca opção de resposta pelo id
             $opcao_resposta = OpcaoResposta::find($pergunta->opcoes_resposta[$i]->id);
-            $opcao_resposta->resposta_opcao = $opcoes[$i];              //Atualiza valor do atributo resposta_opcao
-            $opcao_resposta->update();                                  //atualiza opção de resposta
+            if ($opcoes[$i] != null && trim($opcoes[$i]) != ""):         //Verifica se opção foi preenchida
+                $opcao_resposta->resposta_opcao = trim($opcoes[$i]);     //Atualiza valor do atributo resposta_opcao
+                $opcao_resposta->update();                               //atualiza opção de resposta
+            endif;
         endfor;
+        if (count($pergunta->opcoes_resposta) == 0):                    //Verifica se quantidade de opções de resposta é zero
+            $request->merge(array('pergunta_fechada' => false));        //Atualiza o atributo pergunta_fechada para falso
+        endif;
     }
 
     /**Aumenta o número de opções de resposta
@@ -175,18 +190,22 @@ class PerguntasController extends Controller
         while ($i < $contador):
             //Busca opção de resposta por id
             $opcao_resposta = OpcaoResposta::find($pergunta->opcoes_resposta[$i]->id);
-            $opcao_resposta->resposta_opcao = $opcoes[$i];              //Atualiza valor do atributo resposta_opcao
-            $opcao_resposta->update();                                  //Atualiza opção de resposta
+            if ($opcoes[$i] != null && trim($opcoes[$i]) != ""):        //Verifica se opção foi preenchida
+                $opcao_resposta->resposta_opcao = trim($opcoes[$i]);    //Atualiza valor do atributo resposta_opcao
+                $opcao_resposta->update();                              //Atualiza opção de resposta
+            endif;
             $i++;                                                       //Incrementa índice
         endwhile;
         $contador = count($opcoes);                                     //Atribui quantidade de opções de resposta passada à $contador
         /*Estrutura de repetição que executa enquanto variável índice ($i) for menor que a quantidade de opções de
         resposta passadas($contador)*/
         while ($i < $contador):
-            $opcao_resposta = new OpcaoResposta();                      //Cria nova opção de resposta
-            $opcao_resposta->resposta_opcao = $opcoes[$i];              //Atribui valor de resposta_opcao
-            $opcao_resposta->pergunta()->associate($pergunta);          //Associa opção de resposta à perguanta
-            $opcao_resposta->save();                                    //Salva opção de resposta
+            if ($opcoes[$i] != null && trim($opcoes[$i]) != ""):         //Verifica se opção foi preenchida
+                $opcao_resposta = new OpcaoResposta();                   //Cria nova opção de resposta
+                $opcao_resposta->resposta_opcao = trim($opcoes[$i]);     //Atribui valor de resposta_opcao
+                $opcao_resposta->pergunta()->associate($pergunta);       //Associa opção de resposta à perguanta
+                $opcao_resposta->save();                                 //Salva opção de resposta
+            endif;
             $i++;                                                       //Incrementa índice
         endwhile;
     }
@@ -205,8 +224,10 @@ class PerguntasController extends Controller
         while ($i < $contador):
             //Busca opção de resposta por id
             $opcao_resposta = OpcaoResposta::find($pergunta->opcoes_resposta[$i]->id);
-            $opcao_resposta->resposta_opcao = $opcoes[$i];              //Atualiza atributo resposta_opcao
-            $opcao_resposta->update();                                  //Atualiza opção de resposta
+            if ($opcoes[$i] != null && trim($opcoes[$i]) != ""):         //Verifica se opção foi preenchida
+                $opcao_resposta->resposta_opcao = trim($opcoes[$i]);     //Atualiza atributo resposta_opcao
+                $opcao_resposta->update();                               //Atualiza opção de resposta
+            endif;
             $i++;                                                       //Incrementa índice
         endwhile;
         $contador = count($pergunta->opcoes_resposta);                  //Atribui quantidade de opções de resposta da pergunta ao contador
