@@ -24,12 +24,18 @@
 <div class="col 12" >
     <div class="row center">
         <h1 class="header center orange-text">ADS </h1>
-        <h5 class="header col s12 light orange-text " ;>ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+        <h5 class="header col s12 light orange-text">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
     </div>
 </div>
 
     <div class="container">
-
+        @if($errors->any())
+            <ul class="alert alert-warning">
+                @foreach(collect($errors->all())->unique() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
         <div class="card-panel  #388e3c green darken-2 center">
             <span class=" grey-text text-lighten-5">Registrar Usuário</span>
         </div>

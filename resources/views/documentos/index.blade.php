@@ -21,7 +21,8 @@
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
                             <a href="{{ $documento->url }}" class="btn blue">LINK</a>
-                    @endif
+                        @endif
+                    </td>
                     <td>
                         @can('alterar', $documento)
                         <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"

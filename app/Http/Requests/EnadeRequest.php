@@ -2,7 +2,7 @@
 
 namespace adsproject\Http\Requests;
 
-class AvisoRequest extends Request
+class EnadeRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,7 @@ class AvisoRequest extends Request
     public function rules()
     {
         return [
-            'titulo'=>'required|min:5|max:20',
-            'mensagem'=>'required|min:5'
+            'informacao'=>'required|min:5'
         ];
     }
 }

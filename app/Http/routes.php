@@ -167,7 +167,21 @@ Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para alterar user
     Route::put('{id}/alterar', ['as' => 'users.alterar', 'uses' => 'UsersController@alterar']);
 });
-
+//Rotas de enads
+Route::group(['prefix' => 'enades', 'where' => ['id' => '[0-9]+']], function () {
+//Rota para IndexEnad
+    Route::get('', ['as' => 'enades', 'uses' => 'EnadesController@index']);
+//Rota para novo enad
+    Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'enades.novo', 'uses' => 'EnadesController@novo']);
+//Rota para salvar enad
+    Route::post('salvar', ['as' => 'enads.salvar', 'uses' => 'EnadesController@salvar']);
+//Rota para exluir enad
+    Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'enades.excluir', 'uses' => 'EnadesController@excluir']);
+//Rota para editar enad
+    Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.editar', 'uses' => 'EnadesController@editar']);
+//Rota para alterar enad
+    Route::put('{id}/alterar', ['as' => 'enades.alterar', 'enads' => 'EnadesController@alterar']);
+});
 
 //Rotas para Web Service
 Route::group(['prefix' => 'ws'], function () {
