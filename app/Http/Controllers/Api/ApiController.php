@@ -135,7 +135,7 @@ class ApiController extends Controller
             ->json($aluno->disciplinas);
     }
 
-    public function alunoPorEmail($email)
+    public function informacaoUser($email)
     {
         $aluno = Aluno::query()->where('email', $email)->first()->lists('nome', 'matricula');
         return response()->json($aluno);
