@@ -131,8 +131,17 @@ class ApiController extends Controller
     {
         $email = $request->input('email');
         $aluno = Aluno::query()->where('email', $email)->first();
-        return response()
-            ->json($aluno->disciplinas);
+        if ($aluno == null):
+            return response()->json(['avaliacao' => 'nao_aluno']);
+        endif;
+        $avaliacao = Avaliacao::aberta()->first();
+        if ($avaliacao == null):
+            return response()->json(['avaliacao' => 'sem_avaliacao']);
+        endif;
+        if ($aluno->avaliacoes()->get()->contains($avaliacao)):
+            return response()->json(['avaliacao' => 'feita']);
+        endif;
+        return response()->json($aluno->disciplinas()->get());
     }
 
     public function informacaoUser($email)
