@@ -5,6 +5,10 @@ namespace adsproject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**Classe modelo de Pergunta
+ * Class Pergunta
+ * @package adsproject
+ */
 class Pergunta extends Model
 {
     use SoftDeletes;
@@ -12,7 +16,6 @@ class Pergunta extends Model
     protected $table = "perguntas";
     protected $fillable = ['enunciado', 'pergunta_fechada'];
     protected $softDelete = true;
-    //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
     /**

@@ -18,6 +18,7 @@ class ProfessorPolicy
     {
         //
     }
+
     public function salvar(User $user, Professor $professor)
     {
         return $user->role == 'admin';

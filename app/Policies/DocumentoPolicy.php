@@ -19,6 +19,7 @@ class DocumentoPolicy
     {
         //
     }
+
     public function salvar(User $user, Documento $documento)
     {
         return $user->role == 'admin';

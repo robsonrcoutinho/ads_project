@@ -26,17 +26,17 @@ Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para novo aluno
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.novo', 'uses' => 'AlunosController@novo']);
 //Rota para salvar aluno
-    Route::post('salvar', ['as' => 'alunos.salvar', 'uses' => 'AlunosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'alunos.salvar', 'uses' => 'AlunosController@salvar']);
 //Rota para excluir aluno
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.excluir', 'uses' => 'AlunosController@excluir']);
 //Rota para editar aluno
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.editar', 'uses' => 'AlunosController@editar']);
 //Rota para alterar aluno
-    Route::put('{id}/alterar', ['as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
 //Rota para view de arquivo de alunos
     Route::get('arquivo', ['middleware' => 'check.user.role:admin','as'=>'alunos.arquivo', 'uses'=>'AlunosController@arquivo']);
 //Rota para carregar dados de alunos no banco de dados via arquivo
-    Route::post('carregar', ['as'=>'alunos.carregar', 'uses'=>'AlunosController@carregar']);
+    Route::post('carregar', ['middleware' => 'check.user.role:admin','as'=>'alunos.carregar', 'uses'=>'AlunosController@carregar']);
 });
 
 //Rotas de professores
@@ -47,13 +47,13 @@ Route::group(['prefix' => 'professores', 'where' => ['id' => '[0-9]+']], functio
 //Rota para novo professor
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'professores.novo', 'uses' => 'ProfessoresController@novo']);
 //Rota para salvar professor
-    Route::post('salvar', ['as' => 'professores.salvar', 'uses' => 'ProfessoresController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'professores.salvar', 'uses' => 'ProfessoresController@salvar']);
 //Rota para exluir professor
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'professores.excluir', 'uses' => 'ProfessoresController@excluir']);
 //Rota para ediçaoo de professor
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'professores.editar', 'uses' => 'ProfessoresController@editar']);
 //Rota para alteraçao de professor
-    Route::put('{id}/alterar', ['as' => 'professores.alterar', 'uses' => 'ProfessoresController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'professores.alterar', 'uses' => 'ProfessoresController@alterar']);
 });
 //Rotas de disciplinas
 Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], function () {
@@ -62,13 +62,13 @@ Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], functio
 //Rota para nova disciplina
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.novo', 'uses' => 'DisciplinasController@novo']);
 //Rota para salvar disciplina
-    Route::post('salvar', ['as' => 'disciplinas.salvar', 'uses' => 'DisciplinasController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'disciplinas.salvar', 'uses' => 'DisciplinasController@salvar']);
 //Rota para exluir disciplina
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.excluir', 'uses' => 'DisciplinasController@excluir']);
 //Rota para editar disciplina
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.editar', 'uses' => 'DisciplinasController@editar']);
 //Rota para alterar disciplina
-    Route::put('{id}/alterar', ['as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
 });
 //Rotas de documentos
 Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function () {
@@ -77,13 +77,13 @@ Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function
 //Rota para novo documento
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.novo', 'uses' => 'DocumentosController@novo']);
 //Rota para salvar documento
-    Route::post('salvar', ['as' => 'documentos.salvar', 'uses' => 'DocumentosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'documentos.salvar', 'uses' => 'DocumentosController@salvar']);
 //Rota para exluir documento
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.excluir', 'uses' => 'DocumentosController@excluir']);
 //Rota para editar documento
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.editar', 'uses' => 'DocumentosController@editar']);
 //Rota para alterar documento
-    Route::put('{id}/alterar', ['as' => 'documentos.alterar', 'uses' => 'DocumentosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'documentos.alterar', 'uses' => 'DocumentosController@alterar']);
 });
 
 //Rotas de semestres
@@ -93,13 +93,13 @@ Route::group(['prefix' => 'semestres', 'where' => ['id' => '[0-9]+']], function 
 //Rota para novo semestre
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.novo', 'uses' => 'SemestresController@novo']);
 //Rota para salvar semestre
-    Route::post('salvar', ['as' => 'semestres.salvar', 'uses' => 'SemestresController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'semestres.salvar', 'uses' => 'SemestresController@salvar']);
 //Rota para exluir semestre
     //Route::get('{codigo}/excluir',['middleware'=>'check.user.role:admin','as'=>'Semestres.excluir', 'uses'=> 'SemestresController@excluir']);
 //Rota para editar semestre
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.editar', 'uses' => 'SemestresController@editar']);
 //Rota para alterar semestre
-    Route::put('{id}/alterar', ['as' => 'semestres.alterar', 'uses' => 'SemestresController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'semestres.alterar', 'uses' => 'SemestresController@alterar']);
 });
 //Rotas de avaliações
 Route::group(['prefix' => 'avaliacoes', 'where' => ['id' => '[0-9]+']], function () {
@@ -108,13 +108,13 @@ Route::group(['prefix' => 'avaliacoes', 'where' => ['id' => '[0-9]+']], function
 //Rota para nova avaliacao
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.novo', 'uses' => 'AvaliacoesController@novo']);
 //Rota para salvar avaliacao
-    Route::post('salvar', ['as' => 'avaliacoes.salvar', 'uses' => 'AvaliacoesController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'avaliacoes.salvar', 'uses' => 'AvaliacoesController@salvar']);
 //Rota para exluir avaliacao
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.excluir', 'uses' => 'AvaliacoesController@excluir']);
 //Rota para editar avaliacao
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.editar', 'uses' => 'AvaliacoesController@editar']);
 //Rota para alterar avaliacao
-    Route::put('{id}/alterar', ['as' => 'avaliacoes.alterar', 'uses' => 'AvaliacoesController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'avaliacoes.alterar', 'uses' => 'AvaliacoesController@alterar']);
 });
 //Rotas de avisos
 Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () {
@@ -123,13 +123,13 @@ Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para nova aviso
     Route::get('novo', ['middleware' => 'check.user.role:admin,professor', 'as' => 'avisos.novo', 'uses' => 'AvisosController@novo']);
 //Rota para salvar aviso
-    Route::post('salvar', ['as' => 'avisos.salvar', 'uses' => 'AvisosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin,professor','as' => 'avisos.salvar', 'uses' => 'AvisosController@salvar']);
 //Rota para exluir aviso
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'avisos.excluir', 'uses' => 'AvisosController@excluir']);
 //Rota para editar aviso
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'avisos.editar', 'uses' => 'AvisosController@editar']);
 //Rota para alterar aviso
-    Route::put('{id}/alterar', ['as' => 'avisos.alterar', 'uses' => 'AvisosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'avisos.alterar', 'uses' => 'AvisosController@alterar']);
 });
 
 //Rotas de perguntas
@@ -139,13 +139,13 @@ Route::group(['prefix' => 'perguntas', 'where' => ['id' => '[0-9]+']], function 
 //Rota para nova pergunta
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.novo', 'uses' => 'PerguntasController@novo']);
 //Rota para salvar pergunta
-    Route::post('salvar', ['as' => 'perguntas.salvar', 'uses' => 'PerguntasController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'perguntas.salvar', 'uses' => 'PerguntasController@salvar']);
 //Rota para exluir pergunta
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.excluir', 'uses' => 'PerguntasController@excluir']);
 //Rota para editar pergunta
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.editar', 'uses' => 'PerguntasController@editar']);
 //Rota para alterar pergunta
-    Route::put('{id}/alterar', ['as' => 'perguntas.alterar', 'uses' => 'PerguntasController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'perguntas.alterar', 'uses' => 'PerguntasController@alterar']);
 });
 //Rotas de respostas
 Route::group(['prefix' => 'respostas', 'where' => ['id' => '[0-9]+']], function () {
@@ -159,7 +159,7 @@ Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para novo user
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'users.novo', 'uses' => 'UsersController@novo']);
 //Rota para salvar user
-    Route::post('salvar', ['as' => 'users.salvar', 'uses' => 'UsersController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'users.salvar', 'uses' => 'UsersController@salvar']);
 //Rota para exluir user
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'users.excluir', 'uses' => 'UsersController@excluir']);
 //Rota para editar user
@@ -174,13 +174,13 @@ Route::group(['prefix' => 'enades', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para novo enad
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'enades.novo', 'uses' => 'EnadesController@novo']);
 //Rota para salvar enad
-    Route::post('salvar', ['as' => 'enads.salvar', 'uses' => 'EnadesController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enads.salvar', 'uses' => 'EnadesController@salvar']);
 //Rota para exluir enad
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'enades.excluir', 'uses' => 'EnadesController@excluir']);
 //Rota para editar enad
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.editar', 'uses' => 'EnadesController@editar']);
 //Rota para alterar enad
-    Route::put('{id}/alterar', ['as' => 'enades.alterar', 'enads' => 'EnadesController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'enades.alterar', 'enads' => 'EnadesController@alterar']);
 });
 
 //Rotas para Web Service
@@ -315,6 +315,7 @@ $api->version('v1',function($api){
     $api->get('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
     $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
     $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
+    $api->get('alunoPorEmail/{email}','adsproject\Http\Controllers\Api\ApiController@alunoPorEmail');
     $api->post('disciplinasCursadas','adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
 });
 

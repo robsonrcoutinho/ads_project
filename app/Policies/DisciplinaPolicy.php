@@ -19,6 +19,7 @@ class DisciplinaPolicy
     {
         //
     }
+
     public function salvar(User $user, Disciplina $disciplina)
     {
         return $user->role == 'admin';

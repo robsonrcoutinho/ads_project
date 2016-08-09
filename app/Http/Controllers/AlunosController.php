@@ -167,13 +167,13 @@ class AlunosController extends Controller
      */
     private function salvarLista($arquivo)
     {
-        try {                                               //Tratamento de excessão
-            $leitor = new PHPExcel_Reader_Excel2007();      //Instancia objeto para manipular arquivo Excel
-            $planilha = $leitor->load($arquivo);            //Passa a planilha
-            $tabela = $planilha->setActiveSheetIndex(0);    //Passa a tabela com os dados de alunos
-            $cont = 2;                                      //Inicia o contador com número da linha inicial
-            $alunos = array();                              //Cria array para armazenar lista ids de alunos
-            while ($tabela->cellExists('A' . $cont)):       //Cria estrutura de repetição para percorrer tabela
+        try {                                                           //Tratamento de excessão
+            $leitor = new PHPExcel_Reader_Excel2007();                  //Instancia objeto para manipular arquivo Excel
+            $planilha = $leitor->load($arquivo);                        //Passa a planilha
+            $tabela = $planilha->setActiveSheetIndex(0);                //Passa a tabela com os dados de alunos
+            $cont = 2;                                                  //Inicia o contador com número da linha inicial
+            $alunos = array();                                          //Cria array para armazenar lista com ids de alunos
+            while ($tabela->cellExists('A' . $cont)):                   //Cria estrutura de repetição para percorrer tabela
                 $matricula = $tabela->getCell('A' . $cont)->getValue(); //Pega matrícula do aluno
                 $nome = $tabela->getCell('B' . $cont)->getValue();      //Pega nome do aluno
                 $email = $tabela->getCell('C' . $cont)->getValue();     //Pega e-mail do aluno
@@ -186,17 +186,17 @@ class AlunosController extends Controller
                     $alunos[] = $aluno->id;                             //Passa id do aluno para array
                     $disciplinas = array();                             //cria um array para armazenar ids de disciplinas
                     do {                                                //Cria estrutura de repetiação para incluir disciplinas
-                        //Evoca método para busca disciplina, pegando id da mesma e passando para array
+                        //Evoca método para buscar disciplina, pegando id da mesma e passando para array
                         $disciplinas[] = $this->buscarDisciplina($tabela->getCell('D' . $cont)->getValue())->id;
                         $cont++;                                        //Incrementa o contador
-                        //Encerra a estrutura de repetição quando não existir linha seguinte ou contiver dados de outro aluno
+                        //Mantém a estrutura de repetição enquanto existir linha seguinte e dados forem do mesmo aluno
                     } while ($tabela->cellExists('A' . $cont) && $tabela->getCell('A' . $cont)->getValue() == null);
                     $aluno->disciplinas()->sync($disciplinas);          //Relaciona disciplinas com aluno
                 else:                                                   //Se dados do aluno não forem válidos
                     $cont++;                                            //Incrementa o contador
                 endif;
             endwhile;                                                   //Encerra a estrutura de repetição
-            //Apaga lista de alunos que não consta da lista constante do arquivo
+            //Apaga lista de alunos que não consta no arquivo
             Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
         } catch (\Exception $e) {                                       //Caso ocorra um excessão
             return false;                                               //Retorna falso (false)
@@ -236,7 +236,7 @@ class AlunosController extends Controller
     {
         $valores = ['matricula' => trim($matricula),
             'nome' => trim($nome),
-            'email' => trim($email)];                       //Passa valores dos dados passados
+            'email' => trim($email)];                           //Passa valores dos dados passados
         $regras = ['matricula' => 'required|min:6|numeric',
             'nome' => 'required|min:5',
             'email' => 'email'];                                //Estabelece as regras de verificação

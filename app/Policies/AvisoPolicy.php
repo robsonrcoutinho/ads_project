@@ -19,6 +19,7 @@ class AvisoPolicy
     {
         //
     }
+
     public function salvar(User $user, Aviso $aviso)
     {
         return $user->role == 'admin' || $user->role == 'professor';

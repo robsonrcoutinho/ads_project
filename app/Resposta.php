@@ -4,10 +4,13 @@ namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**Classe modelo de Resposta
+ * Class Resposta
+ * @package adsproject
+ */
 class Resposta extends Model
 {
     protected $table = "respostas";
-    //public $timestamps = false;
     protected $fillable = ['campo_resposta'];
 
     /**

@@ -19,6 +19,7 @@ class AvaliacaoPolicy
     {
         //
     }
+
     public function salvar(User $user, Avaliacao $avaliacao)
     {
         return $user->role == 'admin';

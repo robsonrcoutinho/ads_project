@@ -115,24 +115,29 @@ class ApiController extends Controller
 
     //Método que realiza inserção de respostas de questionário no banco de dados.
     private function inserir()
-        {
-            $respostas = Input::get('campo_resposta');
-            $avaliacao = Input::get('avaliacao_id');
-            foreach ($respostas as $pergunta => $resposta):
-                $r = new Resposta();
-                $r->pergunta_id = $pergunta;
-                $r->campo_resposta = $resposta;
+    {
+        $respostas = Input::get('campo_resposta');
+        $avaliacao = Input::get('avaliacao_id');
+        foreach ($respostas as $pergunta => $resposta):
+            $r = new Resposta();
+            $r->pergunta_id = $pergunta;
+            $r->campo_resposta = $resposta;
             $r->avaliacao_id = $avaliacao;
             $r->save();
         endforeach;
     }
 
-    public function buscaDisciplinasCursadas(Request $request){
-        $email =  $request->input('email');
+    public function buscaDisciplinasCursadas(Request $request)
+    {
+        $email = $request->input('email');
         $aluno = Aluno::query()->where('email', $email)->first();
         return response()
             ->json($aluno->disciplinas);
-        //$disciplinas=$aluno->disciplinas()->get();
     }
-    // public function
+
+    public function alunoPorEmail($email)
+    {
+        $aluno = Aluno::query()->where('email', $email)->first()->lists('nome', 'matricula');
+        return response()->json($aluno);
+    }
 }

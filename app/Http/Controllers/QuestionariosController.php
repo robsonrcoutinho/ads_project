@@ -34,7 +34,7 @@ class QuestionariosController extends Controller
         $user = Auth::getUser();                                                            //Pega usuário logado
         if ($user->role != 'aluno'):                                                        //Verifica se usuário não é aluno
             $rota = $user->role == 'admin' ? route('avaliacoes') : '/';                     //Atribui valor de rota
-            $this->mensagem('Para acessa essa página usuário precisa ser aluno.', $rota);   //Executa método de mensagem
+            $this->mensagem('Para acessar essa página usuário precisa ser aluno.', $rota);   //Executa método de mensagem
         endif;
         $avaliacao = Avaliacao::aberta()->first();                                          //Busca avaliação em aberto
         if ($avaliacao == null):                                                            //Se avaliação for nula (nenhuma avaliação em abaerto)

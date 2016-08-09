@@ -19,6 +19,7 @@ class AlunoPolicy
     {
         //
     }
+
     public function salvar(User $user, Aluno $aluno)
     {
         return $user->role == 'admin';
@@ -33,6 +34,7 @@ class AlunoPolicy
     {
         return $user->role == 'admin';
     }
+
     public function carregar(User $user, Aluno $aluno)
     {
         return $user->role == 'admin';

@@ -4,12 +4,15 @@ namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**Classe modelo de Semestre
+ * Class Semestre
+ * @package adsproject
+ */
 class Semestre extends Model
 {
     protected $table = "semestres";
     protected $fillable = ['codigo', 'inicio', 'termino'];
     protected $softDelete = true;
-    //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
     /**

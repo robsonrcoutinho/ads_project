@@ -19,6 +19,7 @@ class SemestrePolicy
     {
         //
     }
+
     public function salvar(User $user, Semestre $semestre)
     {
         return $user->role == 'admin';
