@@ -152,7 +152,8 @@ class ApiController extends Controller
 
     public function respostaQuestionario()
     {
-        $respostas = Input::all();
+        $respostas = Input::get('respostas');
+        $email = Input::get('email');
         foreach ($respostas as $resposta):
             //Resposta::create($resposta->all());
             $r = new Resposta();
@@ -162,5 +163,7 @@ class ApiController extends Controller
             $r->disciplina_id = $resposta['id_disciplina'];
             $r->save();
         endforeach;
+        $aluno = Aluno::query()->where('email', $email)->first();
+        $aluno->avaliacoes()->attach($respostas[0]['id_avaliacao']);
     }
 }
