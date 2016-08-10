@@ -7,6 +7,7 @@ use adsproject\Aviso;
 use adsproject\Aluno;
 use adsproject\Documento;
 use adsproject\Professor;
+use adsproject\User;
 use adsproject\Disciplina;
 use adsproject\Avaliacao;
 use adsproject\Resposta;
@@ -152,13 +153,14 @@ class ApiController extends Controller
         endif;
         if ($user->role == 'aluno'):
             $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
-            return response()->json($aluno);
+
+            return response()->json(['aluno' => $aluno]);
         endif;
         if ($user->role == 'professor'):
             $professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
-            return response()->json($professor);
+            return response()->json(['professor'=>$professor]);
         endif;
-        return response()->json(['user' => $user->name]);
+        return response()->json(['admin' => $user->name]);
     }
 
     public function respostaQuestionario()
