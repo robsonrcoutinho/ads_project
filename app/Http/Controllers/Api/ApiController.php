@@ -146,8 +146,19 @@ class ApiController extends Controller
 
     public function informacaoUser($email)
     {
-        $aluno = Aluno::query()->where('email', $email)->lists('nome','matricula');
-        return response()->json($aluno);
+        $user = User::query()->where('email', $email)->first();
+        if ($user == null):
+            return response()->json(['user' => 'nulo']);
+        endif;
+        if ($user->role == 'aluno'):
+            $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
+            return response()->json($aluno);
+        endif;
+        if ($user->role == 'professor'):
+            $professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
+            return response()->json($professor);
+        endif;
+        return response()->json(['user' => $user->name]);
     }
 
     public function respostaQuestionario()
@@ -155,7 +166,6 @@ class ApiController extends Controller
         $respostas = Input::get('respostas');
         $email = Input::get('email');
         foreach ($respostas as $resposta):
-            //Resposta::create($resposta->all());
             $r = new Resposta();
             $r->pergunta_id = $resposta['id_resposta'];
             $r->campo_resposta = $resposta['campo_resposta'];
