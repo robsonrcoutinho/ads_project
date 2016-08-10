@@ -146,7 +146,21 @@ class ApiController extends Controller
 
     public function informacaoUser($email)
     {
-        $aluno = Aluno::query()->where('email', $email)->first()->lists('nome', 'matricula');
+        $aluno = Aluno::query()->where('email', $email)->lists('nome','matricula')->first();
         return response()->json($aluno);
+    }
+
+    public function respostaQuestionario()
+    {
+        $respostas = Input::all();
+        foreach ($respostas as $resposta):
+            //Resposta::create($resposta->all());
+            $r = new Resposta();
+            $r->pergunta_id = $resposta['id_resposta'];
+            $r->campo_resposta = $resposta['campo_resposta'];
+            $r->avaliacao_id = $resposta['id_avaliacao'];
+            $r->disciplina_id = $resposta['id_disciplina'];
+            $r->save();
+        endforeach;
     }
 }
