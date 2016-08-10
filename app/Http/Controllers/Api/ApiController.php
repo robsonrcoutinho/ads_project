@@ -146,7 +146,7 @@ class ApiController extends Controller
 
     public function informacaoUser($email)
     {
-        $aluno = Aluno::query()->where('email', $email)->lists('nome','matricula')->first();
+        $aluno = Aluno::query()->where('email', $email)->lists('nome','matricula');
         return response()->json($aluno);
     }
 
