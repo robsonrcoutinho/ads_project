@@ -31,7 +31,7 @@
         <br/>
         <br/>
         @can('salvar', new \adsproject\Enade)
-                <a href="{{ route('enades.novo')}}" class="btn btn-default"> Nova informação ENADE</a>
+                <a href="{{ route('enades.novo')}}" class="btn btn-default"> Novo dado ENADE</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

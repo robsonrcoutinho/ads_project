@@ -20,7 +20,7 @@ class EnadesController extends Controller
      */
     public function index()
     {
-        $enades = Enade::orderBy('created_at')->get();      //busca relação de informações de ENADE em ordem de criação
+        $enades = Enade::all();                             //busca relação de informações de ENADE em ordem de criação
         return view('enades.index', ['enades' => $enades]); //Redireciona para tela inicial de ENADE
     }
 

@@ -2,7 +2,7 @@
 @section('conteudo')
     <div class="category">
         <div class="card-panel  #388e3c green darken-2 center">
-            <span class=" grey-text text-lighten-5" >Editar Informação ENADE</span>
+            <span class=" grey-text text-lighten-5" >Editar dado ENADE</span>
         </div>
         {!! Form::open(['route'=>['enades.alterar', $enade->id], 'method'=>'put']) !!}
 

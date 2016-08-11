@@ -32,7 +32,7 @@ class ApiController extends Controller
         // Pegar credenciais do pedido
         $credentials = $request->only('email', 'password');
         try {
-            // Tentar verificar as credenciais e criar um token para o usuário
+            // Tentar verificar as credenciais e criar um token para o usuï¿½rio
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
@@ -90,7 +90,7 @@ class ApiController extends Controller
     }
 
     /*
-    * Retorna todas as avaliações
+    * Retorna todas as avaliaï¿½ï¿½es
     * */
     public function avaliacoesAll()
     {
@@ -98,7 +98,7 @@ class ApiController extends Controller
             ->json(Avaliacao::all());
     }
 
-    //Método que busca avaliação aberta para o Web Service
+    //Mï¿½todo que busca avaliaï¿½ï¿½o aberta para o Web Service
     public function questionariosAll()
     {
         return response()
@@ -106,7 +106,7 @@ class ApiController extends Controller
     }
 
     /*
-    * Salva todas as respostas dadas pelo usuário remoto
+    * Salva todas as respostas dadas pelo usuï¿½rio remoto
      *
     * */
     public function questionariosSalvar()
@@ -114,7 +114,7 @@ class ApiController extends Controller
         $this->inserir();
     }
 
-    //Método que realiza inserção de respostas de questionário no banco de dados.
+    //Mï¿½todo que realiza inserï¿½ï¿½o de respostas de questionï¿½rio no banco de dados.
     private function inserir()
     {
         $respostas = Input::get('campo_resposta');
@@ -153,7 +153,6 @@ class ApiController extends Controller
         endif;
         if ($user->role == 'aluno'):
             $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
-
             return response()->json(['aluno' => $aluno]);
         endif;
         if ($user->role == 'professor'):

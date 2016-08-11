@@ -174,7 +174,7 @@ Route::group(['prefix' => 'enades', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para novo enad
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'enades.novo', 'uses' => 'EnadesController@novo']);
 //Rota para salvar enad
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enads.salvar', 'uses' => 'EnadesController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enades.salvar', 'uses' => 'EnadesController@salvar']);
 //Rota para exluir enad
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'enades.excluir', 'uses' => 'EnadesController@excluir']);
 //Rota para editar enad
