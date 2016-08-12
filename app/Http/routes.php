@@ -302,7 +302,6 @@ Route::group(array('before' => 'auth'), function()
  *
  * */
 
-
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
     $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
