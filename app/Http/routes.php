@@ -315,7 +315,7 @@ $api->version('v1',function($api){
     $api->get('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
     $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
     $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
-    $api->get('informacaoUser/{email}','adsproject\Http\Controllers\Api\ApiController@informacaoUser');
+    $api->post('informacaoUser','adsproject\Http\Controllers\Api\ApiController@informacaoUser');
     $api->post('disciplinasCursadas','adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
     $api->post('respostaQuestionario','adsproject\Http\Controllers\Api\ApiController@respostaQuestionario');
 });

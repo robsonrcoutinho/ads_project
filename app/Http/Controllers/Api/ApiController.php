@@ -145,22 +145,22 @@ class ApiController extends Controller
         return response()->json($aluno->disciplinas()->get());
     }
 
-    public function informacaoUser($email)
+    public function informacaoUser(Request $request)
     {
+        $email = $request->input('email');
         $user = User::query()->where('email', $email)->first();
         if ($user == null):
             return response()->json(['user' => 'nulo']);
         endif;
         if ($user->role == 'aluno'):
-            $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
-
-            return response()->json(['aluno' => $aluno]);
+           // $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
+            return response()->json(['aluno' => $user]);
         endif;
         if ($user->role == 'professor'):
-            $professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
-            return response()->json(['professor'=>$professor]);
+            //$professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
+            return response()->json(['professor'=>$user]);
         endif;
-        return response()->json(['admin' => $user->name]);
+        return response()->json(['admin' => $user]);
     }
 
     public function respostaQuestionario()
