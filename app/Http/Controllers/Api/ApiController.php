@@ -153,8 +153,8 @@ class ApiController extends Controller
             return response()->json(['user' => 'nulo']);
         endif;
         if ($user->role == 'aluno'):
-           // $aluno = Aluno::query()->where('email', $email)->lists('nome', 'matricula');
-            return response()->json(['aluno' => $user]);
+            $aluno = Aluno::query()->where('email', $email)->lists('matricula');
+            return response()->json(['aluno' => $user, 'matricula'=>$aluno]);
         endif;
         if ($user->role == 'professor'):
             //$professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
