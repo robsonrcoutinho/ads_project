@@ -169,18 +169,18 @@ Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
 });
 //Rotas de enads
 Route::group(['prefix' => 'enades', 'where' => ['id' => '[0-9]+']], function () {
-//Rota para IndexEnad
+//Rota para IndexEnade
     Route::get('', ['as' => 'enades', 'uses' => 'EnadesController@index']);
-//Rota para novo enad
+//Rota para novo enade
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'enades.novo', 'uses' => 'EnadesController@novo']);
-//Rota para salvar enad
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enads.salvar', 'uses' => 'EnadesController@salvar']);
-//Rota para exluir enad
+//Rota para salvar enade
+    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enades.salvar', 'uses' => 'EnadesController@salvar']);
+//Rota para exluir enade
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'enades.excluir', 'uses' => 'EnadesController@excluir']);
-//Rota para editar enad
+//Rota para editar enade
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.editar', 'uses' => 'EnadesController@editar']);
-//Rota para alterar enad
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'enades.alterar', 'enads' => 'EnadesController@alterar']);
+//Rota para alterar enade
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'enades.alterar', 'uses' => 'EnadesController@alterar']);
 });
 
 //Rotas para Web Service
@@ -301,7 +301,6 @@ Route::group(array('before' => 'auth'), function()
  * através da troca de tokens entre usuário e recursos do sistema
  *
  * */
-
 
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function($api){
