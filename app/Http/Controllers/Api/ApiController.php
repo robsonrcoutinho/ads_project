@@ -168,8 +168,7 @@ class ApiController extends Controller
         $respostas = $request->get('respostas');
         $email = $request->get('email');
         $avaliacao = null;
-        //return $respostas;
-        foreach (json_decode($respostas) as $resposta):
+        foreach ($respostas as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
             $r->campo_resposta = $resposta->campo_resposta;
@@ -179,6 +178,6 @@ class ApiController extends Controller
             $r->save();
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
-        return $aluno->avaliacoes()->attach($avaliacao);
+        $aluno->avaliacoes()->attach($avaliacao);
     }
 }
