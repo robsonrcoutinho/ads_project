@@ -179,6 +179,6 @@ class ApiController extends Controller
             $r->save();
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
-        $aluno->avaliacoes()->attach($avaliacao);
+        return $aluno->avaliacoes()->attach($avaliacao);
     }
 }
