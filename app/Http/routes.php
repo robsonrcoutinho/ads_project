@@ -12,8 +12,6 @@
 */
 
 
-
-
 Route::get('/', function () {
     return view('main');
 });
@@ -22,21 +20,21 @@ Route::get('/', function () {
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para IndexAluno
-    Route::get('', ['middleware' => 'check.user.role:admin,professor','as' => 'alunos', 'uses' => 'AlunosController@index']);
+    Route::get('', ['middleware' => 'check.user.role:admin,professor', 'as' => 'alunos', 'uses' => 'AlunosController@index']);
 //Rota para novo aluno
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.novo', 'uses' => 'AlunosController@novo']);
 //Rota para salvar aluno
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'alunos.salvar', 'uses' => 'AlunosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.salvar', 'uses' => 'AlunosController@salvar']);
 //Rota para excluir aluno
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.excluir', 'uses' => 'AlunosController@excluir']);
 //Rota para editar aluno
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.editar', 'uses' => 'AlunosController@editar']);
 //Rota para alterar aluno
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.alterar', 'uses' => 'AlunosController@alterar']);
 //Rota para view de arquivo de alunos
-    Route::get('arquivo', ['middleware' => 'check.user.role:admin','as'=>'alunos.arquivo', 'uses'=>'AlunosController@arquivo']);
+    Route::get('arquivo', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.arquivo', 'uses' => 'AlunosController@arquivo']);
 //Rota para carregar dados de alunos no banco de dados via arquivo
-    Route::post('carregar', ['middleware' => 'check.user.role:admin','as'=>'alunos.carregar', 'uses'=>'AlunosController@carregar']);
+    Route::post('carregar', ['middleware' => 'check.user.role:admin', 'as' => 'alunos.carregar', 'uses' => 'AlunosController@carregar']);
 });
 
 //Rotas de professores
@@ -47,13 +45,13 @@ Route::group(['prefix' => 'professores', 'where' => ['id' => '[0-9]+']], functio
 //Rota para novo professor
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'professores.novo', 'uses' => 'ProfessoresController@novo']);
 //Rota para salvar professor
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'professores.salvar', 'uses' => 'ProfessoresController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'professores.salvar', 'uses' => 'ProfessoresController@salvar']);
 //Rota para exluir professor
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'professores.excluir', 'uses' => 'ProfessoresController@excluir']);
 //Rota para ediçaoo de professor
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'professores.editar', 'uses' => 'ProfessoresController@editar']);
 //Rota para alteraçao de professor
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'professores.alterar', 'uses' => 'ProfessoresController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'professores.alterar', 'uses' => 'ProfessoresController@alterar']);
 });
 //Rotas de disciplinas
 Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], function () {
@@ -62,13 +60,13 @@ Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], functio
 //Rota para nova disciplina
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.novo', 'uses' => 'DisciplinasController@novo']);
 //Rota para salvar disciplina
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'disciplinas.salvar', 'uses' => 'DisciplinasController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.salvar', 'uses' => 'DisciplinasController@salvar']);
 //Rota para exluir disciplina
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.excluir', 'uses' => 'DisciplinasController@excluir']);
 //Rota para editar disciplina
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.editar', 'uses' => 'DisciplinasController@editar']);
 //Rota para alterar disciplina
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
 });
 //Rotas de documentos
 Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function () {
@@ -77,13 +75,13 @@ Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function
 //Rota para novo documento
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.novo', 'uses' => 'DocumentosController@novo']);
 //Rota para salvar documento
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'documentos.salvar', 'uses' => 'DocumentosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.salvar', 'uses' => 'DocumentosController@salvar']);
 //Rota para exluir documento
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.excluir', 'uses' => 'DocumentosController@excluir']);
 //Rota para editar documento
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.editar', 'uses' => 'DocumentosController@editar']);
 //Rota para alterar documento
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'documentos.alterar', 'uses' => 'DocumentosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.alterar', 'uses' => 'DocumentosController@alterar']);
 });
 
 //Rotas de semestres
@@ -93,13 +91,13 @@ Route::group(['prefix' => 'semestres', 'where' => ['id' => '[0-9]+']], function 
 //Rota para novo semestre
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.novo', 'uses' => 'SemestresController@novo']);
 //Rota para salvar semestre
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'semestres.salvar', 'uses' => 'SemestresController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.salvar', 'uses' => 'SemestresController@salvar']);
 //Rota para exluir semestre
     //Route::get('{codigo}/excluir',['middleware'=>'check.user.role:admin','as'=>'Semestres.excluir', 'uses'=> 'SemestresController@excluir']);
 //Rota para editar semestre
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.editar', 'uses' => 'SemestresController@editar']);
 //Rota para alterar semestre
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'semestres.alterar', 'uses' => 'SemestresController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'semestres.alterar', 'uses' => 'SemestresController@alterar']);
 });
 //Rotas de avaliações
 Route::group(['prefix' => 'avaliacoes', 'where' => ['id' => '[0-9]+']], function () {
@@ -108,13 +106,13 @@ Route::group(['prefix' => 'avaliacoes', 'where' => ['id' => '[0-9]+']], function
 //Rota para nova avaliacao
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.novo', 'uses' => 'AvaliacoesController@novo']);
 //Rota para salvar avaliacao
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'avaliacoes.salvar', 'uses' => 'AvaliacoesController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.salvar', 'uses' => 'AvaliacoesController@salvar']);
 //Rota para exluir avaliacao
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.excluir', 'uses' => 'AvaliacoesController@excluir']);
 //Rota para editar avaliacao
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.editar', 'uses' => 'AvaliacoesController@editar']);
 //Rota para alterar avaliacao
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'avaliacoes.alterar', 'uses' => 'AvaliacoesController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.alterar', 'uses' => 'AvaliacoesController@alterar']);
 });
 //Rotas de avisos
 Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () {
@@ -123,13 +121,13 @@ Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para nova aviso
     Route::get('novo', ['middleware' => 'check.user.role:admin,professor', 'as' => 'avisos.novo', 'uses' => 'AvisosController@novo']);
 //Rota para salvar aviso
-    Route::post('salvar', ['middleware' => 'check.user.role:admin,professor','as' => 'avisos.salvar', 'uses' => 'AvisosController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin,professor', 'as' => 'avisos.salvar', 'uses' => 'AvisosController@salvar']);
 //Rota para exluir aviso
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'avisos.excluir', 'uses' => 'AvisosController@excluir']);
 //Rota para editar aviso
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'avisos.editar', 'uses' => 'AvisosController@editar']);
 //Rota para alterar aviso
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'avisos.alterar', 'uses' => 'AvisosController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'avisos.alterar', 'uses' => 'AvisosController@alterar']);
 });
 
 //Rotas de perguntas
@@ -139,18 +137,18 @@ Route::group(['prefix' => 'perguntas', 'where' => ['id' => '[0-9]+']], function 
 //Rota para nova pergunta
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.novo', 'uses' => 'PerguntasController@novo']);
 //Rota para salvar pergunta
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'perguntas.salvar', 'uses' => 'PerguntasController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.salvar', 'uses' => 'PerguntasController@salvar']);
 //Rota para exluir pergunta
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.excluir', 'uses' => 'PerguntasController@excluir']);
 //Rota para editar pergunta
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.editar', 'uses' => 'PerguntasController@editar']);
 //Rota para alterar pergunta
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'perguntas.alterar', 'uses' => 'PerguntasController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'perguntas.alterar', 'uses' => 'PerguntasController@alterar']);
 });
 //Rotas de respostas
 Route::group(['prefix' => 'respostas', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para IndexResposta
-    Route::get('', ['middleware'=>'check.user.role:admin','as' => 'respostas', 'uses' => 'RespostasController@index']);
+    Route::get('', ['middleware' => 'check.user.role:admin', 'as' => 'respostas', 'uses' => 'RespostasController@index']);
 });
 //Rotas de users
 Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
@@ -159,7 +157,7 @@ Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function () {
 //Rota para novo user
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'users.novo', 'uses' => 'UsersController@novo']);
 //Rota para salvar user
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'users.salvar', 'uses' => 'UsersController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'users.salvar', 'uses' => 'UsersController@salvar']);
 //Rota para exluir user
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'users.excluir', 'uses' => 'UsersController@excluir']);
 //Rota para editar user
@@ -174,13 +172,13 @@ Route::group(['prefix' => 'enades', 'where' => ['id' => '[0-9]+']], function () 
 //Rota para novo enade
     Route::get('novo', ['middleware' => 'check.user.role:admin', 'as' => 'enades.novo', 'uses' => 'EnadesController@novo']);
 //Rota para salvar enade
-    Route::post('salvar', ['middleware' => 'check.user.role:admin','as' => 'enades.salvar', 'uses' => 'EnadesController@salvar']);
+    Route::post('salvar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.salvar', 'uses' => 'EnadesController@salvar']);
 //Rota para exluir enade
     Route::get('{id}/excluir', ['middleware' => 'check.user.role:admin', 'as' => 'enades.excluir', 'uses' => 'EnadesController@excluir']);
 //Rota para editar enade
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.editar', 'uses' => 'EnadesController@editar']);
 //Rota para alterar enade
-    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin','as' => 'enades.alterar', 'uses' => 'EnadesController@alterar']);
+    Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'enades.alterar', 'uses' => 'EnadesController@alterar']);
 });
 
 //Rotas para Web Service
@@ -247,7 +245,8 @@ Route::group(['prefix' => 'ws'], function () {
         //Busca avaliação em aberto
         Route::get('', ['uses' => 'QuestionariosController@buscarAberto']);
         //Salva respostas de avaliação
-        Route::post('', ['uses' => 'QuestionariosController@salvarRespostas']);
+        //Route::post('', ['uses' => 'QuestionariosController@salvarRespostas']);
+        //Route::post('',['uses'=> 'QuestionariosController@respostaQuestionario']);
     });
 });
 
@@ -268,7 +267,7 @@ Route::group(['prefix' => 'questionarios'], function () {
 //Rotas de autenticação
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', ['as'=>'sair', 'uses'=>'Auth\AuthController@getLogout']);
+Route::get('auth/logout', ['as' => 'sair', 'uses' => 'Auth\AuthController@getLogout']);
 //Rotas de registro
 Route::get('auth/register', ['as' => 'registro', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('auth/register', ['as' => 'registrar', 'uses' => 'Auth\AuthController@postRegister']);
@@ -303,18 +302,18 @@ Route::group(array('before' => 'auth'), function()
  * */
 
 $api = app('Dingo\Api\Routing\Router');
-$api->version('v1',function($api){
+$api->version('v1', function ($api) {
     $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
     $api->post('logout', 'adsproject\Http\Controllers\Api\ApiController@logout');
 
-    $api->get('avisos','adsproject\Http\Controllers\Api\ApiController@avisosAll');
-    $api->get('documentos','adsproject\Http\Controllers\Api\ApiController@documentosAll');
-    $api->get('professores','adsproject\Http\Controllers\Api\ApiController@professoresAll');
-    $api->get('disciplinas','adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
-    $api->get('avaliacoes','adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
-    $api->get('questionarios','adsproject\Http\Controllers\Api\ApiController@questionariosAll');
-    $api->get('questionariosSalvar','adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
-    $api->post('informacaoUser','adsproject\Http\Controllers\Api\ApiController@informacaoUser');
-    $api->post('disciplinasCursadas','adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
-    $api->post('respostaQuestionario','adsproject\Http\Controllers\Api\ApiController@respostaQuestionario');
+    $api->get('avisos', 'adsproject\Http\Controllers\Api\ApiController@avisosAll');
+    $api->get('documentos', 'adsproject\Http\Controllers\Api\ApiController@documentosAll');
+    $api->get('professores', 'adsproject\Http\Controllers\Api\ApiController@professoresAll');
+    $api->get('disciplinas', 'adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
+    $api->get('avaliacoes', 'adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
+    $api->get('questionarios', 'adsproject\Http\Controllers\Api\ApiController@questionariosAll');
+    $api->get('questionariosSalvar', 'adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
+    $api->post('informacaoUser', 'adsproject\Http\Controllers\Api\ApiController@informacaoUser');
+    $api->post('disciplinasCursadas', 'adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
+    $api->post('respostaQuestionario', 'adsproject\Http\Controllers\Api\ApiController@respostaQuestionario');
 });

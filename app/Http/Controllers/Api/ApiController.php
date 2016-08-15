@@ -32,7 +32,7 @@ class ApiController extends Controller
         // Pegar credenciais do pedido
         $credentials = $request->only('email', 'password');
         try {
-            // Tentar verificar as credenciais e criar um token para o usuário
+            // Tentar verificar as credenciais e criar um token para o usuï¿½rio
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
@@ -90,7 +90,7 @@ class ApiController extends Controller
     }
 
     /*
-    * Retorna todas as avaliações
+    * Retorna todas as avaliaï¿½ï¿½es
     * */
     public function avaliacoesAll()
     {
@@ -98,7 +98,7 @@ class ApiController extends Controller
             ->json(Avaliacao::all());
     }
 
-    //Método que busca avaliação aberta para o Web Service
+    //Mï¿½todo que busca avaliaï¿½ï¿½o aberta para o Web Service
     public function questionariosAll()
     {
         return response()
@@ -106,7 +106,7 @@ class ApiController extends Controller
     }
 
     /*
-    * Salva todas as respostas dadas pelo usuário remoto
+    * Salva todas as respostas dadas pelo usuï¿½rio remoto
      *
     * */
     public function questionariosSalvar()
@@ -114,7 +114,7 @@ class ApiController extends Controller
         $this->inserir();
     }
 
-    //Método que realiza inserção de respostas de questionário no banco de dados.
+    //Mï¿½todo que realiza inserï¿½ï¿½o de respostas de questionï¿½rio no banco de dados.
     private function inserir()
     {
         $respostas = Input::get('campo_resposta');
@@ -154,28 +154,30 @@ class ApiController extends Controller
         endif;
         if ($user->role == 'aluno'):
             $aluno = Aluno::query()->where('email', $email)->lists('matricula');
-            return response()->json(['aluno' => $user, 'matricula'=>$aluno]);
+            return response()->json(['aluno' => $user, 'matricula' => $aluno]);
         endif;
         if ($user->role == 'professor'):
             //$professor = Professor::query()->where('email', $email)->lists('nome', 'matricula');
-            return response()->json(['professor'=>$user]);
+            return response()->json(['professor' => $user]);
         endif;
         return response()->json(['admin' => $user]);
     }
 
     public function respostaQuestionario()
     {
-        $respostas = Input::get('respostas');
+        $respostas = json_decode(Input::get('respostas'));
         $email = Input::get('email');
+        $avaliacao = null;
         foreach ($respostas as $resposta):
             $r = new Resposta();
-            $r->pergunta_id = $resposta['id_resposta'];
-            $r->campo_resposta = $resposta['campo_resposta'];
-            $r->avaliacao_id = $resposta['id_avaliacao'];
-            $r->disciplina_id = $resposta['id_disciplina'];
+            $r->pergunta_id = $resposta->id_resposta;
+            $r->campo_resposta = $resposta->campo_resposta;
+            $r->avaliacao_id = $resposta->id_avaliacao;
+            $avaliacao = $resposta->id_avaliacao;
+            $r->disciplina_id = $resposta->id_disciplina;
             $r->save();
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
-        $aluno->avaliacoes()->attach($respostas[0]['id_avaliacao']);
+        $aluno->avaliacoes()->attach($avaliacao);
     }
 }
