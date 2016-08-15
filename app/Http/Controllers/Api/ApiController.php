@@ -168,8 +168,8 @@ class ApiController extends Controller
         $respostas = \Input::get('respostas');
         $email = \Input::get('email');
         $avaliacao = null;
-        return $respostas;
-        foreach ($respostas as $resposta):
+        //return $respostas;
+        foreach (json_encode($respostas) as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
             $r->campo_resposta = $resposta->campo_resposta;
