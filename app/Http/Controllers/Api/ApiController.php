@@ -90,7 +90,7 @@ class ApiController extends Controller
     }
 
     /*
-    * Retorna todas as avalia��es
+    * Retorna todas as avaliações
     * */
     public function avaliacoesAll()
     {
@@ -98,7 +98,7 @@ class ApiController extends Controller
             ->json(Avaliacao::all());
     }
 
-    //M�todo que busca avalia��o aberta para o Web Service
+    //Método que busca avaliação aberta para o Web Service
     public function questionariosAll()
     {
         return response()
@@ -114,7 +114,7 @@ class ApiController extends Controller
         $this->inserir();
     }
 
-    //M�todo que realiza inser��o de respostas de question�rio no banco de dados.
+    //Método que realiza insersão de respostas de questionário no banco de dados.
     private function inserir()
     {
         $respostas = \Input::get('campo_resposta');
@@ -179,6 +179,5 @@ class ApiController extends Controller
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
         $aluno->avaliacoes()->attach($avaliacao);
-        return true;
     }
 }
