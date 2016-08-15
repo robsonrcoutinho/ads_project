@@ -163,10 +163,10 @@ class ApiController extends Controller
         return response()->json(['admin' => $user]);
     }
 
-    public function respostaQuestionario()
+    public function respostaQuestionario(Request $request)
     {
-        $respostas = \Input::get('respostas');
-        $email = \Input::get('email');
+        $respostas = $request->get('respostas');
+        $email = $request->get('email');
         $avaliacao = null;
         //return $respostas;
         foreach (json_decode($respostas) as $resposta):
