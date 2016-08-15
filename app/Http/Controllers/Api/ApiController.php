@@ -117,8 +117,8 @@ class ApiController extends Controller
     //M�todo que realiza inser��o de respostas de question�rio no banco de dados.
     private function inserir()
     {
-        $respostas = Input::get('campo_resposta');
-        $avaliacao = Input::get('avaliacao_id');
+        $respostas = \Input::get('campo_resposta');
+        $avaliacao = \Input::get('avaliacao_id');
         foreach ($respostas as $pergunta => $resposta):
             $r = new Resposta();
             $r->pergunta_id = $pergunta;
@@ -165,9 +165,10 @@ class ApiController extends Controller
 
     public function respostaQuestionario()
     {
-        $respostas = Input::get('respostas');
-        $email = Input::get('email');
+        $respostas = \Input::get('respostas');
+        $email = \Input::get('email');
         $avaliacao = null;
+        return $respostas;
         foreach ($respostas as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
