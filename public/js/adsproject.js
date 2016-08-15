@@ -10,7 +10,7 @@ window.onload = function () {
     }
     var pergunta_fechada = document.getElementById("pergunta_fechada");
     var escondida = document.getElementById('escondida');
-    if (!pergunta_fechada.checked) {
+    if (!checked(pergunta_fechada)) {
         escondida.style.display = 'none';
     } else {
         escondida.style.display = 'block';
