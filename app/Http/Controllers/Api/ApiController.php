@@ -165,8 +165,10 @@ class ApiController extends Controller
 
     public function respostaQuestionario(Request $request)
     {
-        $respostas = json_decode($request->get('respostas'));
-        $email = $request->get('email');
+        //$respostas = json_decode($request->get('respostas'));
+        $tudo = json_decode($request->all());
+        $email = $tudo->email;
+        $respostas = $tudo->respostas;
         $avaliacao = null;
         foreach ($respostas as $resposta):
             $r = new Resposta();
