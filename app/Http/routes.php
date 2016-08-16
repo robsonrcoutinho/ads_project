@@ -303,17 +303,19 @@ Route::group(array('before' => 'auth'), function()
 
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
-    $api->post('login', 'adsproject\Http\Controllers\Api\ApiController@authenticate');
-    $api->post('logout', 'adsproject\Http\Controllers\Api\ApiController@logout');
+    $api->group(['namespace' => 'adsproject\Http\Controllers\Api'], function ($api) {
+        $api->post('login', 'ApiController@authenticate');
+        $api->post('logout', 'ApiController@logout');
 
-    $api->get('avisos', 'adsproject\Http\Controllers\Api\ApiController@avisosAll');
-    $api->get('documentos', 'adsproject\Http\Controllers\Api\ApiController@documentosAll');
-    $api->get('professores', 'adsproject\Http\Controllers\Api\ApiController@professoresAll');
-    $api->get('disciplinas', 'adsproject\Http\Controllers\Api\ApiController@disciplinasAll');
-    $api->get('avaliacoes', 'adsproject\Http\Controllers\Api\ApiController@avaliacoesAll');
-    $api->get('questionarios', 'adsproject\Http\Controllers\Api\ApiController@questionariosAll');
-    $api->get('questionariosSalvar', 'adsproject\Http\Controllers\Api\ApiController@questionariosSalvar');
-    $api->post('informacaoUser', 'adsproject\Http\Controllers\Api\ApiController@informacaoUser');
-    $api->post('disciplinasCursadas', 'adsproject\Http\Controllers\Api\ApiController@buscaDisciplinasCursadas');
-    $api->post('respostaQuestionario', 'adsproject\Http\Controllers\Api\ApiController@respostaQuestionario');
+        $api->get('avisos', 'ApiController@avisosAll');
+        $api->get('documentos', 'ApiController@documentosAll');
+        $api->get('professores', 'ApiController@professoresAll');
+        $api->get('disciplinas', 'ApiController@disciplinasAll');
+        $api->get('avaliacoes', 'ApiController@avaliacoesAll');
+        $api->get('questionarios', 'ApiController@questionariosAll');
+        $api->get('questionariosSalvar', 'ApiController@questionariosSalvar');
+        $api->post('informacaoUser', 'ApiController@informacaoUser');
+        $api->post('disciplinasCursadas', 'ApiController@buscaDisciplinasCursadas');
+        $api->post('respostaQuestionario', 'ApiController@respostaQuestionario');
+    });
 });
