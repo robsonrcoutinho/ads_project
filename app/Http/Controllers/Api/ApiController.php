@@ -170,7 +170,7 @@ class ApiController extends Controller
         $email = $tudo->get('email');
         $respostas = $tudo->get('respostas');
         $avaliacao = null;
-        foreach($respostas->all() as $resposta):
+        foreach(\GuzzleHttp\json_decode($respostas, true) as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
             $r->campo_resposta = $resposta->campo_resposta;
