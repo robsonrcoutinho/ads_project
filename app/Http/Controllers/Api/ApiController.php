@@ -167,15 +167,15 @@ class ApiController extends Controller
     {
         $respostas = json_decode($request->get('respostas'), true);
         $email = $request->get('email');
-        //dd($respostas);
         $avaliacao = null;
         foreach($respostas as $resposta):
             $r = new Resposta();
-            $r->pergunta_id = $resposta->id_resposta;
-            $r->campo_resposta = $resposta->campo_resposta;
-            $r->avaliacao_id = $resposta->id_avaliacao;
-            $avaliacao = $resposta->id_avaliacao;
-            $r->disciplina_id = $resposta->id_disciplina;
+            $r->pergunta_id = $resposta['id_resposta'];
+            $r->campo_resposta = $resposta['campo_resposta'];
+            $r->avaliacao_id = $resposta['id_avaliacao'];
+            $avaliacao = $resposta['id_avaliacao'];
+            $r->disciplina_id = $resposta['id_disciplina'];
+            dd($r);
             $r->save();
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
