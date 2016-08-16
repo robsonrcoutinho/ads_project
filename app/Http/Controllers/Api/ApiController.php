@@ -175,7 +175,7 @@ class ApiController extends Controller
             $r->avaliacao_id = $resposta['id_avaliacao'];
             $avaliacao = $resposta['id_avaliacao'];
             $r->disciplina_id = $resposta['id_disciplina'];
-            dd($r->all()->all());
+            dd($r->attributesToArray());
             $r->save();
         endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
