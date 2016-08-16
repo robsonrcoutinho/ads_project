@@ -167,8 +167,8 @@ class ApiController extends Controller
     {
         //$respostas = json_decode($request->get('respostas'));
         $tudo = collect($request->all());
-        $email = $tudo->email;
-        $respostas = $tudo->respostas;
+        $email = $tudo->get('email');
+        $respostas = $tudo->get('respostas');
         $avaliacao = null;
         foreach($respostas as $resposta):
             $r = new Resposta();
