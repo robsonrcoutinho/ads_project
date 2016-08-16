@@ -170,7 +170,7 @@ class ApiController extends Controller
         $email = $tudo->email;
         $respostas = $tudo->respostas;
         $avaliacao = null;
-        foreach ($respostas as $resposta):
+        foreach($respostas as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
             $r->campo_resposta = $resposta->campo_resposta;
