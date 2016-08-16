@@ -169,7 +169,7 @@ class ApiController extends Controller
         $email = $request->get('email');
         dd($respostas);
         $avaliacao = null;
-        foreach(get_object_vars($respostas) as $resposta):
+        foreach($respostas as $resposta):
             $r = new Resposta();
             $r->pergunta_id = $resposta->id_resposta;
             $r->campo_resposta = $resposta->campo_resposta;
