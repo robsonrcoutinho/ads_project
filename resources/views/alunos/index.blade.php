@@ -38,6 +38,7 @@
                 </tr>
             @endforeach
             </tbody>
+            {!! $alunos->render() !!}
         </table>
         <br/>
         <br/>

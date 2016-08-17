@@ -25,8 +25,8 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::orderBy('nome')->get();            //busca relação de alunos em ordem alfabética
-        return view('alunos.index', ['alunos' => $alunos]); //Redireciona para a view com os alunos
+        $alunos = Aluno::orderBy('nome')->paginate(10);             //busca relação de alunos em ordem alfabética utilizando páginação
+        return view('alunos.index', ['alunos' => $alunos]);         //Redireciona para a view com os alunos
     }
 
     /**Método que redireciona para página de inclusão de novo aluno
@@ -57,7 +57,7 @@ class AlunosController extends Controller
 
     /**
      * Método que redireciona para página de edição de aluno
-     * @param $id identificador do aluno a ser editado
+     * @param $id int identificador do aluno a ser editado
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -69,7 +69,7 @@ class AlunosController extends Controller
 
     /**Método que realiza alteração de dados de aluno
      * @param AlunoRequest $request relação de dados do aluno a ser alterado
-     * @param $id identificador do aluno a ser alterado
+     * @param $id|int identificador do aluno a ser alterado
      * @return \Illuminate\Http\RedirectResponse
      */
     public function alterar(AlunoRequest $request, $id)
@@ -90,7 +90,7 @@ class AlunosController extends Controller
     }
 
     /**Método que exclui aluno
-     * @param $id identificador do aluno a ser excluído
+     * @param $id int identificador do aluno a ser excluído
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
