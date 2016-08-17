@@ -20,7 +20,7 @@ class AvaliacoesController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**Método que redireciona para página inicial de avaliações
@@ -60,7 +60,7 @@ class AvaliacoesController extends Controller
     }
 
     /**Método que redireciona para página de edição de avaliação
-     * @param $id identificador da avaliação a ser editada
+     * @param $id int identificador da avaliação a ser editada
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -74,7 +74,7 @@ class AvaliacoesController extends Controller
 
     /**Método que realiza alteração de dados de avaliação
      * @param AvaliacaoRequest $request relação de dados da avaliação a ser alterada
-     * @param $id identificador da avaliação a ser alterada
+     * @param $id int identificador da avaliação a ser alterada
      * @return \Illuminate\Http\RedirectResponse
      */
     public function alterar(AvaliacaoRequest $request, $id)
@@ -91,7 +91,7 @@ class AvaliacoesController extends Controller
     }
 
     /**Método que exclui avaliação
-     * @param $id identificador da avaliação a ser excluída
+     * @param $id int identificador da avaliação a ser excluída
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
