@@ -25,9 +25,9 @@ class AvisosController extends Controller
      */
     public function index()
     {
-        $this->removerAntigos();                                //Evoca método para remover avisos antigos
-        $avisos = Aviso::all();                                 //Busca todos os avisos
-        return view('avisos.index', ['avisos' => $avisos]);     //Redireciona para página inicial de avisos
+        $this->removerAntigos();                                    //Evoca método para remover avisos antigos
+        $avisos = Aviso::paginate(config('constantes.paginacao'));  //Busca todos os avisos
+        return view('avisos.index', ['avisos' => $avisos]);         //Redireciona para página inicial de avisos
     }
 
     /**Método que redireciona para página de inclusão de novo aviso

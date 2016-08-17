@@ -26,8 +26,8 @@ class PerguntasController extends Controller
      */
     public function index()
     {
-        $perguntas = Pergunta::all();                                   //Busca todas as perguntas
-        return view('perguntas.index', ['perguntas' => $perguntas]);    //Redireciona à página inicial de perguntas
+        $perguntas = Pergunta::paginate(config('constantes.paginacao'));    //Busca todas as perguntas
+        return view('perguntas.index', ['perguntas' => $perguntas]);        //Redireciona à página inicial de perguntas
     }
 
     /**Método que redireciona para página de inclusão de nova pergunta

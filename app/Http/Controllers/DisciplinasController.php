@@ -26,7 +26,8 @@ class DisciplinasController extends Controller
      */
     public function index()
     {
-        $disciplinas = Disciplina::orderBy('nome')->get();                  //Busca disciplinas em ordem alfabética
+        $disciplinas = Disciplina::orderBy('nome')
+            ->paginate(config('constantes.paginacao'));                     //Busca disciplinas em ordem alfabética
         return view('disciplinas.index', ['disciplinas' => $disciplinas]);  //Redireciona à página inicial de disciplinas
     }
 

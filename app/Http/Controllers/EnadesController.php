@@ -20,8 +20,8 @@ class EnadesController extends Controller
      */
     public function index()
     {
-        $enades = Enade::all();                             //busca relação de informações de ENADE em ordem de criação
-        return view('enades.index', ['enades' => $enades]); //Redireciona para tela inicial de ENADE
+        $enades = Enade::paginate(config('constantes.paginacao'));  //busca relação de informações de ENADE em ordem de criação
+        return view('enades.index', ['enades' => $enades]);         //Redireciona para tela inicial de ENADE
     }
 
     /**Método que redireciona para página de inclusão de nova informação sobre ENADE

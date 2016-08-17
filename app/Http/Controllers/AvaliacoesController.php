@@ -20,7 +20,7 @@ class AvaliacoesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**Método que redireciona para página inicial de avaliações
@@ -28,10 +28,10 @@ class AvaliacoesController extends Controller
      */
     public function index()
     {
-        if (Auth::getUser()->role == 'aluno'):                              //Verifica se usuário é aluno
+        if (Auth::getUser()->role == 'aluno'):                            //Verifica se usuário é aluno
             return redirect()->route('questionarios');                      //Redireciona para questionário
         endif;
-        $avaliacoes = Avaliacao::all();                                     //Busca todas as avaliações
+        $avaliacoes = Avaliacao::paginate(config('constantes.paginacao'));  //Busca todas as avaliações
         return view('avaliacoes.index', ['avaliacoes' => $avaliacoes]);     //Redireciona para página inicial de avaliações
     }
 

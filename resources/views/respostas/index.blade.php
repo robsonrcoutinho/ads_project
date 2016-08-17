@@ -21,6 +21,7 @@
                 </tr>
             @endforeach
             </tbody>
+            {!! $respostas->render() !!}
         </table>
     </div>
 @endsection

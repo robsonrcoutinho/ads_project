@@ -39,6 +39,7 @@
 
             @endforeach
             </tbody>
+            {!! $documentos->render() !!}
         </table>
         <br/>
         <br/>

@@ -35,7 +35,7 @@
                 </tr>
             @endforeach
             </tbody>
-
+            {!! $professores->render() !!}
         </table>
 
         <br/>

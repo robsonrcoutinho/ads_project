@@ -24,7 +24,7 @@ class RespostasController extends Controller
      */
     public function index()
     {
-        $respostas = Resposta::all();                                   //Busca todas as respostas
-        return view('respostas.index', ['respostas' => $respostas]);    //Redireciona à página inicial de respostas
+        $respostas = Resposta::paginate(config('constantes.paginacao'));    //Busca todas as respostas
+        return view('respostas.index', ['respostas' => $respostas]);        //Redireciona à página inicial de respostas
     }
 }

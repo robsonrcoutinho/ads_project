@@ -25,7 +25,8 @@ class ProfessoresController extends Controller
      */
     public function index()
     {
-        $professores = Professor::orderBy('nome')->get();                   //Busca professores ordenando por nome
+        $professores = Professor::orderBy('nome')
+            ->paginate(config('constantes.paginacao'));                     //Busca professores ordenando por nome
         return view('professores.index', ['professores' => $professores]);  //Redireciona à página inicial de professores
     }
 

@@ -25,8 +25,8 @@ class DocumentosController extends Controller
      */
     public function index()
     {
-        $documentos = Documento::all();                                 //Busca todos os documentos
-        return view('documentos.index', ['documentos' => $documentos]); //Redireciona à página inicial de documentos
+        $documentos = Documento::paginate(config('constantes.paginacao'));  //Busca todos os documentos
+        return view('documentos.index', ['documentos' => $documentos]);     //Redireciona à página inicial de documentos
     }
 
     /**Método que redireciona para página de inclusão de novo documento

@@ -13,7 +13,6 @@
                 <tr>
                     <td>{{$enade->informacao}}</td>
 
-
                     <td>
                         @can('alterar', $enade)
                         <a href="{{ route('enades.editar', ['id'=>$enade->id]) }}"
@@ -27,6 +26,7 @@
                 </tr>
             @endforeach
             </tbody>
+            {!! $enades->render() !!}
         </table>
         <br/>
         <br/>

@@ -32,6 +32,7 @@
                 </tr>
             @endforelse
             </tbody>
+            {!! $avisos->render() !!}
         </table>
         <br/>
         <br/>

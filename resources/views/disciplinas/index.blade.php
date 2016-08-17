@@ -45,6 +45,7 @@
                 </tr>
             @endforeach
             </tbody>
+            {!! $disciplinas->render() !!}
         </table>
         <br/>
         <br/>

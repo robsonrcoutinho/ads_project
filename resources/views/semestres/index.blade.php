@@ -30,6 +30,7 @@
 
             @endforeach
             </tbody>
+             {!! $semestres->render() !!}
         </table>
         <br/>
         <br/>

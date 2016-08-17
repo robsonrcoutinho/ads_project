@@ -38,6 +38,7 @@
                 </tr>
             @endforelse
             </tbody>
+            {!! $avaliacoes->render() !!}
         </table>
         <br/>
         <br/>

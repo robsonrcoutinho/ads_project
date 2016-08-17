@@ -30,12 +30,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();                                   //Pega usuário autenticado
-        if ($user->role == 'admin'):                            //Verifica se usuário é admin
-            $users = User::all();                               //Busca todos os usuário
-            return view('users.index', ['users' => $users]);    //Redirecionas para páginal inicial de usuários (users)
+        $user = Auth::user();                                           //Pega usuário autenticado
+        if ($user->role == 'admin'):                                    //Verifica se usuário é admin
+            $users = User::paginate(config('constantes.paginacao'));    //Busca todos os usuário
+            return view('users.index', ['users' => $users]);            //Redirecionas para páginal inicial de usuários (users)
         endif;
-        return $this->editar($user->id);                        //Redireciona para método de edição
+        return $this->editar($user->id);                                //Redireciona para método de edição
     }
 
     /**Método que redireciona para página de inclusão de novo usuário

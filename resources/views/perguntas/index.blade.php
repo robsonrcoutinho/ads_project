@@ -29,6 +29,7 @@
                 </tr>
             @endforeach
             </tbody>
+            {!! $perguntas->render() !!}
         </table>
         <br/>
         <br/>
