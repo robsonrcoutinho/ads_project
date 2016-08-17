@@ -70,7 +70,7 @@ class AlunosController extends Controller
 
     /**Método que realiza alteração de dados de aluno
      * @param AlunoRequest $request relação de dados do aluno a ser alterado
-     * @param $id|int identificador do aluno a ser alterado
+     * @param $id int identificador do aluno a ser alterado
      * @return \Illuminate\Http\RedirectResponse
      */
     public function alterar(AlunoRequest $request, $id)
@@ -127,7 +127,8 @@ class AlunosController extends Controller
         $this->validate($request,
             ['arquivo' => 'required'],
             ['required' => 'O :attribute precisa ser passado.']);   //Valida arquivo passado
-        $arquivo = $this->gravarArquivo($request->file('arquivo')); //Evoca método para salvar arquivo
+        $arquivo = $this->gravarArquivo(
+            $request->file('arquivo')); //Evoca método para salvar arquivo
         if ($arquivo == null):                                      //Se arquivo nulo (não salvo)
             return redirect()->back()
                 ->withErrors(['Ocorreu um erro no arquivo']);       //Retorna a página de carregamento
@@ -141,7 +142,7 @@ class AlunosController extends Controller
     }
 
     /**Método que salva arquivo
-     * @param $arquivo arquivo a ser salvo
+     * @param $arquivo \Symfony\Component\HttpFoundation\File\UploadedFile arquivo a ser salvo
      * @return string caminho de acesso ao arquivo
      */
     private function gravarArquivo($arquivo)
@@ -155,7 +156,7 @@ class AlunosController extends Controller
     }
 
     /**Método que apaga arquivo
-     * @param $arquivo arquivo a ser apagado
+     * @param $arquivo string arquivo a ser apagado
      */
     private function apagarArquivo($arquivo)
     {
@@ -163,7 +164,7 @@ class AlunosController extends Controller
     }
 
     /**Método que salva lista de alunos
-     * @param $arquivo caminho de acesso a arquivo que contém dados de alunos
+     * @param $arquivo string caminho de acesso a arquivo que contém dados de alunos
      * @return bool verdadeiro (true) se não houve erro e falso (false) em contrário
      */
     private function salvarLista($arquivo)
@@ -206,7 +207,7 @@ class AlunosController extends Controller
     }
 
     /**Método que busca aluno pela matrícula e, caso não encontre, cria um nome
-     * @param $matricula matrícula do aluno a ser buscado ou criado
+     * @param $matricula string matrícula do aluno a ser buscado ou criado
      * @return Aluno|\Illuminate\Database\Eloquent\Model|null|static aluno
      */
     private function buscarOuCriar($matricula)
@@ -219,7 +220,7 @@ class AlunosController extends Controller
     }
 
     /**Método que realiza busca de disciplina pelo código
-     * @param $codigo código da disciplina a ser buscada
+     * @param $codigo string código da disciplina a ser buscada
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
     private function buscarDisciplina($codigo)
@@ -228,9 +229,9 @@ class AlunosController extends Controller
     }
 
     /**Método que realiza validação de dados de aluno
-     * @param $matricula matrícula do aluno
-     * @param $nome nome do aluno
-     * @param $email e-mail do aluno
+     * @param $matricula string matrícula do aluno
+     * @param $nome string nome do aluno
+     * @param $email string e-mail do aluno
      * @return bool verdadeiro (true) se dados estiverem corretos e falso (false) se não
      */
     private function validar($matricula, $nome, $email)
