@@ -216,7 +216,7 @@ return [
         'OpcaoResposta' => adsproject\OpcaoResposta::class,
         'Aluno' => adsproject\Aluno::class,
         'Enade' => adsproject\Enade::class,
-        //'PushNotification' => adsproject\PushNotification::class,
+        'PushNotification' => adsproject\PushNotification::class,
         'Token' => adsproject\Token::class,
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
 
