@@ -113,6 +113,8 @@ Route::group(['prefix' => 'avaliacoes', 'where' => ['id' => '[0-9]+']], function
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.editar', 'uses' => 'AvaliacoesController@editar']);
 //Rota para alterar avaliacao
     Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'avaliacoes.alterar', 'uses' => 'AvaliacoesController@alterar']);
+    //Rota para emitir relatório de avaliacao
+    Route::get('{id}/relatorio', ['middleware' => 'check.user.role:admin,professor', 'as' => 'avaliacoes.relatorio', 'uses' => 'AvaliacoesController@emitirRelatorio']);
 });
 //Rotas de avisos
 Route::group(['prefix' => 'avisos', 'where' => ['id' => '[0-9]+']], function () {

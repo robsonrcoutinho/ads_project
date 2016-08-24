@@ -17,13 +17,10 @@
 
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">IFBA</a>
 
-
         <ul class="right hide-on-med-and-down">
-
 
             @if(Auth::guest())
                 <li><a href="{{route('registrar')}}">Registrar</a></li>
-
             @else
 
                 <li><a href="#">Gerenciar Semestre</a></li>
@@ -60,7 +57,6 @@
             <a href="{{route('users')}}" id="download-button"
                class="btn-large waves-effect waves-light orange darken-1"> Login </a>
         </div>
-
     @else
         @can('salvar', new Aviso())
         <div class="row center">
@@ -71,13 +67,9 @@
     @endif
 </div>
 <!--BF -->
-
 <!-- Conteudo-->
 <div class="container">
     <div class="col 10 m10">
-
-
-
         <div class="col m10 ">
 
             @if($errors->any())
@@ -87,6 +79,7 @@
                     @endforeach
                 </ul>
             @endif
+
             @yield('conteudo','
 
             <div class="container">
@@ -120,12 +113,9 @@
         <br>
     </div>
 </div>
-</div>
+
 <!--Fim Conteudo-->
-
-
 </body>
-
 <footer class="page-footer #388e3c green darken-2"><!--- Footer -->
     <div class="container">
         <div class="row">
@@ -134,8 +124,6 @@
 
                 <p class="grey-text text-lighten-4">Tecnologia em Análise e Desenvolvimento de Sistemas.<br>
                     Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, CEP: 45823-035.</p>
-
-
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">CONTATO</h5>

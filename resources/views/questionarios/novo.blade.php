@@ -17,7 +17,6 @@
                 <fieldset>
                     <legend>{{ $disciplina->nome }}</legend>
                     <ol>
-
                         @foreach($avaliacao->perguntas as $pergunta)
                             <li class="collection-item">
                                 {!! Form::label('enunciado', $pergunta->enunciado) !!}

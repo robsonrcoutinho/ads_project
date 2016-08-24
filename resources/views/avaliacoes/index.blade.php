@@ -16,7 +16,6 @@
             </thead>
             <tbody>
             @forelse($avaliacoes as $avaliacao)
-
                 <tr>
                     <td>{{$avaliacao->semestre->codigo}}</td>
                     <td>{{ date('d/m/Y', strtotime($avaliacao->inicio)) }}</td>
@@ -29,6 +28,10 @@
                         @can('excluir', $avaliacao)
                         <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}"
                            class="btn-danger btn red">Excluir</a>
+                        @endcan
+                        @can('relatorio', $avaliacao)
+                        <a href="{{ route('avaliacoes.relatorio', ['id'=>$avaliacao->id]) }}"
+                           class="btn blue">Relatório</a>
                         @endcan
                     </td>
                 </tr>

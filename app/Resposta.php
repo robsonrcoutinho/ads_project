@@ -39,4 +39,18 @@ class Resposta extends Model
     {
         return $this->belongsTo(Disciplina::class);
     }
+
+    /**Método que realiza busca de respostas especificas
+     * @param $query
+     * @param $avaliacao_id
+     * @param $pergunta_id
+     * @param $disciplina_id
+     * @return mixed
+     */
+    public function scopeEspecificas($query, $avaliacao_id, $pergunta_id, $disciplina_id)
+    {
+        return $query->where('avaliacao_id', $avaliacao_id)
+            ->where('pergunta_id', $pergunta_id)
+            ->where('disciplina_id', $disciplina_id)->get();
+    }
 }
