@@ -4,7 +4,7 @@
         <div class="card-panel  #388e3c green darken-2 center">
             <span class=" grey-text text-lighten-5">Recuperar Senha</span>
         </div>
-        {!! Form::open(["/password/reset", "method"=>'post']) !!}
+        {!! Form::open(['route'=>'password.reset', "method"=>'post']) !!}
         {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::hidden ('token', $token, ['class'=>'form-control']) !!}
