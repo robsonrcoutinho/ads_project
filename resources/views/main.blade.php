@@ -28,7 +28,7 @@
         <ul id="slide-out" class="side-nav ">
             <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
             <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
-            <li><a href="#">ENADE</a></li>
+            <li><a href="{{route('enades')}}">ENADE</a></li>
             <li><a href="{{route('alunos')}}">Discentes</a></li>
             <li><a href="{{route('professores')}}">Docentes</a></li>
             <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
@@ -48,7 +48,7 @@
 <div class="col 12">
     <div class="row center">
         <h1 class="header center orange-text">ADS </h1>
-        <h5 class="header col s12 light orange-text  ">ANALISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+        <h5 class="header col s12 light orange-text  ">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h5>
     </div>
 
     @if(Auth::guest())

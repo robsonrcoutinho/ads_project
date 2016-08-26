@@ -13,6 +13,8 @@ use adsproject\Semestre;
 use adsproject\Pergunta;
 use Auth;
 
+//use mPDF;
+
 /**Classe controller de avaliações
  * Class AvaliacoesController
  * @package adsproject\Http\Controllers
@@ -108,17 +110,23 @@ class AvaliacoesController extends Controller
     public function emitirRelatorio($id)
     {
         $avaliacao = Avaliacao::find($id);                              //Busca avaliação por id
-        $user = Auth::user();
-        if ($avaliacao == null || $user == null):
-            return redirect('/');
+        $user = Auth::user();                                           //Busca usuário logado
+        if ($avaliacao == null || $user == null):                       //Se não tiver avaliação ou usuário
+            return redirect('/');                                       //Retorna a página inicial
         endif;
-        $disciplinas = $avaliacao->semestre->disciplinas;
-        if ($user->role == 'professor'):
-            $professor = Professor::where('nome', $user->name)->where('email', $user->email)->get()->first();
-
+        $disciplinas = $avaliacao->semestre->disciplinas;               //Passa para variável disciplinas do semestre
+        if ($user->role == 'professor'):                                //Verifica se usuário é professor
+            $professor = Professor::where('nome', $user->name)
+                ->where('email', $user->email)->get()->first();         //Busca professor por nome e e-mail
+            //Passa para variável apenas disciplinas do professor que estão no semestre
             $disciplinas = $professor->disciplinas->intersect($disciplinas);
         endif;
-        return view('avaliacoes.relatorio', ['avaliacao' => $avaliacao, 'disciplinas' => $disciplinas]);
+        $mpdf = new \mPDF();                                            //Instancia gerador de PDF
+        //Passa arquivo css para gerador de PDF
+        $mpdf->WriteHTML(file_get_contents('materialize-css/css/materialize.min.css'), 1);
+        //Passa view para geração de PDF passando avaliação e disciplinas
+        $mpdf->WriteHTML(utf8_encode(view('avaliacoes.relatorio', ['avaliacao' => $avaliacao, 'disciplinas' => $disciplinas])));
+        $mpdf->Output();                                                //Gera PDF
     }
 
     //Metodos do Web Service

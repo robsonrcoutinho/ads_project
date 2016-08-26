@@ -45,7 +45,7 @@
         @can('salvar', new \adsproject\Aluno)
         <a href="{{ route('alunos.novo')}}" class="btn btn-default">Novo Aluno</a>
         @endcan
-        @can('carregar', new \adsproject\Aluno)
+        @can('carregar', new Aluno())
         <a href="{{ route('alunos.arquivo')}}" class="btn btn-default">Arquivo de Alunos</a>
         @endcan
     </div>
