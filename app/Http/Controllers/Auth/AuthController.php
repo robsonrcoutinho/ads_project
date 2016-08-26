@@ -93,4 +93,8 @@ class AuthController extends Controller
             return redirect('auth/login')->withErrors($validador)->withInput()->with('erro_autenticacao', 1);
         }
     }
+
+
+
+
 }

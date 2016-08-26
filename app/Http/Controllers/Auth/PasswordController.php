@@ -26,8 +26,24 @@ class PasswordController extends Controller
      *
      * @return void
      */
+
+    protected $redirectoTo='/';
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+
+    public function resetPassword($user,$password)
+    {
+
+        if (Hash::check('plain-text', $password)) {
+
+            $user->password = $password;
+
+            $user->save();
+
+            auth::login(user);
+        }
     }
 }
