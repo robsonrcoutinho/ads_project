@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Site Gerencial ADS</title>
+    <title>Site ADS</title>
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! MaterializeCSS::include_all()!!}
@@ -75,7 +75,7 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">IFBA - Campus Eunapolis</h5>
+                <h5 class="white-text">IFBA - Campus Eunápolis</h5>
 
                 <p class="grey-text text-lighten-4">Tecnologia em Análise e Desenvolvimento de Sistemas.<br>
                     Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, CEP: 45823-035.</p>
@@ -86,16 +86,15 @@
                 <h5 class="white-text">CONTATO</h5>
                 <ul>
                     <li><a class="white-text"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
-                    <li><a class="white-text"><i class="material-icons">email</i> email@decontato.com</a></li>
+                    <li><a class="white-text"><i class="material-icons">email</i> cleberlira@ifba.edu.br</a></li>
 
                 </ul>
             </div>
             <div class="col l3 s12">
                 <br>
                 <ul>
-                    <li><a class="white-text">Facebook</a></li>
-                    <li><a class="white-text">Twitter</a></li>
-
+                    <li><a class="white-text" href="https://www.facebook.com/IFEunapolis">Facebook</a></li>
+                    <li><a class="white-text" href="https://twitter.com/Ifbaeunapolis">Twitter</a></li>
                 </ul>
             </div>
         </div>
