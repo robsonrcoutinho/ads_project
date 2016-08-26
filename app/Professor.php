@@ -5,14 +5,17 @@ namespace adsproject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**Classe modelo de Professor
+ * Class Professor
+ * @package adsproject
+ */
 class Professor extends Model
 {
- use SoftDeletes;
+    use SoftDeletes;
 
     protected $table = "professors";
-    //public $timestamps = false;
-    protected $fillable =['matricula','nome','email','curriculo'];
-    protected $softDelete  = true;
+    protected $fillable = ['matricula', 'nome', 'email', 'curriculo'];
+    protected $softDelete = true;
     protected $hidden = ['deleted_at'];
 
     /**

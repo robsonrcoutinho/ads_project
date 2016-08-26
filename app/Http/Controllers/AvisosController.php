@@ -8,6 +8,7 @@
  */
 use adsproject\Aviso;
 use adsproject\Http\Requests\AvisoRequest;
+use adsproject\PushNotification;
 
 /**Classe controller de avisos
  * Class AvisosController
@@ -25,9 +26,9 @@ class AvisosController extends Controller
      */
     public function index()
     {
-        $this->removerAntigos();                                //Evoca método para remover avisos antigos
-        $avisos = Aviso::all();                                 //Busca todos os avisos
-        return view('avisos.index', ['avisos' => $avisos]);     //Redireciona para página inicial de avisos
+        $this->removerAntigos();                                    //Evoca método para remover avisos antigos
+        $avisos = Aviso::paginate(config('constantes.paginacao'));  //Busca todos os avisos
+        return view('avisos.index', ['avisos' => $avisos]);         //Redireciona para página inicial de avisos
     }
 
     /**Método que redireciona para página de inclusão de novo aviso
@@ -44,7 +45,13 @@ class AvisosController extends Controller
      */
     public function salvar(AvisoRequest $request)
     {
+       // $deviceToken = 'eMVP__sUxwM:APA91bEKtlA64h9dSceW7cY_xbAudJaawJp5z1ReTpD_zGCohtv2TtZtCG_UnMAQ4bCNblsVUeLcorF2ROSY713vqaoYxF2XHDuWJKNkJcSP-tk8PxfwFqBG7vyifBWNyN1mL34k4q4z';
         Aviso::create($request->all());                         //Cria novo aviso com dados passados
+
+        /*PushNotification::app('ADSNotify')
+            ->to($deviceToken)
+            ->send('Test push');*/
+
         return redirect()->route('avisos');                     //Redireciona para página inicial de avisos
     }
 

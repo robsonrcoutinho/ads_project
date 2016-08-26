@@ -5,6 +5,10 @@ namespace adsproject;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
+/**Classe modelo de Aviso
+ * Class Aviso
+ * @package adsproject
+ */
 class Aviso extends Model
 {
     protected $table = "avisos";

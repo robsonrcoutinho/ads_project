@@ -8,6 +8,7 @@
  */
 use adsproject\Avaliacao;
 use adsproject\Http\Requests\AvaliacaoRequest;
+use adsproject\Professor;
 use adsproject\Semestre;
 use adsproject\Pergunta;
 use Auth;
@@ -28,10 +29,10 @@ class AvaliacoesController extends Controller
      */
     public function index()
     {
-        if (Auth::getUser()->role == 'aluno'):                              //Verifica se usuário é aluno
+        if (Auth::user()->role == 'aluno'):                                 //Verifica se usuário é aluno
             return redirect()->route('questionarios');                      //Redireciona para questionário
         endif;
-        $avaliacoes = Avaliacao::all();                                     //Busca todas as avaliações
+        $avaliacoes = Avaliacao::paginate(config('constantes.paginacao'));  //Busca todas as avaliações
         return view('avaliacoes.index', ['avaliacoes' => $avaliacoes]);     //Redireciona para página inicial de avaliações
     }
 
@@ -60,7 +61,7 @@ class AvaliacoesController extends Controller
     }
 
     /**Método que redireciona para página de edição de avaliação
-     * @param $id identificador da avaliação a ser editada
+     * @param $id int identificador da avaliação a ser editada
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -74,7 +75,7 @@ class AvaliacoesController extends Controller
 
     /**Método que realiza alteração de dados de avaliação
      * @param AvaliacaoRequest $request relação de dados da avaliação a ser alterada
-     * @param $id identificador da avaliação a ser alterada
+     * @param $id int identificador da avaliação a ser alterada
      * @return \Illuminate\Http\RedirectResponse
      */
     public function alterar(AvaliacaoRequest $request, $id)
@@ -91,13 +92,33 @@ class AvaliacoesController extends Controller
     }
 
     /**Método que exclui avaliação
-     * @param $id identificador da avaliação a ser excluída
+     * @param $id int identificador da avaliação a ser excluída
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
     {
         Avaliacao::find($id)->delete();                                 //Busca avaliação pelo id e exclui
         return redirect()->route('avaliacoes');                         //Redireciona à página inicial de avaliações
+    }
+
+    /** Método responsável por emitir relatório de avaliação
+     * @param $id int identificador da avaliação para geração de relatório
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function emitirRelatorio($id)
+    {
+        $avaliacao = Avaliacao::find($id);                              //Busca avaliação por id
+        $user = Auth::user();
+        if ($avaliacao == null || $user == null):
+            return redirect('/');
+        endif;
+        $disciplinas = $avaliacao->semestre->disciplinas;
+        if ($user->role == 'professor'):
+            $professor = Professor::where('nome', $user->name)->where('email', $user->email)->get()->first();
+
+            $disciplinas = $professor->disciplinas->intersect($disciplinas);
+        endif;
+        return view('avaliacoes.relatorio', ['avaliacao' => $avaliacao, 'disciplinas' => $disciplinas]);
     }
 
     //Metodos do Web Service

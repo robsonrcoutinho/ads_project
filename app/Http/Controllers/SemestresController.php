@@ -26,8 +26,8 @@ class SemestresController extends Controller
      */
     public function index()
     {
-        $semestres = Semestre::all();                                   //Busca todos os semestres
-        return view('semestres.index', ['semestres' => $semestres]);    //Redireciona à página inicial de semestres
+        $semestres = Semestre::paginate(config('constantes.paginacao'));    //Busca todos os semestres
+        return view('semestres.index', ['semestres' => $semestres]);        //Redireciona à página inicial de semestres
     }
 
     /**Método que redireciona para página de inclusão de novo semestre

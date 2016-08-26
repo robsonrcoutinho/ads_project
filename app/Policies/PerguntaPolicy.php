@@ -19,6 +19,7 @@ class PerguntaPolicy
     {
         //
     }
+
     public function salvar(User $user, Pergunta $pergunta)
     {
         return $user->role == 'admin';

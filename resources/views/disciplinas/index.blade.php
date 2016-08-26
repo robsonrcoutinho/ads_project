@@ -24,7 +24,7 @@
                     <td>{{$disciplina->carga_horaria}}</td>
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
-                            <a href="{{ $disciplina->ementa }}" class="btn-sm btn-success">Ementa</a>
+                            <a href="{{ $disciplina->ementa }}" class="btn blue">Ementa</a>
                         @endif
                     </td>
                     <td>
@@ -36,15 +36,16 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                        <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" class="btn green">Editar</a>
                         @endcan
                         @can('excluir', $disciplina)
-                        <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}" class="btn-sm btn-danger">Excluir</a>
+                        <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}" class="btn-danger btn red">Excluir</a>
                         @endcan
                     </td>
                 </tr>
             @endforeach
             </tbody>
+            {!! $disciplinas->render() !!}
         </table>
         <br/>
         <br/>
@@ -52,4 +53,5 @@
         <a href="{{ route('disciplinas.novo')}}" class="btn btn-default"> Nova disciplina</a>
         @endcan
     </div>
+    {!! Html::script('js/adsproject.js') !!}
 @endsection

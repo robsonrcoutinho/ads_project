@@ -3,10 +3,10 @@
 namespace adsproject\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use adsproject\Documento;
+use adsproject\Enade;
 use adsproject\User;
 
-class DocumentoPolicy
+class EnadePolicy
 {
     use HandlesAuthorization;
 
@@ -20,17 +20,17 @@ class DocumentoPolicy
         //
     }
 
-    public function salvar(User $user, Documento $documento)
+    public function salvar(User $user, Enade $enade)
     {
         return $user->role == 'admin';
     }
 
-    public function alterar(User $user, Documento $documento)
+    public function alterar(User $user, Enade $enade)
     {
         return $user->role == 'admin';
     }
 
-    public function excluir(User $user, Documento $documento)
+    public function excluir(User $user, Enade $enade)
     {
         return $user->role == 'admin';
     }

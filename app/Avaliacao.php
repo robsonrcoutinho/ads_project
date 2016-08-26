@@ -5,7 +5,10 @@ namespace adsproject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
+/**Classe modelo de Avaliação
+ * Class Avaliacao
+ * @package adsproject
+ */
 class Avaliacao extends Model
 {
     use SoftDeletes;
@@ -13,7 +16,6 @@ class Avaliacao extends Model
     protected $table = "avaliacaos";
     protected $fillable = ['id', 'semestre_id', 'inicio', 'termino'];
     protected $softDelete = true;
-    //public $timestamps = false;
     protected $hidden = ['deleted_at'];
 
     /**
@@ -53,12 +55,12 @@ class Avaliacao extends Model
     }
 
     /**
-     * Busca usuários que responderam à avaliação
+     * Busca alunos que responderam à avaliação
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function users()
+    public function alunos()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Aluno::class);
     }
 
     /**

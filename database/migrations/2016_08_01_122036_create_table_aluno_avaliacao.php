@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableAvaliacaoUser extends Migration
+class CreateTableAlunoAvaliacao extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateTableAvaliacaoUser extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao_user', function (Blueprint $table) {
+        Schema::create('aluno_avaliacao', function (Blueprint $table) {
+            $table->unsignedInteger('aluno_id');
             $table->unsignedInteger('avaliacao_id');
-            $table->unsignedInteger('user_id');
+            $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->foreign('avaliacao_id')->references('id')->on('avaliacaos');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTableAvaliacaoUser extends Migration
      */
     public function down()
     {
-        Schema::drop('avaliacao_user');
+        Schema::drop('aluno_avaliacao');
     }
 }

@@ -5,14 +5,15 @@ namespace adsproject;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-//use adsproject\Professor;
-
+/**Classe modelo de Disciplina
+ * Class Disciplina
+ * @package adsproject
+ */
 class Disciplina extends Model
 {
     use SoftDeletes;
 
     protected $table = "disciplinas";
-    //public $timestamps = false;
     protected $fillable = ['codigo', 'nome', 'carga_horaria', 'ementa'];
     protected $softDelete = true;
     protected $hidden = ['deleted_at'];

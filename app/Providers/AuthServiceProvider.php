@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
         'adsproject\Documento' => 'adsproject\Policies\DocumentoPolicy',
         'adsproject\Pergunta' => 'adsproject\Policies\PerguntaPolicy',
         'adsproject\Semestre' => 'adsproject\Policies\SemestrePolicy',
+        'adsproject\Enade' => 'adsproject\Policies\EnadePolicy',
     ];
 
     /**

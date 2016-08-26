@@ -46,13 +46,15 @@ class AuthController extends Controller
     {
         $papel = $data['role'];
         if ($papel == 'professor'):
-            $role = 'required|max:255|exists:professors,nome';
+            $roleNome = 'required|max:255|exists:professors,nome';
+            $roleEmail = '|exists:professors,email';
         elseif ($papel == 'aluno'):
-            $role = 'required|max:255|exists:alunos,nome';
+            $roleNome = 'required|max:255|exists:alunos,nome';
+            $roleEmail = '|exists:alunos,email';
         endif;
         return Validator::make($data, [
-            'name' => $role,
-            'email' => 'required|email|max:255|unique:users',
+            'name' => $roleNome,
+            'email' => 'required|email|max:255|unique:users'.$roleEmail,
             'password' => 'required|confirmed|min:6',
             'role' => 'required',
         ]);
