@@ -25,25 +25,24 @@
                 <li><a href="{{route('registrar')}}">Registrar</a></li>
 
             @else
-
-                <li><a href="#">Gerenciar Semestre</a></li>
                 <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
                 <li><a href="{{route('sair')}}">Sair</a></li>
         </ul>
         <ul id="slide-out" class="side-nav ">
+            <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
             <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
+            <li><a href="#">ENADE</a></li>
             <li><a href="{{route('alunos')}}">Discentes</a></li>
             <li><a href="{{route('professores')}}">Docentes</a></li>
             <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
-            <li><a href="{{route('semestres')}}">Semestres</a></li>
-            <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
             <li><a href="{{route('documentos')}}">Documentos</a></li>
-            <li><a href="#">Gerenciar Semestre</a></li>
+            <li><a href="{{route('semestres')}}">Semestres</a></li>
             <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
             <li><a href="{{route('sair')}}">Sair</a></li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
         @endif
+
     </div>
 </nav>
 <!-- Fim do topo --->
@@ -58,7 +57,7 @@
     @if(Auth::guest())
         <div class="row center">
             <a href="{{route('users')}}" id="download-button"
-               class="btn-large waves-effect waves-light orange darken-1"> Login </a>
+             class="btn-large waves-effect waves-light orange darken-1"> Login </a>
         </div>
 
     @else
@@ -95,25 +94,49 @@
                         Esse sistema permite acesso a diversas informações relacionadas ao curso de
                         Tecnologia em Análise e Desenvolvimento de Sistema oferecido pelo Campus Eunápolis
                         do Instituto Federal de Educação, Ciência e Tecnologia do Estado da Bahia
-                        Tais como:<br>
-                        <i class="material-icons">done</i>Calendário Acadêmico
-                        <i class="material-icons">done</i> Grade Curricular
-                        <i class="material-icons">done</i>Horário de Aula
-                        <i class="material-icons">done</i>Normas Acadêmicas
-                        <i class="material-icons">done</i>Projeto Pedagógico
-                        <i class="material-icons">done</i>Avisos relacionados ao curso
-                        <i class="material-icons">done</i> Lista de professores<br>
-                        <i class="material-icons">done</i> Além de permitir aos alunos realizarem avaliação semestral
-                        </div>
-            </div>
+                        Tais como:<br><br>
+
+            <ul class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Avisos</div>
+                      <div class="collapsible-body"><p>Consulte os avisos relacionados ao curso de ADS.</p></div>
+                    </li>
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Avaliação semestral</div>
+                      <div class="collapsible-body"><p>Realização da Avaliação de disciplinas  do curso.</p></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Calendário Acadêmico</div>
+                      <div class="collapsible-body"><p>Consulte nosso calendario acadêmico.</p></div>
+                    </li>
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Grade Curricular</div>
+                      <div class="collapsible-body"><p>Consulte as informaçoes da grade curricular do curso.</p></div>
+                    </li>
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Horário de Aula</div>
+                      <div class="collapsible-body"><p>Consulte o horario aula do semestre.</p></div>
+                    </li>
+
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Lista de professores</div>
+                      <div class="collapsible-body"><p>Consulte a lista de professores que fazem parte do corpo docente.</p></div>
+                    </li>
+
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Normas Acadêmicas</div>
+                      <div class="collapsible-body"><p>Consulte as normas acadêmicas do Curso.</p></div>
+                    </li>
+                     <li>
+                      <div class="collapsible-header"><i class="material-icons">label_outline</i>Projeto Pedagógico</div>
+                      <div class="collapsible-body"><p>Consulte informaçoes sobre o Projeto Pedagogico relacionado ao curso.</p></div>
+                    </li>
 
 
 
-
-
-
-
-            ')
+               </ul>
+              </div>
+        ')
 
         </div>
 
@@ -142,8 +165,7 @@
                 <ul>
                     <li><a class="white-text" href="#!"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
                     <li><a class="white-text" href="#!"><i class="material-icons">email</i> email@decontato.com</a></li>
-                    <li><a class="white-text" href="#!"></a></li>
-                    <li><a class="white-text" href="#!"></a></li>
+
                 </ul>
             </div>
             <div class="col l3 s12">
