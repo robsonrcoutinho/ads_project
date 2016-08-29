@@ -201,8 +201,10 @@ class AlunosController extends Controller
             //Apaga lista de alunos que não consta no arquivo
             Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
         } catch (\Exception $e) {                                       //Caso ocorra um excessão
+            dd($e, $cont, $aluno, $aluno->disciplinas);
             return false;                                               //Retorna falso (false)
         }
+
         return true;                                                    //Retorna verdadeiro (true)
     }
 
@@ -210,11 +212,13 @@ class AlunosController extends Controller
      * @param $matricula string matrícula do aluno a ser buscado ou criado
      * @return Aluno|\Illuminate\Database\Eloquent\Model|null|static aluno
      */
-    private function buscarOuCriar($matricula)
+    private
+    function buscarOuCriar($matricula)
     {
         $aluno = Aluno::withTrashed()->where('matricula', $matricula)->first(); //Busca aluno pela matrícula
         if ($aluno == null):                                                    //Caso não encontre aluno
-            $aluno = new Aluno(['matricula' => $matricula]);                    //Cria novo aluno passando a matrícula
+            //$aluno = new Aluno(['matricula' => $matricula]);                    //Cria novo aluno passando a matrícula
+            $aluno = Aluno::create(['matricula' => $matricula]);
         endif;
         return $aluno;                                                          //Retorna o aluno
     }
@@ -223,7 +227,8 @@ class AlunosController extends Controller
      * @param $codigo string código da disciplina a ser buscada
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
-    private function buscarDisciplina($codigo)
+    private
+    function buscarDisciplina($codigo)
     {
         return Disciplina::query()->where('codigo', $codigo)->first();         //Busca disciplina pelo código
     }
@@ -234,7 +239,8 @@ class AlunosController extends Controller
      * @param $email string e-mail do aluno
      * @return bool verdadeiro (true) se dados estiverem corretos e falso (false) se não
      */
-    private function validar($matricula, $nome, $email)
+    private
+    function validar($matricula, $nome, $email)
     {
         $valores = ['matricula' => trim($matricula),
             'nome' => trim($nome),
