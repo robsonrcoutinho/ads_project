@@ -33,7 +33,6 @@ class PasswordController extends Controller
         $this->middleware('guest');
     }
 
-
     public function resetPassword($user,$password)
     {
 
@@ -43,7 +42,7 @@ class PasswordController extends Controller
 
             $user->save();
 
-            auth::login($user);
+            auth::login(user);
         }
     }
 }
