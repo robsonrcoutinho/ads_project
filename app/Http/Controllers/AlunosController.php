@@ -217,8 +217,7 @@ class AlunosController extends Controller
     {
         $aluno = Aluno::withTrashed()->where('matricula', $matricula)->first(); //Busca aluno pela matrícula
         if ($aluno == null):                                                    //Caso não encontre aluno
-            //$aluno = new Aluno(['matricula' => $matricula]);                    //Cria novo aluno passando a matrícula
-            $aluno = Aluno::create(['matricula' => $matricula]);
+            $aluno = new Aluno(['matricula' => $matricula]);                    //Cria novo aluno passando a matrícula
         endif;
         return $aluno;                                                          //Retorna o aluno
     }
