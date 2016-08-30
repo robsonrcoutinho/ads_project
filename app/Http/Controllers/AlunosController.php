@@ -153,6 +153,7 @@ class AlunosController extends Controller
             $arquivo->move($diretorio, $nome);                  //Salva arquivo
             return $diretorio . '/' . $nome;                    //Retorna o caminho do arquivo
         endif;
+        return null;
     }
 
     /**Método que apaga arquivo
@@ -201,7 +202,6 @@ class AlunosController extends Controller
             //Apaga lista de alunos que não consta no arquivo
             Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
         } catch (\Exception $e) {                                       //Caso ocorra um excessão
-            dd($e, $cont, $aluno, $aluno->disciplinas);
             return false;                                               //Retorna falso (false)
         }
 
