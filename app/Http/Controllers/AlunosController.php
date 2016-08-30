@@ -202,7 +202,6 @@ class AlunosController extends Controller
             //Apaga lista de alunos que não consta no arquivo
             Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
         } catch (\Exception $e) {                                       //Caso ocorra um excessão
-            dd($e, $alunos, $cont);
             return false;                                               //Retorna falso (false)
         }
         return true;                                                    //Retorna verdadeiro (true)
