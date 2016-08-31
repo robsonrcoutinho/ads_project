@@ -32,7 +32,8 @@ class UsersController extends Controller
     {
         $user = Auth::user();                                           //Pega usuário autenticado
         if ($user->role == 'admin'):                                    //Verifica se usuário é admin
-            $users = User::paginate(config('constantes.paginacao'));    //Busca todos os usuário
+            $users = User::orderBy('name')
+                ->paginate(config('constantes.paginacao'));             //Busca todos os usuário
             return view('users.index', ['users' => $users]);            //Redirecionas para páginal inicial de usuários (users)
         endif;
         return $this->editar($user->id);                                //Redireciona para método de edição
@@ -61,7 +62,7 @@ class UsersController extends Controller
     }
 
     /**Método que redireciona para página de edição de usuário
-     * @param $id identificador do usuário a ser editado
+     * @param $id int identificador do usuário a ser editado
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -73,7 +74,7 @@ class UsersController extends Controller
 
     /**Método que realiza alteração de dados de usuário
      * @param UserRequest $request relação de dados do usuário a ser alterado
-     * @param $id identificador do aluno a ser alterado
+     * @param $id int identificador do aluno a ser alterado
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function alterar(UserRequest $request, $id)
@@ -81,10 +82,10 @@ class UsersController extends Controller
         $this->validate($request,
             ['email' => 'unique:users,email,' . $id]);          //Valida e-mail de usuário
         $user = User::find($id);                                //Busca usuário por id
-        $user->name=$request->name;                             //Atualiza nome do usuário
-        $user->email=$request->email;                           //Atualiza e-mail do usuário
+        $user->name = $request->name;                             //Atualiza nome do usuário
+        $user->email = $request->email;                           //Atualiza e-mail do usuário
         $user->password = bcrypt($request->password);           //Atualiza senha do usuário
-        $user->role=$request->role;                             //Atualiza o papel (role) do usuário
+        $user->role = $request->role;                             //Atualiza o papel (role) do usuário
         $user->save();                                          //Salva alterações no usuário
         if (Auth::user()->can('alterar', $user)):               //Verifica se usuário pode realizar alterações em outros usuário
             return redirect()->route('users');                  //Redireciona para página inicial de usuários
@@ -94,7 +95,7 @@ class UsersController extends Controller
     }
 
     /**Método que exclui usuário
-     * @param $id identificador do usuário a ser excluído
+     * @param $id int identificador do usuário a ser excluído
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
