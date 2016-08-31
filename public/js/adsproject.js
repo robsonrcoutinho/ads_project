@@ -2,7 +2,7 @@
  * Created by Wilder on 11/05/2016.
  */
 window.onload = function () {
-    var excluir = document.getElementsByClassName('btn-danger');
+    var excluir = document.getElementsByClassName('btn-excluir');
     for (var i = 0; i < excluir.length; i++) {
         excluir[i].onclick = function () {
             return confirm("Tem certeza que deseja excluir?");

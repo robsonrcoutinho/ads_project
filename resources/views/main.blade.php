@@ -39,7 +39,12 @@
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
         @endif
-
+        <ul class="left hide-on-med-and-down">
+            @if(Auth::check())
+                <li><a href="">{{Auth::user()->name}}</a></li>
+            @endif
+            <li><a href="" onClick="history.go(-1)">Voltar</a></li>
+        </ul>
     </div>
 </nav>
 <!-- Fim do topo --->
@@ -54,7 +59,7 @@
     @if(Auth::guest())
         <div class="row center">
             <a href="{{route('users')}}" id="download-button"
-             class="btn-large waves-effect waves-light orange darken-1"> Login </a>
+               class="btn-large waves-effect waves-light orange darken-1"> Login </a>
         </div>
     @else
         @can('salvar', new Aviso())
@@ -78,6 +83,7 @@
                     @endforeach
                 </ul>
             @endif
+
 
             @yield('conteudo','
 
@@ -151,16 +157,16 @@
             <div class="col l3 s12">
                 <h5 class="white-text">CONTATO</h5>
                 <ul>
-                    <li><a class="white-text" href="#!"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
-                    <li><a class="white-text" href="#!"><i class="material-icons">email</i> email@decontato.com</a></li>
+                    <li><a class="white-text" href=""><i class="material-icons">phone</i> (73) 3281-2266</a></li>
+                    <li><a class="white-text" href=""><i class="material-icons">email</i> email@decontato.com</a></li>
 
                 </ul>
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">CONECTAR</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Facebook</a></li>
-                    <li><a class="white-text" href="#!">Twitter</a></li>
+                    <li><a class="white-text" href="">Facebook</a></li>
+                    <li><a class="white-text" href="">Twitter</a></li>
                 </ul>
             </div>
         </div>

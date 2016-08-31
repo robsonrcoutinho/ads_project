@@ -22,10 +22,10 @@
                     <td>{{ $user->role }}</td>
                     <td>
                         @can('alterar', $user)
-                        <a href="{{ route('users.editar', ['id'=>$user->id]) }}" class="btn green">Editar</a>
+                        <a href="{{ route('users.editar', ['id'=>$user->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $user)
-                        <a href="{{ route('users.excluir', ['id'=>$user->id]) }}" class="btn-danger btn red">Excluir</a>
+                        <a href="{{ route('users.excluir', ['id'=>$user->id]) }}" class="btn-excluir">Excluir</a>
                         @endcan
                     </td>
                 </tr>

@@ -18,12 +18,11 @@
                     <td>{{$pergunta->enunciado}}</td>
                     <td>
                         @can('alterar', $pergunta)
-                        <a href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}"
-                           class="btn green">Editar</a>
+                        <a href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $pergunta)
                         <a href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}"
-                           class="btn-danger btn red">Excluir</a>
+                           class="btn-excluir">Excluir</a>
                         @endcan
                     </td>
                 </tr>

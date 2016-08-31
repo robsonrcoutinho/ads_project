@@ -22,16 +22,14 @@
                     <td>{{ date('d/m/Y', strtotime($avaliacao->termino)) }}</td>
                     <td>
                         @can('alterar', $avaliacao)
-                        <a href="{{ route('avaliacoes.editar', ['id'=>$avaliacao->id]) }}"
-                           class="btn green">Editar</a>
+                        <a href="{{ route('avaliacoes.editar', ['id'=>$avaliacao->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $avaliacao)
                         <a href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}"
-                           class="btn-danger btn red">Excluir</a>
+                           class="btn-excluir">Excluir</a>
                         @endcan
                         @can('relatorio', $avaliacao)
-                        <a href="{{ route('avaliacoes.relatorio', ['id'=>$avaliacao->id]) }}"
-                           class="btn blue">Relatório</a>
+                        <a href="{{ route('avaliacoes.relatorio', ['id'=>$avaliacao->id]) }}">Relatório</a>
                         @endcan
                     </td>
                 </tr>

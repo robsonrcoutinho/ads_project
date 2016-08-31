@@ -20,18 +20,17 @@
                     <td>{{$documento->titulo}}</td>
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
-                            <a href="{{ $documento->url }}" class="btn blue">LINK</a>
+                            <a href="{{ $documento->url }}">LINK</a>
                         @endif
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"
-                           class="btn green">Editar</a>
+                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
                             <a href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"
-                               class="btn-danger btn red">Excluir</a>
+                               class="btn-excluir">Excluir</a>
                         @endif
                         @endcan
                     </td>
