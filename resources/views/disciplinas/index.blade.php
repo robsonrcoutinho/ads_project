@@ -24,7 +24,7 @@
                     <td>{{$disciplina->carga_horaria}}</td>
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
-                            <a href="{{ $disciplina->ementa }}">Ementa</a>
+                            <a class="btn-flat disabled" target="_blank" href="{{ $disciplina->ementa }}">Ementa</a>
                         @endif
                     </td>
                     <td>
@@ -36,10 +36,11 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                        <a class="btn-flat disabled"  href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
+                        <a class="btn-flat disabled" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $disciplina)
-                        <a class="btn-flat disabled btn-excluir"  href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}">Excluir</a>
+                        <a class="btn-flat disabled btn-excluir"
+                           href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>
