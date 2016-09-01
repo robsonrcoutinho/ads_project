@@ -12,6 +12,7 @@
                 <th>Nome</th>
                 <th>Carga horária</th>
                 <th>Ementa</th>
+                <th>Plano de ensino</th>
                 <th>Pré-requisitos</th>
                 <th>Ação</th>
             </tr>
@@ -25,6 +26,12 @@
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
                             <a class="btn-flat disabled" target="_blank" href="{{ $disciplina->ementa }}">Ementa</a>
+                        @endif
+                    </td>
+                    <td>
+                        @if($disciplina->plano_ensino !=null && $disciplina->plano_ensino != '' )
+                            <a class="btn-flat disabled" target="_blank" href="{{ $disciplina->plano_ensino }}">Plano de
+                                Ensino</a>
                         @endif
                     </td>
                     <td>
