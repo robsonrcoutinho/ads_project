@@ -29,7 +29,7 @@
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
-                            <a class="btn-flat disabled"  href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
+                            <a class="btn-flat disabled btn-excluir"  href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
                         @endif
                         @endcan
                     </td>

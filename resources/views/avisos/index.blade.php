@@ -19,10 +19,11 @@
                     <td>{{$aviso->mensagem}}</td>
                     <td>
                         @can('alterar', $aviso)
-                        <a  class="btn-flat disabled" href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">Editar</a>
+                        <a class="btn-flat disabled" href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $aviso)
-                        <a  class="btn-flat disabled" href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}" class="btn-excluir">Excluir</a>
+                        <a class="btn-flat disabled btn-excluir"
+                           href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>

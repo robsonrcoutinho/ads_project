@@ -29,7 +29,7 @@
                         <a class="btn-flat disabled"  href="{{ route('professores.editar', ['id'=>$professor->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $professor)
-                        <a class="btn-flat disabled"  href="{{ route('professores.excluir', ['id'=>$professor->id]) }}">Excluir</a>
+                        <a class="btn-flat disabled btn-excluir"  href="{{ route('professores.excluir', ['id'=>$professor->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>
