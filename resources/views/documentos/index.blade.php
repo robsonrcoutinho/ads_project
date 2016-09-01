@@ -25,12 +25,11 @@
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
+                        <a class="btn-flat disabled"  href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
-                            <a href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"
-                               class="btn-excluir">Excluir</a>
+                            <a class="btn-flat disabled"  href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
                         @endif
                         @endcan
                     </td>
