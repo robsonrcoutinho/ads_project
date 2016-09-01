@@ -13,7 +13,8 @@ class CreateDisciplinasTable extends Migration
             $table->string('codigo', 6)->unique();
             $table->string('nome', 60);
             $table->integer('carga_horaria');
-            $table->string('ementa', 100)->nullable();
+            $table->string('ementa', 255)->nullable();
+            $table->string('plano_ensino', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
