@@ -27,12 +27,12 @@
         </ul>
         <ul id="slide-out" class="side-nav ">
             <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
-            <li><a href="{{route('avisos')}}">Consultar Avisos</a></li>
-            <li><a href="{{route('enades')}}">ENADE</a></li>
+            <li><a href="{{route('avisos')}}">Avisos</a></li>
             <li><a href="{{route('alunos')}}">Discentes</a></li>
-            <li><a href="{{route('professores')}}">Docentes</a></li>
             <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
+            <li><a href="{{route('professores')}}">Docentes</a></li>
             <li><a href="{{route('documentos')}}">Documentos</a></li>
+            <li><a href="{{route('enades')}}">ENADE</a></li>
             <li><a href="{{route('semestres')}}">Semestres</a></li>
             <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
             <li><a href="{{route('sair')}}">Sair</a></li>
@@ -43,7 +43,7 @@
             @if(Auth::check())
                 <li><a href="">{{Auth::user()->name}}</a></li>
             @endif
-
+            <li><a href="" onClick="history.go(-1)">Voltar</a></li>
         </ul>
     </div>
 </nav>
@@ -136,19 +136,14 @@
                </ul>
               </div>
         ')
-            @if(Auth::check())
-                <br/>
-                <a href="" class="btn" onClick="history.go(-1)">Voltar</a>
-            @endif
-        </div>
 
-        <br>
+          </div>
+       </div>
     </div>
 </div>
-
 <!--Fim Conteudo-->
-</body>
-<footer class="page-footer #388e3c green darken-2"><!--- Footer -->
+
+<footer class="page-footer #1b5e20 green darken-3">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -156,20 +151,22 @@
 
                 <p class="grey-text text-lighten-4">Tecnologia em Análise e Desenvolvimento de Sistemas.<br>
                     Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, CEP: 45823-035.</p>
+
+
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">CONTATO</h5>
                 <ul>
-                    <li><a class="white-text" href=""><i class="material-icons">phone</i> (73) 3281-2266</a></li>
-                    <li><a class="white-text" href=""><i class="material-icons">email</i> email@decontato.com</a></li>
+                    <li><a class="white-text"><i class="material-icons">phone</i> (73) 3281-2266</a></li>
+                    <li><a class="white-text"><i class="material-icons">email</i> cleberlira@ifba.edu.br</a></li>
 
                 </ul>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">CONECTAR</h5>
+                <br>
                 <ul>
-                    <li><a class="white-text" href="">Facebook</a></li>
-                    <li><a class="white-text" href="">Twitter</a></li>
+                    <li><a class="white-text" href="https://www.facebook.com/IFEunapolis">Facebook</a></li>
+                    <li><a class="white-text" href="https://twitter.com/Ifbaeunapolis">Twitter</a></li>
                 </ul>
             </div>
         </div>
@@ -180,9 +177,13 @@
                 reservados</a>
         </div>
     </div>
-    <!--  Scripts-->
-    {!! Html::script('js/jquery-2.1.1.min.js') !!}
-    {!! Html::script('js/init.js') !!}
-    {!! Html::script('materialize-css/js/materialize.min.js')!!}
+
 </footer>
+<!--  Scripts-->
+{!! Html::script('js/jquery-2.1.1.min.js') !!}
+{!! Html::script('js/init.js') !!}
+{!! Html::script('materialize-css/js/materialize.min.js')!!}
+
+
+</body>
 </html>

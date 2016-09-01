@@ -27,11 +27,10 @@
                     @endif
                     <td>
                         @can('alterar', $aluno)
-                        <a href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}">Editar</a>
+                        <a  class="btn-flat disabled" href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $aluno)
-                        <a href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}"
-                           class="btn-excluir">Excluir</a>
+                        <a  class="btn-flat disabled" href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>
@@ -44,6 +43,7 @@
         @can('salvar', new \adsproject\Aluno)
         <a href="{{ route('alunos.novo')}}" class="btn btn-default">Novo Aluno</a>
         @endcan
+        <br><br>
         @can('carregar', new Aluno())
         <a href="{{ route('alunos.arquivo')}}" class="btn btn-default">Arquivo de Alunos</a>
         @endcan
