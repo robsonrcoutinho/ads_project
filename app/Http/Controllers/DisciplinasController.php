@@ -166,7 +166,8 @@ class DisciplinasController extends Controller
     //Método que apaga arquivo
     private function apagarArquivo($arquivo)
     {
+        if($arquivo!=null):                                     //Se arquivo não for nulo
         unlink($arquivo);                                       //Apaga arquivo
-        //Storage::delete($arquivo);
+        endif;
     }
 }
