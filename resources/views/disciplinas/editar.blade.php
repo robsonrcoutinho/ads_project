@@ -4,7 +4,8 @@
         <div class="card-panel  #388e3c green darken-2 center">
             <span class="grey-text text-lighten-5">Editar Professor</span>
         </div>
-        {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->id], 'method'=>'put']) !!}
+        {!! Form::open(['route'=>['disciplinas.alterar', $disciplina->id], 'method'=>'put','enctype'=>'multipart/form-data']) !!}
+        {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::hidden ('id', $disciplina->id, ['class'=>'form-control']) !!}
         </div>
@@ -21,8 +22,16 @@
             {!! Form::text ('carga_horaria', $disciplina->carga_horaria, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label ('ementa', 'Ementa (link): ') !!}
-            {!! Form::text ('ementa', $disciplina->ementa, ['class'=>'form-control']) !!}
+            {!! Form::label ('ementa', 'Ementa: ') !!}
+            <br/>
+            {!! Form::file('ementa',['class'=>'form-control'] ) !!}
+            <br/><br/>
+        </div>
+        <div class="form-group">
+            {!! Form::label ('plano_ensino', 'Plano de ensino: ') !!}
+            <br/>
+            {!! Form::file('plano_ensino',['class'=>'form-control'] ) !!}
+            <br/><br/>
         </div>
         <div class="form-group">
             <fieldset>
