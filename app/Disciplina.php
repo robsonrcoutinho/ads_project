@@ -14,7 +14,7 @@ class Disciplina extends Model
     use SoftDeletes;
 
     protected $table = "disciplinas";
-    protected $fillable = ['codigo', 'nome', 'carga_horaria', 'ementa'];
+    protected $fillable = ['codigo', 'nome', 'carga_horaria'];
     protected $softDelete = true;
     protected $hidden = ['deleted_at'];
 
