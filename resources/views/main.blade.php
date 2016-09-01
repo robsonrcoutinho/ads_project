@@ -43,7 +43,7 @@
             @if(Auth::check())
                 <li><a href="">{{Auth::user()->name}}</a></li>
             @endif
-            <li><a href="" onClick="history.go(-1)">Voltar</a></li>
+
         </ul>
     </div>
 </nav>
@@ -136,7 +136,10 @@
                </ul>
               </div>
         ')
-
+            @if(Auth::check())
+                <br/>
+                <a href="" class="btn" onClick="history.go(-1)">Voltar</a>
+            @endif
         </div>
 
         <br>
