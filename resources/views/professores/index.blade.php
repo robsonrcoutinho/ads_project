@@ -22,7 +22,7 @@
                     <td>{{$professor->nome}}</td>
                     <td>
                         @if($professor->curriculo !=null && $professor->curriculo != '' )
-                            <a href="{{ $professor->curriculo }}" class="btn-sm btn-success btn blue">Curriculo</a>
+                            <a href="{{ $professor->curriculo }}" class="btn-flat disabled">Curriculo</a>
                     @endif
                     <td>
                         @can('alterar', $professor)
