@@ -34,9 +34,7 @@
                             <a class="btn-flat disabled" target="_blank"
                                href="{{route('disciplinas.planoEnsino',['id'=>$disciplina->id])}}">Plano de
                                 Ensino</a>
-
                         @endif
-
                     </td>
                     <td>
                         @if($disciplina->pre_requisitos !=null || !$disciplina->pre_requisto->isEmpty )
