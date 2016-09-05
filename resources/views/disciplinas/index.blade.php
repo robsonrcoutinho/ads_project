@@ -25,14 +25,18 @@
                     <td>{{$disciplina->carga_horaria}}</td>
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
-                            <a class="btn-flat disabled" target="_blank" href="{{ $disciplina->ementa }}">Ementa</a>
+                            <a class="btn-flat disabled" target="_blank"
+                               href="{{ route('disciplinas.ementa',['id'=>$disciplina->id]) }}">Ementa</a>
                         @endif
                     </td>
                     <td>
                         @if($disciplina->plano_ensino !=null && $disciplina->plano_ensino != '' )
-                            <a class="btn-flat disabled" target="_blank" href="{{ $disciplina->plano_ensino }}">Plano de
+                            <a class="btn-flat disabled" target="_blank"
+                               href="{{route('disciplinas.planoEnsino',['id'=>$disciplina->id])}}">Plano de
                                 Ensino</a>
+
                         @endif
+
                     </td>
                     <td>
                         @if($disciplina->pre_requisitos !=null || !$disciplina->pre_requisto->isEmpty )

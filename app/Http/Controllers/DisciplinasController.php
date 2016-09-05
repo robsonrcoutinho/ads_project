@@ -9,6 +9,7 @@
 use adsproject\Disciplina;
 use adsproject\Http\Requests\DisciplinaRequest;
 use adsproject\Professor;
+use adsproject\Http\ManipuladorArquivo;
 
 /**Classe controller de disciplinas
  * Class DisciplinasController
@@ -53,14 +54,15 @@ class DisciplinasController extends Controller
         $this->validate($request,
             ['codigo' => 'unique:disciplinas,codigo']);                 //Valida código da disciplina
         $disciplina = new Disciplina($request->all());                  //Cria nova disciplina
+        $nomeArquivo = 'ementa_' . $disciplina->codigo;                     //Define nome do arquivo de ementa
         //Passa arquivo de ementa, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
-        $ementa = $this->gravarArquivo($request->file('ementa'), 'ementa');
+        $ementa = ManipuladorArquivo::salvar($request->file('ementa'), 'ementa', $nomeArquivo);
+        $nomeArquivo = 'plano_ensino_' . $disciplina->codigo;               //Define nome do arquivo de plano de disciplina
         //Passa arquivo de plano de ensino, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
-        $plano_ensino = $this->gravarArquivo($request->file('plano_ensino'), 'plano_ensino');
-        $disciplina->ementa = $ementa;                                  //Passa caminho
-        $disciplina->plano_ensino = $plano_ensino;
-        //dd($ementa, $plano_ensino);
-        $disciplina->save();
+        $plano_ensino = ManipuladorArquivo::salvar($request->file('plano_ensino'), 'plano_ensino', $nomeArquivo);
+        $disciplina->ementa = $ementa;                                  //Passa caminho onde foi salvo ementa
+        $disciplina->plano_ensino = $plano_ensino;                      //Passa caminho onde foi salvo plano de ensino
+        $disciplina->save();                                            //Salva disciplina
         $pre_requisitos = $request->get('pre_requisitos');              //Pega relação de pré-requisitos
         if ($pre_requisitos != null):                                   //Verifica se relação de pré-requisitos não é nula
             $disciplina->pre_requisitos()->sync($pre_requisitos);       //Relaciona disciplina com pré-requisitos
@@ -110,16 +112,22 @@ class DisciplinasController extends Controller
         elseif ($disciplina->professors != null):                       //Verifica se disciplina tem professores, quando não existem professores passados
             $disciplina->professors()->detach();                        //Remove relação de disciplina com professores
         endif;
-        //Passa arquivo de ementa, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
-        $ementa = $this->gravarArquivo($request->file('ementa'), 'ementa');
-        //Passa arquivo de plano de ensino, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
-        $plano_ensino = $this->gravarArquivo($request->file('plano_ensino'), 'plano_ensino');
-        if ($ementa != null):
-            //$this->apagarArquivo($disciplina->ementa);
-            $disciplina->ementa = $ementa;                              //Passa caminho
+        $nomeArquivo = 'ementa_' . $disciplina->codigo;
+        /*Passa arquivo de ementa, nome da pasta onde deve ser salvo e nome do arquivo
+        recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
+        $ementa = ManipuladorArquivo::salvar($request->file('ementa'), 'ementa', $nomeArquivo);
+        $nomeArquivo = 'plano_ensino_' . $disciplina->codigo;
+        /*Passa arquivo de plano de ensino, nome da paste onde deve ser salvo e nome do arquivo
+         recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
+        $plano_ensino = ManipuladorArquivo::salvar($request->file('plano_ensino'), 'plano_ensino', $nomeArquivo);
+        //Verifica se caminho da ementa não está nulo e se é diferente do salvo no banco de dados
+        if ($ementa != null && $ementa != $disciplina->ementa):
+            ManipuladorArquivo::excluir($disciplina->ementa);           //Solicita exclusão do arquivo antigo
+            $disciplina->ementa = $ementa;                              //Passa caminho para nova ementa
         endif;
-        if ($plano_ensino != null):                                     //Se foi passado plano de ensino
-            $this->apagarArquivo($disciplina->plano_ensino);            //Apaga o arquivo com plano de ensino anterior
+        //Verifica se caminho do plano de ensino não está nulo e se é diferente do salvo no banco de dados
+        if ($plano_ensino != null && $plano_ensino != $disciplina->plano_ensino):
+            ManipuladorArquivo::excluir($disciplina->plano_ensino);     //Apaga o arquivo com plano de ensino anterior
             $disciplina->plano_ensino = $plano_ensino;                  //Passa cominho para novo plano de ensino
         endif;
         $disciplina->update($request->all());                           //Atualiza dados de disciplina
@@ -148,26 +156,23 @@ class DisciplinasController extends Controller
         return Disciplina::find($id);
     }
 
-    //Métodos para salvar arquivo no servidor
-    //Testar Filesystem como tipo arquivo
-    private function gravarArquivo($arquivo, $pasta)
+    /**
+     * @param $id int identificador da disciplina que contém a ementa
+     * @return \Illuminate\Http\Response abre ou baixa arquivo de ementa
+     */
+    public function ementa($id)
     {
-        if ($arquivo != null):                                  //Se arquivo passado não for nulo
-            $nome = utf8_decode($arquivo->getClientOriginalName());          //Pega o nome original do arquivo
-            $diretorio = storage_path() . '/app/' . $pasta;       //Define o local onde arquivo será salvo
-            $arquivo->move($diretorio, $nome);                  //Salva arquivo
-            //\Storage::disk('local')->put($diretorio.'/'.$nome, 'resource');
-            return $diretorio . '/' . $nome;                    //Retorna o caminho do arquivo
-            //return $arquivo->move($diretorio, $nome);                  //Salva arquivo
-        endif;
-        return null;
+        $disciplina = Disciplina::find($id);                            //Busca disciplina pelo id
+        return ManipuladorArquivo::abrir($disciplina->ementa);          //Usa o manipulador de arquivo para abrir ou baixar
     }
 
-    //Método que apaga arquivo
-    private function apagarArquivo($arquivo)
+    /**
+     * @param $id int identificador da disciplina que contém o plano de ensino
+     * @return \Illuminate\Http\Response abre ou baixa arquivo do plano de ensino
+     */
+    public function planoEnsino($id)
     {
-        if($arquivo!=null):                                     //Se arquivo não for nulo
-        unlink($arquivo);                                       //Apaga arquivo
-        endif;
+        $disciplina = Disciplina::find($id);                            //Busca disciplina pelo id
+        return ManipuladorArquivo::abrir($disciplina->plano_ensino);    //Usa o manipulador de arquivo para abrir ou baixar
     }
 }

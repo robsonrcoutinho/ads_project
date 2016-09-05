@@ -67,6 +67,10 @@ Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], functio
     Route::get('{id}/editar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.editar', 'uses' => 'DisciplinasController@editar']);
 //Rota para alterar disciplina
     Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
+    //Rota para abrir arquivo de plano de ensino
+    Route::get('{id}/planoEnsino', ['as' => 'disciplinas.planoEnsino', 'uses' => 'DisciplinasController@planoEnsino']);
+    //Rota para abrir arquivo de ementa
+    Route::get('{id}/ementa', ['as' => 'disciplinas.ementa', 'uses' => 'DisciplinasController@ementa']);
 });
 //Rotas de documentos
 Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function () {
