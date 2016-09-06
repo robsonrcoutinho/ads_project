@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host'=> env('MAIL_HOST','smtp.gmail.com'),
+    'host'=> env('MAIL_HOST','smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ return [
 
     'port' =>env('MAIL_PORT', 587),
 
-    'from' => ['address' => 'projectadsapi@gmail.com', 'name' => 'Recuperação de Senha, Curso de Ads'],
+    'from' => ['address' => 'projectadsapi@gmail.com', 'name' => 'Recuperação de Senha plataforma cooadseunapolis'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -57,7 +57,7 @@ return [
     */
 
 
-    'encryption' =>env('MAIL_ENCRYPTION','ssl'),
+    'encryption' =>env('MAIL_ENCRYPTION','tls'),
 
     /*
     |--------------------------------------------------------------------------
