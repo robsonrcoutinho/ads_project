@@ -8,7 +8,6 @@
  */
 use adsproject\Aviso;
 use adsproject\Http\Requests\AvisoRequest;
-use adsproject\PushNotification;
 
 /**Classe controller de avisos
  * Class AvisosController
@@ -27,7 +26,8 @@ class AvisosController extends Controller
     public function index()
     {
         $this->removerAntigos();                                    //Evoca método para remover avisos antigos
-        $avisos = Aviso::paginate(config('constantes.paginacao'));  //Busca todos os avisos
+        $avisos = Aviso::orderBy('id', 'desc')
+            ->paginate(config('constantes.paginacao'));             //Busca todos os avisos ordenando por id de forma decrescente
         return view('avisos.index', ['avisos' => $avisos]);         //Redireciona para página inicial de avisos
     }
 
@@ -56,7 +56,7 @@ class AvisosController extends Controller
     }
 
     /**Método que redireciona para página de edição de aviso
-     * @param $id identificador do aviso a ser editado
+     * @param $id int identificador do aviso a ser editado
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -67,7 +67,7 @@ class AvisosController extends Controller
 
     /**Método que realiza alteração de dados de aviso
      * @param AvisoRequest $request relação de dados do aviso a ser alterado
-     * @param $id identificador do aviso a ser alterado
+     * @param $id int identificador do aviso a ser alterado
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function alterar(AvisoRequest $request, $id)
@@ -77,7 +77,7 @@ class AvisosController extends Controller
     }
 
     /**Método que exclui aviso
-     * @param $id identificador do aviso a ser excluído
+     * @param $id int identificador do aviso a ser excluído
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)

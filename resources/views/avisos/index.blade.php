@@ -8,7 +8,8 @@
         @forelse($avisos as $aviso)
             <fieldset>
                 <legend><label title="titulo">{{$aviso->titulo}}</label></legend>
-                <textarea disabled title="titulo">{{$aviso->mensagem}}</textarea>
+                <textarea readonly title="titulo" class="materialize-textarea">{{$aviso->mensagem}}</textarea>
+                <p>{{'Data/Hora: '.date('d/m/Y H:i:s', strtotime($aviso->created_at))}}</p>
                 @can('alterar', $aviso)
                 <a class="btn-flat disabled" href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">Editar</a>
                 @endcan

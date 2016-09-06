@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('mensagem', 'Mensagem: ') !!}
-            {!! Form::textarea ('mensagem', $aviso->mensagem, ['class'=>'form-control']) !!}
+            {!! Form::textarea ('mensagem', $aviso->mensagem, ['class'=>'materialize-textarea']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}

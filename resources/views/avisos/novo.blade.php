@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
         {!! Form::label ('mensagem', 'Mensagem: ') !!}
-        {!! Form::textarea ('mensagem', null, ['class'=>'form-control']) !!}
+        {!! Form::textarea ('mensagem', null, ['class'=>'materialize-textarea']) !!}
     </div>
     <div class="form-group">
         {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
