@@ -54,11 +54,13 @@ class DisciplinasController extends Controller
         $this->validate($request,
             ['codigo' => 'unique:disciplinas,codigo']);                 //Valida código da disciplina
         $disciplina = new Disciplina($request->all());                  //Cria nova disciplina
-        $nomeArquivo = 'ementa_' . $disciplina->codigo;                     //Define nome do arquivo de ementa
-        //Passa arquivo de ementa, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
+        $nomeArquivo = 'ementa_' . $disciplina->codigo;                 //Define nome do arquivo de ementa
+        /*Passa arquivo de ementa, nome da pasta onde deve ser salvo e nome do arquivo
+        recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
         $ementa = ManipuladorArquivo::salvar($request->file('ementa'), 'ementa', $nomeArquivo);
         $nomeArquivo = 'plano_ensino_' . $disciplina->codigo;               //Define nome do arquivo de plano de disciplina
-        //Passa arquivo de plano de ensino, recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo
+        /*Passa arquivo de plano de ensino, nome da paste onde deve ser salvo e nome do arquivo
+         recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
         $plano_ensino = ManipuladorArquivo::salvar($request->file('plano_ensino'), 'plano_ensino', $nomeArquivo);
         $disciplina->ementa = $ementa;                                  //Passa caminho onde foi salvo ementa
         $disciplina->plano_ensino = $plano_ensino;                      //Passa caminho onde foi salvo plano de ensino

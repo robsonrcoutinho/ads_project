@@ -20,16 +20,18 @@
                     <td>{{$documento->titulo}}</td>
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
-                            <a href="{{ $documento->url }}">LINK</a>
+                            <a class="btn-flat disabled" target="_blank"
+                               href="{{route('documentos.arquivo',['id'=>$documento->id])}}">Arquivo</a>
                         @endif
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a class="btn-flat disabled"  href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
+                        <a class="btn-flat disabled" href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
-                            <a class="btn-flat disabled btn-excluir"  href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
+                            <a class="btn-flat disabled btn-excluir"
+                               href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
                         @endif
                         @endcan
                     </td>
@@ -41,9 +43,9 @@
         </table>
         <br/>
         <br/>
-        <!--@can('salvar', new Documento())
-                <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
-        @endcan -->
+        @can('salvar', new Documento())
+        <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
+        @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}
 @endsection

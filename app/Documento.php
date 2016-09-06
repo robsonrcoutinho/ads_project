@@ -13,7 +13,7 @@ class Documento extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['titulo', 'url'];
+    protected $fillable = ['titulo'];
     protected $softDelete = true;
     protected $hidden = ['deleted_at'];
 }
