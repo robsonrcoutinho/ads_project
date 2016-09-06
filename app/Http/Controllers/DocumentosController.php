@@ -7,6 +7,7 @@
  * Time: 08:45
  */
 use adsproject\Documento;
+use adsproject\Http\ManipuladorArquivo;
 use adsproject\Http\Requests\DocumentoRequest;
 
 /**Classe controller de documentos
@@ -43,12 +44,19 @@ class DocumentosController extends Controller
      */
     public function salvar(DocumentoRequest $request)
     {
-        Documento::create($request->all());                         //Cria novo documento com dados passados
+        $this->validate($request,
+            ['arquivo' => 'required']);
+        $documento = new Documento($request->all());                 //Cria novo documento com dados passados
+        $nomeArquivo = $documento->titulo;                            //Define o nome do arquivo como o título do documento
+        /*Passa arquivo de documento, nome da paste onde deve ser salvo e nome do arquivo
+         recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
+        $documento->url = ManipuladorArquivo::salvar($request->file('arquivo'), 'documento', $nomeArquivo);
+        $documento->save();                                         //Salva documento
         return redirect()->route('documentos');                     //Redireciona à página inicial de documentos
     }
 
     /**Método que redireciona para página de edição de documento
-     * @param $id identificador do documento a ser editado
+     * @param $id int identificador do documento a ser editado
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -59,23 +67,41 @@ class DocumentosController extends Controller
 
     /**Método que realiza alteração de dados de documento
      * @param DocumentoRequest $request relação de dados do documento a ser alterado
-     * @param $id identificador do documento a ser alterado
+     * @param $id int identificador do documento a ser alterado
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function alterar(DocumentoRequest $request, $id)
     {
-        Documento::find($id)->update($request->all());              //Busca documento por id e atualiza seus dados
+        $documento = Documento::find($id);                          //Busca documento por id
+        $nomeArquivo = $documento->titulo;                          //Define o nome do arquivo como o título do documento
+        /*Passa arquivo de documento, nome da paste onde deve ser salvo e nome do arquivo
+         recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
+        $url = ManipuladorArquivo::salvar($request->file('arquivo'), 'documento', $nomeArquivo);
+        //Verifica se caminho do documento não está nulo e se é diferente do salvo no banco de dados
+        if ($url != null && $url != $documento->url):
+            ManipuladorArquivo::excluir($documento->url);           //Solicita exclusão do arquivo antigo
+            $documento->url = $url;                                 //Passa novo caminho para documento
+        endif;
+        $documento->update($request->all());                        //Salva alterações
         return redirect('documentos');                              //Redireciona à página inicial de documentos
     }
 
     /**Método que exclui documento
-     * @param $id identificador do documento a ser excluído
+     * @param $id int identificador do documento a ser excluído
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
     {
         Documento::find($id)->delete();                         //Busca documentos por id e exclui
         return redirect()->route('documentos');                 //Redireciona à página inicial de documentos
+    }
+
+    /**Método que abre ou baixa arquivo de doumento
+     * @param $id int identificador do documento
+     */
+    public function arquivo($id){
+        $documento = Documento::find($id);                         //Busca documento pelo id
+        return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
     }
     //Métodos do Web Service
     //Método que busca todos os documentos para o Web Service
