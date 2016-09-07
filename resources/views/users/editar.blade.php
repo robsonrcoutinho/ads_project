@@ -17,7 +17,6 @@
             {!! Form::label ('email', 'E-mail: ') !!}
             {!! Form::email ('email', $user->email, ['class'=>'form-control']) !!}
         </div>
-
         <div class="form-group">
             @can('alterar', $user)
             {!! Form::label ('role', 'Papel: ') !!}
@@ -26,7 +25,6 @@
                 {!! Form::hidden ('role', $user->role, ['class'=>'form-control']) !!}
                 @endcan
         </div>
-
         <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
             {!! Form::password ('password', ['class'=>'form-control']) !!}

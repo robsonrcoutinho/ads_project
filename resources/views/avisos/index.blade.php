@@ -11,7 +11,8 @@
                 <label>{{'Data/Hora: '.date('d/m/Y H:i:s', strtotime($aviso->created_at))}}</label>
                 <textarea readonly class="materialize-textarea">{{$aviso->mensagem}}</textarea>
                 @can('alterar', $aviso)
-                <a class="btn-flat disabled" href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">Editar</a>
+                <a class="btn-flat disabled"
+                   href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">Editar</a>
                 @endcan
                 @can('excluir', $aviso)
                 <a class="btn-flat disabled btn-excluir"

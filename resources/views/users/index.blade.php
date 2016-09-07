@@ -22,14 +22,15 @@
                     <td>{{ $user->role }}</td>
                     <td>
                         @can('alterar', $user)
-                        <a href="{{ route('users.editar', ['id'=>$user->id]) }}" class="btn-flat disabled">Editar</a>
+                        <a class="btn-flat disabled"
+                           href="{{ route('users.editar', ['id'=>$user->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $user)
-                        <a href="{{ route('users.excluir', ['id'=>$user->id]) }}" class="btn-flat disabled btn-excluir">Excluir</a>
+                        <a class="btn-flat disabled btn-excluir"
+                           href="{{ route('users.excluir', ['id'=>$user->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>
-
             @endforeach
             </tbody>
             {!! $users->render() !!}

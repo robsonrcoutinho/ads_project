@@ -44,15 +44,14 @@ class DocumentosController extends Controller
      */
     public function salvar(DocumentoRequest $request)
     {
-        $this->validate($request,
-            ['arquivo' => 'required']);
-        $documento = new Documento($request->all());                 //Cria novo documento com dados passados
-        $nomeArquivo = $documento->titulo;                            //Define o nome do arquivo como o título do documento
+        $this->validate($request, ['arquivo' => 'required']);           //Realiza validação de arquivo
+        $documento = new Documento($request->all());                    //Cria novo documento com dados passados
+        $nomeArquivo = $documento->titulo;                              //Define o nome do arquivo como o título do documento
         /*Passa arquivo de documento, nome da paste onde deve ser salvo e nome do arquivo
          recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
         $documento->url = ManipuladorArquivo::salvar($request->file('arquivo'), 'documento', $nomeArquivo);
-        $documento->save();                                         //Salva documento
-        return redirect()->route('documentos');                     //Redireciona à página inicial de documentos
+        $documento->save();                                             //Salva documento
+        return redirect()->route('documentos');                         //Redireciona à página inicial de documentos
     }
 
     /**Método que redireciona para página de edição de documento
@@ -99,7 +98,8 @@ class DocumentosController extends Controller
     /**Método que abre ou baixa arquivo de doumento
      * @param $id int identificador do documento
      */
-    public function arquivo($id){
+    public function arquivo($id)
+    {
         $documento = Documento::find($id);                         //Busca documento pelo id
         return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
     }

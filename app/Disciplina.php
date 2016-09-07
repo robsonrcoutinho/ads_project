@@ -80,4 +80,5 @@ class Disciplina extends Model
     {
         return $this->hasMany(Resposta::class);
     }
+    //Possibilidade de incluir busca por código
 }

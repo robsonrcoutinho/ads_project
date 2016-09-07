@@ -15,7 +15,6 @@
             </thead>
             <tbody>
             @foreach($documentos as $documento)
-
                 <tr>
                     <td>{{$documento->titulo}}</td>
                     <td>
@@ -26,7 +25,8 @@
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a class="btn-flat disabled" href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
+                        <a class="btn-flat disabled"
+                           href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
@@ -36,7 +36,6 @@
                         @endcan
                     </td>
                 </tr>
-
             @endforeach
             </tbody>
             {!! $documentos->render() !!}

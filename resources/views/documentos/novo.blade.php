@@ -20,6 +20,5 @@
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
-
     </div>
 @endsection

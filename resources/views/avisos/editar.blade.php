@@ -2,10 +2,9 @@
 @section('conteudo')
     <div class="category">
         <div class="card-panel  #388e3c green darken-2 center">
-        <span class=" grey-text text-lighten-5" >Editar Aviso</span>
-      </div>
+            <span class=" grey-text text-lighten-5">Editar Aviso</span>
+        </div>
         {!! Form::open(['route'=>['avisos.alterar', $aviso->id], 'method'=>'put']) !!}
-
         <div class="form-group">
             {!! Form::hidden ('id', $aviso->id, ['class'=>'form-control']) !!}
         </div>

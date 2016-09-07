@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             {!! Form::label ('plano_ensino', 'Plano de ensino: ') !!}
-            <br />
+            <br/>
             {!! Form::file('plano_ensino',['class'=>'form-control'] ) !!}
             <br/><br/>
         </div>

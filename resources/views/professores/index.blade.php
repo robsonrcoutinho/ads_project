@@ -27,7 +27,8 @@
                     @endif
                     <td>
                         @can('alterar', $professor)
-                        <a class="btn-flat disabled" href="{{ route('professores.editar', ['id'=>$professor->id]) }}">Editar</a>
+                        <a class="btn-flat disabled"
+                           href="{{ route('professores.editar', ['id'=>$professor->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $professor)
                         <a class="btn-flat disabled btn-excluir"
@@ -39,7 +40,6 @@
             </tbody>
             {!! $professores->render() !!}
         </table>
-
         <br/>
         <br/>
         @can('salvar', new Professor())

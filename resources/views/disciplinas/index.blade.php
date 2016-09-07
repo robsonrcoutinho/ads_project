@@ -45,7 +45,8 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                        <a class="btn-flat disabled" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
+                        <a class="btn-flat disabled"
+                           href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $disciplina)
                         <a class="btn-flat disabled btn-excluir"

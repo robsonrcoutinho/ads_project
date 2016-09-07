@@ -26,4 +26,6 @@ class Professor extends Model
     {
         return $this->belongsToMany(Disciplina::class);
     }
+    //Possibilidade de inclusão de método de busca por nome e e-mail
+    //Possibilidade de inclusão de método de busca por e-mail
 }
