@@ -44,19 +44,13 @@
                         @endif
                     </td>
                     <td>
-                        <div class="fixed-action-btn horizontal" style="bottom: 35px; right: 24px;">
-                            <a class="btn-floating btn-large red">
-                                <i class="large material-icons">settings</i>
-                            </a>
-                            <ul>
-                                @can('alterar', $disciplina)
-                                <li><a class="btn-floating yellow darken-1" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" ><i class="material-icons">mode_edit</i></a></li>
-                                @endcan
-                                @can('excluir', $disciplina)
-                                <li><a class="btn-floating red"  href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"><i class="material-icons">delete</i></a></li>
-                                @endcan
-                            </ul>
-                        </div>
+                        @can('alterar', $disciplina)
+                        <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
+                        @endcan
+                        @can('excluir', $disciplina)
+                        <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"
+                           class="btn-excluir">Excluir</a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
