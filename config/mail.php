@@ -44,7 +44,7 @@ return [
 
     'port' =>env('MAIL_PORT', 587),
 
-    'from' => ['address' => 'projectadsapi@gmail.com', 'name' => 'Recuperação de Senha, Curso de Ads'],
+    'from' => ['address' => 'projectadsapi@gmail.com', 'name' => 'Recovery Password COADS Eunapolis'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

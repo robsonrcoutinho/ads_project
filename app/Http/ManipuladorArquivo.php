@@ -18,7 +18,9 @@ class ManipuladorArquivo
     {
         if ($arquivo != null):                                      //Se arquivo passado não for nulo
             $nome .= '.' . $arquivo->getClientOriginalExtension();  //Acrescenta ao nome do arquivo sua extensão
-            $diretorio = storage_path() . '/app/' . $pasta;         //Define o local onde arquivo será salvo
+            // mudança de path para que o arquivo possa ser acessado publicamente
+            // atraves da url recebida
+            $diretorio = 'public';//storage_path() . '/public/' . $pasta;         //Define o local onde arquivo será salvo
             $arquivo->move($diretorio, $nome);                      //Salva arquivo
             return $diretorio . '/' . $nome;                        //Retorna o caminho do arquivo
         endif;
