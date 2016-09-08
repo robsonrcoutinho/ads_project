@@ -12,6 +12,7 @@
                 <th>Nome</th>
                 <th>Carga horária</th>
                 <th>Ementa</th>
+                <th>Plano de ensino</th>
                 <th>Pré-requisitos</th>
                 <th>Ação</th>
             </tr>
@@ -24,7 +25,15 @@
                     <td>{{$disciplina->carga_horaria}}</td>
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
-                            <a href="{{ $disciplina->ementa }}">Ementa</a>
+                            <a class="btn-flat disabled" target="_blank"
+                               href="{{ route('disciplinas.ementa',['id'=>$disciplina->id]) }}">Ementa</a>
+                        @endif
+                    </td>
+                    <td>
+                        @if($disciplina->plano_ensino !=null && $disciplina->plano_ensino != '' )
+                            <a class="btn-flat disabled" target="_blank"
+                               href="{{route('disciplinas.planoEnsino',['id'=>$disciplina->id])}}">Plano de
+                                Ensino</a>
                         @endif
                     </td>
                     <td>
@@ -35,18 +44,19 @@
                         @endif
                     </td>
                     <td>
-                         <div class="fixed-action-btn horizontal" style="bottom: 35px; right: 24px;">
-                              <a class="btn-floating btn-large red">
-                              <i class="large material-icons">settings</i>
+                        <div class="fixed-action-btn horizontal" style="bottom: 35px; right: 24px;">
+                            <a class="btn-floating btn-large red">
+                                <i class="large material-icons">settings</i>
                             </a>
                             <ul>
-                             @can('alterar', $disciplina)
-                             <li><a class="btn-floating yellow darken-1" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" ><i class="material-icons">mode_edit</i></a></li>
-                             @endcan
-                             @can('excluir', $disciplina)
-                              <li><a class="btn-floating red"  href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"><i class="material-icons">delete</i></a></li> 
-                             @endcan    
-                             </ul>                  
+                                @can('alterar', $disciplina)
+                                <li><a class="btn-floating yellow darken-1" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}" ><i class="material-icons">mode_edit</i></a></li>
+                                @endcan
+                                @can('excluir', $disciplina)
+                                <li><a class="btn-floating red"  href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"><i class="material-icons">delete</i></a></li>
+                                @endcan
+                            </ul>
+                        </div>
                     </td>
                 </tr>
             @endforeach
