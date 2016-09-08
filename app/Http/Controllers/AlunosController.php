@@ -158,8 +158,8 @@ class AlunosController extends Controller
                     $alunos[] = $aluno->id;                             //Passa id do aluno para array
                     $disciplinas = array();                             //cria um array para armazenar ids de disciplinas
                     do {                                                //Cria estrutura de repetiação para incluir disciplinas
-                        //Evoca método para buscar disciplina, pegando id da mesma e passando para array
-                        $disciplinas[] = $this->buscarDisciplina($tabela->getCell('D' . $cont)->getValue())->id;
+                        //Evoca método para buscar disciplina por código, pegando id da mesma e passando para array
+                        $disciplinas[] = Disciplina::buscarPorCodigo($tabela->getCell('D' . $cont)->getValue())->first()->id;
                         $cont++;                                        //Incrementa o contador
                         //Mantém a estrutura de repetição enquanto existir linha seguinte e dados forem do mesmo aluno
                     } while ($tabela->cellExists('A' . $cont) && $tabela->getCell('A' . $cont)->getValue() == null);
@@ -182,20 +182,11 @@ class AlunosController extends Controller
      */
     private function buscarOuCriar($matricula)
     {
-        $aluno = Aluno::withTrashed()->where('matricula', $matricula)->first(); //Busca aluno pela matrícula
+        $aluno = Aluno::buscarPorMatricula($matricula)->first(); //Busca aluno pela matrícula
         if ($aluno == null):                                                    //Caso não encontre aluno
             $aluno = new Aluno(['matricula' => $matricula]);                    //Cria novo aluno passando a matrícula
         endif;
         return $aluno;                                                          //Retorna o aluno
-    }
-
-    /**Método que realiza busca de disciplina pelo código
-     * @param $codigo string código da disciplina a ser buscada
-     * @return \Illuminate\Database\Eloquent\Model|null|static
-     */
-    private function buscarDisciplina($codigo)
-    {
-        return Disciplina::query()->where('codigo', $codigo)->first();         //Busca disciplina pelo código
     }
 
     /**Método que realiza validação de dados de aluno
