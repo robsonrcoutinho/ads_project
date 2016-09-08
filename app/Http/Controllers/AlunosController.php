@@ -1,6 +1,7 @@
 <?php namespace adsproject\Http\Controllers;
 
 use adsproject\Aluno;
+use adsproject\Http\ManipuladorArquivo;
 use adsproject\Http\Requests\AlunoRequest;
 use PHPExcel_Reader_Excel2007;
 use Illuminate\Http\Request;
@@ -100,16 +101,6 @@ class AlunosController extends Controller
         return redirect()->route('alunos');                     //Redireciona à página inicial de alunos
     }
 
-    public function buscarTodos()
-    {
-        return Aluno::all();
-    }
-
-    public function buscarPorId($id)
-    {
-        return Aluno::find($id);
-    }
-
     /**Método que redireciona para página de carregamento de alunos via arquivo
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -127,41 +118,19 @@ class AlunosController extends Controller
         $this->validate($request,
             ['arquivo' => 'required'],
             ['required' => 'O :attribute precisa ser passado.']);   //Valida arquivo passado
-        $arquivo = $this->gravarArquivo(
-            $request->file('arquivo')); //Evoca método para salvar arquivo
+        /*Passa arquivo de alunos, null para nome da pasta onde deve ser salvo e alunos como nome
+        do arquivo recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
+        $arquivo = ManipuladorArquivo::salvar($request->file('arquivo'), null, 'alunos');
         if ($arquivo == null):                                      //Se arquivo nulo (não salvo)
             return redirect()->back()
                 ->withErrors(['Ocorreu um erro no arquivo']);       //Retorna a página de carregamento
         endif;
         $salvo = $this->salvarLista($arquivo);                      //Evoca método para salvar lista de alunos
-        $this->apagarArquivo($arquivo);                             //Evoca método para apagar arquivo
+        ManipuladorArquivo::excluir($arquivo);                      //Solicita exclusão de arquivo
         /*Redireciona para página inicial de alunos caso a lista tenha sido salva corretamente
         Ou para página anterior caso tenha dado erro ao tentar salvar lista de alunos*/
         return $salvo ? redirect()->route('alunos') :
             redirect()->back()->withErrors(['Ocorreu um erro. Por favor, verifique o arquivo.']);
-    }
-
-    /**Método que salva arquivo
-     * @param $arquivo \Symfony\Component\HttpFoundation\File\UploadedFile arquivo a ser salvo
-     * @return string caminho de acesso ao arquivo
-     */
-    private function gravarArquivo($arquivo)
-    {
-        if ($arquivo != null):                                  //Se arquivo passado não for nulo
-            $nome = $arquivo->getClientOriginalName();          //Pega o nome original do arquivo
-            $diretorio = storage_path() . '/app';               //Define o local onde arquivo será salvo
-            $arquivo->move($diretorio, $nome);                  //Salva arquivo
-            return $diretorio . '/' . $nome;                    //Retorna o caminho do arquivo
-        endif;
-        return null;
-    }
-
-    /**Método que apaga arquivo
-     * @param $arquivo string arquivo a ser apagado
-     */
-    private function apagarArquivo($arquivo)
-    {
-        unlink($arquivo);                                       //Apaga arquivo
     }
 
     /**Método que salva lista de alunos
