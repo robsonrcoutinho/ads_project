@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Aluno extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
     protected $table = "alunos";
-    protected $fillable =['matricula','nome','email'];
-    protected $softDelete  = true;
+    protected $fillable = ['matricula', 'nome', 'email'];
+    protected $softDelete = true;
     protected $hidden = ['deleted_at'];
 
     /**
@@ -25,6 +25,7 @@ class Aluno extends Model
     {
         return $this->belongsToMany(Disciplina::class);
     }
+
     /**Busca as avaliações que o aluno fez
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -32,4 +33,7 @@ class Aluno extends Model
     {
         return $this->belongsToMany(Avaliacao::class);
     }
+    //Possibilidade de incluir método de busca por nome e e-mail
+    //Possibilidade de incluir método de busca por e-mail
+    //Possibilidade de incluir método de busca por matrícula
 }

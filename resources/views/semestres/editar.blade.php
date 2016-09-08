@@ -1,9 +1,9 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-         <div class="card-panel  #388e3c green darken-2 center">
-         <span class=" grey-text text-lighten-5" >Editar Semestre</span>
-          </div>
+        <div class="card-panel  #388e3c green darken-2 center">
+            <span class=" grey-text text-lighten-5">Editar Semestre</span>
+        </div>
         {!! Form::open(['route'=>['semestres.alterar', $semestre->id], 'method'=>'put']) !!}
         <div class="form-group">
             {!! Form::hidden ('id', $semestre->id, ['class'=>'form-control']) !!}
@@ -19,7 +19,7 @@
         <div class="form-group">
             {!! Form::label ('termino', 'Término: ') !!}
             {!! Form::date ('termino', $semestre->termino, ['class'=>'form-control']) !!}
-             </div>
+        </div>
         <div class="form-group">
             <fieldset>
                 <ul id="disciplinas">

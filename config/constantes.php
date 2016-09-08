@@ -6,5 +6,5 @@
  * Time: 16:25
  */
 return [
-    'paginacao' => 10,
+    'paginacao' => 5,
 ];

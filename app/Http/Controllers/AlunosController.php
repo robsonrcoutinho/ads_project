@@ -147,7 +147,7 @@ class AlunosController extends Controller
      */
     private function gravarArquivo($arquivo)
     {
-        if ($arquivo != null):                                  //Se arquivo passada não for nulo
+        if ($arquivo != null):                                  //Se arquivo passado não for nulo
             $nome = $arquivo->getClientOriginalName();          //Pega o nome original do arquivo
             $diretorio = storage_path() . '/app';               //Define o local onde arquivo será salvo
             $arquivo->move($diretorio, $nome);                  //Salva arquivo

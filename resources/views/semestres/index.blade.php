@@ -23,7 +23,8 @@
                     <td>{{ date('d/m/Y', strtotime($semestre->termino)) }}</td>
                     <td>
                         @can('alterar', $semestre)
-                        <a class="btn-flat disabled" href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}"> Editar</a>
+                        <a class="btn-flat disabled"
+                           href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}"> Editar</a>
                         @endcan
                     </td>
                 </tr>

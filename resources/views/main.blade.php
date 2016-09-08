@@ -43,7 +43,6 @@
             @if(Auth::check())
                 <li><a href="">{{Auth::user()->name}}</a></li>
             @endif
-            <li><a href="" onClick="history.go(-1)">Voltar</a></li>
         </ul>
     </div>
 </nav>
@@ -136,11 +135,14 @@
                </ul>
               </div>
         ')
-
-          </div>
-       </div>
+            @if(Auth::check())
+                <br/>
+                <a href="" onClick="history.go(-1)" class="btn">Voltar</a>
+            @endif
+        </div>
     </div>
 </div>
+
 <!--Fim Conteudo-->
 
 <footer class="page-footer #1b5e20 green darken-3">

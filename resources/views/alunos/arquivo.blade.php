@@ -8,9 +8,8 @@
         {!! csrf_field() !!}
         <div class="form-group">
             {!! Form::file('arquivo',['class'=>'form-control'] ) !!}
-            <br /><br />
+            <br/><br/>
         </div>
-
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>

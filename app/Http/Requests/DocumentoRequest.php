@@ -2,8 +2,6 @@
 
 namespace adsproject\Http\Requests;
 
-use adsproject\Http\Requests\Request;
-
 class DocumentoRequest extends Request
 {
     /**
@@ -24,8 +22,7 @@ class DocumentoRequest extends Request
     public function rules()
     {
         return [
-            'titulo' => 'required|max:50',
-            'url'=> 'required|url'
+            'titulo' => 'required|max:50'
         ];
     }
 }

@@ -23,7 +23,6 @@
                                 {!! Form::hidden("pergunta_id[$pergunta->id $disciplina->codigo]", $pergunta->id) !!}
                                 {!! Form::hidden("disciplina_id[$pergunta->id $disciplina->codigo]", $disciplina->id) !!}
                                 @if($pergunta->pergunta_fechada)
-
                                     @foreach($pergunta->opcoes_resposta as $opcao)
                                         <br/>
                                         {!! Form::radio("campo_resposta[$pergunta->id $disciplina->codigo]", $opcao->resposta_opcao, null,['id'=>$opcao->id.$disciplina->codigo, 'class'=>'with-gap']) !!}

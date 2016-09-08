@@ -28,7 +28,6 @@
             @endif
         </div>
         <br/>
-
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
         </div>

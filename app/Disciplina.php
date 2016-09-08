@@ -14,7 +14,7 @@ class Disciplina extends Model
     use SoftDeletes;
 
     protected $table = "disciplinas";
-    protected $fillable = ['codigo', 'nome', 'carga_horaria', 'ementa'];
+    protected $fillable = ['codigo', 'nome', 'carga_horaria'];
     protected $softDelete = true;
     protected $hidden = ['deleted_at'];
 
@@ -80,4 +80,5 @@ class Disciplina extends Model
     {
         return $this->hasMany(Resposta::class);
     }
+    //Possibilidade de incluir busca por código
 }
