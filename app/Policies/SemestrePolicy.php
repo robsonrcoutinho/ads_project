@@ -34,4 +34,8 @@ class SemestrePolicy
     {
         return $user->role == 'admin';
     }
+    public function acao(User $user, Semestre $semestre)
+    {
+        return $this->alterar($user, $semestre) || $this->excluir($user, $semestre);
+    }
 }

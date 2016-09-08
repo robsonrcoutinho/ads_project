@@ -10,8 +10,10 @@
             <tr>
                 <th>Matrícula</th>
                 <th>Nome</th>
-                <th>email</th>
+                <th>email
+                @can('acao', new Aluno())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
             <tbody>

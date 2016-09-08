@@ -33,4 +33,9 @@ class ProfessorPolicy
     {
         return $user->role == 'admin';
     }
+
+    public function acao(User $user, Professor $professor)
+    {
+        return $this->alterar($user, $professor) || $this->excluir($user, $professor);
+    }
 }

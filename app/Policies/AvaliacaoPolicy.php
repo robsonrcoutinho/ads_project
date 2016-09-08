@@ -49,4 +49,9 @@ class AvaliacaoPolicy
         endif;
         return $user->role == 'admin';                                          //Retorna verdadeiro se usuário for admin
     }
+
+    public function acao(User $user, Avaliacao $avaliacao)
+    {
+        return $user->role == 'admin' || $user->role == 'professor';
+    }
 }
