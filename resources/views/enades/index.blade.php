@@ -25,7 +25,7 @@
         <br/>
         <br/>
         @can('salvar', new Enade())
-        <a href="{{ route('enades.novo')}}" class="btn btn-default"> Novo dado ENADE</a>
+        <a href="{{ route('enades.novo')}}" class="btn btn-primary light-blue darken-3"> Novo dado ENADE</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}
