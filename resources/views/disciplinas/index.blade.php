@@ -47,10 +47,10 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                        <a href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
+                        <a class="btn-floating disabled" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $disciplina)
-                        <a href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"
+                        <a class="btn-floating disabled" href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"
                            class="btn-excluir">Excluir</a>
                         @endcan
                     </td>
@@ -62,7 +62,7 @@
         <br/>
         <br/>
         @can('salvar', new Disciplina())
-        <a href="{{ route('disciplinas.novo')}}" class="btn btn-default"> Nova disciplina</a>
+        <a href="{{ route('disciplinas.novo')}}" class="btn btn-primary light-blue darken-3"> Nova disciplina</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

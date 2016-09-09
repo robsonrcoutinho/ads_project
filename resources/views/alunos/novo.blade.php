@@ -2,7 +2,7 @@
 @section('conteudo')
 
 <div class="contegory">
-    <div class="card-panel teal escurecer-4">
+    <div class="card-panel  #388e3c green darken-2 center">
          <span class=" grey-text text-lighten-5">Novo Aluno</span>
     </div>
     {!! Form::open(['route'=>'alunos.salvar']) !!}
@@ -32,7 +32,7 @@
         </fieldset>
         </div>
     <div class="form-group">
-        {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit ('Salvar', ['class'=>'btn btn-primary light-blue darken-3']) !!}
     </div>
     {!! Form::close() !!}
 

@@ -27,7 +27,7 @@
         <br/>
         <br/>
         @can('salvar', new Aviso())
-        <a href="{{ route('avisos.novo')}}" class="btn btn-default">Novo aviso</a>
+        <a href="{{ route('avisos.novo')}}" class="btn btn-primary light-blue darken-3">Novo aviso</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

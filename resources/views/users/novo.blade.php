@@ -27,7 +27,7 @@
             {!! Form::password ('password_confirmation', ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit ('Confirmar', ['class'=>'btn btn-primary light-blue darken-3']) !!}
         </div>
         {!! Form::close() !!}
     </div>
