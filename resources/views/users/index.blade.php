@@ -38,7 +38,7 @@
         <br/>
         <br/>
         @can('salvar', $user)
-        <a href="{{ route('users.novo')}}" class="btn btn-default"> Novo usuário</a>
+        <a href="{{ route('users.novo')}}" class="btn btn-primary light-blue darken-3"> Novo usuário</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

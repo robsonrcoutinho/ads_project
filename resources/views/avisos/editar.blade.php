@@ -17,7 +17,7 @@
             {!! Form::textarea ('mensagem', $aviso->mensagem, ['class'=>'materialize-textarea']) !!}
         </div>
         <div class="form-group">
-            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit ('Salvar', ['class'=>'btn btn-primary light-blue darken-3']) !!}
         </div>
         {!! Form::close() !!}
     </div>

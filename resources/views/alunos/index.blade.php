@@ -44,7 +44,7 @@
         <br/>
         <br/>
         @can('salvar', new Aluno())
-        <a href="{{ route('alunos.novo')}}" class="btn btn-default">Novo Aluno</a>
+        <a href="{{ route('alunos.novo')}}" class="btnbtn-primary light-blue darken-3">Novo Aluno</a>
         @endcan
         <br/> <br/>
         @can('carregar', new Aluno())

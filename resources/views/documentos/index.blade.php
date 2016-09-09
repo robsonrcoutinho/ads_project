@@ -45,7 +45,7 @@
         <br/>
         <br/>
         @can('salvar', new Documento())
-        <a href="{{ route('documentos.novo')}}" class="btn btn-default"> Novo documento</a>
+        <a href="{{ route('documentos.novo')}}" class="btn btn-primary light-blue darken-3"> Novo documento</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}

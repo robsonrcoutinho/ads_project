@@ -45,7 +45,7 @@
         <br/>
         <br/>
         @can('salvar', new Professor())
-        <a href="{{ route('professores.novo')}}" class="btn btn-default"> Novo professor</a>
+        <a href="{{ route('professores.novo')}}" class="btn btn-primary light-blue darken-3"> Novo professor</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}
