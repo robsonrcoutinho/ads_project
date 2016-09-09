@@ -32,7 +32,7 @@
                         <a class="btn-flat disabled" href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $aluno)
-                        <a class="btn-flat disabled btn-excluir"
+                        <a class="btn-flat disabled "
                            href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}">Excluir</a>
                         @endcan
                     </td>
@@ -44,7 +44,7 @@
         <br/>
         <br/>
         @can('salvar', new Aluno())
-        <a href="{{ route('alunos.novo')}}" class="btnbtn-primary light-blue darken-3">Novo Aluno</a>
+        <a href="{{ route('alunos.novo')}}" class="btn btn-primary light-blue darken-3">Novo Aluno</a>
         @endcan
         <br/> <br/>
         @can('carregar', new Aluno())
