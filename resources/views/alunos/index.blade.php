@@ -48,7 +48,7 @@
         @endcan
         <br/> <br/>
         @can('carregar', new Aluno())
-        <a href="{{ route('alunos.arquivo')}}" class="btn btn-default">Arquivo de Alunos</a>
+        <a href="{{ route('alunos.arquivo')}}" class="btn btn-primary light-blue darken-3">Arquivo de Alunos</a>
         @endcan
     </div>
     {!! Html::script('js/adsproject.js') !!}
