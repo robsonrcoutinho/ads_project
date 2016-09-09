@@ -47,11 +47,12 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                        <a class="btn-floating disabled" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
+                        <a class="btn-floating disabled"
+                           href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}">Editar</a>
                         @endcan
                         @can('excluir', $disciplina)
-                        <a class="btn-floating disabled" href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"
-                           class="btn-excluir">Excluir</a>
+                        <a class="btn-floating disabled btn-excluir"
+                           href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}">Excluir</a>
                         @endcan
                     </td>
                 </tr>
