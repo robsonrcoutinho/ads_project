@@ -18,7 +18,7 @@ class DocumentosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'arquivo']);
     }
 
     /**Método que redireciona para página inicial de documentos
