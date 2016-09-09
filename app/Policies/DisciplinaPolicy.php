@@ -34,4 +34,8 @@ class DisciplinaPolicy
     {
         return $user->role == 'admin';
     }
+    public function acao(User $user, Disciplina $disciplina)
+    {
+        return $this->alterar($user, $disciplina) || $this->excluir($user, $disciplina);
+    }
 }

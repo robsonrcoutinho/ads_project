@@ -14,7 +14,9 @@
                 <th>Ementa</th>
                 <th>Plano de ensino</th>
                 <th>Pré-requisitos</th>
+                @can('acao', new Disciplina())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
             <tbody>

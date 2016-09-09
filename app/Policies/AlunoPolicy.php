@@ -35,6 +35,11 @@ class AlunoPolicy
         return $user->role == 'admin';
     }
 
+    public function acao(User $user, Aluno $aluno)
+    {
+        return $this->alterar($user, $aluno) || $this->excluir($user, $aluno);
+    }
+
     public function carregar(User $user, Aluno $aluno)
     {
         return $user->role == 'admin';

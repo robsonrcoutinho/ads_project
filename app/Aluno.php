@@ -33,7 +33,36 @@ class Aluno extends Model
     {
         return $this->belongsToMany(Avaliacao::class);
     }
-    //Possibilidade de incluir método de busca por nome e e-mail
-    //Possibilidade de incluir método de busca por e-mail
-    //Possibilidade de incluir método de busca por matrícula
+
+    /**Método para buscar aluno por nome e e-mail
+     * @param $query
+     * @param $nome
+     * @param $email
+     * @return mixed
+     */
+    public function scopeBuscarPorNomeEEmail($query, $nome, $email)
+    {
+        return $query->where('nome', $nome)
+            ->where('email', $email)->get();                 //Busca aluno por nome e email
+    }
+
+    /**Método que busca aluno por e-mail
+     * @param $query
+     * @param $email
+     * @return mixed
+     */
+    public function scopeBuscarPorEmail($query, $email)
+    {
+        return $query->where('email', $email)->get();          //Busca aluno por email
+    }
+
+    /** Método que busca aluno por matrícula
+     * @param $query
+     * @param $matricula
+     * @return mixed
+     */
+    public function scopeBuscarPorMatricula($query, $matricula)
+    {
+        return $query->withTrashed()->where('matricula', $matricula)->get();    //Busca aluno por matricula
+    }
 }

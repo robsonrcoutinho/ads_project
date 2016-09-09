@@ -26,6 +26,27 @@ class Professor extends Model
     {
         return $this->belongsToMany(Disciplina::class);
     }
-    //Possibilidade de inclusão de método de busca por nome e e-mail
-    //Possibilidade de inclusão de método de busca por e-mail
+
+    /**Método para buscar professor por nome e e-mail
+     * @param $query
+     * @param $nome
+     * @param $email
+     * @return mixed
+     */
+    public function scopeBuscarPorNomeEEmail($query, $nome, $email)
+    {
+        return $query->where('nome', $nome)
+            ->where('email', $email)->get();                 //Busca professor por nome e email
+
+    }
+
+    /**Método que busca professor por e-mail
+     * @param $query
+     * @param $email
+     * @return mixed
+     */
+    public function scopeBuscarPorEmail($query, $email)
+    {
+        return $query->where('email', $email)->get();       //Busca professor por email
+    }
 }

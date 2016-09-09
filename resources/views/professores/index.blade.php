@@ -11,7 +11,9 @@
                 <th>Matrícula</th>
                 <th>Nome</th>
                 <th>Curriculo</th>
+                @can('acao', new Professor())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
 

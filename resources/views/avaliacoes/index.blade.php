@@ -11,7 +11,9 @@
                 <th>Semestre</th>
                 <th>Início</th>
                 <th>Término</th>
+                @can('acao', new Avaliacao())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
             <tbody>

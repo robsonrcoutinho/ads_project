@@ -80,5 +80,14 @@ class Disciplina extends Model
     {
         return $this->hasMany(Resposta::class);
     }
-    //Possibilidade de incluir busca por código
+
+    /**Busca disciplina por código
+     * @param $query
+     * @param $codigo
+     * @return mixed
+     */
+    public function scopeBuscarPorCodigo($query, $codigo)
+    {
+        return $query->where('codigo', $codigo)->get();       //Busca disciplina por codigo
+    }
 }

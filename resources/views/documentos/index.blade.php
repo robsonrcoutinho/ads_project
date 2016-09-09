@@ -10,7 +10,9 @@
             <tr>
                 <th>Título</th>
                 <th>Link</th>
+                @can('acao', new Documento())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
             <tbody>

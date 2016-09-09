@@ -1,17 +1,19 @@
 @extends('main')
 @section('conteudo')
     <div class="contegory">
-         <div class="card-panel  #388e3c green darken-2 center">
-         <span class=" grey-text text-lighten-5" >Semestres</span>
-         </div>
-         <table class="highlight  responsive-table">
+        <div class="card-panel  #388e3c green darken-2 center">
+            <span class=" grey-text text-lighten-5">Semestres</span>
+        </div>
+        <table class="highlight  responsive-table">
 
             <thead>
             <tr>
                 <th>Código</th>
                 <th>Início</th>
                 <th>Término</th>
+                @can('acao', new Semestre())
                 <th>Ação</th>
+                @endcan
             </tr>
             </thead>
             <tbody>
@@ -31,7 +33,7 @@
 
             @endforeach
             </tbody>
-             {!! $semestres->render() !!}
+            {!! $semestres->render() !!}
         </table>
         <br/>
         <br/>

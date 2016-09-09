@@ -34,4 +34,9 @@ class DocumentoPolicy
     {
         return $user->role == 'admin';
     }
+
+    public function acao(User $user, Documento $documento)
+    {
+        return $this->alterar($user, $documento) || $this->excluir($user, $documento);
+    }
 }

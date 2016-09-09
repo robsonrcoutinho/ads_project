@@ -57,24 +57,17 @@ class QuestionariosController extends Controller
     public function salvar()
     {
         $input = Input::all();                                                              //Pega todos os dados do questionário
-        $indices = collect($input['pergunta_id'])->keys();                                  //Pega indices com todas os ids de perguntas
-        $regras = array();                                                                  //Cria arrai de regras
-        $respostas = $input["campo_resposta"];                                              //Pega todos os campos resposta
-        foreach ($indices as $indice):                                                      //Percorre todos os índices
-            $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
-        endforeach;
-        $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
-        $validador = Validator::make($respostas, $regras, $mensagens);                      //Cria validador passando respostas, regras e mensagens
+        $validador = $this->validar($input);                                                //Executa método que retorna o validador
         if ($validador->fails()):                                                           //Verifica se houve falha na validação
             return redirect()->back()->withInput()->withErrors($validador);                 //Retorna a página com erros
         endif;
-        $this->inserir();                                                                   //Executa método para inserir respostas de questionário
+        $this->inserir($input);                                                             //Executa método para inserir respostas de questionário
         return redirect('/');                                                               //Redireciona à página inicial
     }
 
     /**Método que exibe mensagem ao usuário
-     * @param $texto texto da mensagem
-     * @param $rota página à qual o usuário deve ser redirecionado
+     * @param $texto string texto da mensagem
+     * @param $rota string página à qual o usuário deve ser redirecionado
      */
     private function mensagem($texto, $rota)
     {
@@ -85,16 +78,32 @@ class QuestionariosController extends Controller
                 </script>";
     }
 
-    /**
-     *Método que realiza inserção de respostas de questionário
+    /**Método que realiza validação de respostas de questionário
+     * @param $input Input entrada com dados para validação
+     * @return mixed
      */
-    private function inserir()
+    private function validar($input)
     {
-        $respostas = Input::get('campo_resposta');                                      //Pega lista de campo_resposta
-        $avaliacao = Input::get('avaliacao_id');                                        //Paga id da avaliação
-        $disciplinas = Input::get('disciplina_id');                                     //Pega lista de disciplina_id (ids das disciplinas)
-        $perguntas = Input::get('pergunta_id');                                         //Pega lista de pergunta_id (ids das perguntas)
+        $indices = collect($input['pergunta_id'])->keys();                                  //Pega indices com todas os ids de perguntas
+        $regras = array();                                                                  //Cria arrai de regras
+        $respostas = $input["campo_resposta"];                                              //Pega todos os campos resposta
+        foreach ($indices as $indice):                                                      //Percorre todos os índices
+            $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
+        endforeach;
+        $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
+        $validador = Validator::make($respostas, $regras, $mensagens);                      //Cria validador passando respostas, regras e mensagens
+        return $validador;                                                                  //Retorna o validador
+    }
 
+    /**Método que realiza inserção de respostas de questionário
+     * @param $input Input entrada com dados do questionário
+     */
+    private function inserir($input)
+    {
+        $respostas = $input->get('campo_resposta');                                      //Pega lista de campo_resposta
+        $avaliacao = $input->get('avaliacao_id');                                        //Paga id da avaliação
+        $disciplinas = $input->get('disciplina_id');                                     //Pega lista de disciplina_id (ids das disciplinas)
+        $perguntas = $input->get('pergunta_id');                                         //Pega lista de pergunta_id (ids das perguntas)
         foreach ($respostas as $indice => $resposta):                                   //Percorre lista de respostas
             $r = new Resposta();                                                        //Cria nova resposta
             $r->pergunta_id = $perguntas[$indice];                                      //Passa id da pergunta
@@ -105,17 +114,5 @@ class QuestionariosController extends Controller
         endforeach;
         $aluno = Aluno::find(Input::get('aluno_id'));                                   //Busca aluno pelo id
         $aluno->avaliacoes()->attach($avaliacao);                                       //Relaciona aluno à avaliação
-    }
-    //Métodos do Web Service
-    //Método que busca avaliação aberta para o Web Service
-    public function buscarAberto()
-    {
-        return Avaliacao::aberta()->first();
-    }
-
-    //Método que salva respostas de questionário via Web Service
-    public function salvarRespostas()
-    {
-        $this->inserir();
     }
 }
