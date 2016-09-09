@@ -36,7 +36,7 @@
         <br/>
         <br/>
         @can('salvar', new Semestre())
-        <a href="{{ route('semestres.novo')}}" class="btn btn-default"> Novo Semestre</a>
+        <a href="{{ route('semestres.novo')}}" class="btn btn-primary light-blue darken-3"> Novo Semestre</a>
         @endcan
     </div>
 @endsection

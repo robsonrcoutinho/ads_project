@@ -23,7 +23,7 @@
 <div class="loggin">
 
     <div class="center">
-        <div class="card bordered z-depth-2" style="margin:8% auto; max-width:400px;">
+        <div class="card bordered z-depth-2" style="margin:2% auto; max-width:400px;">
             <div class="card-header #388e3c green darken-2 ">
                 <i class="material-icons medium white-text">perm_identity</i>
 

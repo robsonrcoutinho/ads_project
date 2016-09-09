@@ -50,30 +50,30 @@
 
 <!-- BI-->
 <div class="col 12">
-    <div class="row center">
-        <h1 class="header center orange-text">ADS </h1>
-        <h5 class="header col s12 light orange-text  ">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h5>
-    </div>
 
-    @if(Auth::guest())
-        <div class="row center">
-            <a href="{{route('users')}}" id="download-button"
-               class="btn-large waves-effect waves-light orange darken-1"> Login </a>
-        </div>
-    @else
-        @can('salvar', new Aviso())
-        <div class="row center">
-            <a href="{{route('avisos.novo')}}" id="download-button"
-               class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
-        </div>
-        @endcan
-    @endif
+                <div class="row center">
+                    <h1 class="header center orange-text">ADS </h1>
+                    <h5 class="header col s12 light orange-text  ">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+                </div>
+                @if(Auth::guest())
+                    <div class="row center">
+                        <a href="{{route('users')}}" id="download-button"
+                           class="btn-large waves-effect waves-light orange darken-1"> Login </a>
+                    </div>
+                @else
+                    @can('salvar', new Aviso())
+                    <div class="row center">
+                        <a href="{{route('avisos.novo')}}" id="download-button"
+                           class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+                    </div>
+                    @endcan
+                @endif
 </div>
 <!--BF -->
 <!-- Conteudo-->
 <div class="container">
+
     <div class="col 10 m10">
-        <div class="col m10 ">
 
             @if($errors->any())
                 <ul class="alert alert-warning">
@@ -139,13 +139,15 @@
                 <br/>
                 <a href="" onClick="history.go(-1)" class="btn">Voltar</a>
             @endif
+
+
         </div>
     </div>
 </div>
 
 <!--Fim Conteudo-->
-
 <footer class="page-footer #1b5e20 green darken-3">
+
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
@@ -153,8 +155,6 @@
 
                 <p class="grey-text text-lighten-4">Tecnologia em Análise e Desenvolvimento de Sistemas.<br>
                     Av. David Jonas Fadini, 300 - Stela Reis, Eunápolis - BA, CEP: 45823-035.</p>
-
-
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">CONTATO</h5>
@@ -181,11 +181,12 @@
     </div>
 
 </footer>
+
+
 <!--  Scripts-->
 {!! Html::script('js/jquery-2.1.1.min.js') !!}
 {!! Html::script('js/init.js') !!}
 {!! Html::script('materialize-css/js/materialize.min.js')!!}
-
 
 </body>
 </html>
