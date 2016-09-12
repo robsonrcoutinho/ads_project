@@ -17,19 +17,22 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
+            
                     <td>{{$user->name}}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
                     <td>
                         @can('alterar', $user)
-                        <a class="btn-flat disabled"
-                           href="{{ route('users.editar', ['id'=>$user->id]) }}">Editar</a>
+                         <a class="btn-floating blue"
+                           href="{{ route('users.editar', ['id'=>$user->id]) }}"<i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $user)
-                        <a class="btn-flat disabled btn-excluir"
-                           href="{{ route('users.excluir', ['id'=>$user->id]) }}">Excluir</a>
+                        <a class="btn-floating red"
+                           href="{{ route('users.excluir', ['id'=>$user->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
+
                     </td>
+
                 </tr>
             @endforeach
             </tbody>

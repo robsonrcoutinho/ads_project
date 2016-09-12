@@ -27,13 +27,13 @@
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a class="btn-flat disabled"
-                           href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">Editar</a>
+                        <a class="btn-floating blue"
+                           href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $documento)
                         @if($documento->id>5)
-                            <a class="btn-flat disabled btn-excluir"
-                               href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">Excluir</a>
+                            <a class="btn-floating red" 
+                               href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"><i class="material-icons">delete</i></a>
                         @endif
                         @endcan
                     </td>

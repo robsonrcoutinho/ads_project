@@ -28,14 +28,15 @@
                                class="btn-flat disabled">Curriculo</a>
                     @endif
                     <td>
-                        @can('alterar', $professor)
-                        <a class="btn-flat disabled"
-                           href="{{ route('professores.editar', ['id'=>$professor->id]) }}">Editar</a>
-                        @endcan
-                        @can('excluir', $professor)
-                        <a class="btn-flat disabled btn-excluir"
-                           href="{{ route('professores.excluir', ['id'=>$professor->id]) }}">Excluir</a>
-                        @endcan
+
+                            @can('alterar', $professor)
+                              <a class="btn-floating blue" href="{{ route('professores.editar', ['id'=>$professor->id]) }}" ><i class="material-icons">mode_edit</i></a>
+                            @endcan
+                              @can('excluir', $professor)
+                               <a class="btn-floating red"   href="{{ route('professores.excluir', ['id'=>$professor->id]) }}"><i class="material-icons">delete</i></a>
+                              @endcan    
+                            
+                          
                     </td>
                 </tr>
             @endforeach

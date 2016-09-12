@@ -11,10 +11,10 @@
                     <td>{{$enade->informacao}}</td>
                     <td>
                         @can('alterar', $enade)
-                        <a class="btn-flat disabled"  href="{{ route('enades.editar', ['id'=>$enade->id]) }}">Editar</a>
+                         <a class="btn-floating blue"   href="{{ route('enades.editar', ['id'=>$enade->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $enade)
-                        <a class="btn-flat disabled btn-excluir"  href="{{ route('enades.excluir', ['id'=>$enade->id]) }}">Excluir</a>
+                       <a class="btn-floating red" href="{{ route('enades.excluir', ['id'=>$enade->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
                     </td>
                 </tr>

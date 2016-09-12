@@ -15,19 +15,21 @@
             <tbody>
             @foreach($perguntas as $pergunta)
                 <tr>
+                
                     <td>{{$pergunta->enunciado}}</td>
                     <td>
                         @can('alterar', $pergunta)
-                        <a class="btn-flat disabled"
-                           href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}">Editar</a>
+                        <a class="btn-floating blue"
+                           href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $pergunta)
-                        <a class="btn-flat disabled btn-excluir"
-                           href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}">Excluir</a>
+                        <a class="btn-floating red" 
+                           href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
                     </td>
                 </tr>
             @endforeach
+            
             </tbody>
             {!! $perguntas->render() !!}
         </table>
