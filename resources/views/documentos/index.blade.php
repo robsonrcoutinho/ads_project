@@ -22,7 +22,7 @@
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
                             <a class="btn-flat disabled" target="_blank"
-                               href="{{route('documentos.arquivo',['id'=>$documento->id])}}">Arquivo</a>
+                               href="{{$documento->url}}">Arquivo</a>
                         @endif
                     </td>
                     <td>
