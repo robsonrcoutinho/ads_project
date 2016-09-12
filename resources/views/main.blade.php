@@ -27,6 +27,7 @@
                 <li><a href="{{route('sair')}}">Sair</a></li>
         </ul>
         <ul id="slide-out" class="side-nav ">
+
             <li><a  class="waves-effect waves-green active"  href="{{route('avaliacoes')}}">Avaliações</a></li>
             <li><a  class="waves-effect waves-green active"  href="{{route('avisos')}}">Avisos</a></li>
             <li><a  class="waves-effect waves-green active"  href="{{route('alunos')}}">Discentes</a></li>
