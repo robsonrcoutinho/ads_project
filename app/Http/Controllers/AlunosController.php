@@ -1,12 +1,11 @@
 <?php namespace adsproject\Http\Controllers;
 
 use adsproject\Aluno;
-use adsproject\Http\ManipuladorArquivo;
 use adsproject\Http\Requests\AlunoRequest;
-use PHPExcel_Reader_Excel2007;
 use Illuminate\Http\Request;
 use adsproject\Disciplina;
 use Validator;
+use Excel;
 
 /**Classe controller de alunos
  * Class AlunosController
@@ -120,13 +119,13 @@ class AlunosController extends Controller
             ['required' => 'O :attribute precisa ser passado.']);   //Valida arquivo passado
         /*Passa arquivo de alunos, null para nome da pasta onde deve ser salvo e alunos como nome
         do arquivo recebendo o caminho onde arquivo foi salvo ou null se não tiver arquivo*/
-        $arquivo = ManipuladorArquivo::salvar($request->file('arquivo'), null, 'alunos');
+        /*$arquivo = ManipuladorArquivo::salvar($request->file('arquivo'), null, 'alunos');
         if ($arquivo == null):                                      //Se arquivo nulo (não salvo)
             return redirect()->back()
                 ->withErrors(['Ocorreu um erro no arquivo']);       //Retorna a página de carregamento
-        endif;
-        $salvo = $this->salvarLista($arquivo);                      //Evoca método para salvar lista de alunos
-        ManipuladorArquivo::excluir($arquivo);                      //Solicita exclusão de arquivo
+        endif;*/
+        $salvo = $this->salvarLista($request->file('arquivo'));                      //Evoca método para salvar lista de alunos
+        //ManipuladorArquivo::excluir($arquivo);                      //Solicita exclusão de arquivo
         /*Redireciona para página inicial de alunos caso a lista tenha sido salva corretamente
         Ou para página anterior caso tenha dado erro ao tentar salvar lista de alunos*/
         return $salvo ? redirect()->route('alunos') :
@@ -138,7 +137,7 @@ class AlunosController extends Controller
      * @return bool verdadeiro (true) se não houve erro e falso (false) em contrário
      */
     private function salvarLista($arquivo)
-    {
+    {/*
         try {                                                           //Tratamento de excessão
             $leitor = new PHPExcel_Reader_Excel2007();                  //Instancia objeto para manipular arquivo Excel
             $planilha = $leitor->load($arquivo);                        //Passa a planilha
@@ -174,12 +173,108 @@ class AlunosController extends Controller
             return false;                                               //Retorna falso (false)
         }
         return true;                                                    //Retorna verdadeiro (true)
+*/
+        //\Maatwebsite\Excel\files\ExcelFile::c
+        //dd($arquivo);
+        try {
+            Excel::load($arquivo, function ($planilha) {
+                //$tabela = $planilha->setActiveSheetIndex(0);
+                //dd($planilha);
+                //$cont = 2;
+                $tabela = $planilha->toArray();
+                $linha=0;
+                //dd($tabela);
+                $alunos = array();                                          //Cria array para armazenar lista com ids de alunos
+                /*while ($tabela->cellExists('A' . $cont)):                   //Cria estrutura de repetição para percorrer tabela
+                    $matricula = $tabela->getCell('A' . $cont)->getValue(); //Pega matrícula do aluno
+                    //dd($matricula);
+                    $nome = $tabela->getCell('B' . $cont)->getValue();      //Pega nome do aluno
+                    $email = $tabela->getCell('C' . $cont)->getValue();     //Pega e-mail do aluno
+                    if ($this->validar($matricula, $nome, $email)):         //Verifica validade dos dados passados
+                        $aluno = $this->buscarOuCriar($matricula);          //Evoca método para buscar ou criar aluno
+                        $aluno->nome = $nome;                               //Passa nome do aluno
+                        $aluno->email = $email;                             //Passa e-mail do aluno
+                        $aluno->deleted_at = null;                          //Passa null para o atributo deleted_at
+                        $aluno->save();                                     //Salva aluno
+                        $alunos[] = $aluno->id;                             //Passa id do aluno para array
+                        $disciplinas = array();                             //cria um array para armazenar ids de disciplinas
+                        do {                                                //Cria estrutura de repetiação para incluir disciplinas
+                            //Evoca método para buscar disciplina por código, pegando id da mesma e passando para array
+                            $disciplinas[] = Disciplina::buscarPorCodigo($tabela->getCell('D' . $cont)->getValue())->first()->id;
+                            $cont++;                                        //Incrementa o contador
+                            //Mantém a estrutura de repetição enquanto existir linha seguinte e dados forem do mesmo aluno
+                        } while ($tabela->cellExists('A' . $cont) && $tabela->getCell('A' . $cont)->getValue() == null);
+                        $aluno->disciplinas()->sync($disciplinas);          //Relaciona disciplinas com aluno
+                    else:                                                   //Se dados do aluno não forem válidos
+                        $cont++;                                            //Incrementa o contador
+                    endif;
+                endwhile;                                                   //Encerra a estrutura de repetição
+                //Apaga lista de alunos que não consta no arquivo
+                Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());*/
+                while($linha<count($tabela)):
+                    /*dd($tabela[$linha]['matricula'],
+                        $tabela[$linha]['nome'],
+                        $tabela[$linha]['e_mail'],
+                        $tabela[$linha]['codigo_da_disciplina']);*/
+                    $matricula = $tabela[$linha]['matricula'];
+                    $nome = $tabela[$linha]['nome'];
+                    $email = $tabela[$linha]['e_mail'];
+                    if ($this->validar($matricula, $nome, $email)):
+                        $aluno = $this->buscarOuCriar($matricula);
+                        $aluno->nome = $nome;
+                        $aluno->email = $email;
+                        $aluno->deleted_at = null;
+                        $aluno->save();
+                        $alunos[] = $aluno->id;
+                        $disciplinas = array();
+                        do {
+                            $disciplinas[] = Disciplina::buscarPorCodigo($tabela[$linha]['codigo_da_disciplina'])->first()->id;
+                            $linha++;
+                        } while ($linha<count($tabela) && $tabela[$linha]['matricula'] == null);
+                        $aluno->disciplinas()->sync($disciplinas);
+                    else:
+                        $linha++;
+                    endif;
+                    //$linha++;
+                    endwhile;
+    Aluno::destroy(Aluno::all()->except($alunos)->lists('id')->toArray());
+            });
+        } catch (\Exception $e) {                                       //Caso ocorra um excessão
+            return false;                                               //Retorna falso (false)
+        }
+        return true;                                                    //Retorna verdadeiro (true)
     }
 
-    /**Método que busca aluno pela matrícula e, caso não encontre, cria um nome
-     * @param $matricula string matrícula do aluno a ser buscado ou criado
-     * @return Aluno|\Illuminate\Database\Eloquent\Model|null|static aluno
-     */
+
+    /*
+                $tabela = $reader->toArray();
+                //dd($tabela, $reader);
+
+
+
+
+
+
+
+
+
+                //$reader
+
+
+
+
+
+                //$reader->each(function($sheet){
+                   //dd($sheet->toArray());
+                //});
+            });
+
+        }
+
+        /**Método que busca aluno pela matrícula e, caso não encontre, cria um nome
+         * @param $matricula string matrícula do aluno a ser buscado ou criado
+         * @return Aluno|\Illuminate\Database\Eloquent\Model|null|static aluno
+         */
     private function buscarOuCriar($matricula)
     {
         $aluno = Aluno::buscarPorMatricula($matricula)->first(); //Busca aluno pela matrícula

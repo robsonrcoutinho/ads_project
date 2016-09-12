@@ -3,11 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>IFBA - ADS</title>
+    <title>COADS Eunápolis</title>
 
     <!-- CSS  -->
     {!! Html::style('//fonts.googleapis.com/icon?family=Material+Icons') !!}
     {!! Html::style('materialize-css/css/materialize.min.css')!!} {!! Html::style('css/style.css') !!}
+    <link rel="icon" href="{!! asset('images/icon_tab.png') !!}"/>
 
 </head>
 <body>
