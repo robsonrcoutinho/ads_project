@@ -24,7 +24,7 @@
                     <td>
                         @can('alterar', $user)
                          <a class="btn-floating blue"
-                           href="{{ route('users.editar', ['id'=>$user->id]) }}"<i class="material-icons">mode_edit</i></a>
+                           href="{{ route('users.editar', ['id'=>$user->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $user)
                         <a class="btn-floating red"
