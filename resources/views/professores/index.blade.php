@@ -24,8 +24,8 @@
                     <td>{{$professor->nome}}</td>
                     <td>
                         @if($professor->curriculo !=null && $professor->curriculo != '' )
-                            <a target="_blank" href="{{ $professor->curriculo }}"
-                               class="btn-flat disabled">Curriculo</a>
+                            <a class="btn-floating grey darken-3"   target="_blank" href="{{ $professor->curriculo }}"
+                               class="btn-flat disabled"><i class="material-icons" >description</i></a>
                     @endif
                     <td>
 

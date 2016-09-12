@@ -27,16 +27,16 @@
                 <li><a href="{{route('sair')}}">Sair</a></li>
         </ul>
         <ul id="slide-out" class="side-nav ">
-            <li><a href="{{route('avaliacoes')}}">Avaliações</a></li>
-            <li><a href="{{route('avisos')}}">Avisos</a></li>
-            <li><a href="{{route('alunos')}}">Discentes</a></li>
-            <li><a href="{{route('disciplinas')}}">Disciplinas</a></li>
-            <li><a href="{{route('professores')}}">Docentes</a></li>
-            <li><a href="{{route('documentos')}}">Documentos</a></li>
-            <li><a href="{{route('enades')}}">ENADE</a></li>
-            <li><a href="{{route('semestres')}}">Semestres</a></li>
-            <li><a href="{{route('users')}}">Gerenciar Conta</a></li>
-            <li><a href="{{route('sair')}}">Sair</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('avaliacoes')}}">Avaliações</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('avisos')}}">Avisos</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('alunos')}}">Discentes</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('disciplinas')}}">Disciplinas</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('professores')}}">Docentes</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('documentos')}}">Documentos</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('enades')}}">ENADE</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('semestres')}}">Semestres</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('users')}}">Gerenciar Conta</a></li>
+            <li><a  class="waves-effect waves-green active"  href="{{route('sair')}}">Sair</a></li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
         @endif

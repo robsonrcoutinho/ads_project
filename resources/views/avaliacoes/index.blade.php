@@ -31,8 +31,8 @@
                            href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
                         @can('relatorio', $avaliacao)
-                        <a class="btn-flat disabled" target="_blank"
-                           href="{{ route('avaliacoes.relatorio', ['id'=>$avaliacao->id]) }}">Relatório</a>
+                        <a class="btn-floating grey darken-3"   target="_blank"
+                           href="{{ route('avaliacoes.relatorio', ['id'=>$avaliacao->id]) }}"><i class="material-icons" >description</i></a>
                         @endcan
                     </td>
                 </tr>

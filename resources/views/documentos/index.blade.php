@@ -21,8 +21,8 @@
                     <td>{{$documento->titulo}}</td>
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
-                            <a class="btn-flat disabled" target="_blank"
-                               href="{{$documento->url}}">Arquivo</a>
+                            <a class="btn-floating grey darken-3" target="_blank"
+                               href="{{$documento->url}}"><i class="material-icons">visibility</i></a>
                         @endif
                     </td>
                     <td>
