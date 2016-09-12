@@ -28,13 +28,14 @@
                     <td>
                         @if($disciplina->ementa !=null && $disciplina->ementa != '' )
                             <a class="btn-flat disabled" target="_blank"
-                               href="{{ route('disciplinas.ementa',['id'=>$disciplina->id]) }}">Ementa</a>
+                               href="{{$disciplina->ementa}}">Ementa</a>
+
                         @endif
                     </td>
                     <td>
                         @if($disciplina->plano_ensino !=null && $disciplina->plano_ensino != '' )
                             <a class="btn-flat disabled" target="_blank"
-                               href="{{route('disciplinas.planoEnsino',['id'=>$disciplina->id])}}">Plano de
+                               href="{{$disciplina->plano_ensino}}">Plano de
                                 Ensino</a>
                         @endif
                     </td>
@@ -47,11 +48,12 @@
                     </td>
                     <td>
                         @can('alterar', $disciplina)
-                       <a class="btn-floating blue" href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}"><i class="material-icons">mode_edit</i></a>
+                        <a class="btn-floating blue"
+                           href="{{ route('disciplinas.editar', ['id'=>$disciplina->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $disciplina)
-                        <a class="btn-floating red"   href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"
-                           class="btn-excluir"><i class="material-icons">delete</i></a>
+                        <a class="btn-floating red btn-excluir"
+                           href="{{ route('disciplinas.excluir', ['id'=>$disciplina->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
                     </td>
                 </tr>

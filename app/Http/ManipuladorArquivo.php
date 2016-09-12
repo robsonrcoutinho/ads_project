@@ -10,8 +10,8 @@ class ManipuladorArquivo
 {
     /** Método que salva arquivo no servidor
      * @param $arquivo arquivo a ser salvo
-     * @param $pasta nome da pasta em que arquivo deverá ser salvo
-     * @param $nome nome do arquivo (sem extensão)
+     * @param $pasta string nome da pasta em que arquivo deverá ser salvo
+     * @param $nome string nome do arquivo (sem extensão)
      * @return null|string caminho do arquivo ou null se arquivo não tiver sido passado
      */
     public static function salvar($arquivo, $pasta, $nome)
@@ -20,7 +20,8 @@ class ManipuladorArquivo
             $nome .= '.' . $arquivo->getClientOriginalExtension();  //Acrescenta ao nome do arquivo sua extensão
             // mudança de path para que o arquivo possa ser acessado publicamente
             // atraves da url recebida
-            $diretorio = 'public';//storage_path() . '/public/' . $pasta;         //Define o local onde arquivo será salvo
+            $diretorio = 'public/' . $pasta;                        //Define o local onde arquivo será salvo
+            //dd($diretorio);
             $arquivo->move($diretorio, $nome);                      //Salva arquivo
             return $diretorio . '/' . $nome;                        //Retorna o caminho do arquivo
         endif;
@@ -28,7 +29,7 @@ class ManipuladorArquivo
     }
 
     /** Método que abre ou baixa arquivo
-     * @param $arquivo caminho para arquivo
+     * @param $arquivo string caminho para arquivo
      * @return \Illuminate\Http\Response abre ou baixa arquivo
      */
     public static function abrir($arquivo)
@@ -44,7 +45,7 @@ class ManipuladorArquivo
     }
 
     /** Método que exclui arquivo
-     * @param $arquivo caminho para arquivo a ser excluído
+     * @param $arquivo string caminho para arquivo a ser excluído
      */
     public static function excluir($arquivo)
     {
