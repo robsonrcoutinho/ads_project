@@ -115,10 +115,9 @@ class DocumentosController extends Controller
     {
         return Documento::find($id);
     }
-
-    public function buscarPorTitulo($titulo)
+/*    public function buscarPorTitulo($titulo)
     {
         $documentos = Documento::where('titulo', $titulo)->get();
         return $documentos;
-    }
+    }*/
 }
