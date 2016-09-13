@@ -31,10 +31,8 @@
                            href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"><i class="material-icons">mode_edit</i></a>
                         @endcan
                         @can('excluir', $documento)
-                        @if($documento->id>5)
-                            <a class="btn-floating red" 
-                               href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"><i class="material-icons">delete</i></a>
-                        @endif
+                        <a class="btn-floating red btn-excluir"
+                           href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"><i class="material-icons">delete</i></a>
                         @endcan
                     </td>
                 </tr>

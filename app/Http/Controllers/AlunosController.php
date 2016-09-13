@@ -117,7 +117,14 @@ class AlunosController extends Controller
         $this->validate($request,
             ['arquivo' => 'required'],
             ['required' => 'O :attribute precisa ser passado.']);   //Valida arquivo passado
-        $salvo = $this->salvarLista($request->file('arquivo'));                      //Evoca método para salvar lista de alunos
+        $arquivo = $request->file('arquivo');                       //Cria variável de arquivo
+        //Executa método para criar validador de extensão
+        $validador = $this->validarExtensao($arquivo->getClientOriginalExtension());
+        if ($validador->fails()): //Verifica se deu erro na validação
+            //Redireciona para página anterior com erros
+            return redirect()->back()->withInput()->withErrors($validador);
+        endif;
+        $salvo = $this->salvarLista($arquivo);     //Evoca método para salvar lista de alunos
         /*Redireciona para página inicial de alunos caso a lista tenha sido salva corretamente
         ou para página anterior caso tenha dado erro ao tentar salvar lista de alunos*/
         return $salvo ? redirect()->route('alunos') :
@@ -195,5 +202,17 @@ class AlunosController extends Controller
             'email' => 'email'];                                //Estabelece as regras de verificação
         $validador = Validator::make($valores, $regras);        //Cria validador
         return !$validador->fails();                            //Verifica se houve falha na validação e retorna o contrário
+    }
+
+    /**Método que valida extensão de arquvo
+     * @param $extensao string com extensão do arquivo a ser validado
+     * @return \Illuminate\Validation\Validator
+     */
+    private function validarExtensao($extensao)
+    {
+        $valores = ['extensao' => $extensao];                           //Cria array de valores
+        $regras = ['extensao' => 'in:xls,xlsx,xlsm,xlsb,xltx,xltm'];    //Estabelece as regras de verificação
+        $mensagens = ['extensao.in' => utf8_encode('Formato de arquivo não suportado.')];//Cria mensagem personalizada
+        return Validator::make($valores, $regras, $mensagens);          //Cria e retorna validador
     }
 }

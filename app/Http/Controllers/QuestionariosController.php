@@ -40,8 +40,7 @@ class QuestionariosController extends Controller
         if ($avaliacao == null):                                                            //Se avaliação for nula (nenhuma avaliação em abaerto)
             $this->mensagem('Nenhuma avaliação disponível no momento', '/');                //Executa método de mensagem
         endif;
-        //Busca aluno pelo nome e e-mail do usuário
-        $aluno = Aluno::query()->where('nome', $user->name)->where('email', $user->email)->first();
+        $aluno = Aluno::buscarPorNomeEEmail($user->name, $user->email)->first();            //Busca aluno pelo nome e e-mail do usuário
         if ($aluno == null || $aluno->disciplinas()->get()->isEmpty()):                     //Verifica se aluno não tem disciplinas associadas
             $this->mensagem('Aluno impossibilitado de realizar avaliação.', '/');           //Executa método de mensagem
         endif;
@@ -91,8 +90,7 @@ class QuestionariosController extends Controller
             $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
         endforeach;
         $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
-        $validador = Validator::make($respostas, $regras, $mensagens);                      //Cria validador passando respostas, regras e mensagens
-        return $validador;                                                                  //Retorna o validador
+        return Validator::make($respostas, $regras, $mensagens);                      //Cria e retorna validador passando respostas, regras e mensagens
     }
 
     /**Método que realiza inserção de respostas de questionário
