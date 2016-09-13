@@ -163,22 +163,30 @@ class ApiController extends Controller
         return response()->json(['admin' => $user]);
     }
 
-    public function respostaQuestionario(Request $request)
-    {
-        $respostas = json_decode($request->get('respostas'), true);
+    public function respostaQuestionario(Request $request) {
         $email = $request->get('email');
-        $avaliacao = null;
-        foreach ($respostas as $resposta):
-            $r = new Resposta();
-            //$email = $request->get('email');
-            $r->pergunta_id = $resposta['id_resposta'];
-            $r->campo_resposta = $resposta['campo_resposta'];
-            $r->avaliacao_id = $resposta['id_avaliacao'];
-            $avaliacao = $resposta['id_avaliacao'];
-            $r->disciplina_id = $resposta['id_disciplina'];
-            $r->save();
-        endforeach;
         $aluno = Aluno::query()->where('email', $email)->first();
-        $aluno->avaliacoes()->attach($avaliacao);
+        $avaliacao = Avaliacao::aberta()->first();
+        if ($aluno->avaliacoes()->get()->contains($avaliacao)) {
+            return response()->json('feita');
+        }else {
+            $respostas = json_decode($request->get('respostas'), true);
+            $avaliacao = null;
+            if ($respostas != null) {
+                foreach ($respostas as $resposta):
+                    $r = new Resposta();
+                    $r->pergunta_id = $resposta['id_resposta'];
+                    $r->campo_resposta = $resposta['campo_resposta'];
+                    $r->avaliacao_id = $resposta['id_avaliacao'];
+                    $avaliacao = $resposta['id_avaliacao'];
+                    $r->disciplina_id = $resposta['id_disciplina'];
+                    $r->save();
+                endforeach;
+                $aluno = Aluno::query()->where('email', $email)->first();
+                $aluno->avaliacoes()->attach($avaliacao);
+                return response()->json('sucesso');
+            }
+        }
+        return response()->json('erro');
     }
 }
