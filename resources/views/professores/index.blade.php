@@ -24,19 +24,24 @@
                     <td>{{$professor->nome}}</td>
                     <td>
                         @if($professor->curriculo !=null && $professor->curriculo != '' )
-                            <a class="btn-floating grey darken-3"   target="_blank" href="{{ $professor->curriculo }}"
-                               class="btn-flat disabled"><i class="material-icons" >description</i></a>
+                            <a class="btn-floating grey darken-3" target="_blank"
+                               href="{{ $professor->curriculo }}">
+                                <i class="material-icons">description</i>
+                            </a>
                     @endif
                     <td>
-
-                            @can('alterar', $professor)
-                              <a class="btn-floating blue" href="{{ route('professores.editar', ['id'=>$professor->id]) }}" ><i class="material-icons">mode_edit</i></a>
-                            @endcan
-                              @can('excluir', $professor)
-                               <a class="btn-floating red"   href="{{ route('professores.excluir', ['id'=>$professor->id]) }}"><i class="material-icons">delete</i></a>
-                              @endcan    
-                            
-                          
+                        @can('alterar', $professor)
+                        <a class="btn-floating blue"
+                           href="{{ route('professores.editar', ['id'=>$professor->id]) }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+                        @endcan
+                        @can('excluir', $professor)
+                        <a class="btn-floating red btn-excluir"
+                           href="{{ route('professores.excluir', ['id'=>$professor->id]) }}">
+                            <i class="material-icons">delete</i>
+                        </a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
