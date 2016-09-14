@@ -20,14 +20,16 @@
             @foreach($semestres as $semestre)
 
                 <tr>
-                
+
                     <td>{{$semestre->codigo}}</td>
                     <td>{{ date('d/m/Y', strtotime($semestre->inicio)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($semestre->termino)) }}</td>
                     <td>
                         @can('alterar', $semestre)
-                        <a class="btn-floating blue" 
-                           href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}"><i class="material-icons">mode_edit</i></a>
+                        <a class="btn-floating blue"
+                           href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
                         @endcan
                     </td>
                 </tr>

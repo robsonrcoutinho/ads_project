@@ -7,16 +7,20 @@
         {!! $avisos->render() !!}
         @forelse($avisos as $aviso)
             <fieldset>
-                <legend><label title="titulo">{{$aviso->titulo}}</label></legend>
+                <legend>{{$aviso->titulo}}</legend>
                 <label>{{'Data/Hora: '.date('d/m/Y H:i:s', strtotime($aviso->created_at))}}</label>
                 <textarea readonly class="materialize-textarea">{{$aviso->mensagem}}</textarea>
                 @can('alterar', $aviso)
                 <a class="btn-floating blue"
-                   href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}"><i class="material-icons">mode_edit</i></a>
+                   href="{{ route('avisos.editar', ['id'=>$aviso->id]) }}">
+                    <i class="material-icons">mode_edit</i>
+                </a>
                 @endcan
                 @can('excluir', $aviso)
-                <a class="btn-floating red"
-                   href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}"><i class="material-icons">delete</i></a>
+                <a class="btn-floating red btn-excluir"
+                   href="{{ route('avisos.excluir', ['id'=>$aviso->id]) }}">
+                    <i class="material-icons">delete</i>
+                </a>
                 @endcan
             </fieldset>
         @empty

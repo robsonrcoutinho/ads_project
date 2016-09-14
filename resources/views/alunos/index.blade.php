@@ -29,11 +29,16 @@
                     @endif
                     <td>
                         @can('alterar', $aluno)
-                        <a class="btn-floating blue"href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}"><i class="material-icons">mode_edit</i></a>
+                        <a class="btn-floating blue"
+                           href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
                         @endcan
                         @can('excluir', $aluno)
-                        <a class="btn-floating red"
-                           href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}"><i class="material-icons">delete</i></a>
+                        <a class="btn-floating red btn-excluir"
+                           href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}">
+                            <i class="material-icons">delete</i>
+                        </a>
                         @endcan
                     </td>
                 </tr>

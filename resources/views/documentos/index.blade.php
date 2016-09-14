@@ -22,17 +22,23 @@
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
                             <a class="btn-floating grey darken-3" target="_blank"
-                               href="{{$documento->url}}"><i class="material-icons">visibility</i></a>
+                               href="{{$documento->url}}">
+                                <i class="material-icons">visibility</i>
+                            </a>
                         @endif
                     </td>
                     <td>
                         @can('alterar', $documento)
                         <a class="btn-floating blue"
-                           href="{{ route('documentos.editar', ['id'=>$documento->id]) }}"><i class="material-icons">mode_edit</i></a>
+                           href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
                         @endcan
                         @can('excluir', $documento)
                         <a class="btn-floating red btn-excluir"
-                           href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}"><i class="material-icons">delete</i></a>
+                           href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">
+                            <i class="material-icons">delete</i>
+                        </a>
                         @endcan
                     </td>
                 </tr>

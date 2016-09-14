@@ -20,11 +20,15 @@
                     <td>
                         @can('alterar', $pergunta)
                         <a class="btn-floating blue"
-                           href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}"><i class="material-icons">mode_edit</i></a>
+                           href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
                         @endcan
                         @can('excluir', $pergunta)
-                        <a class="btn-floating red" 
-                           href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}"><i class="material-icons">delete</i></a>
+                        <a class="btn-floating red btn-excluir"
+                           href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}">
+                            <i class="material-icons">delete</i>
+                        </a>
                         @endcan
                     </td>
                 </tr>

@@ -30,7 +30,7 @@
                         </a>
                         @endcan
                         @can('excluir', $avaliacao)
-                        <a class="btn-floating red"
+                        <a class="btn-floating red btn-excluir"
                            href="{{ route('avaliacoes.excluir', ['id'=>$avaliacao->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>
