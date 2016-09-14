@@ -34,7 +34,7 @@ class QuestionariosController extends Controller
         $user = Auth::getUser();                                                            //Pega usuário logado
         if ($user->role != 'aluno'):                                                        //Verifica se usuário não é aluno
             $rota = $user->role == 'admin' ? route('avaliacoes') : '/';                     //Atribui valor de rota
-            $this->mensagem('Para acessar essa página usuário precisa ser aluno.', $rota);   //Executa método de mensagem
+            $this->mensagem('Para acessar essa página usuário precisa ser aluno.', $rota);  //Executa método de mensagem
         endif;
         $avaliacao = Avaliacao::aberta()->first();                                          //Busca avaliação em aberto
         if ($avaliacao == null):                                                            //Se avaliação for nula (nenhuma avaliação em abaerto)
@@ -90,7 +90,7 @@ class QuestionariosController extends Controller
             $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
         endforeach;
         $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
-        return Validator::make($respostas, $regras, $mensagens);                      //Cria e retorna validador passando respostas, regras e mensagens
+        return Validator::make($respostas, $regras, $mensagens);                            //Cria e retorna validador passando respostas, regras e mensagens
     }
 
     /**Método que realiza inserção de respostas de questionário
@@ -98,10 +98,10 @@ class QuestionariosController extends Controller
      */
     private function inserir($input)
     {
-        $respostas = $input->get('campo_resposta');                                      //Pega lista de campo_resposta
-        $avaliacao = $input->get('avaliacao_id');                                        //Paga id da avaliação
-        $disciplinas = $input->get('disciplina_id');                                     //Pega lista de disciplina_id (ids das disciplinas)
-        $perguntas = $input->get('pergunta_id');                                         //Pega lista de pergunta_id (ids das perguntas)
+        $respostas = $input->get('campo_resposta');                                     //Pega lista de campo_resposta
+        $avaliacao = $input->get('avaliacao_id');                                       //Paga id da avaliação
+        $disciplinas = $input->get('disciplina_id');                                    //Pega lista de disciplina_id (ids das disciplinas)
+        $perguntas = $input->get('pergunta_id');                                        //Pega lista de pergunta_id (ids das perguntas)
         foreach ($respostas as $indice => $resposta):                                   //Percorre lista de respostas
             $r = new Resposta();                                                        //Cria nova resposta
             $r->pergunta_id = $perguntas[$indice];                                      //Passa id da pergunta
@@ -110,7 +110,7 @@ class QuestionariosController extends Controller
             $r->disciplina_id = $disciplinas[$indice];                                  //Passa id da disciplina (disciplina_id)
             $r->save();                                                                 //Salva a resposta
         endforeach;
-        $aluno = Aluno::find(Input::get('aluno_id'));                                   //Busca aluno pelo id
+        $aluno = Aluno::find($input->get('aluno_id'));                                  //Busca aluno pelo id
         $aluno->avaliacoes()->attach($avaliacao);                                       //Relaciona aluno à avaliação
     }
 }
