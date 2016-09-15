@@ -11,11 +11,9 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('main');
 });
-
 
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {
@@ -68,9 +66,9 @@ Route::group(['prefix' => 'disciplinas', 'where' => ['id' => '[0-9]+']], functio
 //Rota para alterar disciplina
     Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'disciplinas.alterar', 'uses' => 'DisciplinasController@alterar']);
 //Rota para abrir arquivo de ementa
-    Route::get('{id}/ementa', ['as' => 'disciplinas.ementa', 'uses' => 'DisciplinasController@ementa']);
+//    Route::get('{id}/ementa', ['as' => 'disciplinas.ementa', 'uses' => 'DisciplinasController@ementa']);
 //Rota para abrir arquivo de plano de ensino
-    Route::get('{id}/planoEnsino', ['as' => 'disciplinas.planoEnsino', 'uses' => 'DisciplinasController@planoEnsino']);
+//    Route::get('{id}/planoEnsino', ['as' => 'disciplinas.planoEnsino', 'uses' => 'DisciplinasController@planoEnsino']);
 });
 //Rotas de documentos
 Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function () {
@@ -87,7 +85,7 @@ Route::group(['prefix' => 'documentos', 'where' => ['id' => '[0-9]+']], function
 //Rota para alterar documento
     Route::put('{id}/alterar', ['middleware' => 'check.user.role:admin', 'as' => 'documentos.alterar', 'uses' => 'DocumentosController@alterar']);
     //Rota para abrir arquivo de documento
-    Route::get('{id}/arquivo', ['as' => 'documentos.arquivo', 'uses' => 'DocumentosController@arquivo']);
+//    Route::get('{id}/arquivo', ['as' => 'documentos.arquivo', 'uses' => 'DocumentosController@arquivo']);
 });
 
 //Rotas de semestres

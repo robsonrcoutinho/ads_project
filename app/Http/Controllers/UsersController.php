@@ -91,7 +91,6 @@ class UsersController extends Controller
             return redirect()->route('users');                  //Redireciona para página inicial de usuários
         endif;
         return redirect('/');                                   //Redireciona para página inicial do sistema
-
     }
 
     /**Método que exclui usuário

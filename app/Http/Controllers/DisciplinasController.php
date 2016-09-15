@@ -28,7 +28,7 @@ class DisciplinasController extends Controller
     public function index()
     {
         $disciplinas = Disciplina::orderBy('nome')
-            ->paginate(config('constantes.paginacao'));                     //Busca disciplinas em ordem alfabética
+            ->paginate(config('constantes.paginacao'));                     //Busca disciplinas em ordem alfabética e pagina
         return view('disciplinas.index', ['disciplinas' => $disciplinas]);  //Redireciona à página inicial de disciplinas
     }
 
@@ -145,36 +145,24 @@ class DisciplinasController extends Controller
         Disciplina::find($id)->delete();                                //Busca disciplina pelo id e exclui
         return redirect()->route('disciplinas');                        //Redireciona à página inicial de disciplinas
     }
-    //Métodos do Web Service
-    //Método que busca todas as disciplinas para o Web Service
-    public function buscarTodos()
-    {
-        return Disciplina::all();
-    }
-
-    //Método que busca disciplina por id para o Web Service
-    public function buscarPorId($id)
-    {
-        return Disciplina::find($id);
-    }
 
     /**
      * @param $id int identificador da disciplina que contém a ementa
      * @return \Illuminate\Http\Response abre ou baixa arquivo de ementa
      */
-    public function ementa($id)
+    /*public function ementa($id)
     {
         $disciplina = Disciplina::find($id);                            //Busca disciplina pelo id
         return ManipuladorArquivo::abrir($disciplina->ementa);          //Usa o manipulador de arquivo para abrir ou baixar
-    }
+    }*/
 
     /**
      * @param $id int identificador da disciplina que contém o plano de ensino
      * @return \Illuminate\Http\Response abre ou baixa arquivo do plano de ensino
      */
-    public function planoEnsino($id)
+    /*public function planoEnsino($id)
     {
         $disciplina = Disciplina::find($id);                            //Busca disciplina pelo id
         return ManipuladorArquivo::abrir($disciplina->plano_ensino);    //Usa o manipulador de arquivo para abrir ou baixar
-    }
+    }*/
 }

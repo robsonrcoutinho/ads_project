@@ -12,9 +12,7 @@ use adsproject\Professor;
 use adsproject\Semestre;
 use adsproject\Pergunta;
 use Auth;
-
-//use mPDF;
-
+use mPDF;
 /**Classe controller de avaliações
  * Class AvaliacoesController
  * @package adsproject\Http\Controllers
@@ -121,24 +119,11 @@ class AvaliacoesController extends Controller
             //Passa para variável apenas disciplinas do professor que estão no semestre
             $disciplinas = $professor->disciplinas->intersect($disciplinas);
         endif;
-        $mpdf = new \mPDF();                                            //Instancia gerador de PDF
+        $mpdf = new mPDF();                                             //Instancia gerador de PDF
         //Passa arquivo css para gerador de PDF
         $mpdf->WriteHTML(file_get_contents('materialize-css/css/materialize.min.css'), 1);
         //Passa view para geração de PDF passando avaliação e disciplinas
         $mpdf->WriteHTML(utf8_encode(view('avaliacoes.relatorio', ['avaliacao' => $avaliacao, 'disciplinas' => $disciplinas])));
         $mpdf->Output();                                                //Gera PDF
-    }
-
-    //Metodos do Web Service
-    //Metodo que busca todos as avaliacoes para o Web Service
-    public function buscarTodos()
-    {
-        return Avaliacao::all();
-    }
-
-    //Metodo que busca avaliacao por id para o Web Service
-    public function buscarPorId($id)
-    {
-        return Avaliacao::find($id);
     }
 }

@@ -51,7 +51,7 @@ class ProfessoresController extends Controller
     }
 
     /**Método que redireciona para página de edição de professor
-     * @param $id identificador do professor a ser editado
+     * @param $id int identificador do professor a ser editado
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editar($id)
@@ -62,7 +62,7 @@ class ProfessoresController extends Controller
 
     /**Método que realiza alteração de dados de professor
      * @param ProfessorRequest $request relação de dados do professor a ser alterado
-     * @param $id identificador do aluno a ser alterado
+     * @param $id int identificador do aluno a ser alterado
      * @return \Illuminate\Http\RedirectResponse
      */
     public function alterar(ProfessorRequest $request, $id)
@@ -74,7 +74,7 @@ class ProfessoresController extends Controller
     }
 
     /**Método que exclui professor
-     * @param $id identificador do professor a ser excluído
+     * @param $id int identificador do professor a ser excluído
      * @return \Illuminate\Http\RedirectResponse
      */
     public function excluir($id)
@@ -82,31 +82,4 @@ class ProfessoresController extends Controller
         Professor::find($id)->delete();                                     //Busca professor por id e exclui
         return redirect()->route('professores');                            //Redireciona à página inicial de professores
     }
-
-    //Métodos do Web Service
-    //Método que busca todos os professores para o Web Service
-    public function buscarTodos()
-    {
-        return Professor::all();
-    }
-
-    //Método que busca professor por id para o Web Service
-    public function buscarPorId($id)
-    {
-        return Professor::find($id);
-    }
-    /* //Método que cria um novo professor por meio do Web Service
-     public function criar(){
-         $professor = new Professor();
-         $professor->fill(Input::all());
-         return $professor->save();
-      }
-     //Método que modifica dados do professor por meio do Web Service
-     public function modificar($id){
-         return Professor::find($id)->update(Input::all());
-     }
-     //Método que remove professor por meio do Web Service
-     public function remover($id){
-         return Professor::find($id)->delete();
-     }*/
 }

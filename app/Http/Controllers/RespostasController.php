@@ -32,10 +32,11 @@ class RespostasController extends Controller
      * @param $avaliacao_id int identificador da avaliação
      * @param $pergunta_id int identificador da pergunta
      * @param $disciplina_id int identificador da disciplina
-     * @return mixed
+     * @return mixed respostas da pergunta especificada
      */
     public static function buscarEspecificas($avaliacao_id, $pergunta_id, $disciplina_id)
     {
-        return Resposta::especificas($avaliacao_id, $pergunta_id, $disciplina_id);  //Busca respostas com os dados especificados
+        //Busca respostas com os dados especificados, passando id da avaliação, da pergunta e da disciplina
+        return Resposta::especificas($avaliacao_id, $pergunta_id, $disciplina_id);
     }
 }

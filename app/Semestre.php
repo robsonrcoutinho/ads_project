@@ -3,6 +3,7 @@
 namespace adsproject;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**Classe modelo de Semestre
  * Class Semestre
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Semestre extends Model
 {
+    use SoftDeletes;
+
     protected $table = "semestres";
     protected $fillable = ['codigo', 'inicio', 'termino'];
     protected $softDelete = true;

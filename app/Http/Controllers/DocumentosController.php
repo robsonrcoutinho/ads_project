@@ -98,26 +98,9 @@ class DocumentosController extends Controller
     /**Método que abre ou baixa arquivo de doumento
      * @param $id int identificador do documento
      */
-    public function arquivo($id)
-    {
-        $documento = Documento::find($id);                         //Busca documento pelo id
-        return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
-    }
-    //Métodos do Web Service
-    //Método que busca todos os documentos para o Web Service
-    public function buscarTodos()
-    {
-        return Documento::all();
-    }
-
-    //Método que busca documento por id para o Web Service
-    public function buscarPorId($id)
-    {
-        return Documento::find($id);
-    }
-/*    public function buscarPorTitulo($titulo)
-    {
-        $documentos = Documento::where('titulo', $titulo)->get();
-        return $documentos;
-    }*/
+    /* public function arquivo($id)
+     {
+         $documento = Documento::find($id);                         //Busca documento pelo id
+         return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
+     }*/
 }

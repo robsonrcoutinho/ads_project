@@ -54,7 +54,7 @@ class AuthController extends Controller
         endif;
         return Validator::make($data, [
             'name' => $roleNome,
-            'email' => 'required|email|max:255|unique:users'.$roleEmail,
+            'email' => 'required|email|max:255|unique:users' . $roleEmail,
             'password' => 'required|confirmed|min:6',
             'role' => 'required',
         ]);
@@ -93,8 +93,4 @@ class AuthController extends Controller
             return redirect('auth/login')->withErrors($validador)->withInput()->with('erro_autenticacao', 1);
         }
     }
-
-
-
-
 }

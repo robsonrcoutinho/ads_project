@@ -45,7 +45,7 @@ class AvisosController extends Controller
      */
     public function salvar(AvisoRequest $request)
     {
-       // $deviceToken = 'eMVP__sUxwM:APA91bEKtlA64h9dSceW7cY_xbAudJaawJp5z1ReTpD_zGCohtv2TtZtCG_UnMAQ4bCNblsVUeLcorF2ROSY713vqaoYxF2XHDuWJKNkJcSP-tk8PxfwFqBG7vyifBWNyN1mL34k4q4z';
+        // $deviceToken = 'eMVP__sUxwM:APA91bEKtlA64h9dSceW7cY_xbAudJaawJp5z1ReTpD_zGCohtv2TtZtCG_UnMAQ4bCNblsVUeLcorF2ROSY713vqaoYxF2XHDuWJKNkJcSP-tk8PxfwFqBG7vyifBWNyN1mL34k4q4z';
         Aviso::create($request->all());                         //Cria novo aviso com dados passados
 
         /*PushNotification::app('ADSNotify')
@@ -84,19 +84,6 @@ class AvisosController extends Controller
     {
         Aviso::find($id)->delete();                             //Busca aviso pelo id e exclui
         return redirect()->route('avisos');                     //Redireciona para página inicial de avisos
-    }
-    //Métodos do Web Service
-    //Método que busca todos os avisos para o Web Service
-    public function buscarTodos()
-    {
-        $this->removerAntigos();
-        return Aviso::all();
-    }
-
-    //Método que busca aviso por id para o Web Service
-    public function buscarPorId($id)
-    {
-        return Aviso::find($id);
     }
 
     /**
