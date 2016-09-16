@@ -1,7 +1,6 @@
 <?php
 
 namespace adsproject\Http;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**Classe responsável por manipular arquivos
  * Class ManipuladorArquivo
@@ -10,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ManipuladorArquivo
 {
     /** Método que salva arquivo no servidor
-     * @param $arquivo UploadedFile arquivo a ser salvo
+     * @param $arquivo \Symfony\Component\HttpFoundation\File\UploadedFile arquivo a ser salvo
      * @param $pasta string nome da pasta em que arquivo deverá ser salvo
      * @param $nome string nome do arquivo (sem extensão)
      * @return null|string caminho do arquivo ou null se arquivo não tiver sido passado
@@ -19,8 +18,6 @@ class ManipuladorArquivo
     {
         if ($arquivo != null):                                      //Se arquivo passado não for nulo
             $nome .= '.' . $arquivo->getClientOriginalExtension();  //Acrescenta ao nome do arquivo sua extensão
-            // mudança de path para que o arquivo possa ser acessado publicamente
-            // atraves da url recebida
             $diretorio = 'public/' . $pasta;                        //Define o local onde arquivo será salvo
             $arquivo->move($diretorio, $nome);                      //Salva arquivo
             return $diretorio . '/' . $nome;                        //Retorna o caminho do arquivo
@@ -41,6 +38,7 @@ class ManipuladorArquivo
             'Content-Type' => 'application/' . $ext,
             'Content-Disposition' => 'inline; filename=' . $nome
         ];                                                          //Passa dados para cabeçalho
+        //Abre ou baixa arquivo
         return response()->make(file_get_contents($arquivo), 200, $cabecalho);
     }
 
