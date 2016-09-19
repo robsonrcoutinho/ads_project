@@ -31,13 +31,13 @@
                     @endif
                     <td>
                         @can('alterar', $professor)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('professores.editar', ['id'=>$professor->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $professor)
-                        <a class="btn-floating red btn-excluir"
+                        <a class="btn-floating red btn-excluir tooltipped" data-tooltip="Excluir"
                            href="{{ route('professores.excluir', ['id'=>$professor->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>

@@ -21,7 +21,7 @@
                     <td>{{$documento->titulo}}</td>
                     <td>
                         @if($documento->url !=null && $documento->url != '' )
-                            <a class="btn-floating grey darken-3" target="_blank"
+                            <a class="btn-floating grey darken-3 tooltipped" data-tooltip="Documento" target="_blank"
                                href="{{$documento->url}}">
                                 <i class="material-icons">visibility</i>
                             </a>
@@ -29,13 +29,13 @@
                     </td>
                     <td>
                         @can('alterar', $documento)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('documentos.editar', ['id'=>$documento->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $documento)
-                        <a class="btn-floating red btn-excluir"
+                        <a class="btn-floating red btn-excluir tooltipped" data-tooltip="Excluir"
                            href="{{ route('documentos.excluir', ['id'=>$documento->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>

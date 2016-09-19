@@ -23,13 +23,13 @@
                     <td>{{ $user->role }}</td>
                     <td>
                         @can('alterar', $user)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue  tooltipped" data-tooltip="Editar"
                            href="{{ route('users.editar', ['id'=>$user->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $user)
-                        <a class="btn-floating red btn-excluir"
+                        <a class="btn-floating red btn-excluir tooltipped" data-tooltip="Excluir"
                            href="{{ route('users.excluir', ['id'=>$user->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>

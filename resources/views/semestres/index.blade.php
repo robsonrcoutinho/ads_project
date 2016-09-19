@@ -26,7 +26,7 @@
                     <td>{{ date('d/m/Y', strtotime($semestre->termino)) }}</td>
                     <td>
                         @can('alterar', $semestre)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('semestres.editar', ['codigo'=>$semestre->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>

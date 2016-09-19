@@ -11,13 +11,13 @@
                     <td>{{$enade->informacao}}</td>
                     <td>
                         @can('alterar', $enade)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('enades.editar', ['id'=>$enade->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $enade)
-                        <a class="btn-floating red btn-excluir"
+                        <a class="btn-floating red btn-excluir tooltipped" data-tooltip="Excluir"
                            href="{{ route('enades.excluir', ['id'=>$enade->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>

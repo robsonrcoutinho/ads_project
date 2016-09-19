@@ -19,13 +19,13 @@
                     <td>{{$pergunta->enunciado}}</td>
                     <td>
                         @can('alterar', $pergunta)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('perguntas.editar', ['id'=>$pergunta->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $pergunta)
-                        <a class="btn-floating red btn-excluir"
+                        <a class="btn-floating red btn-excluir  tooltipped" data-tooltip="Excluir"
                            href="{{ route('perguntas.excluir', ['id'=>$pergunta->id]) }}">
                             <i class="material-icons">delete</i>
                         </a>
