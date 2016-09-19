@@ -38,8 +38,6 @@
             <li><a class="waves-effect waves-green active" href="{{route('documentos')}}">Documentos</a></li>
             <li><a class="waves-effect waves-green active" href="{{route('enades')}}">ENADE</a></li>
             <li><a class="waves-effect waves-green active" href="{{route('semestres')}}">Semestres</a></li>
-            <li><a class="waves-effect waves-green active" href="{{route('users')}}">Gerenciar Conta</a></li>
-            <li><a class="waves-effect waves-green active" href="{{route('sair')}}">Sair</a></li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
         @endif
@@ -88,7 +86,6 @@
                 </ul>
             @endif
 
-
             @yield('conteudo','
 
             <div class="container">
@@ -96,8 +93,8 @@
                        <div class="center-align">
                         Esse sistema permite acesso a diversas informações relacionadas ao curso de
                         Tecnologia em Análise e Desenvolvimento de Sistema oferecido pelo Campus Eunápolis
-                        do Instituto Federal de Educação, Ciência e Tecnologia do Estado da Bahia
-                        Tais como:<br><br>
+                        do Instituto Federal de Educação, Ciência e Tecnologia do Estado da Bahia,
+                        tais como:<br><br>
 
             <ul class="collapsible popout" data-collapsible="accordion">
                     <li>
@@ -134,9 +131,6 @@
                       <div class="collapsible-header"><i class="material-icons">label_outline</i>Projeto Pedagógico</div>
                       <div class="collapsible-body"><p>Consulte informaçoes sobre o Projeto Pedagogico relacionado ao curso.</p></div>
                     </li>
-
-
-
                </ul>
               </div>
         ')
