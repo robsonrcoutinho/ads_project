@@ -28,16 +28,18 @@
         </ul>
         <ul id="slide-out" class="side-nav ">
 
-            <li><a  class="waves-effect waves-green active"  href="{{route('avaliacoes')}}">Avaliações</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('avisos')}}">Avisos</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('alunos')}}">Discentes</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('disciplinas')}}">Disciplinas</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('professores')}}">Docentes</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('documentos')}}">Documentos</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('enades')}}">ENADE</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('semestres')}}">Semestres</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('users')}}">Gerenciar Conta</a></li>
-            <li><a  class="waves-effect waves-green active"  href="{{route('sair')}}">Sair</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('avaliacoes')}}">Avaliações</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('avisos')}}">Avisos</a></li>
+            @can('acao', new Aluno())
+            <li><a class="waves-effect waves-green active" href="{{route('alunos')}}">Discentes</a></li>
+            @endcan
+            <li><a class="waves-effect waves-green active" href="{{route('disciplinas')}}">Disciplinas</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('professores')}}">Docentes</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('documentos')}}">Documentos</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('enades')}}">ENADE</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('semestres')}}">Semestres</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('users')}}">Gerenciar Conta</a></li>
+            <li><a class="waves-effect waves-green active" href="{{route('sair')}}">Sair</a></li>
         </ul>
         <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
         @endif
@@ -53,29 +55,30 @@
 <!-- BI-->
 <div class="col 12">
 
-                <div class="row center">
-                    <h1 class="header center orange-text">ADS </h1>
-                    <h5 class="header col s12 light orange-text  ">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h5>
-                </div>
-                @if(Auth::guest())
-                    <div class="row center">
-                        <a href="{{route('users')}}" id="download-button"
-                           class="btn-large waves-effect waves-light orange darken-1"> Login </a>
-                    </div>
-                @else
-                    @can('salvar', new Aviso())
-                    <div class="row center">
-                        <a href="{{route('avisos.novo')}}" id="download-button"
-                           class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
-                    </div>
-                    @endcan
-                @endif
+    <div class="row center">
+        <h1 class="header center orange-text">ADS </h1>
+        <h5 class="header col s12 light orange-text  ">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h5>
+    </div>
+    @if(Auth::guest())
+        <div class="row center">
+            <a href="{{route('users')}}" id="download-button"
+               class="btn-large waves-effect waves-light orange darken-1"> Login </a>
+        </div>
+    @else
+        @can('salvar', new Aviso())
+        <div class="row center">
+            <a href="{{route('avisos.novo')}}" id="download-button"
+               class="btn-large waves-effect waves-light orange">Publicar Aviso</a>
+        </div>
+        @endcan
+    @endif
 </div>
 <!--BF -->
 <!-- Conteudo-->
-<div class="container">
+<div>
+    <div class="container">
 
-    <div class="col 10 m10">
+        <div class="col 10 m10">
 
             @if($errors->any())
                 <ul class="alert alert-warning">
@@ -141,7 +144,6 @@
                 <br/>
                 <a href="" onClick="history.go(-1)" class="btn">Voltar</a>
             @endif
-
 
         </div>
     </div>
