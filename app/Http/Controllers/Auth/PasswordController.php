@@ -27,13 +27,14 @@ class PasswordController extends Controller
      * @return void
      */
 
-    protected $redirectoTo='/';
+    protected $redirectoTo = '/';
+
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    public function resetPassword($user,$password)
+    public function resetPassword($user, $password)
     {
 
         if (Hash::check('plain-text', $password)) {
@@ -42,7 +43,15 @@ class PasswordController extends Controller
 
             $user->save();
 
-            auth::login(user);
+            auth::login($user);
         }
+    }
+
+    public function getEmail()
+    {
+        echo "<script>
+                alert('Procure o administrador do sistema.');
+                window.location='/auth/login';
+                </script>";
     }
 }

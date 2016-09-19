@@ -29,14 +29,14 @@
                     @endif
                     <td>
                         @can('alterar', $aluno)
-                        <a class="btn-floating blue"
+                        <a class="btn-floating blue tooltipped" data-tooltip="Editar"
                            href="{{ route('alunos.editar', ['id'=>$aluno->id]) }}">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         @endcan
                         @can('excluir', $aluno)
-                        <a class="btn-floating red btn-excluir"
-                           href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}">
+                        <a class="btn-floating red btn-excluir tooltipped" data-tooltip="Excluir"
+                           href="{{ route('alunos.excluir', ['id'=>$aluno->id]) }}" >
                             <i class="material-icons">delete</i>
                         </a>
                         @endcan
