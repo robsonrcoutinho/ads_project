@@ -87,7 +87,7 @@ class QuestionariosController extends Controller
         $regras = array();                                                                  //Cria arrai de regras
         $respostas = $input["campo_resposta"];                                              //Pega todos os campos resposta
         foreach ($indices as $indice):                                                      //Percorre todos os índices
-            $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
+            $regras[$indice] = 'required|max:250';                                                  //Atribui às regras que o índice é obrigatório
         endforeach;
         $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
         return Validator::make($respostas, $regras, $mensagens);                            //Cria e retorna validador passando respostas, regras e mensagens

@@ -23,7 +23,7 @@ class AvisoRequest extends Request
     {
         return [
             'titulo'=>'required|min:5|max:20',
-            'mensagem'=>'required|min:5'
+            'mensagem'=>'required|min:5|max:255'
         ];
     }
 }
