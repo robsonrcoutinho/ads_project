@@ -87,9 +87,10 @@ class QuestionariosController extends Controller
         $regras = array();                                                                  //Cria arrai de regras
         $respostas = $input["campo_resposta"];                                              //Pega todos os campos resposta
         foreach ($indices as $indice):                                                      //Percorre todos os índices
-            $regras[$indice] = 'required';                                                  //Atribui às regras que o índice é obrigatório
+            $regras[$indice] = 'required|max:250';                                          //Atribui às regras que o índice é obrigatório
         endforeach;
-        $mensagens = ['required' => 'Existem respostas não informadas.'];                   //Cria mensagem personalizada para ausência de índice
+        $mensagens = ['required' => 'Existem respostas não informadas.',
+            'max' => 'O campo resposta não deverá conter mais de :max caracteres.'];        //Cria mensagem personalizada para ausência de índice
         return Validator::make($respostas, $regras, $mensagens);                            //Cria e retorna validador passando respostas, regras e mensagens
     }
 
@@ -98,10 +99,10 @@ class QuestionariosController extends Controller
      */
     private function inserir($input)
     {
-        $respostas = $input->get('campo_resposta');                                     //Pega lista de campo_resposta
-        $avaliacao = $input->get('avaliacao_id');                                       //Paga id da avaliação
-        $disciplinas = $input->get('disciplina_id');                                    //Pega lista de disciplina_id (ids das disciplinas)
-        $perguntas = $input->get('pergunta_id');                                        //Pega lista de pergunta_id (ids das perguntas)
+        $respostas = $input['campo_resposta'];                                          //Pega lista de campo_resposta
+        $avaliacao = $input['avaliacao_id'];                                            //Paga id da avaliação
+        $disciplinas = $input['disciplina_id'];                                         //Pega lista de disciplina_id (ids das disciplinas)
+        $perguntas = $input['pergunta_id'];                                             //Pega lista de pergunta_id (ids das perguntas)
         foreach ($respostas as $indice => $resposta):                                   //Percorre lista de respostas
             $r = new Resposta();                                                        //Cria nova resposta
             $r->pergunta_id = $perguntas[$indice];                                      //Passa id da pergunta
@@ -110,7 +111,7 @@ class QuestionariosController extends Controller
             $r->disciplina_id = $disciplinas[$indice];                                  //Passa id da disciplina (disciplina_id)
             $r->save();                                                                 //Salva a resposta
         endforeach;
-        $aluno = Aluno::find($input->get('aluno_id'));                                  //Busca aluno pelo id
+        $aluno = Aluno::find($input['aluno_id']);                                  //Busca aluno pelo id
         $aluno->avaliacoes()->attach($avaliacao);                                       //Relaciona aluno à avaliação
     }
 }
