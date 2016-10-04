@@ -57,8 +57,8 @@ class ApiController extends Controller
      * */
     public function avisosAll()
     {
-        return response()
-            ->json(Aviso::all());
+        $this->removerAntigos();
+        return response()->json(Aviso::all());
     }
 
     /*
@@ -66,8 +66,7 @@ class ApiController extends Controller
      * */
     public function documentosAll()
     {
-        return response()
-            ->json(Documento::all());
+        return response()->json(Documento::all());
     }
 
     /*
@@ -75,8 +74,7 @@ class ApiController extends Controller
     * */
     public function professoresAll()
     {
-        return response()
-            ->json(Professor::all());
+        return response()->json(Professor::all());
     }
 
 
@@ -85,8 +83,7 @@ class ApiController extends Controller
     * */
     public function disciplinasAll()
     {
-        return response()
-            ->json(Disciplina::all());
+        return response()->json(Disciplina::all());
     }
 
     /*
@@ -94,15 +91,13 @@ class ApiController extends Controller
     * */
     public function avaliacoesAll()
     {
-        return response()
-            ->json(Avaliacao::all());
+        return response()->json(Avaliacao::all());
     }
 
     //Método que busca avaliação aberta para o Web Service
     public function questionariosAll()
     {
-        return response()
-            ->json(Avaliacao::aberta()->first());
+        return response()->json(Avaliacao::aberta()->first());
     }
 
     /*
@@ -188,5 +183,11 @@ class ApiController extends Controller
             }
         }
         return response()->json('erro');
+    }
+
+    private function removerAntigos()
+    {
+        $avisos = Aviso::antigos()->lists('id');                //Busca avisos antigos e pega id
+        Aviso::destroy($avisos->all());                         //Apaga avisos antigos
     }
 }
