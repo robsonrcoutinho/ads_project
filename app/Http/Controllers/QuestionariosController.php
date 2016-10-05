@@ -111,7 +111,7 @@ class QuestionariosController extends Controller
             $r->disciplina_id = $disciplinas[$indice];                                  //Passa id da disciplina (disciplina_id)
             $r->save();                                                                 //Salva a resposta
         endforeach;
-        $aluno = Aluno::find($input['aluno_id']);                                  //Busca aluno pelo id
+        $aluno = Aluno::find($input['aluno_id']);                                       //Busca aluno pelo id
         $aluno->avaliacoes()->attach($avaliacao);                                       //Relaciona aluno à avaliação
     }
 }
