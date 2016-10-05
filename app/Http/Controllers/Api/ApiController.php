@@ -190,4 +190,12 @@ class ApiController extends Controller
         $avisos = Aviso::antigos()->lists('id');                //Busca avisos antigos e pega id
         Aviso::destroy($avisos->all());                         //Apaga avisos antigos
     }
+
+    public function tokenGCM(Request $request){
+        $email = $request->input('email');
+        $token = $request->input('token');
+        $user = User::where('email', $email)->update(['gcm_token' =>$token]);
+        return response()->json(['token' => $user]);
+    }
+
 }
