@@ -2,7 +2,6 @@
 
 namespace adsproject\Http\Requests;
 
-
 class PerguntaRequest extends Request
 {
     /**

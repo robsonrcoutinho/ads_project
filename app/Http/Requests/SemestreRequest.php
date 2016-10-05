@@ -2,8 +2,6 @@
 
 namespace adsproject\Http\Requests;
 
-use adsproject\Http\Requests\Request;
-
 class SemestreRequest extends Request
 {
     /**
@@ -26,7 +24,8 @@ class SemestreRequest extends Request
         return [
             'codigo' => 'required|size:6',
             'inicio' => 'required|date',
-            'termino' => 'required|date|after:inicio'
+            'termino' => 'required|date|after:inicio',
+            'disciplinas' => 'required'
         ];
     }
 }

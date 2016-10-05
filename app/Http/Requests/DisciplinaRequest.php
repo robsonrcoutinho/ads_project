@@ -1,4 +1,6 @@
-<?php namespace adsproject\Http\Requests;
+<?php
+
+namespace adsproject\Http\Requests;
 /**
  * Created by PhpStorm.
  * User: Wilder

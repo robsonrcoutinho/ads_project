@@ -2,8 +2,6 @@
 
 namespace adsproject\Http\Requests;
 
-use adsproject\Http\Requests\Request;
-
 class UserRequest extends Request
 {
     /**
