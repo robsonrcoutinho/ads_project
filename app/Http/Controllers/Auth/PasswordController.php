@@ -9,7 +9,6 @@ use DB;
 
 class PasswordController extends Controller
 {
-    protected $redirectTo = '/';
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -22,13 +21,13 @@ class PasswordController extends Controller
     */
 
     use ResetsPasswords;
+    protected $redirectoTo = '/';
 
     /**
      * Create a new password controller instance.
      *
      * @return void
      */
-
     public function __construct()
     {
         $this->middleware('guest');
