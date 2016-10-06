@@ -254,5 +254,6 @@ $api->version('v1', function ($api) {
         $api->post('informacaoUser', 'ApiController@informacaoUser');
         $api->post('disciplinasCursadas', 'ApiController@buscaDisciplinasCursadas');
         $api->post('respostaQuestionario', 'ApiController@respostaQuestionario');
+        $api->post('token', 'ApiController@tokenGCM');
     });
 });
