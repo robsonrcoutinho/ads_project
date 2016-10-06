@@ -4,6 +4,8 @@ namespace adsproject\Http\Controllers\Auth;
 
 use adsproject\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
+use DB;
 
 class PasswordController extends Controller
 {
@@ -36,22 +38,16 @@ class PasswordController extends Controller
 
     public function resetPassword($user, $password)
     {
-
-        if (Hash::check('plain-text', $password)) {
-
-            $user->password = $password;
-
-            $user->save();
-
-            auth::login($user);
-        }
+        $user->password = bcrypt($password);
+        $user->save();
+        Auth::login($user);
     }
 
-    public function getEmail()
+    public function getReset($token)
     {
-        echo "<script>
-                alert('Procure o administrador do sistema.');
-                window.location='/auth/login';
-                </script>";
+        $email = DB::select(
+            'select email from password_resets where token = :token',
+            ['token' => $token])[0]->email;
+        return view('auth.reset', ['token' => $token, 'email' => $email]);
     }
 }

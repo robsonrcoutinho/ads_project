@@ -11,15 +11,15 @@
         </div>
         <div class="form-group">
             {!! Form::label ('email', 'E-mail: ') !!}
-            {!! Form::email('email', null , ['class'=>'form-control']) !!}
+            {!! Form::email('email', $email , ['class'=>'form-control','readonly']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('password', 'Senha: ') !!}
-            {!! Form::password ('password',null, ['class'=>'form-control']) !!}
+            {!! Form::password ('password',['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label ('password_confirmation', 'Confirmar a senha: ') !!}
-            {!! Form::password ('password_confirmation',null, ['class'=>'form-control']) !!}
+            {!! Form::password ('password_confirmation',['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit ('Salvar', ['class'=>'btn btn-primary']) !!}

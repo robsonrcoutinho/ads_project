@@ -213,8 +213,8 @@ Route::post('auth/register', ['as' => 'registrar', 'uses' => 'Auth\AuthControlle
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 //Rotas para trocar senha
-Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@getReset']);
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\PasswordController@postReset']);
 
 
 /*
