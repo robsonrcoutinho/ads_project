@@ -1,5 +1,3 @@
-
-
 @extends('main')
 @section('conteudo')
     <div class="contegory">
