@@ -4,7 +4,6 @@ namespace adsproject\Http\Controllers\Auth;
 
 use adsproject\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Auth;
 use DB;
 
 class PasswordController extends Controller
@@ -23,6 +22,7 @@ class PasswordController extends Controller
     use ResetsPasswords;
     protected $redirectoTo = '/';
 
+
     /**
      * Create a new password controller instance.
      *
@@ -31,13 +31,6 @@ class PasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    public function resetPassword($user, $password)
-    {
-        $user->password = bcrypt($password);
-        $user->save();
-        Auth::login($user);
     }
 
     public function getReset($token)
