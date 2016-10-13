@@ -15,11 +15,9 @@ Route::get('/', function () {
     return view('main');
 });
 
-
 Route::get('home', function () {
     return redirect('/');
 });
-
 
 //Rotas de Alunos
 Route::group(['prefix' => 'alunos', 'where' => ['id' => '[0-9]+']], function () {

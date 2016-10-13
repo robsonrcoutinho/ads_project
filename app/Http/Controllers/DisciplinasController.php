@@ -142,7 +142,13 @@ class DisciplinasController extends Controller
      */
     public function excluir($id)
     {
-        Disciplina::find($id)->delete();                                //Busca disciplina pelo id e exclui
+        $disciplina = Disciplina::find($id);                            //Busca disciplina pelo id e exclui
+        ManipuladorArquivo::excluir($disciplina->ementa);               //Exclui arquivo com ementa
+        ManipuladorArquivo::excluir($disciplina->plano_ensino);         //Esclui arquivo com plano de ensino
+        $disciplina->ementa=null;                                       //Passa null para ementa
+        $disciplina->plano_ensino=null;                                 //Passa null para plano de ensino
+        $disciplina->save();                                            //Salva alteração
+        $disciplina->delete();                                          //Exclui disciplina
         return redirect()->route('disciplinas');                        //Redireciona à página inicial de disciplinas
     }
 
