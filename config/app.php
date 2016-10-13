@@ -137,7 +137,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider::class,
+        'Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider',
 
         /*
          * Application Service Providers...
@@ -220,7 +220,8 @@ return [
         'Token' => adsproject\Token::class,
         'MaterializeCSS' => Skydiver\LaravelMaterializeCSS\MaterializeCSS::class,
 
-        'PushNotification' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
+       // 'PushNotification' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
+        'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification',
 
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,

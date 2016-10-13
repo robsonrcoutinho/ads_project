@@ -1,11 +1,10 @@
 <?php
 
 return array(
-
-    'ADSNotify' => array(
-        'environment' =>'development',
-        'apiKey'      =>'AIzaSyD6rl86X1hdByd1AYAqGyElNBtUxrx9PtY',
-        'service'     =>'gcm'
+    'ads' => array(
+        'environment' =>'production',
+        'apiKey'=>'AIzaSyCRhpTf9QDkwKkhvUidSV4SO86BC73d0o0',
+        'service'=>'gcm'
     )
 
 );
