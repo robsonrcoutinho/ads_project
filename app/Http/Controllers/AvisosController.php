@@ -55,7 +55,9 @@ class AvisosController extends Controller
 
         Aviso::create($request->all());                      //Cria novo aviso com dados passados
 
-        $this->sendNotificationToDevice();
+        $aviso = $request->get('titulo');
+
+        $this->sendNotificationToDevice($aviso);
 
         return redirect()->route('avisos');                     //Redireciona para pÃ¡gina inicial de avisos
     }
@@ -78,6 +80,8 @@ class AvisosController extends Controller
     public function alterar(AvisoRequest $request, $id)
     {
         Aviso::find($id)->update($request->all());              //Busca aviso pelo id e atualiza
+        $titulo = $request->get('titulo');
+        $this->sendNotificationToDevice('Editado:'.$titulo);
         return redirect('avisos');                              //Redireciona para pÃ¡gina inicial de avisos
     }
 
@@ -100,7 +104,7 @@ class AvisosController extends Controller
         Aviso::destroy($avisos->all());                         //Apaga avisos antigos
     }
 
-    public function sendNotificationToDevice(){
+    public function sendNotificationToDevice($aviso){
         $tokens =\adsproject\User::all()->lists('gcm_token');
 
         $deviceCollection = PushNotification::DeviceCollection();
@@ -113,7 +117,7 @@ class AvisosController extends Controller
 
         PushNotification::app('ads')
             ->to($deviceCollection)
-            ->send('Robson Wilder');
+            ->send($aviso);
         return 'ok';
     }
 }
