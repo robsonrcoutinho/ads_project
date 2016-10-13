@@ -33,9 +33,9 @@ class ManipuladorArquivo
     {
         $nome = explode("/", $arquivo);                             //Transforma o caminho do arquivo em array
         $nome = end($nome);                                         //Pega o nome do arquivo
-        $ext = pathinfo($arquivo, PATHINFO_EXTENSION);              //Pega extensão do arquivo
-        $cabecalho = [
-            'Content-Type' => 'application/' . $ext,
+        $tipo = \GuzzleHttp\Psr7\mimetype_from_filename($arquivo);  //Pega extensão do arquivo
+                $cabecalho = [
+            'Content-Type' => $tipo,
             'Content-Disposition' => 'inline; filename=' . $nome
         ];                                                          //Passa dados para cabeçalho
         //Abre ou baixa arquivo

@@ -93,7 +93,7 @@ class DocumentosController extends Controller
     {
         $documento = Documento::find($id);                      //Busca documentos por id
         ManipuladorArquivo::excluir($documento->url);           //Exclui arquivo
-        $documento->url=null;                                   //Passa null para url
+        $documento->url = null;                                   //Passa null para url
         $documento->save();                                     //Salva alteração no documento
         $documento->delete();                                   //Exclui documento
         return redirect()->route('documentos');                 //Redireciona à página inicial de documentos
@@ -103,8 +103,8 @@ class DocumentosController extends Controller
      * @param $id int identificador do documento
      */
     /* public function arquivo($id)
-     {
-         $documento = Documento::find($id);                         //Busca documento pelo id
-         return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
-     }*/
+    {
+        $documento = Documento::find($id);                         //Busca documento pelo id
+        return ManipuladorArquivo::abrir($documento->url);         //Usa o manipulador de arquivo para abrir ou baixar
+    }*/
 }
