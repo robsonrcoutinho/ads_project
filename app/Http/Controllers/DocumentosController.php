@@ -91,7 +91,11 @@ class DocumentosController extends Controller
      */
     public function excluir($id)
     {
-        Documento::find($id)->delete();                         //Busca documentos por id e exclui
+        $documento = Documento::find($id);                      //Busca documentos por id
+        ManipuladorArquivo::excluir($documento->url);           //Exclui arquivo
+        $documento->url=null;                                   //Passa null para url
+        $documento->save();                                     //Salva alteração no documento
+        $documento->delete();                                   //Exclui documento
         return redirect()->route('documentos');                 //Redireciona à página inicial de documentos
     }
 
